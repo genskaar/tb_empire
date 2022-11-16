@@ -16,7 +16,6 @@ web browser. Alternatively visit:
 ```https://genskaar.github.io/tb_geo/``` 
 
 ## Suggestions
-<> For squad suggestions or to suggest general improvements, please use the <a href="https://forms.gle/fZkX1NKvnwYWSp2x7"> Squad Suggestion form, </a> or use the contact info on the <a href="https://genskaar.github.io/tb_geo/html/authors.html"> Authors page. </a>
 Squad suggestions are an important part of keeping the map up to date and usable. 
 A squad suggestion form and or discord server will be set up in the future.
 
