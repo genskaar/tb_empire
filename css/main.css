@@ -1,0 +1,376 @@
+body {
+	margin: 0;
+	padding: 0;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	overflow-x: hidden;
+	background-color: #6d7487;
+}
+p {
+	margin-bottom: 0;
+}
+.wrapper {
+	display: flex;
+	flex-direction: column;
+	justify-content: flex-start;
+	padding: 0;
+	width: 100vw;
+	height: 100vh;
+	/*max-width: 1400px;*/
+}
+.map {
+	position: relative;
+	top: -10%;
+	width: 100vw;
+	height: auto;
+	background: url('../media/map_rote.jpeg') no-repeat ;
+	background-size: contain;
+
+}
+.part {
+	opacity: .3;
+	opacity: 0.1;
+	stroke: white;
+	stroke-width: 1%;
+	stroke-linejoin: round;
+}
+.part:hover {
+	opacity: .5;
+	transition: all 0.5s ease;
+	cursor: pointer;
+}
+svg text {
+	fill: #ffffff;
+	font-size: 10px;
+	display: none;
+}
+.part:hover + text {
+	display: block;
+}
+text:hover {
+	display: block;
+	cursor: pointer;
+}
+
+
+
+
+
+
+
+.description {
+	position: absolute;
+	background-color: rgb(35, 48, 67, 0.9);
+	transform: translate(0, -45%);
+	top: 50%;
+	max-width: 48%;
+	padding: 1rem;
+	color: #ffffff;
+	z-index: 100;
+	border-radius: 1%;
+}
+.desc_left {
+	left: 3%;
+}
+.desc_right {
+	right: 3%;
+}
+.stars_info { 
+	position: absolute;
+	font-size: 1.2rem;
+	font-weight: bold;
+	transform: translate(0, -50%);
+	top: 45%;
+	left: 16%;
+	padding: 0.2rem;
+	color: #ffffff;
+	z-index: 100;
+	border-radius: 1%;
+}
+.platoons {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	width: 16%;
+	height: auto;
+	padding: 0.2rem;
+	font-size: 0.8rem;
+	line-height: 0.9rem;
+	border: 1px solid white;
+}
+.mission {
+	position: absolute;
+	width: 3%;
+	cursor: pointer;
+	transition: all 0.5s ease;
+}
+.mission:hover, .squad_fill:hover {
+	transform: scale(1.2);
+	transition: all 0.5s ease;
+}
+.mission:hover {
+	background: url('../media/focus.svg') no-repeat;
+	background-size: contain;
+}
+/* Home button text */
+.top-left {
+  position: fixed;
+  top: 0px;
+  left: 0px;
+  font-size: 2.0vw;
+  color: white;
+}
+
+
+
+
+
+
+
+.img_block img {
+	max-width: 10%;
+	max-height: 10%;
+	border-radius: 50%;
+	border: 2px solid #ffffff;
+	margin-right: 0.5%;
+}
+/*
+.info {
+	position: fixed;
+	bottom: -15%;
+	right: -15%;
+	width: 300px;
+	border: 2px solid #3a60aaff;
+	border-radius: 3%;
+	z-index: 300;
+	background-color: #94acdbff;
+	opacity: 0.9;
+}
+*/
+table {
+	border: 3px solid #ffffff;
+}
+tr:nth-child(5), tr:nth-child(10) {
+	border-bottom: 3px solid #ffffff;
+}
+
+td {
+	padding: 5px;
+	border: 1px solid #ffffff;
+	font-size: 0.7rem;
+}
+ td{
+	 border-right: 3px solid #ffffff;
+ }
+
+.rewards img{
+	width: 4%;
+}
+
+
+/*Mission positions*/
+.c1 {/*P4 middle battle*/
+	top: 49%;
+	left: 18%;
+}
+.c2 {/*P4 top battle*/
+	top: 28%;
+	left: 19%;
+}
+.c3 {/*P4 lower battle*/
+	top: 56%;
+	left: 12%;
+}
+.s1 {/*P4 lower battle*/
+	top: 69%;
+	left: 15%;
+}
+.c5 {/*P3 top battle*/
+	top: 23%;
+	left: 35%;
+}
+.c6 {/*P3 top special*/
+	top: 30%;
+	left: 38%;
+}
+.c7 {/*P3 middle battle 464*/
+	top: 45%;
+	left: 29%;
+}
+.c8 {/*P3 middle battle 603*/
+	top: 52%;
+	left: 30%;
+}
+.c9 {/*P3 middle battle 464*/
+	top: 45%;
+	left: 44%;
+}
+.c10 {/*P3 lower battle*/
+	top: 75%;
+	left: 25%;
+}
+.c11 {/*KAM special*/
+	top: 70%;
+	left: 45%;
+}
+.c12 {/*P2 top battle*/
+	top: 34%;
+	left: 54%;
+}
+.c13 {/*P2 top special*/
+	top: 36%;
+	left: 65%;
+}
+.c14 {/*P2 middle*/
+	top: 54%;
+	left: 56%;
+}
+.c15 {/*P2 middle*/
+	top: 46%;
+	left: 67%;
+}
+.c16 {/*P2 bottom*/
+	top: 74%;
+	left: 59%;
+}
+.c17 {/*P2 bottom*/
+	top: 63%;
+	left: 63%;
+
+}
+.ls1 {/*P2 bottom special*/
+    top: 77% ;
+    left: 65%;
+}
+.c18 {/*P1 top battle*/
+	top: 26%;
+	left: 65%;
+}
+.c19 {/*P1 middle battle*/
+	top: 46%;
+	left: 75%;
+}
+.c20 {/*P1 middle battle*/
+	top: 56%;
+	left: 78%;
+}
+.c21 {/*P1 middle special*/
+	top: 38%;
+	left: 90%;
+}
+.c22 {/*P1 lower battle*/
+	top: 68%;
+	left: 79%;
+}
+.c23 {/*P1 lower battle jedi*/
+	top: 76%;
+	left: 91%;
+}
+
+.c4 {/*P4 bottom battle 664*/
+	top: 54%;
+	left: 5%;
+}
+/*.s2 {
+	top: 62%;
+	left: 42%;
+}*/
+.s3 {/*P2 middle battle 564*/
+	top: 55%;
+	left: 68%;
+}
+.s4 {/*p4 top special*/
+	top: 22%;
+	left: 23%;
+}
+
+.t1 {/*P4 top platoons*/
+	top: 20%;
+	left: 12%;
+}
+.b1 {/*P4 bottom platoons*/
+	top: 75%;
+	left: 7%;
+}
+.t2 {/*P3 top platoon*/
+	top: 25%;
+	left: 46%;
+}
+.m2 {/*P3 middle platoons*/
+	top: 42%;
+	left: 34%;
+}
+.b2 {/*P3 bottom platoons*/
+	top: 65%;
+	left: 34%;
+}
+.t3 {/*P2 top platoons*/
+	top: 26%;
+	left: 56%;
+}
+.m3 {/*P2 middle platoons*/
+	top: 50%;
+	left: 58%;
+}
+.b3 {/*P2 middle platoons*/
+	top: 75%;
+	left: 72%;
+}
+.t4 {/*P1 top platoons*/
+	top: 32%;
+	left: 75%;
+}
+.m4 {/*P1 middle platoon */
+	top: 50%;
+	left: 86%;
+}
+.b4 {/*P1 bottom platoons*/
+	top: 67%;
+	left: 88%;
+}
+.lsp1{/*P4 middle platoons*/
+	top: 44%;
+	left: 7%;
+}
+.ls2{/*P4 middle special*/
+	top: 42%;
+	left: 21%;
+}
+.ls3{/*P4 middle battle*/
+	top: 36%;
+	left: 12%;
+}
+@media (min-width: 1700px) {
+	.map {
+		width: 80vw;
+	}
+}
+@media (max-width: 1200px) {
+	.platoons {
+		font-size: 0.5rem;
+		line-height: 0.6rem;
+	}
+}
+@media screen and (orientation:portrait) {
+	.description {
+		position: absolute;
+		top: 100%;
+		min-width: 100%;
+		min-height: 300px;
+		transform: none;
+	}
+	.desc_left {
+		left: 0;
+	}
+	.desc_right {
+		right: 0;
+	}
+	.img_block img {
+	/*	max-width: 5%;
+		max-height: 5%;*/
+		border-radius: 50%;
+		border: 2px solid #ffffff;
+		margin-right: 0.5%;
+	}
+}
