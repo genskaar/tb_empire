@@ -449,20 +449,28 @@ Vue.component('mission', {
         "Wave 2: Nute Gunray (L), 2x Magnaguard, 2x B2, Security Battle Droid",//20
         "Wave 2: Wat Tambor (L), 2x Magnaguard, 2x B2, Security Battle Droid",
         "Wave 2: Geonosian Brood Alpha (L), Geo Spy, Geo Soldier, Poggle, Sun Fac",
-        "Malevolence, Hyena Bomber, Vulture Droid, Geo Starfighter"
+        "Malevolence, Hyena Bomber, Vulture Droid, Geo Starfighter",
+        "Malevolence, Sun Fac's Starfigher, Geo Spy's Starfighter, Geo Starfighter",
+        "Wave 1: Geonosian Brood Alpha (L), Geo Spy, Geo Soldier, Poggle, Sun Fac",//25
+        "Wave 2: Nexu",
+        "Wave 1: Geonosian Brood Alpha, Geonosian Soldier, Reek",
+        "Wave 1: Acklay",
+        "Wave 1: 3x Partisan Fighter, 2x Rebel Spy",
+        "Wave 2: Kanan Jarrus (L), Ezra Bridger, Chopper, Rex, Partisan Fighter"//30
 		],
 		platoons: [
-        ["Darth Traya",	"7","Chimaera",	"6","Darth Revan",	"5","General Grevious",	"5",
-         "Emperor Palpatine",	"4", "Wat Tambor",	"4", "0-0-0",	"4", "Grand Admiral Thrawn",	"3",
-"Ugnaught",	"3","Darth Sidious",	"2","Canderous Ordo",	"2","IG-88",	"2","Darth Sion",	"2",
-"Darth Vader",	"2","BT-1",	"2","Imperial Probe Droid",	"2","First Order Officer",	"2","Darth Maul",	"2",
-"Droideka",	"2","First Order SF Pilot",	"1","Tusken Shaman",	"1","IG-86",	"1",
-"Ninth Sister",	"1","Nute Gunray",	"1",
-"Dengar",	"1","Jango Fett",	"1",
-"Fifth Brother",	"1","Boba Fett",	"1",
-"Mara Jade",	"1","First Order SF Tie Pilot",	"1", "Embo",	"1","Sith Assassin",	"1",
-"Asajj Ventress",	"1","Sith Trooper",	"1","Imperial Super Commando",	"1","Gamorrean Guard",	"1",
-"Count Dooku",	"1","B1 Battle Droid",	"1","Dark Trooper",	"1","Tie Fighter Pilot",	"1"]
+        ["Boba Fett, Scion of Jango",	"7", "Darth Revan",	"6",
+"Scythe",	"6","Darth Malgus",	"5",
+"TIE/IN Interceptor Prototype",	"5","Chimaera",	"4","Emperor Palpatine",	"4",
+"Grand Admiral Thrawn",	"4","Maul",	"4","Darth Malak",	"3","Grand Inquisitor",	"3",
+"Imperial Probe Droid",	"3","Starkiller",	"3","B2 Super Battle Droid",	"2",
+"Executor",	"2","First Order Officer",	"2","Kylo Ren (Unmasked)",	"2","Sith Eternal Emperor",	"2",
+"Supreme Leader Kylo Ren",	"2","Wat Tambor",	"2",
+"Asajj Ventress",	"1","Cad Bane",	"1","Colonel Starck",	"1",
+"Darth Talon",	"1","Death Trooper",	"1","Dengar",	"1","Droideka",	"1",
+"Emperor's Shuttle",	"1","Executrix",	"1","General Grievous",	"1","General Veers",	"1","HK-47",	"1","Hyena Bomber",	"1",
+"Kylo Ren's Command Shuttle",	"1","Magmatrooper",	"1","Malevolence",	"1",
+"Scimitar",	"1","TIE Echelon",	"1","TIE Reaper",	"1",]
 		],
 		guides:[
 		'See also: 50 Shards of Kam Discord Server',
@@ -481,55 +489,60 @@ Vue.component('mission', {
         ],
         notes:[
         'With Lord Vader\'s ultimate ability, this can be done on full auto',
-        'mod 2'
+        'Unclear if this is even possible right now',
+        "Currently Bugged!"
         ],
         reqs:[
         'Lord Vader (Relic 5+)',
         '5x Dark Side or Neutral (Relic 5+)',
-        'Dark Side Ships (7-Star), Scythe'
+        'Dark Side Ships (7-Star), Scythe',
+        'Dark Side Ships (7-Star)',
+        '5x Dark Side or Neutral (Relic 6+)',//4
+        '5x Geonosian (Relic 7+)',//5
         ],
 		platims:[
-		'Phase 1 DS Mustafar (Self)',//0
-        'Phase 2 DS Geonosis'
+		'Phase 2 DS Geonosis (Self)',//0
+        'Phase 3 DS Dathomir',
+        'Phase 4 DS Haven-class Medical Station'
 		],
 		missions: [{
 			id: 0,
 			name: 'c1',
 			type: 'usual',
-			position: 'right',
+			position: 'left',
 			rewards: [
-				'Wave 1: 100,000',
-                'Wave 2: 200,000'
+				'Wave 1: 125,000',
+                'Wave 2: 250,000'
 				],
             preferredSquads: [24],
-			dangerousEnemies: [19,21],
-            reqs: [1],
+			dangerousEnemies: [25,26],//nexu
+            reqs: [4],
             notes: []
 			},	{
 			id: 1,
-			name: 'c2',//LV
+			name: 'c2',
 			type: 'usual',
 			position: 'right',
 			rewards: [
-				'Wave 1: 100,000',
-                'Wave 2: 200,000'
+				'Wave 1: 125,000',
+                'Wave 2: 250,000'
 				],
-			preferredSquads: [73],
-			dangerousEnemies: [17,18],
-            reqs: [0],
-            notes: [0]
+			preferredSquads: [24],
+			dangerousEnemies: [28],//acklay
+            reqs: [4],
+            notes: [2]
 			}, {
 			id: 2,
 			name: 'c3',
 			type: 'usual',
 			position: 'right',
 			rewards: [
-				'Wave 1: 100,000',
-                'Wave 2: 200,000'
+				'Wave 1: 125,000',
+                'Wave 2: 500,000'
 				],
             preferredSquads: [24],
-			dangerousEnemies: [19,20],
-            reqs: [1],
+			dangerousEnemies: [27],//reek
+            reqs: [4],
             notes: []
 			},
 			{
@@ -538,12 +551,12 @@ Vue.component('mission', {
 			type: 'usual',
 			position: 'right',
 			rewards: [
-				'Wave 1: 100,000',
-                'Wave 2: 200,000'
+				'Wave 1: 125,000',
+                'Wave 2: 250,000'
 				],
-            preferredSquads: [24],
-			dangerousEnemies: [19,22],
-            reqs: [1],
+            preferredSquads: [7],
+			dangerousEnemies: [29,30],//geo
+            reqs: [5],
             notes: []
 			}, 
 			
@@ -553,14 +566,14 @@ Vue.component('mission', {
 			type: 'fleet',
 			position: 'right',
 			rewards: [
-				'Wave 1: 400,000',
+				'Wave 1: 500,000',
 				],
 				preferredSquads: [24],
-				dangerousEnemies: [23],
-            reqs: [2],
-            notes: []
+				dangerousEnemies: [24],
+            reqs: [3],
+            notes: [1]
 			}, 
-			{id: 30, name: 'm2', type: 'platoon', position: 'right', requiredToons: [0], platzones: [0,1]}
+			{id: 30, name: 'm2', type: 'platoon', position: 'right', requiredToons: [0], platzones: [0,1,2]}
 		],
 		selectedMission: '',
 		seen: false,
