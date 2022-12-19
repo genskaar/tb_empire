@@ -524,8 +524,7 @@ Vue.component('mission', {
 			type: 'usual',
 			position: 'right',
 			rewards: [
-				'Wave 1: 125,000',
-                'Wave 2: 250,000'
+                'Wave 1: 250,000'
 				],
 			preferredSquads: [24],
 			dangerousEnemies: [28],//acklay
@@ -537,8 +536,7 @@ Vue.component('mission', {
 			type: 'usual',
 			position: 'right',
 			rewards: [
-				'Wave 1: 125,000',
-                'Wave 2: 500,000'
+                'Wave 1: 250,000'
 				],
             preferredSquads: [24],
 			dangerousEnemies: [27],//reek
