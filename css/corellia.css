@@ -1,0 +1,230 @@
+body {
+	margin: 0;
+	padding: 0;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	overflow-x: hidden;
+	background-color: #6d7487;
+}
+p {
+	margin-bottom: 0;
+}
+.wrapper {
+	display: flex;
+	flex-direction: column;
+	justify-content: flex-start;
+	padding: 0;
+	width: 100vw;
+	height: 100vh;
+	/*max-width: 1400px;*/
+}
+.map {
+	position: relative;
+	top: -10%;
+	width: 100vw;
+	height: auto;
+	background: url('../media/planets/corellia.png') no-repeat ;
+	background-size: contain;
+
+}
+.part {
+	opacity: .3;
+	opacity: 0.1;
+	stroke: white;
+	stroke-width: 1%;
+	stroke-linejoin: round;
+}
+.part:hover {
+	opacity: .5;
+	transition: all 0.5s ease;
+	cursor: pointer;
+}
+svg text {
+	fill: #ffffff;
+	font-size: 10px;
+	display: none;
+}
+.part:hover + text {
+	display: block;
+}
+text:hover {
+	display: block;
+	cursor: pointer;
+}
+
+
+
+
+
+
+
+.description {
+	position: absolute;
+	background-color: rgb(35, 48, 67, 0.9);
+	transform: translate(0, -45%);
+	top: 50%;
+	max-width: 48%;
+	padding: 1rem;
+	color: #ffffff;
+	z-index: 100;
+	border-radius: 1%;
+}
+.desc_left {
+	left: 3%;
+}
+.desc_right {
+	right: 3%;
+}
+.stars_info { 
+	position: absolute;
+	font-size: 1.2rem;
+	font-weight: bold;
+	transform: translate(0, -50%);
+	top: 45%;
+	left: 16%;
+	padding: 0.2rem;
+	color: #ffffff;
+	z-index: 100;
+	border-radius: 1%;
+}
+.platoons {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	width: 16%;
+	height: auto;
+	padding: 0.2rem;
+	font-size: 0.8rem;
+	line-height: 0.9rem;
+	border: 1px solid white;
+}
+.mission {
+	position: absolute;
+	width: 5%;
+	cursor: pointer;
+	transition: all 0.5s ease;
+}
+.mission:hover, .squad_fill:hover {
+	transform: scale(1.2);
+	transition: all 0.5s ease;
+}
+.mission:hover {
+	background: url('../media/focus.svg') no-repeat;
+	background-size: contain;
+}
+/* Home button text */
+.top-left {
+  position: fixed;
+  top: 0px;
+  left: 0px;
+  font-size: 2.0vw;
+  color: white;
+}
+
+
+
+
+
+
+
+.img_block img {
+	max-width: 10%;
+	max-height: 10%;
+	border-radius: 50%;
+	border: 2px solid #ffffff;
+	margin-right: 0.5%;
+}
+/*
+.info {
+	position: fixed;
+	bottom: -15%;
+	right: -15%;
+	width: 300px;
+	border: 2px solid #3a60aaff;
+	border-radius: 3%;
+	z-index: 300;
+	background-color: #94acdbff;
+	opacity: 0.9;
+}
+*/
+table {
+	border: 3px solid #ffffff;
+}
+tr:nth-child(5), tr:nth-child(10) {
+	border-bottom: 3px solid #ffffff;
+}
+
+td {
+	padding: 5px;
+	border: 1px solid #ffffff;
+	font-size: 0.7rem;
+}
+ td{
+	 border-right: 3px solid #ffffff;
+ }
+
+.rewards img{
+	width: 4%;
+}
+
+
+/*Mission positions*/
+.c1 {/*P4 middle battle*/
+	top: 36%;
+	left: 50%;
+}
+.c2 {/*P4 top battle*/
+	top: 20%;
+	left: 44%;
+}
+.c3 {/*P4 lower battle*/
+	top: 38%;
+	left: 38%;
+}
+.c5 {/*P3 top battle*/
+	top: 63%;
+	left: 29%;
+}
+.c6 {/*P3 top special*/
+	top: 64%;
+	left: 53%;
+}
+.m2 {/*P3 middle platoons*/
+	top: 53%;
+	left: 20%;
+}
+}
+@media (min-width: 1700px) {
+	.map {
+		width: 80vw;
+	}
+}
+@media (max-width: 1200px) {
+	.platoons {
+		font-size: 0.5rem;
+		line-height: 0.6rem;
+	}
+}
+@media screen and (orientation:portrait) {
+	.description {
+		position: absolute;
+		top: 100%;
+		min-width: 100%;
+		min-height: 300px;
+		transform: none;
+	}
+	.desc_left {
+		left: 0;
+	}
+	.desc_right {
+		right: 0;
+	}
+	.img_block img {
+	/*	max-width: 5%;
+		max-height: 5%;*/
+		border-radius: 50%;
+		border: 2px solid #ffffff;
+		margin-right: 0.5%;
+	}
+}
