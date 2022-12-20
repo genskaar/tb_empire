@@ -419,8 +419,25 @@ Vue.component('mission', {
                 id:73,
                 name: 'Lord Vader (solo)',
                 toons: ['gl_vader','noone','noone','noone','noone']
-             }
-             
+             },
+             {
+				id: 74,
+				name: 'Galactic Legend Kylo',
+				toons: ['gl_kylo', 'first_order_officer', 'kylo_ren_(unmasked)','general_hux','sith_trooper']
+				
+			 },
+             {
+				id: 75,
+				name: 'SEE with Wat and Trio or with Sith Empire',
+				toons: ['gl_palp', 'wat_tambor', 'darth_nihilus','darth_sion','darth_traya']
+				
+			 },
+             {
+				id: 76,
+				name: 'Palpatine and Empire',
+				toons: ['emperor_palpatine', 'darth_vader', 'mara_jade_teh','grand_admiral_thrawn','admiral_piett']
+				
+			 }
 
 
 
@@ -501,7 +518,7 @@ Vue.component('mission', {
 				'Wave 1: 100,000',
                 'Wave 2: 200,000'
 				],
-            preferredSquads: [24],
+            preferredSquads: [75,76],
 			dangerousEnemies: [19,21],
             reqs: [1],
             modifiers: [0]
@@ -528,7 +545,7 @@ Vue.component('mission', {
 				'Wave 1: 100,000',
                 'Wave 2: 200,000'
 				],
-            preferredSquads: [24],
+            preferredSquads: [75,76],
 			dangerousEnemies: [19,20],
             reqs: [1],
             modifiers: [0]
@@ -542,8 +559,8 @@ Vue.component('mission', {
 				'Wave 1: 100,000',
                 'Wave 2: 200,000'
 				],
-            preferredSquads: [24],
-			dangerousEnemies: [19,22],
+            preferredSquads: [74],
+			dangerousEnemies: [19,22],//geo
             reqs: [1],
             modifiers: [0]
 			}, 
