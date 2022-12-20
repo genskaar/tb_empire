@@ -419,7 +419,33 @@ Vue.component('mission', {
                 id:73,
                 name: 'Lord Vader (solo)',
                 toons: ['gl_vader','noone','noone','noone','noone']
-             }
+             },
+             {
+                id:74,
+                name: 'Executor',
+                toons: ['executor','hound\'s_tooth','razor_crest','xanadu_blood','slave_i','ig-2000']
+             },
+             {
+                id:75,
+                name: 'Jabba the Hutt',
+                toons: ['gl_jabba','krrsantan','skiff_lando','boba_fett','boushh']
+             },
+             {
+                id:76,
+                name: 'Inquisitors',
+                toons: ['grand_inquisitor', 'seventh_sister', 'ninth_sister', 'fifth_brother','eighth_brother']
+             },
+             {
+                id:77,
+                name: 'BAM Scoundrels',
+                toons: ['beskar_mando', 'fennec_shand', 'ig-11', 'kuiil','boba_soj']
+             },
+             {
+                id:78,
+                name: 'Bounty Hunters',
+                toons: ['bossk', 'jango_fett', 'boba_soj', 'fennec_shand','dengar']
+             },
+             
              
 
 
@@ -549,7 +575,7 @@ Vue.component('mission', {
 			rewards: [
 				'Wave 1: 628,500',
 				],
-            preferredSquads: [24],//aphra
+            preferredSquads: [74],//aphra
 			dangerousEnemies: [45],
             reqs: [17],
 			},	{
@@ -561,7 +587,7 @@ Vue.component('mission', {
 				'Wave 1: 162,500',
                 'Wave 2: 341,250'
 				],
-			preferredSquads: [24],//jabba
+			preferredSquads: [75],//jabba
 			dangerousEnemies: [46,47],
 			modifiers: [3],
             reqs: [20],
@@ -574,7 +600,7 @@ Vue.component('mission', {
 				'Wave 1: 162,500',
                 'Wave 2: 341,250'
 				],
-            preferredSquads: [24],//fennec
+            preferredSquads: [77,78],//fennec
 			dangerousEnemies: [50,51],
             reqs: [18],
             modifiers: [3],
@@ -587,7 +613,7 @@ Vue.component('mission', {
 			rewards: [
 				'1 Reva Shard',
 				],
-            preferredSquads: [24],//reva
+            preferredSquads: [76],//reva
 			dangerousEnemies: [52,53],
             reqs: [19],
             modifiers: [3],
