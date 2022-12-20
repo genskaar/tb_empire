@@ -419,7 +419,49 @@ Vue.component('mission', {
                 id:73,
                 name: 'Lord Vader (solo)',
                 toons: ['gl_vader','noone','noone','noone','noone']
-             }
+             },
+             {
+                id:74,
+                name: 'Jabba the Hutt',
+                toons: ['gl_jabba','krrsantan','skiff_lando','boba_fett','boushh']
+             },
+             {
+                id:75,
+                name: 'Rey + Scoundrals',
+                toons: ['gl_rey','hondo_ohnaka','ig-11','kuiil','dash_rendar']
+             },
+             {
+                id:76,
+                name: 'Bounty Hunters + Hondo',
+                toons: ['bossk','hondo_ohnaka','jango_fett','the_mandalorian','greef_karga']
+             },
+             {
+                id:77,
+                name: 'Executor',
+                toons: ['executor','hound\'s_tooth','razor_crest','xanadu_blood','slave_i','ig-2000']
+             },
+             {
+                id:78,
+                name: 'Unknown Young Lando Team',
+                toons: ['unknown','unknown','unknown','unknown','young_lando_calrissian',]
+             },
+             {
+				id: 79,
+				name: 'Palpatine and Empire',
+				toons: ['emperor_palpatine', 'darth_vader', 'mara_jade_teh','grand_admiral_thrawn','admiral_piett']
+				
+			 },
+			 {
+				id: 80,
+				name: 'Starkiller',
+				toons: ['emperor_palpatine', 'starkiller', 'mara_jade_teh','visas_marr','barriss_offee']
+				
+			 },
+			 {
+				 id:81,
+				 name: 'Galactic Legend Rey (variants available)',
+				 toons: ['gl_rey','resistance_hero_finn','resistance_hero_poe','r2-d2','amilyn_holdo'],
+			 },
              
 
 
@@ -534,7 +576,7 @@ Vue.component('mission', {
 				'Wave 1: 125,000',
                 'Wave 2: 250,000'
 				],
-            preferredSquads: [24],//jabba
+            preferredSquads: [74],//jabba
 			dangerousEnemies: [41,42],
             reqs: [15],
 			},	{
@@ -546,7 +588,7 @@ Vue.component('mission', {
 				'Wave 1: 125,000',
                 'Wave 2: 250,000'
 				],
-			preferredSquads: [24],//lando
+			preferredSquads: [78],//lando
 			dangerousEnemies: [41,44],
             reqs: [13],
 			}, {
@@ -558,7 +600,7 @@ Vue.component('mission', {
 				'Wave 1: 125,000',
                 'Wave 2: 250,000'
 				],
-            preferredSquads: [24],//generic
+            preferredSquads: [79,80,81],//generic
 			dangerousEnemies: [39,40],
             reqs: [12],
 			},
@@ -571,7 +613,7 @@ Vue.component('mission', {
 				'Wave 1: 125,000',
                 'Wave 2: 250,000'
 				],
-            preferredSquads: [24],//hondo
+            preferredSquads: [75,76],//hondo
 			dangerousEnemies: [41,43],
             reqs: [14],
 			}, 
@@ -584,7 +626,7 @@ Vue.component('mission', {
 			rewards: [
 				'Wave 1: 500,000',
 				],
-				preferredSquads: [24],
+				preferredSquads: [77],
 				dangerousEnemies: [38],
             reqs: [11],
 			}, 
