@@ -528,7 +528,6 @@ Vue.component('mission', {
 			dangerousEnemies: [34],
 			modifiers: [2],
             reqs: [12],
-            notes: []
 			},	{
 			id: 1,
 			name: 'c2',
@@ -542,7 +541,6 @@ Vue.component('mission', {
 			dangerousEnemies: [38,39],
 			modifiers: [2],
             reqs: [11],
-            notes: []
 			}, {
 			id: 2,
 			name: 'c3',
@@ -556,7 +554,6 @@ Vue.component('mission', {
 			dangerousEnemies: [38,39],
             reqs: [13],
             modifiers: [2],
-            notes: []
 			},
 			{
 			id: 5,
@@ -571,7 +568,6 @@ Vue.component('mission', {
 				dangerousEnemies: [38,39],
 				modifiers: [2],
             reqs: [11],
-            notes: []
 			}, 
 			{id: 30, name: 'm2', type: 'platoon', position: 'right', requiredToons: [0], platzones: [0,]}
 		],

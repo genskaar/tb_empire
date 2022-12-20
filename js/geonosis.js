@@ -490,7 +490,7 @@ Vue.component('mission', {
         notes:[
         'With Lord Vader\'s ultimate ability, this can be done on full auto',
         'Unclear if this is even possible right now',
-        "Currently Bugged!"
+        "Currently Bugged! Granted ability not working"
         ],
         reqs:[
         'Lord Vader (Relic 5+)',
@@ -517,7 +517,6 @@ Vue.component('mission', {
             preferredSquads: [24],
 			dangerousEnemies: [25,26],//nexu
             reqs: [4],
-            notes: []
 			},	{
 			id: 1,
 			name: 'c2',
@@ -541,7 +540,6 @@ Vue.component('mission', {
             preferredSquads: [24],
 			dangerousEnemies: [27],//reek
             reqs: [4],
-            notes: []
 			},
 			{
 			id: 4,
@@ -555,7 +553,6 @@ Vue.component('mission', {
             preferredSquads: [7],
 			dangerousEnemies: [29,30],//geo
             reqs: [5],
-            notes: []
 			}, 
 			
 			{

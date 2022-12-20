@@ -476,7 +476,7 @@ Vue.component('mission', {
 		'Bulldog g12 JKL destorys LS geo tb: www.youtube.com/watch?v=g_co0UtkMvA',//8
 		],
         modifiers:[
-        'mod 1',
+        "Whenever a character/ship uses an ability, inflict Burning on them for 1 turn, which can't be evaded or resisted.",
         'mod 2'
         ],
         notes:[
@@ -504,7 +504,7 @@ Vue.component('mission', {
             preferredSquads: [24],
 			dangerousEnemies: [19,21],
             reqs: [1],
-            notes: []
+            modifiers: [0]
 			},	{
 			id: 1,
 			name: 'c2',//LV
@@ -517,7 +517,8 @@ Vue.component('mission', {
 			preferredSquads: [73],
 			dangerousEnemies: [17,18],
             reqs: [0],
-            notes: [0]
+            notes: [0],
+            modifiers: [0]
 			}, {
 			id: 2,
 			name: 'c3',
@@ -530,7 +531,7 @@ Vue.component('mission', {
             preferredSquads: [24],
 			dangerousEnemies: [19,20],
             reqs: [1],
-            notes: []
+            modifiers: [0]
 			},
 			{
 			id: 4,
@@ -544,7 +545,7 @@ Vue.component('mission', {
             preferredSquads: [24],
 			dangerousEnemies: [19,22],
             reqs: [1],
-            notes: []
+            modifiers: [0]
 			}, 
 			
 			{
@@ -558,7 +559,7 @@ Vue.component('mission', {
 				preferredSquads: [24],
 				dangerousEnemies: [23],
             reqs: [2],
-            notes: []
+            modifiers: [0]
 			}, 
 			{id: 30, name: 'm2', type: 'platoon', position: 'right', requiredToons: [0], platzones: [0,1]}
 		],

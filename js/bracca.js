@@ -565,7 +565,6 @@ Vue.component('mission', {
 			dangerousEnemies: [39,41],
             reqs: [13],
             modifiers: [2,3],
-            notes: []
 			},
 			{
 			id: 5,
