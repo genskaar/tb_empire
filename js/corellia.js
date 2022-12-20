@@ -419,6 +419,21 @@ Vue.component('mission', {
                 id:73,
                 name: 'Lord Vader (solo)',
                 toons: ['gl_vader','noone','noone','noone','noone']
+             },
+             {
+                id:74,
+                name: 'Jabba the Hutt',
+                toons: ['gl_jabba','krrsantan','skiff_lando','boba_fett','boushh']
+             },
+             {
+                id:75,
+                name: 'Executor',
+                toons: ['executor','hound\'s_tooth','razor_crest','lando\'s_millennium_falcon','xanadu_blood','slave_i','ig-2000']
+             },
+             {
+                id:76,
+                name: "Qi'ra Scoundrals",
+                toons: ['qi\'ra','dash_rendar','ig-11','kuiil','young_han_solo']
              }
              
 
@@ -526,7 +541,7 @@ Vue.component('mission', {
 				'Wave 1: 100,000',
                 'Wave 2: 200,000'
 				],
-            preferredSquads: [24],//jabba
+            preferredSquads: [74],//jabba
 			dangerousEnemies: [36,37],
 			modifiers: [1],
             reqs: [8],
@@ -552,7 +567,7 @@ Vue.component('mission', {
 				'Wave 1: 100,000',
                 'Wave 2: 200,000'
 				],
-            preferredSquads: [24],//generic
+            preferredSquads: [44],//generic
 			dangerousEnemies: [31,32],
             reqs: [6],
             modifiers: [1],
@@ -565,7 +580,7 @@ Vue.component('mission', {
 			rewards: [
 				'15 GET3',
 				],
-            preferredSquads: [24],
+            preferredSquads: [76],
 			dangerousEnemies: [31,35],
             reqs: [9],
 			}, 
@@ -578,7 +593,7 @@ Vue.component('mission', {
 			rewards: [
 				'Wave 1: 400,000',
 				],
-				preferredSquads: [24],
+				preferredSquads: [75],
 				dangerousEnemies: [33],
 				modifiers: [0],
             reqs: [10],
