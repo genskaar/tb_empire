@@ -419,7 +419,44 @@ Vue.component('mission', {
                 id:73,
                 name: 'Lord Vader (solo)',
                 toons: ['gl_vader','noone','noone','noone','noone']
-             }
+             },
+             {
+                id:74,
+                name: 'Mon Mothma with Omicron Kyle Katarn',
+                toons: ['mon_mothma', 'pao', 'hoth_rebel_scout', 'cara_dune', 'kyle_katarn_o']
+             },
+             {
+				id: 75,
+				name: 'Home One Rebel Fleet with Outrider',
+				toons: ['home_one', 'han\'s_millennium_falcon', 'rebel_y-wing', 'outrider', 'biggs_darklighter\'s_x-wing', 'phantom_ii', 'cassian\'s_u-wing','ghost']
+				
+		 	 },
+             {
+				id: 76,
+				name: 'Profundity Fleet with Outrider',
+				toons: ['profundity', 'han\'s_millennium_falcon', 'rebel_y-wing', 'outrider', 'biggs_darklighter\'s_x-wing', 'phantom_ii', 'cassian\'s_u-wing','ghost']
+				
+		 	 },
+             {
+				 id:77,
+				 name: 'Galactic Legend Luke (variants available)',
+				 toons: ['jedi_knight_luke_skywalker','gl_luke','hermit_yoda','jolee_bindo','jedi_knight_revan',],
+			 },
+             {
+				 id:78,
+				 name: 'Galactic Legend Kenobi with Republic (variants available)',
+				 toons: ['gl_kenobi','commander_ahsoka_tano','padmé_amidala','general_kenobi','general_skywalker',],
+			 },
+             {
+				 id:79,
+				 name: 'Galactic Legend Rey (variants available)',
+				 toons: ['gl_rey','resistance_hero_finn','resistance_hero_poe','r2-d2','amilyn_holdo'],
+			 },
+             {
+				 id:80,
+				 name: 'Galactic Republic Jedi',
+				 toons: ['mace_windu','gl_kenobi','ahsoka_tano','ki-adi-mundi','kit_fisto',],
+			 }
              
 
 
@@ -536,7 +573,7 @@ Vue.component('mission', {
 				'Wave 1: 100,000',
                 'Wave 2: 200,000'
 				],
-            preferredSquads: [24],//mace
+            preferredSquads: [80],//mace
 			dangerousEnemies: [41,42],
 			modifiers: [2,3,4],
             reqs: [12],
@@ -550,7 +587,7 @@ Vue.component('mission', {
 				'Wave 1: 100,000',
                 'Wave 2: 200,000'
 				],
-			preferredSquads: [24],//jei
+			preferredSquads: [77],//jei
 			dangerousEnemies: [38,39],
 			modifiers: [2,3,4],
             reqs: [13],
@@ -564,7 +601,7 @@ Vue.component('mission', {
 				'Wave 1: 100,000',
                 'Wave 2: 200,000'
 				],
-            preferredSquads: [24],//generic
+            preferredSquads: [74,78,79],//generic
 			dangerousEnemies: [38,40],
             reqs: [11],
             modifiers: [2,3,4],
@@ -579,7 +616,7 @@ Vue.component('mission', {
 				'Wave 1: 100,000',
                 'Wave 2: 200,000'
 				],
-            preferredSquads: [24],
+            preferredSquads: [74,78,79],
 			dangerousEnemies: [38,40],
             reqs: [11],
             modifiers: [2,3,4],
@@ -594,7 +631,7 @@ Vue.component('mission', {
 			rewards: [
 				'Wave 1: 400,000',
 				],
-				preferredSquads: [24],
+				preferredSquads: [76,75],
 				dangerousEnemies: [43],
 				modifiers: [5],
             reqs: [14],
