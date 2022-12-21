@@ -445,6 +445,11 @@ Vue.component('mission', {
                 name: 'Bounty Hunters',
                 toons: ['bossk', 'jango_fett', 'boba_soj', 'fennec_shand','dengar']
              },
+             {
+				 id:79,
+				 name: 'Galactic Legend Kenobi with Republic (variants available)',
+				 toons: ['gl_kenobi','commander_ahsoka_tano','padmé_amidala','general_kenobi','general_skywalker',],
+			 },
              
              
 
@@ -537,7 +542,8 @@ Vue.component('mission', {
         notes:[
         'With Lord Vader\'s ultimate ability, this can be done on full auto',
         'Unclear if this is even possible right now',
-        "Currently Bugged!"
+        "Currently Bugged!",
+        "Potentially a wampa team could be consistent here."
         ],
         reqs:[
         'Lord Vader (Relic 5+)',
@@ -627,10 +633,11 @@ Vue.component('mission', {
 				'Wave 1: 162,500',
                 'Wave 2: 341,250'
 				],
-				preferredSquads: [24],//gen
+				preferredSquads: [35,79],//gen
 				dangerousEnemies: [48,49],
 				modifiers: [3],
             reqs: [21],
+            notes: [3]
 			}, 
 			{id: 30, name: 'm2', type: 'platoon', position: 'left', requiredToons: [0], platzones: [0,1]}
 		],

@@ -419,7 +419,28 @@ Vue.component('mission', {
                 id:73,
                 name: 'Lord Vader (solo)',
                 toons: ['gl_vader','noone','noone','noone','noone']
-             }
+             },
+             {
+                id:74,
+                name: 'Lord Vader Empire (Variants Available)',
+                toons: ['gl_vader','darth_vader','royal_guard','admiral_piett','grand_admiral_thrawn']
+             },
+             {
+                id:75,
+                name: 'Trio with SEE',
+                toons: ['darth_traya','darth_sion','darth_nihilus','gl_palp','sith_empire_trooper']
+             },
+             {
+                id:76,
+                name: 'Sith Empire with SEE',
+                toons: ['darth_revan','darth_malak','darth_malgus','gl_palp','bastila_shan_(fallen)']
+             },
+             {
+				id: 77,
+				name: 'Galactic Legend Kylo',
+				toons: ['gl_kylo', 'first_order_officer', 'kylo_ren_(unmasked)','general_hux','sith_trooper']
+				
+			 },
              
 
 
@@ -494,7 +515,8 @@ Vue.component('mission', {
         notes:[
         'With Lord Vader\'s ultimate ability, this can be done on full auto',
         'Unclear if this is even possible right now',
-        "Currently Bugged!"
+        "Currently Bugged!",
+        "Do not use SEE lead here (prevents ally revives)"
         ],
         reqs:[
         'Lord Vader (Relic 5+)',
@@ -537,10 +559,11 @@ Vue.component('mission', {
 				'Wave 1: 162,500',
                 'Wave 2: 341,250'
 				],
-			preferredSquads: [24],//gen
+			preferredSquads: [75,76,77],//gen
 			dangerousEnemies: [38,39],
 			modifiers: [2],
             reqs: [11],
+            notes: [3],
 			}, {
 			id: 2,
 			name: 'c3',
@@ -550,7 +573,7 @@ Vue.component('mission', {
 				'Wave 1: 162,500',
                 'Wave 2: 341,250'
 				],
-            preferredSquads: [24],//empire
+            preferredSquads: [74],//empire
 			dangerousEnemies: [38,39],
             reqs: [13],
             modifiers: [2],
@@ -564,10 +587,11 @@ Vue.component('mission', {
 				'Wave 1: 162,500',
                 'Wave 2: 341,250'
 				],
-				preferredSquads: [24],//gen
+				preferredSquads: [75,76,77],//gen
 				dangerousEnemies: [38,39],
 				modifiers: [2],
             reqs: [11],
+            notes: [3],
 			}, 
 			{id: 30, name: 'm2', type: 'platoon', position: 'right', requiredToons: [0], platzones: [0,]}
 		],
