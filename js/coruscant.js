@@ -440,7 +440,7 @@ Vue.component('mission', {
              {
 				 id:77,
 				 name: 'Galactic Legend Luke (variants available)',
-				 toons: ['jedi_knight_luke_skywalker','gl_luke','hermit_yoda','jolee_bindo','jedi_knight_revan',],
+				 toons: ['gl_luke','jedi_knight_luke_skywalker','hermit_yoda','jolee_bindo','jedi_knight_revan',],
 			 },
              {
 				 id:78,
