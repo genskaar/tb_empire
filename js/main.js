@@ -496,420 +496,167 @@ Vue.component('mission', {
 		'Phase 4 Middle (Self)',//14
 		'Phase 4 Bottom (Self)',//15
 		],
-		missions: [{
-			id: 0,
-			name: 'c1',
-			type: 'usual',
-			position: 'right',
-			rewards: [
-				'Wave 1: 511 500',
-				'Wave 2: 867 000',
-				'Wave 3: 1 242 500',
-				'Wave 4: 1 837 500'
-				],
-			preferredSquads: [47],
-			dangerousEnemies: [4,3,11,2,7]
-			},	{
-			id: 1,
-			name: 'c2',
-			type: 'usual',
-			position: 'right',
-			rewards: [
-				'Wave 1: 2,750,000'
-				],
-			preferredSquads: [51,52,32],
-			dangerousEnemies: [12,14,16],
-			weblinks: [6,7],
-			}, {
-			id: 2,
-			name: 'c3',
-			type: 'usual',
-			position: 'right',
-			rewards: [
-				'Wave 1: 511 500',
-				'Wave 2: 867 000',
-				'Wave 3: 1 242 500',
-				'Wave 4: 1 837 500'
-				],
-			preferredSquads: [44,42,45],
-			dangerousEnemies: [0,1,8,5,10]
-			},
-			{
-			id: 3,
-			name: 'c4',
-			type: 'req',
-			position: 'right',
-			rewards: [
-				'Wave 1: 867 000',
-				'Wave 2: 1 837 500',
-				],
-			preferredSquads: [64,41],
-			dangerousEnemies: [15]
-			},
-			{
-			id: 4,
-			name: 'c5',
-			type: 'usual',
-			position: 'right',
-			rewards: [
-				'Wave 1: 1 800 000',
-				],
-				preferredSquads: [51,52,32],
-				dangerousEnemies: [12,14,16],
-				weblinks : [6,7],
-			}, 
-			
-			{
-			id: 5,
-			name: 'c6',
-			type: 'special',
-			position: 'right',
-			rewards: [
-				'32 GET2',
-				],
-				preferredSquads: [31],
-				dangerousEnemies: [13],
-			}, 
+		missions: [
 			{
 			id: 6,
 			name: 'c7',
-			type: 'usual',
+			type: 'dathomir',
 			position: 'right',
+			planetlink: 'dathomir.html',
 			rewards: [
-				'Wave 1: 464 000',
-				'Wave 2: 775 500',
-				'Wave 3: 1 105 000',
-				'Wave 4: 1 627 500'
+				'1*: 158,960,938',
+                '2*: 254,337,500',
+                '3*: 339,116,667'
 				],
-			preferredSquads: [72,44,42,45],
-			dangerousEnemies: [4,2,3,10,7,11,8]
+		    planet: [
+            'Phase 3 DS - Dathomir'
+            ],
+            notes: [
+            'Click for recommended teams'
+            ]
 			},
-			{id: 7, // GR Jedi mission
+			{id: 7,
 			name: 'c8',
-			type: 'req',
+			type: 'geonosis',
 			position: 'right',
+			planetlink: 'geonosis.html',
 			rewards: [
-				'Wave 1: 603 200',
-				'Wave 2: 1 008 150',
-				'Wave 3: 1 436 500',
-				'Wave 4: 2 115 750'
+				'1*: 148,125,000',
+                '2*: 237,000,000',
+                '3*: 316,000,000'
 				],
-			preferredSquads: [68],
-			dangerousEnemies: [7,11,2]
-			},
+		    planet: [
+            'Phase 2 DS - Geonosis'
+            ],
+            notes: [
+            'Click for recommended teams'
+            ]
+            },
 			{
 			id: 8,
 			name: 'c9',
-			type: 'usual',
+			type: 'tatooine',
 			position: 'right',
+			planetlink: 'tatooine.html',
 			rewards: [
-				'Wave 1: 464 000',
-				'Wave 2: 775 500',
-				'Wave 3: 1 105 000',
-				'Wave 4: 1 627 500'
+				'1*: 190,953,125',
+                '2*: 305,525,000',
+                '3*: 407,366,667'
 				],
-			preferredSquads: [42,44,45],
-			dangerousEnemies: [4,2,3,10,7,11,8]
+		    planet: [
+            'Phase 3 Mixed - Tatooine'
+            ],
+            notes: [
+            'Click for recommended teams'
+            ]
 			},
 			{
 			id: 9,
 			name: 'c10',
-			type: 'usual',
+			type: 'mustafar',
 			position: 'right',
+			planetlink: 'mustafar.html',
 			rewards: [
-				'Wave 1: 464 000',
-				'Wave 2: 775 500',
-				'Wave 3: 1 105 000',
-				'Wave 4: 1 627 500'
+				'1*: 116,406,250',
+                '2*: 186,250,000',
+                '3*: 248,333,333'
 				],
-			preferredSquads: [59,60,61,67],
-			dangerousEnemies: [0,5,10,1],
-			weblinks: [8],
+		    planet: [
+            'Phase 1 DS - Mustafar'
+            ],
+            notes: [
+            'Click for recommended teams'
+            ]
 			},
 			{
-			id: 10,
+			id: 10,//Corellia p1m
 			name: 'c11',
-			type: 'KAM',
+            type: 'corellia',
 			position: 'right',
+            planetlink: 'corellia.html',
 			rewards: [
-				'1 whole KAM Shard'
+				'1*: 111,718,750',
+                '2*: 178,750,000',
+                '3*: 238,333,333'
 				],
-		    weblinks: [1,2,0],
-			preferredSquads: [23,70],
-			dangerousEnemies: [9,6],
-			},
-			{
-			id: 11,
-			name: 'c12',
-			type: 'usual',
-			position: 'left',
-			rewards: [
-				'Wave 1: 900,000',
-				],
-			preferredSquads: [51,52,32],
-			dangerousEnemies: [12,14,16],
-			weblinks : [6,7],
-			},
-			{
-			id: 12,
-			name: 'c13',
-			type: 'special',
-			position: 'left',
-			rewards: [
-				'21 GET2',
-				],
-			preferredSquads: [31],
-			dangerousEnemies: [13],
-			//weblinks : [6],
+		    planet: [
+            'Phase 1 Mixed - Corellia'
+            ],
+            notes: [
+            'Click for recommended teams'
+            ]
 			},
 			{id: 13,
 			name: 'c14',
-			type: 'usual',
+			type: 'felucia',
 			position: 'left',
+			planetlink: 'felucia.html',
 			rewards: [
-				'Wave 1: 434 000',
-				'Wave 2: 704 000',
-				'Wave 3: 1 014 750',
-				'Wave 4: 1 377 000'
+				'1*: 148,125,000',
+                '2*: 237,000,000',
+                '3*: 316,000,000'
 				],
-			preferredSquads: [69,55,54],
-			dangerousEnemies: [0,2,11,7,10]
+		    planet: [
+            'Phase 2 Mixed - Felucia'
+            ],
+            notes: [
+            'Click for recommended teams'
+            ]
 			},
 			{
 			id: 14,
 			name: 'c15',
-			type: 'usual',
+			type: 'kashyyyk',
 			position: 'left',
+			planetlink: 'kashyyyk.html',
 			rewards: [
-				'Wave 1: 434 000',
-				'Wave 2: 704 000',
-				'Wave 3: 1 014 750',
-				'Wave 4: 1 377 000'
+				'1*: 190,953,125',
+                '2*: 305,525,000',
+                '3*: 407,366,667'
 				],
-			preferredSquads: [44,42,29,34,45],
-			dangerousEnemies: [0,2,11,7,10],
-			weblinks: [5],
+		    planet: [
+            'Phase 3 LS - Kashyyyk'
+            ],
+            notes: [
+            'Click for recommended teams'
+            ]
 			},
 			{
 			id: 15,
 			name: 'c16',
-			type: 'usual',
+			type: 'coruscant',
 			position: 'left',
+			planetlink: 'coruscant.html',
 			rewards: [
-				'Wave 1: 434 000',
-				'Wave 2: 704 000',
-				'Wave 3: 1 014 750',
-				'Wave 4: 1 377 000'
+				'1*: 116,406,250',
+                '2*: 186,250,000',
+                '3*: 248,333,333'
 				],
-			preferredSquads: [42,34,29, 44, 45],
-			dangerousEnemies: [0,5,1,8,4,3]
+		    planet: [
+            'Phase 1 LS - Coruscant'
+            ],
+            notes: [
+            'Click for recommended teams'
+            ]
 			},
 			{
 			id: 16,
 			name: 'c17',
-			type: 'usual',
+			type: 'bracca',//actual
 			position: 'left',
+			planetlink: 'bracca.html',
 			rewards: [
-				'Wave 1: 434 000',
-				'Wave 2: 704 000',
-				'Wave 3: 1 014 750',
-				'Wave 4: 1 377 000'
+				'1*: 142,265,625',
+                '2*: 227,625,000',
+                '3*: 303,500,000'
 				],
-			preferredSquads: [56,66,57,58],
-			dangerousEnemies: [0,5,1,8,4,3],
-			weblinks: [8],
-			},
-			{//LS New mission  Kenobi
-		    id: 38,
-		    name: 'ls1',
-		    type: 'special',
-		    position: 'left',
-		    rewards: [
-				'21 GET2'
-				],
-			preferredSquads: [22],
-			dangerousEnemies: [3]
-		    },
-		    {
-		    id: 41,
-		    name: 'ls2',
-		    type: 'special',
-		    position: 'right',
-		    rewards: [
-				'25 GET2',
-				],
-			preferredSquads: [25],
-			dangerousEnemies: [4,11,3],
-		    },
-		    {
-		    id: 42,
-		    name: 'ls3',
-		    type: 'usual',
-		    position: 'right',
-		    rewards: [
-				'Wave 1: 511 500',
-				'Wave 2: 867 000',
-				'Wave 3: 1 242 500',
-				'Wave 4: 1 837 500'
-				],
-			preferredSquads: [42,44,45],
-			dangerousEnemies: [4,3,11,2,7]
-		    },
-			{
-			id: 17,
-			name: 'c18',
-			type: 'usual',
-			position: 'left',
-			rewards: [
-				'Wave 1: 523 900',
-				],
-			preferredSquads: [31,32,51,52],	
-			dangerousEnemies: [12,14,16],
-			weblinks: [6,7],
-			},
-			{
-			id: 18,
-			name: 'c19',
-			type: 'usual',
-			position: 'left',
-			rewards: [
-				'Wave 1: 403 000',
-				'Wave 2: 573 500',
-				'Wave 3: 840 000',
-				'Wave 4: 1 155 000',
-				],
-			preferredSquads: [65,46,30,33],
-			dangerousEnemies: [2,7,3,11],
-			weblinks: [8],
-			},
-			{id: 19,
-			name: 'c20',
-			type: 'usual',
-			position: 'left',
-			rewards: [
-				'Wave 1: 403 000',
-				'Wave 2: 573 500',
-				'Wave 3: 840 000',
-				'Wave 4: 1 155 000',
-				],
-			preferredSquads: [34,42,29,45,44],
-			dangerousEnemies: [2,7,3,11]
-			},
-			{
-			id: 20,//   -----------------Galactic Republic
-			name: 'c21',
-			type: 'special',
-			position: 'left',
-			rewards: [
-				'15 GET2',
-				],
-				dangerousEnemies: [10,7,1,3],
-				preferredSquads: [63,53,71]
-			},
-			{
-			id: 21,
-			name: 'c22',
-			type: 'usual',
-			position: 'left',
-			rewards: [
-				'Wave 1: 403 000',
-				'Wave 2: 573 500',
-				'Wave 3: 840 000',
-				'Wave 4: 1 155 000',
-				],
-			preferredSquads: [42,44,29,45,34],
-			dangerousEnemies: [5,10,4],
-			weblinks: [5],
-			},
-			{
-			id: 22, //---------Jedi mission
-			name: 'c23',
-			type: 'usual',
-			position: 'left',
-			rewards: [
-				'Wave 1: 523 900',
-				'Wave 2: 745 550',
-				'Wave 3: 1 092 000',
-				'Wave 4: 1 501 500',
-				],
-			preferredSquads: [46,65,30,33],
-			dangerousEnemies: [10,4,1,5],
-			weblinks: [8],
-			},
-			{
-			id: 23,
-			name: 's1',
-			type: 'req',
-			position: 'right',
-			rewards: [
-				'Wave 1: 664 950',
-				'Wave 2: 1 127 100',
-				'Wave 3: 1 615 250',
-				'Wave 4: 2 388 750'
-				],
-			preferredSquads: [40],
-			dangerousEnemies: [0,10,5,1]
-			},
-			/*{
-			id: 24,
-			name: 's2',
-			type: 'usual',
-			position: 'right',
-			rewards: [
-				'Wave 1: 464 000',
-				'Wave 2: 775 500',
-				'Wave 3: 1 105 000',
-				'Wave 4: 1 627 500'
-				],
-				preferredSquads: [20],
-			},*/
-			{
-			id: 25,
-			name: 's3',
-			type: 'req',
-		    position: 'left',
-		    rewards: [
-				'Wave 1: 564 200',
-				'Wave 2: 915 200',
-				'Wave 3: 1 319 175',
-				'Wave 4: 1 790 100'
-				],
-			weblinks: [3,4],
-			preferredSquads: [21],
-			dangerousEnemies: [1,2]
-		    
-			},
-			{//-----Fleet special
-			id: 26,
-			name: 's4',
-			type: 'special',
-			position: 'right',
-			rewards: [
-				'20 GET2',
-				],
-			dangerousEnemies: [13],
-			preferredSquads:[31]
-			},
-			
-			/* Platoons */
-			{id: 27,
-			name: 't1',
-			type: 'platoon',
-			position: 'right',
-			requiredToons: [9],
-			 platzones: [6,10,7,11]
-			},
-			{id: 28, name: 'b1', type: 'platoon', position: 'right', requiredToons: [11], platzones: [15,7]},
-			{id: 29, name: 't2', type: 'platoon', position: 'right', requiredToons: [6], platzones: [7,11]},
-			{id: 30, name: 'm2', type: 'platoon', position: 'right', requiredToons: [7], platzones: [13,10,7,11]},
-			{id: 31, name: 'b2', type: 'platoon', position: 'right', requiredToons: [8], platzones: [7,11]},
-			{id: 32, name: 't3', type: 'platoon', position: 'left', requiredToons: [3], platzones: [6,10]},
-			{id: 40, name: 'lsp1', type: 'platoon', position: 'right', requiredToons: [10], platzones: [14,11]},
-			{id: 33, name: 'm3', type: 'platoon', position: 'left', requiredToons: [4], platzones: [12,6]},
-			{id: 34, name: 'b3', type: 'platoon', position: 'left', requiredToons: [5], platzones: [6,10]},
-			{id: 35, name: 't4', type: 'platoon', position: 'left', requiredToons: [0], platzones: [0,1,2,3]},
-			{id: 36, name: 'm4', type: 'platoon', position: 'left', requiredToons: [1], platzones: [5]},
-			{id: 37, name: 'b4', type: 'platoon', position: 'left', requiredToons: [2], platzones: [5,9]}
+		    planet: [
+            'Phase 2 LS - Bracca'
+            ],
+            notes: [
+            'Click for recommended teams'
+            ]
+			}
 		],
 		selectedMission: '',
 		seen: false,

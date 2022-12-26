@@ -101,16 +101,16 @@ text:hover {
 }
 .mission {
 	position: absolute;
-	width: 3%;
+	width: 5%;
 	cursor: pointer;
 	transition: all 0.5s ease;
 }
 .mission:hover, .squad_fill:hover {
-	transform: scale(1.2);
+	transform: scale(1.7);
 	transition: all 0.5s ease;
 }
 .mission:hover {
-	background: url('../media/focus.svg') no-repeat;
+	/*background: url('../media/focus.svg') no-repeat;*/
 	background-size: contain;
 }
 /* Home button text */
@@ -170,79 +170,87 @@ td {
 
 
 /*Mission positions*/
-.c1 {/*P4 middle battle*/
-	top: 49%;
+/*
+.c1 {P4 middle battle
+	top: 99%;
 	left: 18%;
 }
-.c2 {/*P4 top battle*/
+
+.c2 {P4 top battle
 	top: 28%;
 	left: 19%;
 }
-.c3 {/*P4 lower battle*/
+.c3 {P4 lower battle
 	top: 56%;
 	left: 12%;
 }
-.c5 {/*P3 top battle*/
+.c5 {P3 top battle
 	top: 23%;
 	left: 35%;
 }
-.c6 {/*P3 top special*/
+.c6 {P3 top special
 	top: 30%;
 	left: 38%;
 }
-.c7 {/*P3 middle battle 464*/
-	top: 45%;
-	left: 29%;
+*/
+.c7 {/*P3 DS Dathomir*/
+	top: 64%;
+	left: 23%;
 }
-.c8 {/*P3 middle battle 603*/
-	top: 52%;
-	left: 30%;
+.c8 {/*P2 ds geonosis*/
+	top: 63%;
+	left: 34%;
 }
-.c9 {/*P3 middle battle 464*/
-	top: 45%;
-	left: 44%;
-}
-.c10 {/*P3 lower battle*/
-	top: 75%;
-	left: 25%;
-}
-.c11 {/*KAM special*/
-	top: 70%;
+.c9 {/*P3 middle tatooine*/
+	top: 43%;
 	left: 45%;
 }
-.c12 {/*P2 top battle*/
+.c10 {/*P1 DS mustafar*/
+	top: 73%;
+	left: 38%;
+}
+.c11 {/*p1m corellia*/
+	top: 66%;
+	left: 47%;
+}
+/*
+.c12 {P2 top battle
 	top: 34%;
 	left: 54%;
 }
-.c13 {/*P2 top special*/
+
+.c13 {P2 top special
 	top: 36%;
 	left: 65%;
 }
-.c14 {/*P2 middle*/
-	top: 54%;
+*/
+.c14 {/*P2 middle felucia*/
+	top: 53%;
+	left: 50%;
+}
+.c15 {/*p3 ls kashyyyk*/
+	top: 63%;
+	left: 72%;
+}
+.c16 {/*P1 Coruscant*/
+	top: 73%;
 	left: 56%;
 }
-.c15 {/*P2 middle*/
-	top: 46%;
-	left: 67%;
-}
-.c16 {/*P2 bottom*/
-	top: 74%;
-	left: 59%;
-}
-.c17 {/*P2 bottom*/
+.c17 {/*P2 ls bracca*/
 	top: 63%;
-	left: 63%;
+	left: 60%;
 
 }
-.c18 {/*P1 top battle*/
+/*
+.c18 {P1 top battle
 	top: 26%;
 	left: 65%;
 }
-.c4 {/*P4 bottom battle 664*/
+.c4 {P4 bottom battle 664
 	top: 54%;
 	left: 5%;
 }
+* */
 
 @media (min-width: 1700px) {
 	.map {
