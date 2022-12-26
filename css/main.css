@@ -182,10 +182,6 @@ td {
 	top: 56%;
 	left: 12%;
 }
-.s1 {/*P4 lower battle*/
-	top: 69%;
-	left: 15%;
-}
 .c5 {/*P3 top battle*/
 	top: 23%;
 	left: 35%;
@@ -239,108 +235,15 @@ td {
 	left: 63%;
 
 }
-.ls1 {/*P2 bottom special*/
-    top: 77% ;
-    left: 65%;
-}
 .c18 {/*P1 top battle*/
 	top: 26%;
 	left: 65%;
 }
-.c19 {/*P1 middle battle*/
-	top: 46%;
-	left: 75%;
-}
-.c20 {/*P1 middle battle*/
-	top: 56%;
-	left: 78%;
-}
-.c21 {/*P1 middle special*/
-	top: 38%;
-	left: 90%;
-}
-.c22 {/*P1 lower battle*/
-	top: 68%;
-	left: 79%;
-}
-.c23 {/*P1 lower battle jedi*/
-	top: 76%;
-	left: 91%;
-}
-
 .c4 {/*P4 bottom battle 664*/
 	top: 54%;
 	left: 5%;
 }
-/*.s2 {
-	top: 62%;
-	left: 42%;
-}*/
-.s3 {/*P2 middle battle 564*/
-	top: 55%;
-	left: 68%;
-}
-.s4 {/*p4 top special*/
-	top: 22%;
-	left: 23%;
-}
 
-.t1 {/*P4 top platoons*/
-	top: 20%;
-	left: 12%;
-}
-.b1 {/*P4 bottom platoons*/
-	top: 75%;
-	left: 7%;
-}
-.t2 {/*P3 top platoon*/
-	top: 25%;
-	left: 46%;
-}
-.m2 {/*P3 middle platoons*/
-	top: 42%;
-	left: 34%;
-}
-.b2 {/*P3 bottom platoons*/
-	top: 65%;
-	left: 34%;
-}
-.t3 {/*P2 top platoons*/
-	top: 26%;
-	left: 56%;
-}
-.m3 {/*P2 middle platoons*/
-	top: 50%;
-	left: 58%;
-}
-.b3 {/*P2 middle platoons*/
-	top: 75%;
-	left: 72%;
-}
-.t4 {/*P1 top platoons*/
-	top: 32%;
-	left: 75%;
-}
-.m4 {/*P1 middle platoon */
-	top: 50%;
-	left: 86%;
-}
-.b4 {/*P1 bottom platoons*/
-	top: 67%;
-	left: 88%;
-}
-.lsp1{/*P4 middle platoons*/
-	top: 44%;
-	left: 7%;
-}
-.ls2{/*P4 middle special*/
-	top: 42%;
-	left: 21%;
-}
-.ls3{/*P4 middle battle*/
-	top: 36%;
-	left: 12%;
-}
 @media (min-width: 1700px) {
 	.map {
 		width: 80vw;
