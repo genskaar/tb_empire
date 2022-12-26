@@ -527,7 +527,7 @@ Vue.component('mission', {
         'With Lord Vader\'s ultimate ability, this can be done on full auto',
         'Unclear if this is even possible right now',
         "Currently Bugged!",
-        "Currently Bugged! Allows relic 5 Jedi to be used - Potentially Fixed"
+        "Currently Bugged! Allows relic 5 Jedi to be used - Potentially Fixed",
         "Rey is likely a 1/2. Rey 501st can also work."
         ],
         reqs:[
