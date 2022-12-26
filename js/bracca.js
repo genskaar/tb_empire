@@ -419,7 +419,33 @@ Vue.component('mission', {
                 id:73,
                 name: 'Lord Vader (solo)',
                 toons: ['gl_vader','noone','noone','noone','noone']
-             }
+             },
+             {
+				id: 74,
+				name: 'Profundity Fleet',
+				toons: ['profundity', 'han\'s_millennium_falcon', 'rebel_y-wing', 'outrider', 'biggs_darklighter\'s_x-wing', 'phantom_ii', 'cassian\'s_u-wing','ghost']
+				
+		 	 },
+		 	 {
+				 id:75,
+				 name: 'Galactic Legend Luke (variants available)',
+				 toons: ['jedi_knight_luke_skywalker','gl_luke','hermit_yoda','jolee_bindo','jedi_knight_revan',],
+			 },
+			 {
+				 id:76,
+				 name: 'Galactic Legend Kenobi with Republic (variants available)',
+				 toons: ['gl_kenobi','commander_ahsoka_tano','padmé_amidala','general_kenobi','general_skywalker',],
+			 },
+			 {
+				 id:77,
+				 name: 'Galactic Legend Rey (variants available)',
+				 toons: ['gl_rey','resistance_hero_finn','resistance_hero_poe','r2-d2','amilyn_holdo'],
+			 },
+			 {
+                id:78,
+                name: 'Mon Mothma with Omicron Kyle Katarn',
+                toons: ['mon_mothma', 'pao', 'hoth_rebel_scout', 'cara_dune', 'kyle_katarn_o']
+             },
              
 
 
@@ -502,6 +528,7 @@ Vue.component('mission', {
         'Unclear if this is even possible right now',
         "Currently Bugged!",
         "Currently Bugged! Allows relic 5 Jedi to be used - Potentially Fixed"
+        "Rey is likely a 1/2. Rey 501st can also work."
         ],
         reqs:[
         'Lord Vader (Relic 5+)',
@@ -534,10 +561,11 @@ Vue.component('mission', {
 				'Wave 1: 125,000',
                 'Wave 2: 250,000'
 				],
-            preferredSquads: [24],//generic
+            preferredSquads: [76,77,78],//generic
 			dangerousEnemies: [39,42],
 			modifiers: [2,3],
             reqs: [13],
+            notes: [4],
 			},	{
 			id: 1,
 			name: 'c2',
@@ -547,7 +575,7 @@ Vue.component('mission', {
 				'Wave 1: 125,000',
                 'Wave 2: 250,000'
 				],
-			preferredSquads: [24],//jedi
+			preferredSquads: [75],//jedi
 			dangerousEnemies: [39,40],
 			modifiers: [2,3],
             reqs: [12],
@@ -561,10 +589,11 @@ Vue.component('mission', {
 				'Wave 1: 125,000',
                 'Wave 2: 250,000'
 				],
-            preferredSquads: [24],//generic
+            preferredSquads: [76,77,78],//generic
 			dangerousEnemies: [39,41],
             reqs: [13],
             modifiers: [2,3],
+            notes: [4],
 			},
 			{
 			id: 5,
@@ -574,7 +603,7 @@ Vue.component('mission', {
 			rewards: [
 				'Wave 1: 500,000',
 				],
-				preferredSquads: [24],
+				preferredSquads: [74],
 				dangerousEnemies: [38],
             reqs: [11],
 			}, 

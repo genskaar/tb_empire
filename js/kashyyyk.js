@@ -419,7 +419,33 @@ Vue.component('mission', {
                 id:73,
                 name: 'Lord Vader (solo)',
                 toons: ['gl_vader','noone','noone','noone','noone']
-             }
+             },
+             {
+                id:74,
+                name: 'Wookies',
+                toons: ['clone_wars_chewbacca','threepio_&_chewie','chewbacca','zaalbar','veteran_smuggler_chewbacca']
+             },
+             {
+				id: 75,
+				name: 'Profundity Fleet',
+				toons: ['profundity', 'han\'s_millennium_falcon', 'rebel_y-wing', 'outrider', 'biggs_darklighter\'s_x-wing', 'phantom_ii', 'cassian\'s_u-wing','ghost']
+				
+		 	 },
+		 	 {
+				 id:76,
+				 name: 'Galactic Legend Luke (variants available)',
+				 toons: ['jedi_knight_luke_skywalker','gl_luke','hermit_yoda','jolee_bindo','jedi_knight_revan',],
+			 },
+			 {
+				 id:77,
+				 name: 'Galactic Legend Kenobi with Republic (variants available)',
+				 toons: ['gl_kenobi','commander_ahsoka_tano','padmé_amidala','general_kenobi','general_skywalker',],
+			 },
+			 {
+                id:78,
+                name: 'Mon Mothma with Omicron Kyle Katarn',
+                toons: ['mon_mothma', 'pao', 'hoth_rebel_scout', 'cara_dune', 'kyle_katarn_o']
+             },
              
 
 
@@ -536,7 +562,7 @@ Vue.component('mission', {
 			rewards: [
 				'Wave 1: 628,500',
 				],
-            preferredSquads: [24],//aphra
+            preferredSquads: [75],//aphra
 			dangerousEnemies: [43],
             reqs: [16],
 			},	{
@@ -548,7 +574,7 @@ Vue.component('mission', {
 				'Wave 1: 162,500',
                 'Wave 2: 341,250'
 				],
-			preferredSquads: [24],//gen
+			preferredSquads: [77,76,78],//gen
 			dangerousEnemies: [40,41],
 			modifiers: [2],
             reqs: [14],
@@ -558,10 +584,10 @@ Vue.component('mission', {
 			type: 'usual',
 			position: 'right',
 			rewards: [
-				'Wave 1: 162,509',
+				'Wave 1: 162,500',
                 'Wave 2: 341,250'
 				],
-            preferredSquads: [24],//empire
+            preferredSquads: [76,77,78],//empire
 			dangerousEnemies: [40,42],
             reqs: [14],
             modifiers: [2],
@@ -572,10 +598,10 @@ Vue.component('mission', {
 			type: 'usual',
 			position: 'right',
 			rewards: [
-				'Wave 1: 162,504',
+				'Wave 1: 162,500',
                 'Wave 2: 341,250'
 				],
-				preferredSquads: [24],//wookies
+				preferredSquads: [74],//wookies
 				dangerousEnemies: [40,44],
 				modifiers: [2],
             reqs: [15],

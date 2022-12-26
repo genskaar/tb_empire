@@ -559,7 +559,7 @@ Vue.component('mission', {
 				'Wave 1: 100,000',
                 'Wave 2: 200,000'
 				],
-            preferredSquads: [74],
+            preferredSquads: [74,76],
 			dangerousEnemies: [19,22],//geo
             reqs: [1],
             modifiers: [0]

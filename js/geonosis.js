@@ -419,7 +419,24 @@ Vue.component('mission', {
                 id:73,
                 name: 'Lord Vader (solo)',
                 toons: ['gl_vader','noone','noone','noone','noone']
-             }
+             },
+             {
+				id: 74,
+				name: 'Galactic Legend Kylo',
+				toons: ['gl_kylo', 'first_order_officer', 'kylo_ren_(unmasked)','general_hux','sith_trooper']
+				
+			 },
+			 {
+                id:75,
+                name: 'Lord Vader',
+                toons: ['gl_vader','maul','royal_guard','admiral_piett','darth_vader']
+             },
+             {
+				id: 76,
+				name: 'SEE with Wat and Trio or with Sith Empire',
+				toons: ['gl_palp', 'wat_tambor', 'darth_nihilus','darth_sion','darth_traya']
+				
+			 },
              
 
 
@@ -514,7 +531,7 @@ Vue.component('mission', {
 				'Wave 1: 125,000',
                 'Wave 2: 250,000'
 				],
-            preferredSquads: [24],
+            preferredSquads: [74,75],
 			dangerousEnemies: [25,26],//nexu
             reqs: [4],
 			},	{
@@ -525,7 +542,7 @@ Vue.component('mission', {
 			rewards: [
                 'Wave 1: 250,000'
 				],
-			preferredSquads: [24],
+			preferredSquads: [74,75],
 			dangerousEnemies: [28],//acklay
             reqs: [4],
             notes: [2]
@@ -537,7 +554,7 @@ Vue.component('mission', {
 			rewards: [
                 'Wave 1: 250,000'
 				],
-            preferredSquads: [24],
+            preferredSquads: [76,74,75],
 			dangerousEnemies: [27],//reek
             reqs: [4],
 			},

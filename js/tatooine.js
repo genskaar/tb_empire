@@ -419,7 +419,38 @@ Vue.component('mission', {
                 id:73,
                 name: 'Lord Vader (solo)',
                 toons: ['gl_vader','noone','noone','noone','noone']
-             }
+             },
+             {
+                id:74,
+                name: 'Executor',
+                toons: ['executor','hound\'s_tooth','razor_crest','xanadu_blood','slave_i','ig-2000']
+             },
+             {
+                id:75,
+                name: 'Jabba the Hutt',
+                toons: ['gl_jabba','krrsantan','skiff_lando','boba_fett','boushh']
+             },
+             {
+                id:76,
+                name: 'Inquisitors',
+                toons: ['grand_inquisitor', 'seventh_sister', 'ninth_sister', 'fifth_brother','eighth_brother']
+             },
+             {
+                id:77,
+                name: 'BAM Scoundrels',
+                toons: ['beskar_mando', 'fennec_shand', 'ig-11', 'kuiil','boba_soj']
+             },
+             {
+                id:78,
+                name: 'Bounty Hunters',
+                toons: ['bossk', 'jango_fett', 'boba_soj', 'fennec_shand','dengar']
+             },
+             {
+				 id:79,
+				 name: 'Galactic Legend Kenobi with Republic (variants available)',
+				 toons: ['gl_kenobi','commander_ahsoka_tano','padmé_amidala','general_kenobi','general_skywalker',],
+			 },
+             
              
 
 
@@ -511,7 +542,8 @@ Vue.component('mission', {
         notes:[
         'With Lord Vader\'s ultimate ability, this can be done on full auto',
         'Unclear if this is even possible right now',
-        "Currently Bugged!"
+        "Currently Bugged!",
+        "Potentially a wampa team could be consistent here."
         ],
         reqs:[
         'Lord Vader (Relic 5+)',
@@ -549,7 +581,7 @@ Vue.component('mission', {
 			rewards: [
 				'Wave 1: 628,500',
 				],
-            preferredSquads: [24],//aphra
+            preferredSquads: [74],//aphra
 			dangerousEnemies: [45],
             reqs: [17],
 			},	{
@@ -561,7 +593,7 @@ Vue.component('mission', {
 				'Wave 1: 162,500',
                 'Wave 2: 341,250'
 				],
-			preferredSquads: [24],//jabba
+			preferredSquads: [75],//jabba
 			dangerousEnemies: [46,47],
 			modifiers: [3],
             reqs: [20],
@@ -574,7 +606,7 @@ Vue.component('mission', {
 				'Wave 1: 162,500',
                 'Wave 2: 341,250'
 				],
-            preferredSquads: [24],//fennec
+            preferredSquads: [77,78],//fennec
 			dangerousEnemies: [50,51],
             reqs: [18],
             modifiers: [3],
@@ -587,7 +619,7 @@ Vue.component('mission', {
 			rewards: [
 				'1 Reva Shard',
 				],
-            preferredSquads: [24],//reva
+            preferredSquads: [76],//reva
 			dangerousEnemies: [52,53],
             reqs: [19],
             modifiers: [3],
@@ -601,10 +633,11 @@ Vue.component('mission', {
 				'Wave 1: 162,500',
                 'Wave 2: 341,250'
 				],
-				preferredSquads: [24],//gen
+				preferredSquads: [35,79],//gen
 				dangerousEnemies: [48,49],
 				modifiers: [3],
             reqs: [21],
+            notes: [3]
 			}, 
 			{id: 30, name: 'm2', type: 'platoon', position: 'left', requiredToons: [0], platzones: [0,1]}
 		],
