@@ -456,6 +456,11 @@ Vue.component('mission', {
 				 id:80,
 				 name: 'Galactic Republic Jedi',
 				 toons: ['mace_windu','gl_kenobi','ahsoka_tano','ki-adi-mundi','kit_fisto',],
+			 },
+             {
+				 id:81,
+				 name: 'Padme with Republic',
+				 toons: ['padmé_amidala','commander_ahsoka_tano','general_kenobi','general_skywalker','jedi_knight_anakin'],
 			 }
              
 
@@ -601,7 +606,7 @@ Vue.component('mission', {
 				'Wave 1: 100,000',
                 'Wave 2: 200,000'
 				],
-            preferredSquads: [74,78,79],//generic
+            preferredSquads: [74,81,78,79],//generic
 			dangerousEnemies: [38,40],
             reqs: [11],
             modifiers: [2,3,4],
@@ -616,7 +621,7 @@ Vue.component('mission', {
 				'Wave 1: 100,000',
                 'Wave 2: 200,000'
 				],
-            preferredSquads: [74,78,79],
+            preferredSquads: [74,81,78,79],
 			dangerousEnemies: [38,40],
             reqs: [11],
             modifiers: [2,3,4],

@@ -434,6 +434,11 @@ Vue.component('mission', {
                 id:76,
                 name: "Qi'ra Scoundrals",
                 toons: ['qi\'ra','dash_rendar','ig-11','kuiil','young_han_solo']
+             },
+             {
+                id:77,
+                name: "oFinn",
+                toons: ['finn','rey_(scavenger)','resistance_hero_finn','resistance_hero_poe','rey_(jedi_training)']
              }
              
 
@@ -567,7 +572,7 @@ Vue.component('mission', {
 				'Wave 1: 100,000',
                 'Wave 2: 200,000'
 				],
-            preferredSquads: [44],//generic
+            preferredSquads: [44,77],//generic
 			dangerousEnemies: [31,32],
             reqs: [6],
             modifiers: [1],
