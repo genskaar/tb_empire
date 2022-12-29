@@ -24,7 +24,7 @@ p {
 	top: -10%;
 	width: 100vw;
 	height: auto;
-	background: url('../media/map_rote.jpeg') no-repeat ;
+	background: url('../media/map_rote_lines.jpeg') no-repeat ;
 	background-size: contain;
 
 }
@@ -170,29 +170,28 @@ td {
 
 
 /*Mission positions*/
-/*
-.c1 {P4 middle battle
-	top: 99%;
+
+.c1 {/*death star*/
+	top: 25%;
 	left: 18%;
 }
+.c2 {/*malachor*/
+	top: 37.5%;
+	left: 16.5%;
+}
+.c3 {/*Haven*/
+	top: 53%;
+	left: 18%;
+}
+.c5 {/*lothal*/
+	top: 53%;
+	left: 77%;
+}
+.c6 {/*kessel*/
+	top: 33%;
+	left: 55%;
+}
 
-.c2 {P4 top battle
-	top: 28%;
-	left: 19%;
-}
-.c3 {P4 lower battle
-	top: 56%;
-	left: 12%;
-}
-.c5 {P3 top battle
-	top: 23%;
-	left: 35%;
-}
-.c6 {P3 top special
-	top: 30%;
-	left: 38%;
-}
-*/
 .c7 {/*P3 DS Dathomir*/
 	top: 64%;
 	left: 23%;
@@ -213,17 +212,16 @@ td {
 	top: 66%;
 	left: 47%;
 }
-/*
-.c12 {P2 top battle
-	top: 34%;
-	left: 54%;
+
+.c12 {/*vandor*/
+	top: 22%;
+	left: 50%;
 }
 
-.c13 {P2 top special
-	top: 36%;
-	left: 65%;
+.c13 {/*hoth*/
+	top: 15%;
+	left: 59%;
 }
-*/
 .c14 {/*P2 middle felucia*/
 	top: 53%;
 	left: 50%;
@@ -241,16 +239,16 @@ td {
 	left: 60%;
 
 }
-/*
-.c18 {P1 top battle
-	top: 26%;
-	left: 65%;
+
+.c18 {/*kafrene*/
+	top: 37%;
+	left: 77%;
 }
-.c4 {P4 bottom battle 664
-	top: 54%;
-	left: 5%;
+.c4 {/*scarif*/
+	top: 24%;
+	left: 76%;
 }
-* */
+
 
 @media (min-width: 1700px) {
 	.map {

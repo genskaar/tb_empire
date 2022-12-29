@@ -437,6 +437,11 @@ Vue.component('mission', {
 				toons: ['gl_palp', 'wat_tambor', 'darth_nihilus','darth_sion','darth_traya']
 				
 			 },
+             {
+                id:77,
+                name: 'Inquisitors',
+                toons: ['grand_inquisitor', 'seventh_sister', 'ninth_sister', 'fifth_brother','eighth_brother']
+             },
              
 
 
@@ -554,7 +559,7 @@ Vue.component('mission', {
 			rewards: [
                 'Wave 1: 250,000'
 				],
-            preferredSquads: [76,74,75],
+            preferredSquads: [76,77,74,75],
 			dangerousEnemies: [27],//reek
             reqs: [4],
 			},

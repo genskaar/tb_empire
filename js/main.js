@@ -497,6 +497,96 @@ Vue.component('mission', {
 		'Phase 4 Bottom (Self)',//15
 		],
 		missions: [
+            {
+			id: 1,
+			name: 'c1',
+			type: 'deathstar',
+			position: 'right',
+			planetlink: 'main.html',
+			rewards: [
+				'1*: 582,632,425',
+                '2*: 1,059,331,682',
+                '3*: 1,246,272,567'
+				],
+		    planet: [
+            'Phase 6 DS - Death Star'
+            ],
+            notes: [
+            'Recommended teams - coming soon'
+            ]
+			},
+            {
+			id: 2,
+			name: 'c2',
+			type: 'malachor',
+			position: 'right',
+			planetlink: 'main.html',
+			rewards: [
+				'1*: 341,250,768',
+                '2*: 620,455,942',
+                '3*: 729,948,167'
+				],
+		    planet: [
+            'Phase 5 DS - Malachor'
+            ],
+            notes: [
+            'Recommended teams - coming soon'
+            ]
+			},
+            {
+			id: 3,
+			name: 'c3',
+			type: 'haven',
+			position: 'right',
+			planetlink: 'main.html',
+			rewards: [
+				'1*: 235,143,105',
+                '2*: 400,243,583',
+                '3*: 500,304,479'
+				],
+		    planet: [
+            'Phase 4 DS - Haven-Class Medical Station'
+            ],
+            notes: [
+            'Recommended teams - coming soon'
+            ]
+			},
+            {
+			id: 4,
+			name: 'c5',
+			type: 'lothal',
+			position: 'left',
+			planetlink: 'main.html',
+			rewards: [
+				'1*: 246,742,558',
+                '2*: 419,987,333',
+                '3*: 524,984,167'
+				],
+		    planet: [
+            'Phase 4 LS - Lothal'
+            ],
+            notes: [
+            'Recommended teams - coming soon'
+            ]
+			},
+            {
+			id: 5,
+			name: 'c6',
+			type: 'kessel',
+			position: 'right',
+			planetlink: 'main.html',
+			rewards: [
+				'1*: 235,143,105',
+                '2*: 400,243,583',
+                '3*: 500,304,479'
+				],
+		    planet: [
+            'Phase 4 Mixed - Kessel'
+            ],
+            notes: [
+            'Recommended teams - coming soon'
+            ]
+			},
 			{
 			id: 6,
 			name: 'c7',
@@ -586,7 +676,44 @@ Vue.component('mission', {
             'Click for recommended teams'
             ]
 			},
-			{id: 13,
+            {
+			id: 12,
+			name: 'c12',
+			type: 'vandor',
+			position: 'right',
+			planetlink: 'main.html',
+			rewards: [
+				'1*: 341,250,768',
+                '2*: 620,455,942',
+                '3*: 729,948,167'
+				],
+		    planet: [
+            'Phase 5 Mixed - Vandor'
+            ],
+            notes: [
+            'Recommended teams - coming soon'
+            ]
+			},
+            {
+			id: 11,
+			name: 'c13',
+			type: 'hoth',
+			position: 'right',
+			planetlink: 'main.html',
+			rewards: [
+				'1*: 582,632,425',
+                '2*: 1,059,331,682',
+                '3*: 1,246,272,567'
+				],
+		    planet: [
+            'Phase 6 Mixed - Hoth'
+            ],
+            notes: [
+            'Recommended teams - coming soon'
+            ]
+			},
+			{
+            id: 13,
 			name: 'c14',
 			type: 'felucia',
 			position: 'left',
@@ -655,6 +782,42 @@ Vue.component('mission', {
             ],
             notes: [
             'Click for recommended teams'
+            ]
+			},
+            {
+			id: 11,
+			name: 'c18',
+			type: 'kafrene',
+			position: 'left',
+			planetlink: 'main.html',
+			rewards: [
+				'1*: 341,250,768',
+                '2*: 620,455,942',
+                '3*: 729,948,167'
+				],
+		    planet: [
+            'Phase 5 LS - Ring of Kafrene'
+            ],
+            notes: [
+            'Recommended teams - coming soon'
+            ]
+			},
+            {
+			id: 11,
+			name: 'c4',
+			type: 'scarif',
+			position: 'left',
+			planetlink: 'main.html',
+			rewards: [
+				'1*: 555,710,999',
+                '2*: 1,010,383,635',
+                '3*: 1,188,686,629'
+				],
+		    planet: [
+            'Phase 6 LS - Scarif'
+            ],
+            notes: [
+            'Recommended teams - coming soon'
             ]
 			}
 		],

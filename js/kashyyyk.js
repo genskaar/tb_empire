@@ -446,6 +446,11 @@ Vue.component('mission', {
                 name: 'Mon Mothma with Omicron Kyle Katarn',
                 toons: ['mon_mothma', 'pao', 'hoth_rebel_scout', 'cara_dune', 'kyle_katarn_o']
              },
+             {
+                id:79,
+                name: 'oRolo with Rebels',
+                toons: ['rolo', 'han_solo', 'chewbacca', 'threepio_&_chewie', 'ahsoka_tano_(fulcrum)']
+             }
              
 
 
@@ -587,7 +592,7 @@ Vue.component('mission', {
 				'Wave 1: 162,500',
                 'Wave 2: 341,250'
 				],
-            preferredSquads: [76,77,78],//empire
+            preferredSquads: [76,77,78,79],//empire
 			dangerousEnemies: [40,42],
             reqs: [14],
             modifiers: [2],

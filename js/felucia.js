@@ -459,7 +459,7 @@ Vue.component('mission', {
 			 },
 			 {
 				 id:81,
-				 name: 'Galactic Legend Rey (variants available)',
+				 name: 'Galactic Legend Rey (variants available) / Rey 501st',
 				 toons: ['gl_rey','resistance_hero_finn','resistance_hero_poe','r2-d2','amilyn_holdo'],
 			 },
              
