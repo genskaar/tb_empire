@@ -459,9 +459,21 @@ Vue.component('mission', {
 			 },
 			 {
 				 id:81,
-				 name: 'Galactic Legend Rey (variants available) / Rey 501st',
+				 name: 'Galactic Legend Rey (variants available)',
 				 toons: ['gl_rey','resistance_hero_finn','resistance_hero_poe','r2-d2','amilyn_holdo'],
 			 },
+             {
+                id:82,
+                name: 'Inquisitors',
+                toons: ['grand_inquisitor', 'seventh_sister', 'ninth_sister', 'fifth_brother','eighth_brother']
+             },
+             {
+				id: 83,
+				name: 'Gas/Rey 501st',
+				toons: ['general_skywalker', 'ct-21-0408__echo_','ct-7567__rex_','arc_trooper','ct-5555__fives_',]
+				
+			 },
+             
              
 
 
@@ -543,7 +555,8 @@ Vue.component('mission', {
         notes:[
         'With Lord Vader\'s ultimate ability, this can be done on full auto',
         'Unclear if this is even possible right now',
-        "Currently Bugged!"
+        "Currently Bugged!",
+        "A variation of most GL lineups should also work"
         ],
         reqs:[
         'Lord Vader (Relic 5+)',
@@ -600,9 +613,10 @@ Vue.component('mission', {
 				'Wave 1: 125,000',
                 'Wave 2: 250,000'
 				],
-            preferredSquads: [79,80,81],//generic
+            preferredSquads: [44,82,83,80],//generic
 			dangerousEnemies: [39,40],
             reqs: [12],
+            notes: [3]
 			},
 			{
 			id: 4,
