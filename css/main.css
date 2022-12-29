@@ -30,7 +30,7 @@ p {
 }
 .part {
 	opacity: .3;
-	opacity: 0.1;
+	opacity: 0.2;
 	stroke: white;
 	stroke-width: 1%;
 	stroke-linejoin: round;
