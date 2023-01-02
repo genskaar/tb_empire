@@ -593,6 +593,18 @@ Vue.component('mission', {
             reqs: [11],
             notes: [3],
 			}, 
+            {
+			id: 6,
+			name: 'c7',
+			type: 'deploy',
+			position: 'right',
+            stars: [
+               '1 Star: 158,960,938',
+               '2 Stars: 254,337,500',
+               '3 Stars: 339,116,667',
+               '3 Stars after maximum preload: 180,155,729 ',
+            ]
+			}, 
 			{id: 30, name: 'm2', type: 'platoon', position: 'right',preqs:["Characters: Relic 7","Ships: 7-Star"], requiredToons: [0], platzones: [0,]}
 		],
 		selectedMission: '',
