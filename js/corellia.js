@@ -603,7 +603,7 @@ Vue.component('mission', {
 				modifiers: [0],
             reqs: [10],
 			}, 
-			{id: 30, name: 'm2', type: 'platoon', position: 'right', requiredToons: [0], platzones: [0,1,2,3,4,5]}
+			{id: 30, name: 'm2', type: 'platoon', position: 'right',preqs:["Characters: Relic 5","Ships: 7-Star"], requiredToons: [0], platzones: [0,1,2,3,4,5]}
 		],
 		selectedMission: '',
 		seen: false,

@@ -183,7 +183,7 @@ Vue.component('mission', {
 			 {
                 id:31,
                 name: 'Kenobi Negotiator Fleet w/ Y-Wing',
-                toons: ['negotiator', 'anakin\'s_eta-2_starfighter','ahsoka_tano\'s_jedi_starfighter', 'umbaran_starfighter', 'plo_koon\'s_jedi_starfighter', 'clone_sergeant\'s_arc-170', 'rex\'s_arc-170', 'BTL-B_Y-wing_Starfighter']
+                toons: ['negotiator', 'anakin\'s_eta-2_starfighter', 'BTL-B_Y-wing_Starfighter', 'umbaran_starfighter','ahsoka_tano\'s_jedi_starfighter', 'plo_koon\'s_jedi_starfighter', 'clone_sergeant\'s_arc-170', 'rex\'s_arc-170',]
              },
              {
                 id:32,
@@ -450,7 +450,24 @@ Vue.component('mission', {
                 id:79,
                 name: 'oRolo with Rebels',
                 toons: ['rolo', 'han_solo', 'chewbacca', 'threepio_&_chewie', 'ahsoka_tano_(fulcrum)']
-             }
+             },
+             {
+                id:80,
+                name: 'Phoenix Squadron',
+                toons: ['hera_syndulla', 'kanan_jarrus', 'chopper', 'garazeb__zeb__orrelios', 'ezra_bridger']
+             },
+             {
+                id:81,
+                name: 'oRolo with Rebels',
+                toons: ['rolo', 'han_solo', 'chewbacca', 'threepio_&_chewie', 'commander_luke_skywalker']
+             },
+             {
+				 id:82,
+				 name: 'Galactic Legend Kenobi with Jedi',
+				 toons: ['gl_kenobi','general_skywalker','general_kenobi','ahsoka_tano','shaak_ti',],
+			 },
+           
+                 
              
 
 
@@ -501,17 +518,31 @@ Vue.component('mission', {
         "Wave 2: Mara Jade (L), 2x Purge Trooper, Stormtrooper Commander, Stormtrooper, Recon Trooper",
         "Wave 2: Imperial Officer (L), Stormtrooper Commander, Stormtrooper, Recon Trooper, Tie Pilot, Scout Trooper",
         "Executrix, Tie Advanced X1, Scythe, Tie Fighter, Tie Interceptor (R)",
-        "Wave 2: Ninth Sister (L), 2x Purge Trooper"
+        "Wave 2: Ninth Sister (L), 2x Purge Trooper",
+        "Chimaera, Tie Advanced X1, Tie Bomber, Tie Fighter, Tie Interceptor (R)",//45,
+        "Wave 1: Stormtrooper Commander (L), Stormtrooper, Recon Trooper, 2x Scout Trooper",
+        "Wave 2: Imperial Officer (L), Stormtrooper Commander, Stormtrooper, Recon Trooper, 2x Scout Trooper",
+
 		],
 		platoons: [
-        [        "Ben Solo",	"6","Commander Ahsoka Tano",	"6","Razor Crest",	"6",
-"Han's Millennium Falcon",	"5","Jedi Master Luke Skywalker",	"5","Logray",	"5","Rey",	"5","The Mandalorian (Beskar Armor)",	"5",
-"R2-D2",	"4","BB-8",	"3","C-3PO",	"3","Commander Luke Skywalker",	"3","Ki-Adi-Mundi",	"3","Padme Amidala",	"3","Grand Master Yoda",	"2",
-"Han Solo",	"2","Hermit Yoda",	"2","Jedi Knight Revan",	"2","Jedi Master Kenobi",	"2","Rebel Officer Leia Organa",	"2",
-"Resistance Trooper",	"2","Clone Sergeant - Phase I",	"1",
-"CT-5555 Fives",	"1","Ewok Scout",	"1","General Kenobi",	"1","Hoth Rebel Scout",	"1","Hoth Rebel Soldier",	"1",
-"Jedi Knight Anakin",	"1","K-2SO",	"1","Lando's Millennium Falcon",	"1","Mace Windu",	"1","Negotiator",	"1","Raven's Claw",	"1",
-"Rey (Jedi Training)",	"1","Skiff Guard (Lando Calrissian)",	"1",        ]
+        [      "Jedi Master Luke Skywalker",	"8","Profundity",	"7",
+"Commander Ahsoka Tano",	"5","Hermit Yoda",	"5","Razor Crest",	"4","Rebel Officer Leia Organa",	"4",
+"Ben Solo",	"3","General Kenobi",	"3","50R-T",	"2","Chewbacca",	"2",
+"Ghost",	"2","Han Solo",	"2","Jedi Knight Revan",	"2",
+"Jedi Master Kenobi",	"2","Ki-Adi-Mundi",	"2","Logray",	"2",
+"PadmÃ© Amidala",	"2","Scarif Rebel Pathfinder",	"2","Xanadu Blood",	"2","Zaalbar",	"2",
+"Aayla Secura",	"1","BB-8",	"1","Bistan",	"1","Chief Nebit",	"1","Dash Rendar",	"1",
+"Ebon Hawk",	"1","Echo",	"1","Eeth Koth",	"1",
+"Finn",	"1","Grand Master Yoda",	"1","Han's Millennium Falcon",	"1",
+"Hondo Ohnaka",	"1","Jedi Consular",	"1",
+"Jolee Bindo",	"1","Kyle Katarn",	"1",
+"Outrider",	"1","R2-D2",	"1","Raven's Claw",	"1",
+"Rebel Y-wing",	"1","Rey",	"1","Rey (Jedi Training)",	"1","Sana Starros",	"1","Tech",	"1",
+"The Mandalorian (Beskar Armor)",	"1",
+"Veteran Smuggler Chewbacca",	"1",
+"Wedge Antilles's X-wing",	"1",
+"Wicket",	"1",
+           ]
 		],
 		guides:[
 		'See also: 50 Shards of Kam Discord Server',
@@ -527,7 +558,9 @@ Vue.component('mission', {
         modifiers:[
         'At the beginning of battle, each side summons a random Corellian Engineering Cargo Ship. At the start of their turn, Cargo Ships gain Protection Over Time (10%) for 1 turn.',
         'Coaxium: +25% Critical Damage and Speed; -15% Accuracy; will be critically hit if able; enemies can ignore Taunt to target this character; if this character is defeated by a status effect, Coaxium will not be granted to anyone',
-        "Summons Probe Droid whenever possible"
+        "Summons Probe Droid whenever possible",
+        "Whenever an ally uses a special ability during their turn, call a random other ally to assist. Whenever a character attacks out of turn, they gain a stack of Rebellious. At 20 stacks of Rebellious, they gain an additional 30% Offense.",
+        'Enemies start with 5 stacks of Endless Ranks',
         ],
         notes:[
         'With Lord Vader\'s ultimate ability, this can be done on full auto',
@@ -551,67 +584,70 @@ Vue.component('mission', {
         "Empire (Relic 7+)",
         "5x Light Side or Neutral (Relic 7+)",
         "5x Light Side Wookiees (Relic 7+)",//15
-        "Light Side Ships (7-Star), Profundity"
+        "Light Side Ships (7-Star), Profundity",
+        "Light Side Ships (7-Star)",
+        '5x Pheonix (Relic 8+)',
+        "5x Light Side or Neutral (Relic 7+)",
+        "5x Jedi (Relic 8+)",//20
         ],
 		platims:[
-		'Phase 3 LS Kashyyyk (self)',//0
-		'Phase 4 LS Lothal',
+		'Phase 4 LS Lothal (self)',
 		'Phase 5 LS Ring of Kafrene',
         'Phase 6 LS Scarif',
 		],
 		missions: [{
 			id: 0,
 			name: 'c1',
-			type: 'fleet',
-			position: 'left',
+			type: 'usual',
+			position: 'right',
 			rewards: [
-				'Wave 1: 628,500',
+				'Wave 1: 219,375',
+                'Wave 2: 493,594'
 				],
-            preferredSquads: [75],//aphra
-			dangerousEnemies: [43],
-            reqs: [16],
+            preferredSquads: [76,82],//br
+			dangerousEnemies: [46,47],
+            modifiers: [3,4],
+            reqs: [20],
 			},	{
 			id: 1,
 			name: 'c2',
 			type: 'usual',
-			position: 'right',
+			position: 'left',
 			rewards: [
-				'Wave 1: 162,500',
-                'Wave 2: 341,250'
+				'Wave 1: 219,375',
+                'Wave 2: 493,594'
 				],
-			preferredSquads: [77,76,78],//gen
-			dangerousEnemies: [40,41],
-			modifiers: [2],
-            reqs: [14],
+			preferredSquads: [77,81],//tr
+			dangerousEnemies: [46,47],
+			modifiers: [3,4],
+            reqs: [19],
 			}, {
 			id: 2,
 			name: 'c3',
 			type: 'usual',
 			position: 'right',
 			rewards: [
-				'Wave 1: 162,500',
-                'Wave 2: 341,250'
+				'Wave 1: 219,375',
+                'Wave 2: 493,594'
 				],
-            preferredSquads: [76,77,78,79],//empire
-			dangerousEnemies: [40,42],
-            reqs: [14],
-            modifiers: [2],
+            preferredSquads: [80],//bl
+			dangerousEnemies: [34],
+            reqs: [19],
+            modifiers: [3,4],
 			},
 			{
 			id: 5,
 			name: 'c6',
-			type: 'usual',
+			type: 'fleet',
 			position: 'right',
 			rewards: [
-				'Wave 1: 162,500',
-                'Wave 2: 341,250'
+				'Wave 1: 987,188',
 				],
-				preferredSquads: [74],//wookies
-				dangerousEnemies: [40,44],
-				modifiers: [2],
-            reqs: [15],
+				preferredSquads: [75,31],//fleet
+				dangerousEnemies: [45],
+            reqs: [17],
 			}, 
-			{id: 30, name: 'm2', type: 'platoon', position: 'right',preqs:["Characters: Relic 7","Ships: 7-Star"], requiredToons: [0], platzones: [0,1,2,3]}
+			{id: 30, name: 'm2', type: 'platoon', position: 'right', preqs:["Characters: Relic 8","Ships: 7-Star"], requiredToons: [0], platzones: [0]}
 		],
 		selectedMission: '',
 		seen: false,

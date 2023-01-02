@@ -611,7 +611,7 @@ Vue.component('mission', {
 				dangerousEnemies: [38],
             reqs: [11],
 			}, 
-			{id: 30, name: 'm2', type: 'platoon', position: 'left', requiredToons: [0], platzones: [0,1,2]}
+			{id: 30, name: 'm2', type: 'platoon', position: 'left',preqs:["Characters: Relic 6","Ships: 7-Star"], requiredToons: [0], platzones: [0,1,2]}
 		],
 		selectedMission: '',
 		seen: false,

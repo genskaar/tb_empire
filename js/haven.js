@@ -501,17 +501,29 @@ Vue.component('mission', {
         "Wave 2: Mara Jade (L), 2x Purge Trooper, Stormtrooper Commander, Stormtrooper, Recon Trooper",
         "Wave 2: Imperial Officer (L), Stormtrooper Commander, Stormtrooper, Recon Trooper, Tie Pilot, Scout Trooper",
         "Executrix, Tie Advanced X1, Scythe, Tie Fighter, Tie Interceptor (R)",
-        "Wave 2: Ninth Sister (L), 2x Purge Trooper"
+        "Wave 2: Ninth Sister (L), 2x Purge Trooper",
+        "Wave 1: 3x Partisan Fighter (L), 2x Rebel Spy",//45
+        "Wave 2: Kanan Jarrus (L), Ezra Bridger, Chopper, Rex, Partisan Fighter",
+        "Wave 1: 50R-T, 0-0-0, HK-47, T3-M4, BT-1"
+        
 		],
 		platoons: [
-        [        "Ben Solo",	"6","Commander Ahsoka Tano",	"6","Razor Crest",	"6",
-"Han's Millennium Falcon",	"5","Jedi Master Luke Skywalker",	"5","Logray",	"5","Rey",	"5","The Mandalorian (Beskar Armor)",	"5",
-"R2-D2",	"4","BB-8",	"3","C-3PO",	"3","Commander Luke Skywalker",	"3","Ki-Adi-Mundi",	"3","Padme Amidala",	"3","Grand Master Yoda",	"2",
-"Han Solo",	"2","Hermit Yoda",	"2","Jedi Knight Revan",	"2","Jedi Master Kenobi",	"2","Rebel Officer Leia Organa",	"2",
-"Resistance Trooper",	"2","Clone Sergeant - Phase I",	"1",
-"CT-5555 Fives",	"1","Ewok Scout",	"1","General Kenobi",	"1","Hoth Rebel Scout",	"1","Hoth Rebel Soldier",	"1",
-"Jedi Knight Anakin",	"1","K-2SO",	"1","Lando's Millennium Falcon",	"1","Mace Windu",	"1","Negotiator",	"1","Raven's Claw",	"1",
-"Rey (Jedi Training)",	"1","Skiff Guard (Lando Calrissian)",	"1",        ]
+        [ "TIE/IN Interceptor Prototype",	"7",
+"Starkiller",	"6","Lord Vader",	"5","Scythe",	"5","Supreme Leader Kylo Ren",	"5",
+"Boba Fett, Scion of Jango",	"4","Executor",	"4","Sith Eternal Emperor",	"4","Darth Malak",	"3",
+"Maul",	"3","Asajj Ventress",	"2","Aurra Sing",	"2","Darth Malgus",	"2","Emperor's Shuttle",	"2",
+"Hyena Bomber",	"2","Snowtrooper",	"2","B2 Super Battle Droid",	"1","Bastila Shan (Fallen)",	"1",
+"BT-1",	"1","Cad Bane",	"1","Darth Maul",	"1","Darth Vader",	"1","Dathcha",	"1","Dengar",	"1",
+"Director Krennic",	"1","Eighth Brother",	"1","Embo",	"1","First Order Stormtrooper",	"1",
+"First Order TIE Pilot",	"1","General Veers",	"1","HK-47",	"1","Hondo Ohnaka",	"1","Iden Versio",	"1",
+"IG-88",	"1","Krrsantan",	"1","Malevolence",	"1",
+"Mara Jade, The Emperor's Hand",	"1",
+"Nightsister Acolyte",	"1","Nightsister Initiate",	"1",
+"Nightsister Spirit",	"1","Nightsister Zombie",	"1","Range Trooper",	"1",
+"Savage Opress",	"1","Second Sister",	"1","Seventh Sister",	"1",
+"TIE Fighter Pilot",	"1","TIE Silencer",	"1",
+"Wampa",	"1",   
+                ]
 		],
 		guides:[
 		'See also: 50 Shards of Kam Discord Server',
@@ -527,7 +539,8 @@ Vue.component('mission', {
         modifiers:[
         'At the beginning of battle, each side summons a random Corellian Engineering Cargo Ship. At the start of their turn, Cargo Ships gain Protection Over Time (10%) for 1 turn.',
         'Coaxium: +25% Critical Damage and Speed; -15% Accuracy; will be critically hit if able; enemies can ignore Taunt to target this character; if this character is defeated by a status effect, Coaxium will not be granted to anyone',
-        "Summons Probe Droid whenever possible"
+        "Summons Probe Droid whenever possible",
+        "At the start of battle, all characters are inflicted with a stack of Brain Worms until the end of battle. Lose 5% Health per stack at the start of turn; this damage ignores Protection; inflict a stack of Brain Worms on target enemy when this character uses a Special ability. Use granted ability to stun ally and remove all stacks",
         ],
         notes:[
         'With Lord Vader\'s ultimate ability, this can be done on full auto',
@@ -551,51 +564,51 @@ Vue.component('mission', {
         "Empire (Relic 7+)",
         "5x Light Side or Neutral (Relic 7+)",
         "5x Light Side Wookiees (Relic 7+)",//15
-        "Light Side Ships (7-Star), Profundity"
+        "Light Side Ships (7-Star), Profundity",
+        "Inquisitorius (Relic 8+), Third Sister",
+        'Dark Side or Neutral (Relic 8+)',
         ],
 		platims:[
-		'Phase 3 LS Kashyyyk (self)',//0
-		'Phase 4 LS Lothal',
-		'Phase 5 LS Ring of Kafrene',
-        'Phase 6 LS Scarif',
+		'Phase 4 DS Haven-class Medical Station (self)',//0
 		],
 		missions: [{
 			id: 0,
 			name: 'c1',
-			type: 'fleet',
+			type: 'usual',
 			position: 'left',
 			rewards: [
-				'Wave 1: 628,500',
+                'Wave 1: 219,375',
+                'Wave 2: 493,594'
 				],
-            preferredSquads: [75],//aphra
-			dangerousEnemies: [43],
-            reqs: [16],
+            preferredSquads: [24],//br
+			dangerousEnemies: [45,46],
+            reqs: [18],
+            modifiers: [3],
 			},	{
 			id: 1,
 			name: 'c2',
 			type: 'usual',
 			position: 'right',
 			rewards: [
-				'Wave 1: 162,500',
-                'Wave 2: 341,250'
+				'Wave 1: 219,375',
+                'Wave 2: 493,594'
 				],
-			preferredSquads: [77,76,78],//gen
-			dangerousEnemies: [40,41],
-			modifiers: [2],
-            reqs: [14],
+			preferredSquads: [24],//tr
+			dangerousEnemies: [45,46],
+			modifiers: [3],
+            reqs: [18],
 			}, {
 			id: 2,
 			name: 'c3',
-			type: 'usual',
+			type: 'special',
 			position: 'right',
 			rewards: [
-				'Wave 1: 162,500',
-                'Wave 2: 341,250'
+				'20 GET3'
 				],
-            preferredSquads: [76,77,78,79],//empire
-			dangerousEnemies: [40,42],
-            reqs: [14],
-            modifiers: [2],
+            preferredSquads: [24],//empire
+			dangerousEnemies: [34],
+            reqs: [17],
+            modifiers: [3],
 			},
 			{
 			id: 5,
@@ -603,15 +616,29 @@ Vue.component('mission', {
 			type: 'usual',
 			position: 'right',
 			rewards: [
-				'Wave 1: 162,500',
-                'Wave 2: 341,250'
+				'Wave 1: 219,375',
+                'Wave 2: 493,594'
 				],
-				preferredSquads: [74],//wookies
-				dangerousEnemies: [40,44],
-				modifiers: [2],
-            reqs: [15],
+				preferredSquads: [24],//m
+				dangerousEnemies: [45,46],
+				modifiers: [3],
+            reqs: [18],
 			}, 
-			{id: 30, name: 'm2', type: 'platoon', position: 'right',preqs:["Characters: Relic 7","Ships: 7-Star"], requiredToons: [0], platzones: [0,1,2,3]}
+            {
+			id: 4,
+			name: 'c4',
+			type: 'usual',
+			position: 'right',
+			rewards: [
+				'Wave 1: 219,375',
+                'Wave 2: 493,594'
+				],
+				preferredSquads: [24],//left
+				dangerousEnemies: [47],
+				modifiers: [3],
+            reqs: [18],
+			}, 
+			{id: 30, name: 'm2', type: 'platoon', position: 'left',preqs:["Characters: Relic 8","Ships: 7-Star"], requiredToons: [0], platzones: [0]}
 		],
 		selectedMission: '',
 		seen: false,

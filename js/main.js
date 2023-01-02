@@ -538,7 +538,7 @@ Vue.component('mission', {
 			name: 'c3',
 			type: 'haven',
 			position: 'right',
-			planetlink: 'main.html',
+			planetlink: 'haven.html',
 			rewards: [
 				'1*: 235,143,105',
                 '2*: 400,243,583',
@@ -548,7 +548,7 @@ Vue.component('mission', {
             'Phase 4 DS - Haven-Class Medical Station'
             ],
             notes: [
-            'Recommended teams - coming soon'
+            'Click for recommended teams'
             ]
 			},
             {
@@ -556,7 +556,7 @@ Vue.component('mission', {
 			name: 'c5',
 			type: 'lothal',
 			position: 'left',
-			planetlink: 'main.html',
+			planetlink: 'lothal.html',
 			rewards: [
 				'1*: 246,742,558',
                 '2*: 419,987,333',
@@ -566,7 +566,7 @@ Vue.component('mission', {
             'Phase 4 LS - Lothal'
             ],
             notes: [
-            'Recommended teams - coming soon'
+            'Click for recommended teams'
             ]
 			},
             {
@@ -574,7 +574,7 @@ Vue.component('mission', {
 			name: 'c6',
 			type: 'kessel',
 			position: 'right',
-			planetlink: 'main.html',
+			planetlink: 'kessel.html',
 			rewards: [
 				'1*: 235,143,105',
                 '2*: 400,243,583',
@@ -584,7 +584,7 @@ Vue.component('mission', {
             'Phase 4 Mixed - Kessel'
             ],
             notes: [
-            'Recommended teams - coming soon'
+            'Click for recommended teams'
             ]
 			},
 			{

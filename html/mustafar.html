@@ -65,7 +65,11 @@
 			</div>
 
 			<div class="mb-3 " v-if="selectedMission.requiredToons">
+                <p class="h4">Operation Requirements</p>
+				<span v-for="item in selectedMission.preqs">&nbsp;&nbsp;{{item}}&nbsp;&nbsp;&nbsp;</span>
+			    
 				<p class="h4">Required toons</p>
+                
 					<div v-for="item in selectedMission.requiredToons" class="row justify-content-center .flex-nowrap">
 							<div class="platoons" v-for="item in platoons[item]">{{item}}</div>
 					</div>

@@ -428,7 +428,7 @@ Vue.component('mission', {
              {
 				id: 75,
 				name: 'Profundity Fleet',
-				toons: ['profundity', 'han\'s_millennium_falcon', 'rebel_y-wing', 'outrider', 'biggs_darklighter\'s_x-wing', 'phantom_ii', 'cassian\'s_u-wing','ghost']
+				toons: ['profundity', 'rebel_y-wing', 'outrider','ghost', 'biggs_darklighter\'s_x-wing', 'han\'s_millennium_falcon', 'phantom_ii', 'cassian\'s_u-wing']
 				
 		 	 },
 		 	 {
@@ -450,7 +450,22 @@ Vue.component('mission', {
                 id:79,
                 name: 'oRolo with Rebels',
                 toons: ['rolo', 'han_solo', 'chewbacca', 'threepio_&_chewie', 'ahsoka_tano_(fulcrum)']
-             }
+             },
+             {
+                id:80,
+                name: 'Executor',
+                toons: ['executor','hound\'s_tooth','razor_crest','ghost','xanadu_blood','slave_i','ig-2000', 'ebon_hawk']
+             },
+             {
+                id:81,
+                name: 'Jabba the Hutt',
+                toons: ['gl_jabba','krrsantan','skiff_lando','boba_fett','boushh']
+             },
+             {
+				id: 82,
+				name: 'SLKR',
+				toons: ['gl_kylo', 'sith_trooper', 'kylo_ren_(unmasked)', 'general_hux', 'first_order_stormtrooper'],
+			},
              
 
 
@@ -501,17 +516,27 @@ Vue.component('mission', {
         "Wave 2: Mara Jade (L), 2x Purge Trooper, Stormtrooper Commander, Stormtrooper, Recon Trooper",
         "Wave 2: Imperial Officer (L), Stormtrooper Commander, Stormtrooper, Recon Trooper, Tie Pilot, Scout Trooper",
         "Executrix, Tie Advanced X1, Scythe, Tie Fighter, Tie Interceptor (R)",
-        "Wave 2: Ninth Sister (L), 2x Purge Trooper"
+        "Wave 2: Ninth Sister (L), 2x Purge Trooper",
+        "Executor, Hound's Tooth, Xanadu Blood, Razor Crest, Slave I (R), IG-2000 (R)",//45
+        "Wave 1: 3x Pike Sentinel (L), Pirate Spy, Pirate Saboteur, Pirate Leader",
+        "Wave 2: Qi'ra, L3-37, Young Han Solo, Young Lando Calrissian, Vandor Chewbacca, Pirate Leader",
+        "Wave 2: 3x Pike Sentinel (L), Pirate Spy, Pirate Saboteur, Pirate Enforcer",
+
 		],
 		platoons: [
-        [        "Ben Solo",	"6","Commander Ahsoka Tano",	"6","Razor Crest",	"6",
-"Han's Millennium Falcon",	"5","Jedi Master Luke Skywalker",	"5","Logray",	"5","Rey",	"5","The Mandalorian (Beskar Armor)",	"5",
-"R2-D2",	"4","BB-8",	"3","C-3PO",	"3","Commander Luke Skywalker",	"3","Ki-Adi-Mundi",	"3","Padme Amidala",	"3","Grand Master Yoda",	"2",
-"Han Solo",	"2","Hermit Yoda",	"2","Jedi Knight Revan",	"2","Jedi Master Kenobi",	"2","Rebel Officer Leia Organa",	"2",
-"Resistance Trooper",	"2","Clone Sergeant - Phase I",	"1",
-"CT-5555 Fives",	"1","Ewok Scout",	"1","General Kenobi",	"1","Hoth Rebel Scout",	"1","Hoth Rebel Soldier",	"1",
-"Jedi Knight Anakin",	"1","K-2SO",	"1","Lando's Millennium Falcon",	"1","Mace Windu",	"1","Negotiator",	"1","Raven's Claw",	"1",
-"Rey (Jedi Training)",	"1","Skiff Guard (Lando Calrissian)",	"1",        ]
+        [      "Starkiller",	"7","Rey",	"6",
+"Sith Eternal Emperor",	"5","TIE/IN Interceptor Prototype",	"5","General Skywalker",	"4","Jedi Knight Luke Skywalker",	"4",
+"Razor Crest",	"4","Ben Solo",	"3","Darth Malak",	"3","Maul",	"3","Scythe",	"3","Boba Fett, Scion of Jango",	"2",
+"Commander Ahsoka Tano",	"2","Darth Malgus",	"2","Executor",	"2","Lord Vader",	"2",
+"Nightsister Initiate",	"2","Supreme Leader Kylo Ren",	"2","50R-T",	"1",
+"Admiral Ackbar",	"1","Asajj Ventress",	"1","Aurra Sing",	"1","B-28 Extinction-class Bomber",	"1",
+"Baze Malbus",	"1","Bistan",	"1","Bo-Katan Kryze",	"1","Coruscant Underworld Police",	"1","Dark Trooper",	"1",
+"Ebon Hawk",	"1","Echo",	"1","Gamorrean Guard",	"1",
+"General Veers",	"1","Hoth Rebel Soldier",	"1","IG-88",	"1",
+"Jedi Consular's Starfighter",	"1","Jedi Master Kenobi",	"1","Kylo Ren",	"1",
+"Outrider",	"1","Poggle the Lesser",	"1","Rebel Y-wing",	"1",
+"Rex's ARC-170",	"1","Seventh Sister",	"1","Sith Empire Trooper",	"1",
+"Sith Fighter",	"1","Slave I",	"1","The Mandalorian",	"1","TIE Silencer",	"1",   ]
 		],
 		guides:[
 		'See also: 50 Shards of Kam Discord Server',
@@ -527,7 +552,8 @@ Vue.component('mission', {
         modifiers:[
         'At the beginning of battle, each side summons a random Corellian Engineering Cargo Ship. At the start of their turn, Cargo Ships gain Protection Over Time (10%) for 1 turn.',
         'Coaxium: +25% Critical Damage and Speed; -15% Accuracy; will be critically hit if able; enemies can ignore Taunt to target this character; if this character is defeated by a status effect, Coaxium will not be granted to anyone',
-        "Summons Probe Droid whenever possible"
+        "Summons Probe Droid whenever possible",
+        "Whenever a character/ship uses a Special ability, they gain a stack of Confuse (max 3) until the end of the encounter. All characters gain the granted ability Clear Head at the start of battle (remove all stacks of confused)."
         ],
         notes:[
         'With Lord Vader\'s ultimate ability, this can be done on full auto',
@@ -551,13 +577,14 @@ Vue.component('mission', {
         "Empire (Relic 7+)",
         "5x Light Side or Neutral (Relic 7+)",
         "5x Light Side Wookiees (Relic 7+)",//15
-        "Light Side Ships (7-Star), Profundity"
+        "Light Side Ships (7-Star), Profundity",
+        '5x characters (Relic 8+), Jabba the Hutt',
+        "Ships (7-Star), Ghost",
+        '5x characters (Relic 8+), Qi\'ra, L3-37',
+        '5x characters (Relic 8+)'//20
         ],
 		platims:[
-		'Phase 3 LS Kashyyyk (self)',//0
-		'Phase 4 LS Lothal',
-		'Phase 5 LS Ring of Kafrene',
-        'Phase 6 LS Scarif',
+		'Phase 4 Mixed Kessel (self)',//0
 		],
 		missions: [{
 			id: 0,
@@ -565,37 +592,51 @@ Vue.component('mission', {
 			type: 'fleet',
 			position: 'left',
 			rewards: [
-				'Wave 1: 628,500',
+				'Wave 1: 987,188',
 				],
-            preferredSquads: [75],//aphra
-			dangerousEnemies: [43],
-            reqs: [16],
+            preferredSquads: [80,75],//fleet
+			dangerousEnemies: [45],
+            reqs: [18],
+            modifiers: [3],
 			},	{
 			id: 1,
 			name: 'c2',
 			type: 'usual',
-			position: 'right',
+			position: 'left',
 			rewards: [
-				'Wave 1: 162,500',
-                'Wave 2: 341,250'
+				'Wave 1: 219,375',
+                'Wave 2: 493,594'
 				],
-			preferredSquads: [77,76,78],//gen
-			dangerousEnemies: [40,41],
-			modifiers: [2],
-            reqs: [14],
+			preferredSquads: [82],//tr
+			dangerousEnemies: [46,48],
+			modifiers: [3],
+            reqs: [20],
 			}, {
 			id: 2,
 			name: 'c3',
-			type: 'usual',
+			type: 'special',
 			position: 'right',
 			rewards: [
-				'Wave 1: 162,500',
-                'Wave 2: 341,250'
+				'20 GET3',
 				],
-            preferredSquads: [76,77,78,79],//empire
-			dangerousEnemies: [40,42],
-            reqs: [14],
-            modifiers: [2],
+            preferredSquads: [24],//special
+			dangerousEnemies: [34],
+            reqs: [19],
+            modifiers: [3],
+			},
+            {
+			id: 5,
+			name: 'c4',
+			type: 'usual',
+			position: 'left',
+			rewards: [
+				'Wave 1: 219,375',
+                'Wave 2: 493,594'
+				],
+			preferredSquads: [81],//br Jabba
+			dangerousEnemies: [46,47],
+			modifiers: [3],
+            reqs: [17],
 			},
 			{
 			id: 5,
@@ -603,15 +644,15 @@ Vue.component('mission', {
 			type: 'usual',
 			position: 'right',
 			rewards: [
-				'Wave 1: 162,500',
-                'Wave 2: 341,250'
+				'Wave 1: 219,375',
+                'Wave 2: 493,594'
 				],
-				preferredSquads: [74],//wookies
-				dangerousEnemies: [40,44],
-				modifiers: [2],
-            reqs: [15],
+				preferredSquads: [82],//tl
+				dangerousEnemies: [46,48],
+				modifiers: [3],
+            reqs: [20],
 			}, 
-			{id: 30, name: 'm2', type: 'platoon', position: 'right',preqs:["Characters: Relic 7","Ships: 7-Star"], requiredToons: [0], platzones: [0,1,2,3]}
+			{id: 30, name: 'm2', type: 'platoon', position: 'left',preqs:["Characters: Relic 8","Ships: 7-Star"], requiredToons: [0], platzones: [0]}
 		],
 		selectedMission: '',
 		seen: false,

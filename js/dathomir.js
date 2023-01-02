@@ -593,7 +593,7 @@ Vue.component('mission', {
             reqs: [11],
             notes: [3],
 			}, 
-			{id: 30, name: 'm2', type: 'platoon', position: 'right', requiredToons: [0], platzones: [0,]}
+			{id: 30, name: 'm2', type: 'platoon', position: 'right',preqs:["Characters: Relic 7","Ships: 7-Star"], requiredToons: [0], platzones: [0,]}
 		],
 		selectedMission: '',
 		seen: false,

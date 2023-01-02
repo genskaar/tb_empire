@@ -639,7 +639,7 @@ Vue.component('mission', {
             reqs: [21],
             notes: [3]
 			}, 
-			{id: 30, name: 'm2', type: 'platoon', position: 'left', requiredToons: [0], platzones: [0,1]}
+			{id: 30, name: 'm2', type: 'platoon', position: 'left',preqs:["Characters: Relic 7","Ships: 7-Star"], requiredToons: [0], platzones: [0,1]}
 		],
 		selectedMission: '',
 		seen: false,
