@@ -439,7 +439,13 @@ Vue.component('mission', {
                 id:77,
                 name: "oFinn",
                 toons: ['finn','rey_(scavenger)','resistance_hero_finn','resistance_hero_poe','rey_(jedi_training)']
-             }
+             },
+			{
+                id:78,
+                name: "Doctor Aphra & Droids",
+                toons: ['doctoraphra','bt1','triplezero','ig-88','darth_vader']
+             },
+
              
 
 
@@ -484,6 +490,7 @@ Vue.component('mission', {
         "Wave 2: General Veers (L), Colonel Starck, Stormtrooper Commander, 2x Stormtrooper, Tie Pilot",//35
         "Wave 1: Mob Enforcer (L), Cartel Spy, 2x Cartel Bruiser, Cartel Saboteur",
         "Wave 2: Qi'ra (L), Young Han, Cartel Bruiser, Cartel Spy, Cartel Saboteur ",
+        "Wave 2: Imperial Officer (L), Stormtrooper Commander, Stormtrooper, Recon Trooper, Scout Trooper",
 		],
 		platoons: [
         ["Boba Fett, Scion of Jango",	"5","Darth Revan",	"5","TIE/IN Interceptor Prototype",	"5","C-3PO",	"3","Chewbacca",	"3","Commander Ahsoka Tano",	"3","Commander Luke Skywalker",	"3","Darth Traya",	"3","Ben Solo",	"2",
@@ -514,7 +521,8 @@ Vue.component('mission', {
         notes:[
         'With Lord Vader\'s ultimate ability, this can be done on full auto',
         'Unclear if this is even possible right now',
-        "Currently Bugged!"
+        "Currently Bugged!",
+		"With bt-1 and 0-0-0 needed for platoons, aphra + separatist droids should also work"
         ],
         reqs:[
         'Lord Vader (Relic 5+)',
@@ -559,10 +567,11 @@ Vue.component('mission', {
 				'Wave 1: 100,000',
                 'Wave 2: 200,000'
 				],
-			preferredSquads: [24],//aphra
-			dangerousEnemies: [34],
+			preferredSquads: [78],//aphra
+			dangerousEnemies: [31,38],
 			modifiers: [1],
             reqs: [7],
+			notes: [3],
 			}, {
 			id: 2,
 			name: 'c3',
