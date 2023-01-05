@@ -439,7 +439,7 @@ Vue.component('mission', {
 			 {
 				 id:77,
 				 name: 'Galactic Legend Rey (variants available)',
-				 toons: ['gl_rey','resistance_hero_finn','resistance_hero_poe','r2-d2','amilyn_holdo'],
+				 toons: ['rey_(jedi_training)','gl_rey','bb-8','c-3po','r2-d2'],
 			 },
 			 {
                 id:78,
@@ -570,7 +570,6 @@ Vue.component('mission', {
 			dangerousEnemies: [39,42],
 			modifiers: [2,3],
             reqs: [13],
-            notes: [4],
 			},	{
 			id: 1,
 			name: 'c2',
@@ -597,7 +596,6 @@ Vue.component('mission', {
 			dangerousEnemies: [39,41],
             reqs: [13],
             modifiers: [2,3],
-            notes: [4],
 			},
 			{
 			id: 5,
