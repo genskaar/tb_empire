@@ -535,9 +535,8 @@ Vue.component('mission', {
         modifiers:[
         'At the beginning of battle, each side summons a random Corellian Engineering Cargo Ship. At the start of their turn, Cargo Ships gain Protection Over Time (10%) for 1 turn.',
         'Coaxium: +25% Critical Damage and Speed; -15% Accuracy; will be critically hit if able; enemies can ignore Taunt to target this character; if this character is defeated by a status effect, Coaxium will not be granted to anyone',
-        'If the allied Leader would be defeated, a random Clone Trooper ally is defeated instead and the allied Leader gains 100% Health and Turn meter.',
-        "All characters (excluding summons) gain the Democracy granted ability which starts at 0%. Whenever an ally gains a buff or inflicts a debuff on an enemy, increase all ally's energy by 5%.",
-        "Set Democracy's charge to 0% for all allies. Inflict 1 stack of No Confidence on the enemy Leader and Stun them for 1 turn, which can't be evaded or resisted. When the enemy Leader reaches 3 stacks of No Confidence, they are instantly defeated (including Galactic Legends)",
+        'If the allied Leader would be defeated, a random Clone Trooper ally is defeated instead.',
+        "All characters gain the Democracy granted ability. Whenever an ally gains a buff or inflicts a debuff on an enemy, increase all ally's energy by 5%. At 100%, Inflict 1 stack of No Confidence on the enemy Leader and Stun them for 1 turn. When the enemy Leader reaches 3 stacks of No Confidence, they are instantly defeated.",
         "At the start of battle, a random ship is inflicted with Marked until they receive damage. Whenever a ship is Marked, all other ships gain Taunt for the rest of the encounter. Whenever a ship inflicted with Marked is attacked (excluding the Capital Ship), the attacking ship is inflicted with Marked for the rest of the encounter.",//5
         ],
         notes:[
@@ -580,7 +579,7 @@ Vue.component('mission', {
 				],
             preferredSquads: [80],//mace
 			dangerousEnemies: [41,42],
-			modifiers: [2,3,4],
+			modifiers: [2,3],
             reqs: [12],
             notes: [4]
 			},	{
@@ -594,7 +593,7 @@ Vue.component('mission', {
 				],
 			preferredSquads: [77],//jei
 			dangerousEnemies: [38,39],
-			modifiers: [2,3,4],
+			modifiers: [2,3],
             reqs: [13],
             notes: [3,4]
 			}, {
@@ -609,7 +608,7 @@ Vue.component('mission', {
             preferredSquads: [74,81,78,79],//generic
 			dangerousEnemies: [38,40],
             reqs: [11],
-            modifiers: [2,3,4],
+            modifiers: [2,3],
             notes: [4]
 			},
 			{
@@ -624,7 +623,7 @@ Vue.component('mission', {
             preferredSquads: [74,81,78,79],
 			dangerousEnemies: [38,40],
             reqs: [11],
-            modifiers: [2,3,4],
+            modifiers: [2,3],
             notes: [4]
 			}, 
 			
@@ -638,7 +637,7 @@ Vue.component('mission', {
 				],
 				preferredSquads: [76,75],
 				dangerousEnemies: [43],
-				modifiers: [5],
+				modifiers: [4],
             reqs: [14],
 			}, 
             {
