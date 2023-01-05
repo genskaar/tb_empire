@@ -441,6 +441,11 @@ Vue.component('mission', {
 				toons: ['gl_kylo', 'first_order_officer', 'kylo_ren_(unmasked)','general_hux','sith_trooper']
 				
 			 },
+             {
+                id:78,
+                name: "Doctor Aphra & Droids (variants available)",
+                toons: ['doctoraphra','bt1','triplezero','ig-88','hk-47']
+             },
              
 
 
@@ -546,8 +551,8 @@ Vue.component('mission', {
 				'Wave 1: 162,500',
                 'Wave 2: 341,250'
 				],
-            preferredSquads: [24],//aphra
-			dangerousEnemies: [34],
+            preferredSquads: [78],//aphra
+			dangerousEnemies: [38,39],
 			modifiers: [2],
             reqs: [12],
 			},	{
