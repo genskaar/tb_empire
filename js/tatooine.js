@@ -203,7 +203,7 @@ Vue.component('mission', {
 			},
 			{
 				id: 35,
-				name: 'GAS Lead Clones',
+				name: 'GAS 501st / Rey 501st',
 				toons: ['general_skywalker', 'arc_trooper', 'ct-21-0408__echo_', 'ct-7567__rex_', 'ct-5555__fives_']
 				
 			},
@@ -450,6 +450,16 @@ Vue.component('mission', {
 				 name: 'Galactic Legend Kenobi with Republic (variants available)',
 				 toons: ['gl_kenobi','commander_ahsoka_tano','padmé_amidala','general_kenobi','general_skywalker',],
 			 },
+             {
+                id:80,
+                name: 'oFinn',
+                toons: ['finn_o', 'rey_(jedi_training)', 'poe_dameron', 'resistance_pilot', 'rose_tico']
+             },
+             {
+				id:81,
+				name: 'Rebels (Either CLS or oROLO Lead)',
+				toons: ['commander_luke_skywalker', 'chewbacca', 'han_solo', 'ahsoka_tano_(fulcrum)', 'c-3po'],
+             }
              
              
 
@@ -633,7 +643,7 @@ Vue.component('mission', {
 				'Wave 1: 162,500',
                 'Wave 2: 341,250'
 				],
-				preferredSquads: [35,79],//gen
+				preferredSquads: [35,80,81,79],//gen
 				dangerousEnemies: [48,49],
 				modifiers: [3],
             reqs: [21],
