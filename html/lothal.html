@@ -114,7 +114,9 @@
 			</div>
             <div class="rewards mb-3" v-if="selectedMission.stars">
 				<p class="h4">Star Requirements</p>
-				<span v-for="item in selectedMission.stars">&nbsp;&nbsp;{{item}}&nbsp;&nbsp;&nbsp;</span>
+                <ul>
+				    <li class="text-justify" v-for="item in selectedMission.stars">{{item}}</li>
+                </ul>
 			</div>
 		</div>
 	</div>
