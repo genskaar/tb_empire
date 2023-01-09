@@ -437,7 +437,12 @@ Vue.component('mission', {
 				name: 'Palpatine and Empire',
 				toons: ['emperor_palpatine', 'darth_vader', 'mara_jade_teh','grand_admiral_thrawn','admiral_piett']
 				
-			 }
+			 },
+			{
+                id:77,
+                name: 'Inquisitors',
+                toons: ['grand_inquisitor', 'seventh_sister', 'ninth_sister', 'fifth_brother','eighth_brother']
+             }
 
 
 
@@ -545,7 +550,7 @@ Vue.component('mission', {
 				'Wave 1: 100,000',
                 'Wave 2: 200,000'
 				],
-            preferredSquads: [75,76],
+            preferredSquads: [75,76,77],
 			dangerousEnemies: [19,20],
             reqs: [1],
             modifiers: [0]
