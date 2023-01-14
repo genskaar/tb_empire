@@ -524,19 +524,21 @@ Vue.component('mission', {
 
 		],
 		platoons: [
-        [      "Starkiller",	"7","Rey",	"6",
-"Sith Eternal Emperor",	"5","TIE/IN Interceptor Prototype",	"5","General Skywalker",	"4","Jedi Knight Luke Skywalker",	"4",
-"Razor Crest",	"4","Ben Solo",	"3","Darth Malak",	"3","Maul",	"3","Scythe",	"3","Boba Fett, Scion of Jango",	"2",
-"Commander Ahsoka Tano",	"2","Darth Malgus",	"2","Executor",	"2","Lord Vader",	"2",
-"Nightsister Initiate",	"2","Supreme Leader Kylo Ren",	"2","50R-T",	"1",
-"Admiral Ackbar",	"1","Asajj Ventress",	"1","Aurra Sing",	"1","B-28 Extinction-class Bomber",	"1",
-"Baze Malbus",	"1","Bistan",	"1","Bo-Katan Kryze",	"1","Coruscant Underworld Police",	"1","Dark Trooper",	"1",
-"Ebon Hawk",	"1","Echo",	"1","Gamorrean Guard",	"1",
-"General Veers",	"1","Hoth Rebel Soldier",	"1","IG-88",	"1",
-"Jedi Consular's Starfighter",	"1","Jedi Master Kenobi",	"1","Kylo Ren",	"1",
-"Outrider",	"1","Poggle the Lesser",	"1","Rebel Y-wing",	"1",
-"Rex's ARC-170",	"1","Seventh Sister",	"1","Sith Empire Trooper",	"1",
-"Sith Fighter",	"1","Slave I",	"1","The Mandalorian",	"1","TIE Silencer",	"1",   ]
+        [ "Lord Vader",	"7","Boba Fett, Scion of Jango",	"6","Executor",	"5","Maul",	"5","Darth Malgus",	"4",
+"Supreme Leader Kylo Ren",	"4","Hondo Ohnaka",	"3","Hyena Bomber",	"3","Scythe",	"3","Count Dooku",	"2",
+"Emperor's Shuttle",	"2","Geonosian Brood Alpha",	"2","IG-88",	"2","Imperial Super Commando",	"2",
+"Malevolence",	"2","Nightsister Acolyte",	"2","Sith Eternal Emperor",	"2",
+"Ugnaught",	"2","Asajj Ventress",	"1","B1 Battle Droid",	"1","B2 Super Battle Droid",	"1","Darth Maul",	"1",
+"Darth Talon",	"1","Executrix",	"1","Fifth Brother",	"1",
+"General Hux",	"1","Geonosian Soldier",	"1","Geonosian Spy",	"1","Geonosian Spy's Starfighter",	"1",
+"Grand Moff Tarkin",	"1","HK-47",	"1","Hound's Tooth",	"1","IG-100 MagnaGuard",	"1",
+"IG-86 Sentinel Droid",	"1","Jawa",	"1","Jawa Engineer",	"1","Jawa Scavenger",	"1","Krrsantan",	"1",
+"Kylo Ren (Unmasked)",	"1","Mara Jade, The Emperor's Hand",	"1",
+"Nightsister Spirit",	"1","Ninth Sister",	"1",
+"Range Trooper",	"1","Royal Guard",	"1",
+"Savage Opress",	"1","Shoretrooper",	"1","Sith Trooper",	"1",
+"Tusken Raider",	"1","URoRRuR'R'R",	"1","Zam Wesell",	"1",  
+         ]
 		],
 		guides:[
 		'See also: 50 Shards of Kam Discord Server',
@@ -584,7 +586,7 @@ Vue.component('mission', {
         '5x characters (Relic 8+)'//20
         ],
 		platims:[
-		'Phase 4 Mixed Kessel (self)',//0
+		'Phase 6 DS Death Star (self)',//0
 		],
 		missions: [{
 			id: 0,
@@ -664,7 +666,7 @@ Vue.component('mission', {
                '3 Stars after maximum preload: 265,161,374 ',
             ]
 			}, 
-			{id: 30, name: 'm2', type: 'platoon', position: 'left',preqs:["Characters: Relic 8","Ships: 7-Star"], requiredToons: [0], platzones: [0]}
+			{id: 30, name: 'm2', type: 'platoon', position: 'left',preqs:["Characters: Relic 9","Ships: 7-Star"], requiredToons: [0], platzones: [0]}
 		],
 		selectedMission: '',
 		seen: false,

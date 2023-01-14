@@ -524,19 +524,19 @@ Vue.component('mission', {
 
 		],
 		platoons: [
-        [      "Starkiller",	"7","Rey",	"6",
-"Sith Eternal Emperor",	"5","TIE/IN Interceptor Prototype",	"5","General Skywalker",	"4","Jedi Knight Luke Skywalker",	"4",
-"Razor Crest",	"4","Ben Solo",	"3","Darth Malak",	"3","Maul",	"3","Scythe",	"3","Boba Fett, Scion of Jango",	"2",
-"Commander Ahsoka Tano",	"2","Darth Malgus",	"2","Executor",	"2","Lord Vader",	"2",
-"Nightsister Initiate",	"2","Supreme Leader Kylo Ren",	"2","50R-T",	"1",
-"Admiral Ackbar",	"1","Asajj Ventress",	"1","Aurra Sing",	"1","B-28 Extinction-class Bomber",	"1",
-"Baze Malbus",	"1","Bistan",	"1","Bo-Katan Kryze",	"1","Coruscant Underworld Police",	"1","Dark Trooper",	"1",
-"Ebon Hawk",	"1","Echo",	"1","Gamorrean Guard",	"1",
-"General Veers",	"1","Hoth Rebel Soldier",	"1","IG-88",	"1",
-"Jedi Consular's Starfighter",	"1","Jedi Master Kenobi",	"1","Kylo Ren",	"1",
-"Outrider",	"1","Poggle the Lesser",	"1","Rebel Y-wing",	"1",
-"Rex's ARC-170",	"1","Seventh Sister",	"1","Sith Empire Trooper",	"1",
-"Sith Fighter",	"1","Slave I",	"1","The Mandalorian",	"1","TIE Silencer",	"1",   ]
+        [  "Darth Malgus",	"7","Scythe",	"6","Commander Ahsoka Tano",	"5","Rey",	"5","Supreme Leader Kylo Ren",	"4",
+"Ben Solo",	"3","Boba Fett, Scion of Jango",	"3","Darth Traya",	"3","General Kenobi",	"3","Han Solo",	"3",
+"Lord Vader",	"3","Maul",	"3","Razor Crest",	"3","Imperial Probe Droid",	"2",
+"Jedi Master Kenobi",	"2","Jedi Master Luke Skywalker",	"2",
+"Sana Starros",	"2","Wat Tambor",	"2","Admiral Raddus",	"1","Asajj Ventress",	"1","Aurra Sing",	"1",
+"B1 Battle Droid",	"1","Chief Nebit",	"1","Clone Sergeant - Phase I",	"1","Dark Trooper",	"1","Dengar",	"1",
+"Emperor's Shuttle",	"1","Executor",	"1","First Order Officer",	"1","Hermit Yoda",	"1",
+"HK-47",	"1","IG-100 MagnaGuard",	"1","Jedi Consular",	"1",
+"Nightsister Initiate",	"1","Ninth Sister",	"1","Nute Gunray",	"1","Old Daka",	"1","Outrider",	"1","Pao",	"1","Rebel Officer Leia Organa",	"1",
+"Resistance Pilot",	"1","Sith Empire Trooper",	"1",
+"Sith Eternal Emperor",	"1","Sith Trooper",	"1","TIE Echelon",	"1","Veteran Smuggler Chewbacca",	"1",
+"Young Lando Calrissian",	"1",  
+          ]
 		],
 		guides:[
 		'See also: 50 Shards of Kam Discord Server',
@@ -584,7 +584,7 @@ Vue.component('mission', {
         '5x characters (Relic 8+)'//20
         ],
 		platims:[
-		'Phase 4 Mixed Kessel (self)',//0
+		'Phase 6 Mixed Hoth (self)',//0
 		],
 		missions: [{
 			id: 0,
@@ -664,7 +664,7 @@ Vue.component('mission', {
                '3 Stars after maximum preload: 265,161,374 ',
             ]
 			}, 
-			{id: 30, name: 'm2', type: 'platoon', position: 'left',preqs:["Characters: Relic 8","Ships: 7-Star"], requiredToons: [0], platzones: [0]}
+			{id: 30, name: 'm2', type: 'platoon', position: 'left',preqs:["Characters: Relic 9","Ships: 7-Star"], requiredToons: [0], platzones: [0]}
 		],
 		selectedMission: '',
 		seen: false,

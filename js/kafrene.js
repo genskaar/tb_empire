@@ -524,19 +524,19 @@ Vue.component('mission', {
 
 		],
 		platoons: [
-        [      "Starkiller",	"7","Rey",	"6",
-"Sith Eternal Emperor",	"5","TIE/IN Interceptor Prototype",	"5","General Skywalker",	"4","Jedi Knight Luke Skywalker",	"4",
-"Razor Crest",	"4","Ben Solo",	"3","Darth Malak",	"3","Maul",	"3","Scythe",	"3","Boba Fett, Scion of Jango",	"2",
-"Commander Ahsoka Tano",	"2","Darth Malgus",	"2","Executor",	"2","Lord Vader",	"2",
-"Nightsister Initiate",	"2","Supreme Leader Kylo Ren",	"2","50R-T",	"1",
-"Admiral Ackbar",	"1","Asajj Ventress",	"1","Aurra Sing",	"1","B-28 Extinction-class Bomber",	"1",
-"Baze Malbus",	"1","Bistan",	"1","Bo-Katan Kryze",	"1","Coruscant Underworld Police",	"1","Dark Trooper",	"1",
-"Ebon Hawk",	"1","Echo",	"1","Gamorrean Guard",	"1",
-"General Veers",	"1","Hoth Rebel Soldier",	"1","IG-88",	"1",
-"Jedi Consular's Starfighter",	"1","Jedi Master Kenobi",	"1","Kylo Ren",	"1",
-"Outrider",	"1","Poggle the Lesser",	"1","Rebel Y-wing",	"1",
-"Rex's ARC-170",	"1","Seventh Sister",	"1","Sith Empire Trooper",	"1",
-"Sith Fighter",	"1","Slave I",	"1","The Mandalorian",	"1","TIE Silencer",	"1",   ]
+        [     "Jedi Knight Luke Skywalker",	"11","General Skywalker",	"7",
+"Jedi Master Kenobi",	"6",
+"Jedi Master Luke Skywalker",	"6","Grand Master Yoda",	"5","Rey",	"4","Commander Luke Skywalker",	"3",
+"Jedi Knight Revan",	"3","50R-T",	"2","Baze Malbus",	"2","C-3PO",	"2",
+"Eeth Koth",	"2","Profundity",	"2","R2-D2",	"2","Tech",	"2","Wedge Antilles's X-wing",	"2",
+"Amilyn Holdo",	"1","Barriss Offee",	"1","Bastila Shan",	"1","Bodhi Rook",	"1","Boushh (Leia Organa)",	"1",
+"Chewbacca",	"1","Chirrut ÃŽmwe",	"1","Chopper",	"1","Clone Sergeant's ARC-170",	"1",
+"Clone Wars Chewbacca",	"1","CT-7567 Rex",	"1","Echo",	"1","Ghost",	"1","Han's Millennium Falcon",	"1",
+"Hoth Rebel Soldier",	"1","Ima-Gun Di",	"1","Lando Calrissian",	"1","Lobot",	"1",
+"Mon Mothma",	"1","Negotiator",	"1","Omega",	"1","PadmÃ© Amidala",	"1","Resistance Trooper",	"1",
+"Rose Tico",	"1","T3-M4",	"1","The Armorer",	"1","Umbaran Starfighter",	"1","Veteran Smuggler Chewbacca",	"1",
+"Zaalbar",	"1",
+         ]
 		],
 		guides:[
 		'See also: 50 Shards of Kam Discord Server',
@@ -584,7 +584,7 @@ Vue.component('mission', {
         '5x characters (Relic 8+)'//20
         ],
 		platims:[
-		'Phase 4 Mixed Kessel (self)',//0
+		'Phase 5 LS Kafrene (self)',//0
 		],
 		missions: [{
 			id: 0,
@@ -664,7 +664,7 @@ Vue.component('mission', {
                '3 Stars after maximum preload: 265,161,374 ',
             ]
 			}, 
-			{id: 30, name: 'm2', type: 'platoon', position: 'left',preqs:["Characters: Relic 8","Ships: 7-Star"], requiredToons: [0], platzones: [0]}
+			{id: 30, name: 'm2', type: 'platoon', position: 'left',preqs:["Characters: Relic 9","Ships: 7-Star"], requiredToons: [0], platzones: [0]}
 		],
 		selectedMission: '',
 		seen: false,

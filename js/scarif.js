@@ -524,19 +524,17 @@ Vue.component('mission', {
 
 		],
 		platoons: [
-        [      "Starkiller",	"7","Rey",	"6",
-"Sith Eternal Emperor",	"5","TIE/IN Interceptor Prototype",	"5","General Skywalker",	"4","Jedi Knight Luke Skywalker",	"4",
-"Razor Crest",	"4","Ben Solo",	"3","Darth Malak",	"3","Maul",	"3","Scythe",	"3","Boba Fett, Scion of Jango",	"2",
-"Commander Ahsoka Tano",	"2","Darth Malgus",	"2","Executor",	"2","Lord Vader",	"2",
-"Nightsister Initiate",	"2","Supreme Leader Kylo Ren",	"2","50R-T",	"1",
-"Admiral Ackbar",	"1","Asajj Ventress",	"1","Aurra Sing",	"1","B-28 Extinction-class Bomber",	"1",
-"Baze Malbus",	"1","Bistan",	"1","Bo-Katan Kryze",	"1","Coruscant Underworld Police",	"1","Dark Trooper",	"1",
-"Ebon Hawk",	"1","Echo",	"1","Gamorrean Guard",	"1",
-"General Veers",	"1","Hoth Rebel Soldier",	"1","IG-88",	"1",
-"Jedi Consular's Starfighter",	"1","Jedi Master Kenobi",	"1","Kylo Ren",	"1",
-"Outrider",	"1","Poggle the Lesser",	"1","Rebel Y-wing",	"1",
-"Rex's ARC-170",	"1","Seventh Sister",	"1","Sith Empire Trooper",	"1",
-"Sith Fighter",	"1","Slave I",	"1","The Mandalorian",	"1","TIE Silencer",	"1",   ]
+        [ "Ben Solo",	"7","Jedi Master Luke Skywalker",	"7",
+"Razor Crest",	"7","Bastila Shan",	"6","Rey",	"6","Dash Rendar",	"5","Jedi Master Kenobi",	"5",
+"Commander Ahsoka Tano",	"4","Hermit Yoda",	"4","Han Solo",	"3",
+"Ki-Adi-Mundi",	"3","Raven's Claw",	"3","Rebel Officer Leia Organa",	"3",
+"Ima-Gun Di",	"2","Rey (Scavenger)",	"2",
+"Skiff Guard (Lando Calrissian)",	"2","BB-8",	"1","Biggs Darklighter's X-wing",	"1","Chewbacca",	"1",
+"Coruscant Underworld Police",	"1","General Kenobi",	"1","Grand Master Yoda",	"1","Han's Millennium Falcon",	"1","Jedi Knight Revan",	"1","Kanan Jarrus",	"1","L3-37",	"1",
+"Lobot",	"1","Logray",	"1","Mara Jade, The Emperor's Hand",	"1","Outrider",	"1","PadmÃ© Amidala",	"1","Poe Dameron",	"1",
+"Resistance X-wing",	"1","Tech",	"1","The Mandalorian",	"1","Xanadu Blood",	"1",
+"Zaalbar",	"1",     
+           ]
 		],
 		guides:[
 		'See also: 50 Shards of Kam Discord Server',
@@ -584,7 +582,7 @@ Vue.component('mission', {
         '5x characters (Relic 8+)'//20
         ],
 		platims:[
-		'Phase 4 Mixed Kessel (self)',//0
+		'Phase 6 LS Scarif (self)',//0
 		],
 		missions: [{
 			id: 0,
@@ -664,7 +662,7 @@ Vue.component('mission', {
                '3 Stars after maximum preload: 265,161,374 ',
             ]
 			}, 
-			{id: 30, name: 'm2', type: 'platoon', position: 'left',preqs:["Characters: Relic 8","Ships: 7-Star"], requiredToons: [0], platzones: [0]}
+			{id: 30, name: 'm2', type: 'platoon', position: 'left',preqs:["Characters: Relic 9","Ships: 7-Star"], requiredToons: [0], platzones: [0]}
 		],
 		selectedMission: '',
 		seen: false,
