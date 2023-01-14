@@ -465,7 +465,12 @@ Vue.component('mission', {
 				id: 82,
 				name: 'SLKR',
 				toons: ['gl_kylo', 'sith_trooper', 'kylo_ren_(unmasked)', 'general_hux', 'first_order_stormtrooper'],
-			},
+			 },
+			 {
+                id:83,
+                name: 'Inquisitors',
+                toons: ['grand_inquisitor', 'seventh_sister', 'ninth_sister', 'fifth_brother','eighth_brother']
+             },
              
 
 
@@ -524,19 +529,19 @@ Vue.component('mission', {
 
 		],
 		platoons: [
-        [      "Starkiller",	"7","Rey",	"6",
-"Sith Eternal Emperor",	"5","TIE/IN Interceptor Prototype",	"5","General Skywalker",	"4","Jedi Knight Luke Skywalker",	"4",
-"Razor Crest",	"4","Ben Solo",	"3","Darth Malak",	"3","Maul",	"3","Scythe",	"3","Boba Fett, Scion of Jango",	"2",
-"Commander Ahsoka Tano",	"2","Darth Malgus",	"2","Executor",	"2","Lord Vader",	"2",
-"Nightsister Initiate",	"2","Supreme Leader Kylo Ren",	"2","50R-T",	"1",
-"Admiral Ackbar",	"1","Asajj Ventress",	"1","Aurra Sing",	"1","B-28 Extinction-class Bomber",	"1",
-"Baze Malbus",	"1","Bistan",	"1","Bo-Katan Kryze",	"1","Coruscant Underworld Police",	"1","Dark Trooper",	"1",
-"Ebon Hawk",	"1","Echo",	"1","Gamorrean Guard",	"1",
-"General Veers",	"1","Hoth Rebel Soldier",	"1","IG-88",	"1",
-"Jedi Consular's Starfighter",	"1","Jedi Master Kenobi",	"1","Kylo Ren",	"1",
-"Outrider",	"1","Poggle the Lesser",	"1","Rebel Y-wing",	"1",
-"Rex's ARC-170",	"1","Seventh Sister",	"1","Sith Empire Trooper",	"1",
-"Sith Fighter",	"1","Slave I",	"1","The Mandalorian",	"1","TIE Silencer",	"1",   ]
+        [ "Starkiller",	"9","Boba Fett, Scion of Jango",	"7",
+"Darth Malak",	"6","Scythe",	"6","Sith Eternal Emperor",	"6","Darth Malgus",	"5",
+"Executor",	"5","Lord Vader",	"4","Grand Inquisitor",	"3","IG-88",	"3",
+"Maul",	"3","Supreme Leader Kylo Ren",	"3",
+"First Order SF TIE Pilot",	"2","Sith Empire Trooper",	"2","B-28 Extinction-class Bomber",	"1",
+"Boba Fett",	"1","Colonel Starck",	"1","Count Dooku",	"1",
+"Executrix",	"1","First Order Officer",	"1","First Order TIE Fighter",	"1","First Order TIE Pilot",	"1",
+"Gauntlet Starfighter",	"1","Geonosian Soldier",	"1","Geonosian Soldier's Starfighter",	"1","Hyena Bomber",	"1",
+"Iden Versio",	"1","IG-2000",	"1","Jango Fett",	"1","Kylo Ren",	"1",
+"Kylo Ren (Unmasked)",	"1","Magmatrooper",	"1","Moff Gideon",	"1",
+"Nightsister Zombie",	"1","Sith Assassin",	"1","Snowtrooper",	"1","Talia",	"1","Tusken Shaman",	"1",
+"Vulture Droid",	"1","Wampa",	"1",   
+         ]
 		],
 		guides:[
 		'See also: 50 Shards of Kam Discord Server',
@@ -553,7 +558,8 @@ Vue.component('mission', {
         'At the beginning of battle, each side summons a random Corellian Engineering Cargo Ship. At the start of their turn, Cargo Ships gain Protection Over Time (10%) for 1 turn.',
         'Coaxium: +25% Critical Damage and Speed; -15% Accuracy; will be critically hit if able; enemies can ignore Taunt to target this character; if this character is defeated by a status effect, Coaxium will not be granted to anyone',
         "Summons Probe Droid whenever possible",
-        "Whenever a character/ship uses a Special ability, they gain a stack of Confuse (max 3) until the end of the encounter. All characters gain the granted ability Clear Head at the start of battle (remove all stacks of confused)."
+        "Whenever a character/ship uses a Special ability, they gain a stack of Confuse (max 3) until the end of the encounter. All characters gain the granted ability Clear Head at the start of battle (remove all stacks of confused).",
+        "Granted ability - all other allies lose 25% Max Health/Protection. Gain 5% Offense per ally affected this way. Then, gain a bonus turn.",
         ],
         notes:[
         'With Lord Vader\'s ultimate ability, this can be done on full auto',
@@ -581,62 +587,55 @@ Vue.component('mission', {
         '5x characters (Relic 8+), Jabba the Hutt',
         "Ships (7-Star), Ghost",
         '5x characters (Relic 8+), Qi\'ra, L3-37',
-        '5x characters (Relic 8+)'//20
+        '5x characters (Relic 8+)',//20
+        "Dark Side or Neutral (Relic 9+)",
+        "Dark Side or Neutral (Relic 9+), Eighth Brother, Fifth Brother, Seventh Sister",
+
         ],
 		platims:[
-		'Phase 4 Mixed Kessel (self)',//0
+		'Phase 5 DS Kessel (self)',//0
+		'Phase 6 DS Death Star',
 		],
 		missions: [{
 			id: 0,
 			name: 'c1',
-			type: 'fleet',
-			position: 'left',
+			type: 'usual',
+			position: 'right',
 			rewards: [
-				'Wave 1: 987,188',
+				'Wave 1: 307,125',
+				'Wave 2: 721,744',
 				],
-            preferredSquads: [80,75],//fleet
-			dangerousEnemies: [45],
-            reqs: [18],
-            modifiers: [3],
+            preferredSquads: [24],//bl generic
+			dangerousEnemies: [34],
+            reqs: [21],
+            modifiers: [4],
 			},	{
 			id: 1,
 			name: 'c2',
 			type: 'usual',
-			position: 'left',
-			rewards: [
-				'Wave 1: 219,375',
-                'Wave 2: 493,594'
-				],
-			preferredSquads: [82],//tr
-			dangerousEnemies: [46,48],
-			modifiers: [3],
-            reqs: [20],
-			}, {
-			id: 2,
-			name: 'c3',
-			type: 'special',
 			position: 'right',
 			rewards: [
-				'20 GET3',
+				'Wave 1: 307,125',
+				'Wave 2: 721,744',
 				],
-            preferredSquads: [24],//special
+			preferredSquads: [24],//tr generic
 			dangerousEnemies: [34],
-            reqs: [19],
-            modifiers: [3],
+			modifiers: [4],
+            reqs: [21],
 			},
             {
 			id: 5,
 			name: 'c4',
 			type: 'usual',
-			position: 'left',
+			position: 'right',
 			rewards: [
-				'Wave 1: 219,375',
-                'Wave 2: 493,594'
+				'Wave 1: 307,125',
+				'Wave 2: 721,744',
 				],
-			preferredSquads: [81],//br Jabba
-			dangerousEnemies: [46,47],
-			modifiers: [3],
-            reqs: [17],
+			preferredSquads: [83],//br inquisitors
+			dangerousEnemies: [34],
+			modifiers: [4],
+            reqs: [22],
 			},
 			{
 			id: 5,
@@ -644,13 +643,13 @@ Vue.component('mission', {
 			type: 'usual',
 			position: 'right',
 			rewards: [
-				'Wave 1: 219,375',
-                'Wave 2: 493,594'
+				'Wave 1: 307,125',
+				'Wave 2: 721,744',
 				],
-				preferredSquads: [82],//tl
-				dangerousEnemies: [46,48],
-				modifiers: [3],
-            reqs: [20],
+				preferredSquads: [24],//tl generic
+				dangerousEnemies: [34],
+				modifiers: [4],
+            reqs: [21],
 			}, 
             {
 			id: 6,
@@ -658,13 +657,13 @@ Vue.component('mission', {
 			type: 'deploy',
 			position: 'right',
             stars: [
-               '1 Star: 235,143,105',
-               '2 Stars: 400,243,583',
-               '3 Stars: 500,304,479',
-               '3 Stars after maximum preload: 265,161,374 ',
+				'1 Star: 341,250,768',
+                '2 Stars: 620,455,942',
+                '3 Stars: 729,948,167',
+                '3 Stars after maximum preload: 388,697,399 ',
             ]
 			}, 
-			{id: 30, name: 'm2', type: 'platoon', position: 'left',preqs:["Characters: Relic 8","Ships: 7-Star"], requiredToons: [0], platzones: [0]}
+			{id: 30, name: 'm2', type: 'platoon', position: 'right',preqs:["Characters: Relic 9","Ships: 7-Star"], requiredToons: [0], platzones: [0,1]}
 		],
 		selectedMission: '',
 		seen: false,

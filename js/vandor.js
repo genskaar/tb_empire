@@ -524,19 +524,19 @@ Vue.component('mission', {
 
 		],
 		platoons: [
-        [      "Starkiller",	"7","Rey",	"6",
-"Sith Eternal Emperor",	"5","TIE/IN Interceptor Prototype",	"5","General Skywalker",	"4","Jedi Knight Luke Skywalker",	"4",
-"Razor Crest",	"4","Ben Solo",	"3","Darth Malak",	"3","Maul",	"3","Scythe",	"3","Boba Fett, Scion of Jango",	"2",
-"Commander Ahsoka Tano",	"2","Darth Malgus",	"2","Executor",	"2","Lord Vader",	"2",
-"Nightsister Initiate",	"2","Supreme Leader Kylo Ren",	"2","50R-T",	"1",
-"Admiral Ackbar",	"1","Asajj Ventress",	"1","Aurra Sing",	"1","B-28 Extinction-class Bomber",	"1",
-"Baze Malbus",	"1","Bistan",	"1","Bo-Katan Kryze",	"1","Coruscant Underworld Police",	"1","Dark Trooper",	"1",
-"Ebon Hawk",	"1","Echo",	"1","Gamorrean Guard",	"1",
-"General Veers",	"1","Hoth Rebel Soldier",	"1","IG-88",	"1",
-"Jedi Consular's Starfighter",	"1","Jedi Master Kenobi",	"1","Kylo Ren",	"1",
-"Outrider",	"1","Poggle the Lesser",	"1","Rebel Y-wing",	"1",
-"Rex's ARC-170",	"1","Seventh Sister",	"1","Sith Empire Trooper",	"1",
-"Sith Fighter",	"1","Slave I",	"1","The Mandalorian",	"1","TIE Silencer",	"1",   ]
+        [  "Grand Inquisitor",	"7","Commander Ahsoka Tano",	"6",
+"Profundity",	"5","Starkiller",	"4","Darth Malak",	"3","General Skywalker",	"3","Jedi Master Kenobi",	"3","Scythe",	"3","Ben Solo",	"2",
+"Boba Fett, Scion of Jango",	"2","Darth Malgus",	"2","Executor",	"2","Hyena Bomber",	"2",
+"Jedi Consular's Starfighter",	"2","Jedi Master Luke Skywalker",	"2","Old Daka",	"2","Razor Crest",	"2",
+"Sith Eternal Emperor",	"2","Supreme Leader Kylo Ren",	"2","50R-T",	"1","Ahsoka Tano (Fulcrum)",	"1",
+"Anakin's Eta-2 Starfighter",	"1","Barriss Offee",	"1","Bastila Shan",	"1","Bistan",	"1",
+"Bodhi Rook",	"1","Chewbacca",	"1","Darth Sidious",	"1",
+"Echo",	"1","Emperor Palpatine",	"1","First Order Executioner",	"1","Gauntlet Starfighter",	"1","Hondo Ohnaka",	"1",
+"Hound's Tooth",	"1","Hunter",	"1","IG-100 MagnaGuard",	"1","Imperial TIE Bomber",	"1",
+"Jedi Knight Luke Skywalker",	"1","Jolee Bindo",	"1","Kylo Ren",	"1","Lord Vader",	"1","Mace Windu",	"1","Maul",	"1","Nightsister Initiate",	"1",
+"PadmÃ© Amidala",	"1","Raven's Claw",	"1","Resistance Hero Finn",	"1","Rey",	"1","Talia",	"1",
+"TIE Echelon",	"1","Tusken Shaman",	"1","Wedge Antilles's X-wing",	"1","Wicket",	"1",
+         ]
 		],
 		guides:[
 		'See also: 50 Shards of Kam Discord Server',
@@ -553,7 +553,10 @@ Vue.component('mission', {
         'At the beginning of battle, each side summons a random Corellian Engineering Cargo Ship. At the start of their turn, Cargo Ships gain Protection Over Time (10%) for 1 turn.',
         'Coaxium: +25% Critical Damage and Speed; -15% Accuracy; will be critically hit if able; enemies can ignore Taunt to target this character; if this character is defeated by a status effect, Coaxium will not be granted to anyone',
         "Summons Probe Droid whenever possible",
-        "Whenever a character/ship uses a Special ability, they gain a stack of Confuse (max 3) until the end of the encounter. All characters gain the granted ability Clear Head at the start of battle (remove all stacks of confused)."
+        "Whenever a character/ship uses a Special ability, they gain a stack of Confuse (max 3) until the end of the encounter. All characters gain the granted ability Clear Head at the start of battle (remove all stacks of confused).",
+        "All ships have +100% counter chance. Whenever a ship uses a Special ability, a random enemy gains 15% Turn Meter.",
+        "At the start of the encounter, all enemies are inflicted permanent Healing Immunity. All enemies are inflicted with a Damage Over Time effect at the start of any enemy's turn, which can't be copied, dispelled, or prevented.",
+        "At the start of the encounter, an indestructible Crate that is immune to debuffs is summoned to the ally slot if it is available. Damage this crate to recover 50% Health and Protection and remove all of the Damage Over Time effects on them.",
         ],
         notes:[
         'With Lord Vader\'s ultimate ability, this can be done on full auto',
@@ -581,10 +584,16 @@ Vue.component('mission', {
         '5x characters (Relic 8+), Jabba the Hutt',
         "Ships (7-Star), Ghost",
         '5x characters (Relic 8+), Qi\'ra, L3-37',
-        '5x characters (Relic 8+)'//20
+        '5x characters (Relic 8+)',//20
+        "Ships (7-Star)",
+        '5x characters (Relic 9+)',
+        '5x characters (Relic 9+), Young Han Solo, Vandor Chewbacca',
+        '5x characters (Relic 9+), Jabba the Hutt',
+
         ],
 		platims:[
-		'Phase 4 Mixed Kessel (self)',//0
+		'Phase 5 Mixed Vandor (self)',//0
+		'Phase 6 Mixed Hoth'
 		],
 		missions: [{
 			id: 0,
@@ -592,25 +601,25 @@ Vue.component('mission', {
 			type: 'fleet',
 			position: 'left',
 			rewards: [
-				'Wave 1: 987,188',
+				'Wave 1: 1,443,488',
 				],
-            preferredSquads: [80,75],//fleet
-			dangerousEnemies: [45],
-            reqs: [18],
-            modifiers: [3],
+            preferredSquads: [24],//fleet
+			dangerousEnemies: [34],
+            reqs: [21],
+            modifiers: [4],
 			},	{
 			id: 1,
 			name: 'c2',
 			type: 'usual',
 			position: 'left',
 			rewards: [
-				'Wave 1: 219,375',
-                'Wave 2: 493,594'
+				'Wave 1: 307,125',
+                'Wave 2: 721,744'
 				],
-			preferredSquads: [82],//tr
-			dangerousEnemies: [46,48],
-			modifiers: [3],
-            reqs: [20],
+			preferredSquads: [24],//tr generic
+			dangerousEnemies: [34],
+			modifiers: [5,6],
+            reqs: [22],
 			}, {
 			id: 2,
 			name: 'c3',
@@ -621,22 +630,22 @@ Vue.component('mission', {
 				],
             preferredSquads: [24],//special
 			dangerousEnemies: [34],
-            reqs: [19],
-            modifiers: [3],
+            reqs: [23],
+            modifiers: [5,6],
 			},
             {
 			id: 5,
 			name: 'c4',
 			type: 'usual',
-			position: 'left',
+			position: 'right',
 			rewards: [
-				'Wave 1: 219,375',
-                'Wave 2: 493,594'
+				'Wave 1: 307,125',
+                'Wave 2: 721,744'
 				],
-			preferredSquads: [81],//br Jabba
-			dangerousEnemies: [46,47],
-			modifiers: [3],
-            reqs: [17],
+			preferredSquads: [24],//bl generic
+			dangerousEnemies: [34],
+			modifiers: [5,6],
+            reqs: [22],
 			},
 			{
 			id: 5,
@@ -644,13 +653,13 @@ Vue.component('mission', {
 			type: 'usual',
 			position: 'right',
 			rewards: [
-				'Wave 1: 219,375',
-                'Wave 2: 493,594'
+				'Wave 1: 307,125',
+                'Wave 2: 721,744'
 				],
-				preferredSquads: [82],//tl
-				dangerousEnemies: [46,48],
-				modifiers: [3],
-            reqs: [20],
+				preferredSquads: [81],//mid r jabba
+				dangerousEnemies: [34],
+				modifiers: [5,6],
+            reqs: [24],
 			}, 
             {
 			id: 6,
@@ -658,13 +667,13 @@ Vue.component('mission', {
 			type: 'deploy',
 			position: 'right',
             stars: [
-               '1 Star: 235,143,105',
-               '2 Stars: 400,243,583',
-               '3 Stars: 500,304,479',
-               '3 Stars after maximum preload: 265,161,374 ',
+				'1 Star: 341,250,768',
+                '2 Stars: 620,455,942',
+                '3 Stars: 729,948,167',
+               '3 Stars after maximum preload: 388,697,399 ',
             ]
 			}, 
-			{id: 30, name: 'm2', type: 'platoon', position: 'left',preqs:["Characters: Relic 8","Ships: 7-Star"], requiredToons: [0], platzones: [0]}
+			{id: 30, name: 'm2', type: 'platoon', position: 'right',preqs:["Characters: Relic 9","Ships: 7-Star"], requiredToons: [0], platzones: [0,1]}
 		],
 		selectedMission: '',
 		seen: false,
