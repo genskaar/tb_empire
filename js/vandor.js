@@ -534,7 +534,7 @@ Vue.component('mission', {
 "Echo",	"1","Emperor Palpatine",	"1","First Order Executioner",	"1","Gauntlet Starfighter",	"1","Hondo Ohnaka",	"1",
 "Hound's Tooth",	"1","Hunter",	"1","IG-100 MagnaGuard",	"1","Imperial TIE Bomber",	"1",
 "Jedi Knight Luke Skywalker",	"1","Jolee Bindo",	"1","Kylo Ren",	"1","Lord Vader",	"1","Mace Windu",	"1","Maul",	"1","Nightsister Initiate",	"1",
-"PadmÃ© Amidala",	"1","Raven's Claw",	"1","Resistance Hero Finn",	"1","Rey",	"1","Talia",	"1",
+"Padme Amidala",	"1","Raven's Claw",	"1","Resistance Hero Finn",	"1","Rey",	"1","Talia",	"1",
 "TIE Echelon",	"1","Tusken Shaman",	"1","Wedge Antilles's X-wing",	"1","Wicket",	"1",
          ]
 		],

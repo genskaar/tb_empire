@@ -533,7 +533,7 @@ Vue.component('mission', {
 "Chewbacca",	"1","Chirrut ÃŽmwe",	"1","Chopper",	"1","Clone Sergeant's ARC-170",	"1",
 "Clone Wars Chewbacca",	"1","CT-7567 Rex",	"1","Echo",	"1","Ghost",	"1","Han's Millennium Falcon",	"1",
 "Hoth Rebel Soldier",	"1","Ima-Gun Di",	"1","Lando Calrissian",	"1","Lobot",	"1",
-"Mon Mothma",	"1","Negotiator",	"1","Omega",	"1","PadmÃ© Amidala",	"1","Resistance Trooper",	"1",
+"Mon Mothma",	"1","Negotiator",	"1","Omega",	"1","Padme Amidala",	"1","Resistance Trooper",	"1",
 "Rose Tico",	"1","T3-M4",	"1","The Armorer",	"1","Umbaran Starfighter",	"1","Veteran Smuggler Chewbacca",	"1",
 "Zaalbar",	"1",
          ]

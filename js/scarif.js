@@ -531,7 +531,7 @@ Vue.component('mission', {
 "Ima-Gun Di",	"2","Rey (Scavenger)",	"2",
 "Skiff Guard (Lando Calrissian)",	"2","BB-8",	"1","Biggs Darklighter's X-wing",	"1","Chewbacca",	"1",
 "Coruscant Underworld Police",	"1","General Kenobi",	"1","Grand Master Yoda",	"1","Han's Millennium Falcon",	"1","Jedi Knight Revan",	"1","Kanan Jarrus",	"1","L3-37",	"1",
-"Lobot",	"1","Logray",	"1","Mara Jade, The Emperor's Hand",	"1","Outrider",	"1","PadmÃ© Amidala",	"1","Poe Dameron",	"1",
+"Lobot",	"1","Logray",	"1","Mara Jade, The Emperor's Hand",	"1","Outrider",	"1","Padme Amidala",	"1","Poe Dameron",	"1",
 "Resistance X-wing",	"1","Tech",	"1","The Mandalorian",	"1","Xanadu Blood",	"1",
 "Zaalbar",	"1",     
            ]
