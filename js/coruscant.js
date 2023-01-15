@@ -518,7 +518,7 @@ Vue.component('mission', {
 "Jedi Knight Luke Skywalker",	"8","Hermit Yoda",	"6","BB-8",	"5","The Mandalorian (Beskar Armor)",	"5","Sana Starros",	"4","C-3PO",	"3","Han Solo",	"3","Jedi Knight Revan",	"3",
 "Chewbacca",	"2","Commander Luke Skywalker",	"2","General Kenobi",	"2","Grand Master Yoda",	"2","Logray",	"2","Phantom I",	"2","R2-D2",	"2","Rey (Jedi Training)",	"2","Threepio & Chewie",	"2",
 "Ahsoka Tano (Fulcrum)",	"1","Amilyn Holdo",	"1","Anakin's Eta-2 Starfighter",	"1","Barriss Offee",	"1","Cody",	"1","Greef Karga",	"1","Home One",	"1","Hondo Ohnaka",	"1","Jolee Bindo",	"1","Jyn Erso",	"1",
-"Ki-Adi-Mundi",	"1","Kuiil",	"1","L3-37",	"1","Lobot",	"1","PadmÃ© Amidala",	"1","Plo Koon's Jedi Starfighter",	"1","Raven's Claw",	"1","Rebel Officer Leia Organa",	"1",
+"Ki-Adi-Mundi",	"1","Kuiil",	"1","L3-37",	"1","Lobot",	"1","Padme Amidala",	"1","Plo Koon's Jedi Starfighter",	"1","Raven's Claw",	"1","Rebel Officer Leia Organa",	"1",
 "Resistance X-wing",	"1","Sabine Wren",	"1","Teebo",	"1","The Armorer",	"1","Umbaran Starfighter",	"1","Visas Marr",	"1","Zaalbar",	"1",        ]
 		],
 		guides:[

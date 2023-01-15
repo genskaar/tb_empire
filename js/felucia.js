@@ -182,8 +182,8 @@ Vue.component('mission', {
 			 },
 			 {
                 id:31,
-                name: 'Kenobi Negotiator Fleet w/ Y-Wing',
-                toons: ['negotiator', 'anakin\'s_eta-2_starfighter','ahsoka_tano\'s_jedi_starfighter', 'umbaran_starfighter', 'plo_koon\'s_jedi_starfighter', 'clone_sergeant\'s_arc-170', 'rex\'s_arc-170', 'BTL-B_Y-wing_Starfighter']
+                name: 'Kenobi Negotiator Fleet',
+                toons: ['negotiator', 'anakin\'s_eta-2_starfighter','BTL-B_Y-wing_Starfighter', 'umbaran_starfighter', 'plo_koon\'s_jedi_starfighter', 'clone_sergeant\'s_arc-170', 'rex\'s_arc-170', 'ahsoka_tano\'s_jedi_starfighter',]
              },
              {
                 id:32,
@@ -473,6 +473,12 @@ Vue.component('mission', {
 				toons: ['general_skywalker', 'ct-21-0408__echo_','ct-7567__rex_','arc_trooper','ct-5555__fives_',]
 				
 			 },
+			 {
+				id: 84,
+				name: 'Malevolence Fleet',
+				toons: ['malevolence', 'hyena_bomber', 'vulture_droid','sun_fac\'s_geonosian_starfighter', 'geonosian_spy_starfighter', 'geonosian_soldier\'s_starfighter']
+				
+			},
              
              
 
@@ -640,7 +646,7 @@ Vue.component('mission', {
 			rewards: [
 				'Wave 1: 500,000',
 				],
-				preferredSquads: [77],
+				preferredSquads: [77,84,31],
 				dangerousEnemies: [38],
             reqs: [11],
 			}, 

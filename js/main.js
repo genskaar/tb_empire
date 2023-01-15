@@ -520,7 +520,7 @@ Vue.component('mission', {
 			name: 'c2',
 			type: 'malachor',
 			position: 'right',
-			planetlink: 'main.html',
+			planetlink: 'malachor.html',
 			rewards: [
 				'1*: 341,250,768',
                 '2*: 620,455,942',
@@ -530,7 +530,7 @@ Vue.component('mission', {
             'Phase 5 DS - Malachor'
             ],
             notes: [
-            'Recommended teams - coming soon'
+            'Click for recommended teams'
             ]
 			},
             {
@@ -681,7 +681,7 @@ Vue.component('mission', {
 			name: 'c12',
 			type: 'vandor',
 			position: 'right',
-			planetlink: 'main.html',
+			planetlink: 'vandor.html',
 			rewards: [
 				'1*: 341,250,768',
                 '2*: 620,455,942',
@@ -691,7 +691,7 @@ Vue.component('mission', {
             'Phase 5 Mixed - Vandor'
             ],
             notes: [
-            'Recommended teams - coming soon'
+            'Click for recommended teams'
             ]
 			},
             {
@@ -789,7 +789,7 @@ Vue.component('mission', {
 			name: 'c18',
 			type: 'kafrene',
 			position: 'left',
-			planetlink: 'main.html',
+			planetlink: 'kafrene.html',
 			rewards: [
 				'1*: 341,250,768',
                 '2*: 620,455,942',
@@ -799,7 +799,7 @@ Vue.component('mission', {
             'Phase 5 LS - Ring of Kafrene'
             ],
             notes: [
-            'Recommended teams - coming soon'
+            'Click for recommended teams'
             ]
 			},
             {
