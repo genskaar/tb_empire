@@ -502,7 +502,7 @@ Vue.component('mission', {
 			name: 'c1',
 			type: 'deathstar',
 			position: 'right',
-			planetlink: 'deathstar.html',
+			planetlink: 'main.html',
 			rewards: [
 				'1*: 582,632,425',
                 '2*: 1,059,331,682',
@@ -512,7 +512,7 @@ Vue.component('mission', {
             'Phase 6 DS - Death Star'
             ],
             notes: [
-            'Click for recommended teams'
+            'Recommended teams - coming soon'
             ]
 			},
             {
@@ -699,7 +699,7 @@ Vue.component('mission', {
 			name: 'c13',
 			type: 'hoth',
 			position: 'right',
-			planetlink: 'hoth.html',
+			planetlink: 'main.html',
 			rewards: [
 				'1*: 582,632,425',
                 '2*: 1,059,331,682',
@@ -709,7 +709,7 @@ Vue.component('mission', {
             'Phase 6 Mixed - Hoth'
             ],
             notes: [
-            'Click for recommended teams'
+            'Recommended teams - coming soon'
             ]
 			},
 			{
@@ -807,7 +807,7 @@ Vue.component('mission', {
 			name: 'c4',
 			type: 'scarif',
 			position: 'left',
-			planetlink: 'scarif.html',
+			planetlink: 'main.html',
 			rewards: [
 				'1*: 555,710,999',
                 '2*: 1,010,383,635',
@@ -817,7 +817,7 @@ Vue.component('mission', {
             'Phase 6 LS - Scarif'
             ],
             notes: [
-            'Click for recommended teams'
+            'Recommended teams - coming soon'
             ]
 			}
 		],

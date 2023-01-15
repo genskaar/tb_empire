@@ -171,32 +171,32 @@ td {
 
 /*Mission positions*/
 .c1 {/*P4 middle battle*/
-	top: 65%;
-	left: 68%;
-}
-.c2 {/*P4 top battle*/
-	top: 39%;
+	top: 27%;
 	left: 55%;
 }
+.c2 {/*P4 top battle*/
+	top: 20%;
+	left: 42%;
+}
 .c3 {/*P4 lower battle*/
-	top: 60%;
-	left: 30%;
+	top: 20%;
+	left: 25%;
 }
 .c4 {/*P4 lower battle*/
-	top: 57%;
-	left: 50%;
+	top: 65%;
+	left: 46%;
 }
 .c6 {/*P3 top special*/
-	top: 32%;
-	left: 29%;
+	top: 35%;
+	left: 22%;
 }
 .c7 {/*P3 top special*/
-	top: 44%;
-	left: 35%;
+	top: 35%;
+	left: 36%;
 }
 .m2 {/*P3 middle platoons*/
-	top: 28%;
-	left: 48%;
+	top: 69%;
+	left: 33%;
 }
 }
 @media (min-width: 1700px) {
