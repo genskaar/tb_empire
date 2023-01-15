@@ -616,7 +616,6 @@ Vue.component('mission', {
 			dangerousEnemies: [45],
             reqs: [18],
             modifiers: [3],
-            notes: [3]
 			},	{
 			id: 1,
 			name: 'c2',
@@ -630,6 +629,7 @@ Vue.component('mission', {
 			dangerousEnemies: [46,48],
 			modifiers: [3],
             reqs: [20],
+            notes: [3]
 			}, {
 			id: 2,
 			name: 'c3',
