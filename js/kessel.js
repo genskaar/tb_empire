@@ -466,6 +466,23 @@ Vue.component('mission', {
 				name: 'SLKR',
 				toons: ['gl_kylo', 'sith_trooper', 'kylo_ren_(unmasked)', 'general_hux', 'first_order_stormtrooper'],
 			},
+			 {
+                id:83,
+                name: 'oRolo with Rebels',
+                toons: ['rolo', 'han_solo', 'chewbacca', 'threepio_&_chewie', 'commander_luke_skywalker']
+             },
+             {
+				id: 82,
+				name: 'Rey 501st',
+				toons: ['gl_rey', 'arc_trooper', 'ct-21-0408__echo_', 'ct-7567__rex_', 'ct-5555__fives_']
+				
+			 },
+			 {
+				id: 83,
+				name: 'Galactic Legend Kenobi (Variants Available)',
+				toons: ['gl_kenobi', 'general_skywalker','commander_ahsoka_tano','general_kenobi','padmé_amidala',]
+				
+			 },
              
 
 
@@ -558,7 +575,8 @@ Vue.component('mission', {
         notes:[
         'With Lord Vader\'s ultimate ability, this can be done on full auto',
         'Unclear if this is even possible right now',
-        "Currently Bugged!"
+        "Currently Bugged!",
+        "JMK and JKL(JML) teams can also work here if not needed on LS path"
         ],
         reqs:[
         'Lord Vader (Relic 5+)',
@@ -598,6 +616,7 @@ Vue.component('mission', {
 			dangerousEnemies: [45],
             reqs: [18],
             modifiers: [3],
+            notes: [3]
 			},	{
 			id: 1,
 			name: 'c2',
@@ -607,7 +626,7 @@ Vue.component('mission', {
 				'Wave 1: 219,375',
                 'Wave 2: 493,594'
 				],
-			preferredSquads: [82],//tr
+			preferredSquads: [82,84,83],//tr
 			dangerousEnemies: [46,48],
 			modifiers: [3],
             reqs: [20],
@@ -647,9 +666,10 @@ Vue.component('mission', {
 				'Wave 1: 219,375',
                 'Wave 2: 493,594'
 				],
-				preferredSquads: [82],//tl
+				preferredSquads: [82,84,83],//tl
 				dangerousEnemies: [46,48],
 				modifiers: [3],
+				notes: [3],
             reqs: [20],
 			}, 
             {
