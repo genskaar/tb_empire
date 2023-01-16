@@ -450,7 +450,12 @@ Vue.component('mission', {
                 id:79,
                 name: 'oRolo with Rebels',
                 toons: ['rolo', 'han_solo', 'chewbacca', 'threepio_&_chewie', 'ahsoka_tano_(fulcrum)']
-             }
+             },
+             {
+                id:80,
+                name: 'oFinn',
+                toons: ['finn_o', 'rey_(jedi_training)', 'poe_dameron', 'bb-8', 'r2-d2']
+             },
              
 
 
@@ -566,7 +571,7 @@ Vue.component('mission', {
 				'Wave 1: 125,000',
                 'Wave 2: 250,000'
 				],
-            preferredSquads: [76,79,78,77],//generic
+            preferredSquads: [76,79,78,77,80],//generic
 			dangerousEnemies: [39,42],
 			modifiers: [2,3],
             reqs: [13],
@@ -592,7 +597,7 @@ Vue.component('mission', {
 				'Wave 1: 125,000',
                 'Wave 2: 250,000'
 				],
-            preferredSquads: [76,79,78,77],//generic
+            preferredSquads: [76,79,78,77,80],//generic
 			dangerousEnemies: [39,41],
             reqs: [13],
             modifiers: [2,3],
