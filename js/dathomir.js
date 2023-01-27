@@ -433,7 +433,7 @@ Vue.component('mission', {
              {
                 id:76,
                 name: 'Sith Empire with SEE',
-                toons: ['darth_revan','darth_malak','darth_malgus','gl_palp','bastila_shan_(fallen)']
+                toons: ['darth_revan','darth_malak','darth_malgus','gl_palp','wat_tambor']
              },
              {
 				id: 77,
@@ -445,6 +445,16 @@ Vue.component('mission', {
                 id:78,
                 name: "Doctor Aphra & Droids (variants available)",
                 toons: ['doctoraphra','bt1','triplezero','ig-88','hk-47']
+             },
+             {
+                id:79,
+                name: 'Bounty Hunters',
+                toons: [  'jango_fett','bossk','boba_fett', 'boba_soj','dengar']
+             },
+             {
+                id:80,
+                name: 'Separatists',
+                toons: [  'general_grievous','jango_fett','count_dooku', 'nute_gunrey','wat_tambor']
              },
              
 
@@ -564,7 +574,7 @@ Vue.component('mission', {
 				'Wave 1: 162,500',
                 'Wave 2: 341,250'
 				],
-			preferredSquads: [75,76,77],//gen
+			preferredSquads: [75,76,77,79,80],//gen
 			dangerousEnemies: [38,39],
 			modifiers: [2],
             reqs: [11],
@@ -592,7 +602,7 @@ Vue.component('mission', {
 				'Wave 1: 162,500',
                 'Wave 2: 341,250'
 				],
-				preferredSquads: [75,76,77],//gen
+				preferredSquads: [75,76,77,79,80],//gen
 				dangerousEnemies: [38,39],
 				modifiers: [2],
             reqs: [11],
