@@ -429,7 +429,7 @@ Vue.component('mission', {
 		 	 {
 				 id:75,
 				 name: 'Galactic Legend Luke (variants available)',
-				 toons: ['jedi_knight_luke_skywalker','gl_luke','hermit_yoda','jolee_bindo','jedi_knight_revan',],
+				 toons: ['gl_luke','jedi_knight_luke_skywalker','hermit_yoda','jolee_bindo','jedi_knight_revan',],
 			 },
 			 {
 				 id:76,
@@ -538,7 +538,8 @@ Vue.component('mission', {
         'Unclear if this is even possible right now',
         "Currently Bugged!",
         "Currently Bugged! Allows relic 5 Jedi to be used - Potentially Fixed",
-        "Rey is likely a 1/2. Rey 501st can also work."
+        "Rey is likely a 1/2. Rey 501st can also work.",
+        "Ninth Sister's lead prevents speed limiting effects e.g. jkl"
         ],
         reqs:[
         'Lord Vader (Relic 5+)',
@@ -588,6 +589,7 @@ Vue.component('mission', {
 			dangerousEnemies: [39,40],
 			modifiers: [2,3],
             reqs: [12],
+            notes: [5],
 			}, {
 			id: 2,
 			name: 'c3',
