@@ -442,6 +442,11 @@ Vue.component('mission', {
                 name: 'Inquisitors',
                 toons: ['grand_inquisitor', 'seventh_sister', 'ninth_sister', 'fifth_brother','eighth_brother']
              },
+             {
+                id:78,
+                name: 'Bounty Hunters with Wat',
+                toons: ['bossk', 'boba_fett', 'jango_fett', 'boba_soj','wat_tambor']
+             },
              
 
 
@@ -547,10 +552,9 @@ Vue.component('mission', {
 			rewards: [
                 'Wave 1: 250,000'
 				],
-			preferredSquads: [74,75],
+			preferredSquads: [74,75,78],
 			dangerousEnemies: [28],//acklay
             reqs: [4],
-            notes: [2]
 			}, {
 			id: 2,
 			name: 'c3',
