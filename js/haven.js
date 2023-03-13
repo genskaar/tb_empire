@@ -450,7 +450,23 @@ Vue.component('mission', {
                 id:79,
                 name: 'oRolo with Rebels',
                 toons: ['rolo', 'han_solo', 'chewbacca', 'threepio_&_chewie', 'ahsoka_tano_(fulcrum)']
-             }
+             },
+             {
+                id:80,
+                name: 'Inquisitors',
+                toons: ['third_sister','grand_inquisitor', 'seventh_sister', 'ninth_sister', 'fifth_brother']
+             },
+             {
+                id:81,
+                name: 'Lord Vader Empire (Variants Available)',
+                toons: ['gl_vader','darth_vader','royal_guard','admiral_piett','maul']
+             },
+             {
+				id: 82,
+				name: 'Galactic Legend Kylo (Variants Available)',
+				toons: ['gl_kylo', 'first_order_officer', 'kylo_ren_(unmasked)','general_hux','sith_trooper']
+				
+			 },
              
 
 
@@ -504,7 +520,8 @@ Vue.component('mission', {
         "Wave 2: Ninth Sister (L), 2x Purge Trooper",
         "Wave 1: 3x Partisan Fighter (L), 2x Rebel Spy",//45
         "Wave 2: Kanan Jarrus (L), Ezra Bridger, Chopper, Rex, Partisan Fighter",
-        "Wave 1: 50R-T, 0-0-0, HK-47, T3-M4, BT-1"
+        "Wave 1: 50R-T, 0-0-0, HK-47, T3-M4, BT-1",
+        "Wave 2: Sabine Wren (L), Ezra Bridger, Chopper, Zeb"
         
 		],
 		platoons: [
@@ -545,7 +562,8 @@ Vue.component('mission', {
         notes:[
         'With Lord Vader\'s ultimate ability, this can be done on full auto',
         'Unclear if this is even possible right now',
-        "Currently Bugged!"
+        "Currently Bugged!",
+        "This mission is different from the other 3 and is a lot harder. Unclear if this is even possible right now."
         ],
         reqs:[
         'Lord Vader (Relic 5+)',
@@ -580,7 +598,7 @@ Vue.component('mission', {
                 'Wave 1: 219,375',
                 'Wave 2: 493,594'
 				],
-            preferredSquads: [24],//br
+            preferredSquads: [81,82],//br
 			dangerousEnemies: [45,46],
             reqs: [18],
             modifiers: [3],
@@ -593,7 +611,7 @@ Vue.component('mission', {
 				'Wave 1: 219,375',
                 'Wave 2: 493,594'
 				],
-			preferredSquads: [24],//tr
+			preferredSquads: [81,82],//tr
 			dangerousEnemies: [45,46],
 			modifiers: [3],
             reqs: [18],
@@ -605,8 +623,8 @@ Vue.component('mission', {
 			rewards: [
 				'20 GET3'
 				],
-            preferredSquads: [24],//empire
-			dangerousEnemies: [34],
+            preferredSquads: [80],//empire
+			dangerousEnemies: [45,48],
             reqs: [17],
             modifiers: [3],
 			},
@@ -619,7 +637,7 @@ Vue.component('mission', {
 				'Wave 1: 219,375',
                 'Wave 2: 493,594'
 				],
-				preferredSquads: [24],//m
+				preferredSquads: [81,82],//m
 				dangerousEnemies: [45,46],
 				modifiers: [3],
             reqs: [18],
@@ -637,6 +655,7 @@ Vue.component('mission', {
 				dangerousEnemies: [47],
 				modifiers: [3],
             reqs: [18],
+            notes: [3],
 			}, 
             {
 			id: 6,
