@@ -456,6 +456,11 @@ Vue.component('mission', {
                 name: 'Separatists',
                 toons: [  'general_grievous','jango_fett','count_dooku', 'nute_gunrey','wat_tambor']
              },
+             {
+                id:81,
+                name: 'Empire (Variants Available)',
+                toons: ['emperor_palpatine','darth_vader','royal_guard','admiral_piett','mara_jade_teh']
+             },
              
 
 
@@ -531,7 +536,8 @@ Vue.component('mission', {
         'With Lord Vader\'s ultimate ability, this can be done on full auto',
         'Unclear if this is even possible right now',
         "Currently Bugged!",
-        "Do not use SEE lead here (prevents ally revives)"
+        "Do not use SEE lead here (prevents ally revives)",
+        "Using LV with leftover empire can let you use 'Good' empire elsewhere for 2/2."
         ],
         reqs:[
         'Lord Vader (Relic 5+)',
@@ -574,7 +580,7 @@ Vue.component('mission', {
 				'Wave 1: 162,500',
                 'Wave 2: 341,250'
 				],
-			preferredSquads: [75,76,77,79,80],//gen
+			preferredSquads: [75,76,77,80],//gen
 			dangerousEnemies: [38,39],
 			modifiers: [2],
             reqs: [11],
@@ -588,10 +594,11 @@ Vue.component('mission', {
 				'Wave 1: 162,500',
                 'Wave 2: 341,250'
 				],
-            preferredSquads: [74],//empire
+            preferredSquads: [74,81],//empire
 			dangerousEnemies: [38,39],
             reqs: [13],
             modifiers: [2],
+            notes: [4],
 			},
 			{
 			id: 5,
@@ -602,7 +609,7 @@ Vue.component('mission', {
 				'Wave 1: 162,500',
                 'Wave 2: 341,250'
 				],
-				preferredSquads: [75,76,77,79,80],//gen
+				preferredSquads: [75,76,77,80],//gen
 				dangerousEnemies: [38,39],
 				modifiers: [2],
             reqs: [11],

@@ -338,7 +338,7 @@ Vue.component('mission', {
 			 {
 				 id:59,
 				 name: 'Galactic Legend Luke (Required: Jedi, 22k+ Power) (variants available)',
-				 toons: [ 'jedi_knight_luke_skywalker','gl_luke','hermit_yoda','jolee_bindo','jedi_knight_revan',],
+				 toons: [ 'gl_luke','jedi_knight_luke_skywalker','hermit_yoda','jolee_bindo','jedi_knight_revan',],
 			 },
 			 {
 				id:60,
@@ -434,7 +434,7 @@ Vue.component('mission', {
 		 	 {
 				 id:76,
 				 name: 'Galactic Legend Luke (variants available)',
-				 toons: ['jedi_knight_luke_skywalker','gl_luke','hermit_yoda','jolee_bindo','jedi_knight_revan',],
+				 toons: ['gl_luke','jedi_knight_luke_skywalker','hermit_yoda','jolee_bindo','jedi_knight_revan',],
 			 },
 			 {
 				 id:77,
@@ -466,6 +466,11 @@ Vue.component('mission', {
 				 name: 'Galactic Legend Kenobi with Jedi',
 				 toons: ['gl_kenobi','general_skywalker','general_kenobi','ahsoka_tano','shaak_ti',],
 			 },
+			 {
+                id:83,
+                name: 'oFinn',
+                toons: ['finn_o', 'rey_(jedi_training)', 'poe_dameron', 'bb-8', 'r2-d2']
+             },
            
                  
              
@@ -617,7 +622,7 @@ Vue.component('mission', {
 				'Wave 1: 219,375',
                 'Wave 2: 493,594'
 				],
-			preferredSquads: [77,81],//tr
+			preferredSquads: [77,81,83],//tr
 			dangerousEnemies: [46,47],
 			modifiers: [3,4],
             reqs: [19],

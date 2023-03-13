@@ -442,7 +442,13 @@ Vue.component('mission', {
                 id:77,
                 name: 'Inquisitors',
                 toons: ['grand_inquisitor', 'seventh_sister', 'ninth_sister', 'fifth_brother','eighth_brother']
-             }
+             },
+             {
+                id:78,
+                name: 'Empire (Variants in initial lineup of 3 possible)',
+                toons: ['executrix', 'imperial_tie_bomber', 'scythe', 'tie_advanced_x1','tie_defender', 'tie_interceptor', 'gauntlet_starfighter' ]
+             },
+             
 
 
 
@@ -578,7 +584,7 @@ Vue.component('mission', {
 			rewards: [
 				'Wave 1: 400,000',
 				],
-				preferredSquads: [24],
+				preferredSquads: [78],
 				dangerousEnemies: [23],
             reqs: [2],
             modifiers: [0]

@@ -462,28 +462,40 @@ Vue.component('mission', {
                 toons: ['gl_jabba','krrsantan','skiff_lando','boba_fett','boushh']
              },
              {
-				id: 82,
-				name: 'SLKR',
-				toons: ['gl_kylo', 'sith_trooper', 'kylo_ren_(unmasked)', 'general_hux', 'first_order_stormtrooper'],
-			},
-			 {
+		id: 82,
+		name: 'SLKR (Variants Available)',
+		toons: ['gl_kylo', 'sith_trooper', 'kylo_ren_(unmasked)', 'general_hux', 'first_order_stormtrooper'],
+             },
+	     {
                 id:83,
                 name: 'oRolo with Rebels',
                 toons: ['rolo', 'han_solo', 'chewbacca', 'threepio_&_chewie', 'commander_luke_skywalker']
-             },
+             }, 
              {
-				id: 82,
-				name: 'Rey 501st',
-				toons: ['gl_rey', 'arc_trooper', 'ct-21-0408__echo_', 'ct-7567__rex_', 'ct-5555__fives_']
-				
-			 },
-			 {
-				id: 83,
-				name: 'Galactic Legend Kenobi (Variants Available)',
-				toons: ['gl_kenobi', 'general_skywalker','commander_ahsoka_tano','general_kenobi','padmé_amidala',]
-				
-			 },
+		id: 84,
+		name: 'Rey 501st',
+		toons: ['gl_rey', 'arc_trooper', 'ct-21-0408__echo_', 'ct-7567__rex_', 'ct-5555__fives_']
+			
+	     },
+	     {
+		id: 85,
+		name: 'Galactic Legend Kenobi (Variants Available)',
+		toons: ['gl_kenobi', 'general_skywalker','commander_ahsoka_tano','general_kenobi','padmé_amidala',]
+		
+	     },
+             {   
+		id: 86,
+		name: 'Rey + Scoundrals',
+		toons: ['gl_rey', "qi'ra",'l3-37','han_solo','chewbacca',]
+			
+	     },
+	     {
+                id:87,
+                name: 'Lord Vader Empire (Variants Available)',
+                toons: ['gl_vader','darth_vader','royal_guard','admiral_piett','grand_admiral_thrawn']
+             },
              
+
 
 
 
@@ -576,7 +588,8 @@ Vue.component('mission', {
         'With Lord Vader\'s ultimate ability, this can be done on full auto',
         'Unclear if this is even possible right now',
         "Currently Bugged!",
-        "JMK and JKL(JML) teams can also work here if not needed on LS path"
+        "JMK and JKL(JML) teams can also work here if not needed on LS path",
+        "Executor mirror here is reliable but can be painful. Use only basics abilities with non-capitol ships, put taunt on HT with executors special and wait. It may take up to the second ulitmate ability to win."
         ],
         reqs:[
         'Lord Vader (Relic 5+)',
@@ -616,6 +629,7 @@ Vue.component('mission', {
 			dangerousEnemies: [45],
             reqs: [18],
             modifiers: [3],
+            notes: [4],
 			},	{
 			id: 1,
 			name: 'c2',
@@ -625,7 +639,7 @@ Vue.component('mission', {
 				'Wave 1: 219,375',
                 'Wave 2: 493,594'
 				],
-			preferredSquads: [82,84,83],//tr
+			preferredSquads: [82,87,84,83],//tr
 			dangerousEnemies: [46,48],
 			modifiers: [3],
             reqs: [20],
@@ -638,8 +652,8 @@ Vue.component('mission', {
 			rewards: [
 				'20 GET3',
 				],
-            preferredSquads: [24],//special
-			dangerousEnemies: [34],
+            preferredSquads: [86],//special
+			dangerousEnemies: [46,48],
             reqs: [19],
             modifiers: [3],
 			},
@@ -666,7 +680,7 @@ Vue.component('mission', {
 				'Wave 1: 219,375',
                 'Wave 2: 493,594'
 				],
-				preferredSquads: [82,84,83],//tl
+				preferredSquads: [82,87,84,83],//tl
 				dangerousEnemies: [46,48],
 				modifiers: [3],
 				notes: [3],
