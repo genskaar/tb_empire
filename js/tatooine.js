@@ -515,12 +515,12 @@ Vue.component('mission', {
         "Chimeara, Tie Advanced X1, Tie Bomber, Tie Fighter, Tie Interceptor (R)",//45
         "Wave 1: 2x Pirate Leader (L), Pirate Spy, Pirate Bruiser, Pirate Enforcer, Pirate Saboteur",
         "Wave 2: Hondo Ohnaka (L), Pirate Leader , Pirate Spy, Pirate Bruiser, Pirate Enforcer, Pirate Saboteur",
-        "Wave 1: Sandtrooper Commander (L), 2x Sandtrooper, 2x Sandtrooper Scout, Pirate Leader",
+        "Wave 1: Sandtrooper Commander (L), 2x Sandtrooper, 2x Sandtrooper Scout, (?)Pirate Leader",
         "Wave 2: Imperial Officer, 2x Sandtrooper, 2x Sandtrooper Scout, Sandtrooper Commander",
-        "Wave 1: Tusken Elder, Tusken Brute, 2x Tusken Raider, Tusken Shaman, Pirate Leader",//50
-        "Wave 2: Tusken Elder, Tusken Brute, 2x Tusken Raider, Tusken Shaman, Pirate Leader",
-        "Wave 1: Chief Nebit (L), Jawa Scavenger, Jawa Engineer, Jawa, Dathcha, Pirate Leader",
-        "Wave 2: Jedi Master Kenobi, Pirate Leader",
+        "Wave 1: Tusken Elder, Tusken Brute, 2x Tusken Raider, Tusken Shaman, (?)Pirate Leader",//50
+        "Wave 2: Tusken Elder, Tusken Brute, 2x Tusken Raider, Tusken Shaman, (?)Pirate Leader",
+        "Wave 1: Chief Nebit (L), Jawa Scavenger, Jawa Engineer, Jawa, Dathcha, (?)Pirate Leader",
+        "Wave 2: Jedi Master Kenobi, (?)Pirate Leader",
 		],
 		platoons: [
         [ "Boba Fett, Scion of Jango",	"6","Darth Malgus",	"5","Maul",	"5","TIE/IN Interceptor Prototype",	"5","Jedi Knight Luke Skywalker",	"4","Razor Crest",	"4",
@@ -553,7 +553,8 @@ Vue.component('mission', {
         'With Lord Vader\'s ultimate ability, this can be done on full auto',
         'Unclear if this is even possible right now',
         "Currently Bugged!",
-        "Potentially a wampa team could be consistent here."
+        "Potentially a wampa team could be consistent here.",
+        "Join the 50 Shards of KAM server for streaming with the experts who know this mission better than anyone"
         ],
         reqs:[
         'Lord Vader (Relic 5+)',
@@ -633,6 +634,7 @@ Vue.component('mission', {
 			dangerousEnemies: [52,53],
             reqs: [19],
             modifiers: [3],
+            notes: [4],
 			},
 			{
 			id: 5,
