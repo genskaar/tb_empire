@@ -444,7 +444,7 @@ Vue.component('mission', {
              },
              {
                 id:78,
-                name: 'Bounty Hunters with Wat',
+                name: 'Bounty Hunters with Wat and BobaSOJ/Fennec',
                 toons: ['bossk', 'boba_fett', 'jango_fett', 'boba_soj','wat_tambor']
              },
              
@@ -552,7 +552,7 @@ Vue.component('mission', {
 			rewards: [
                 'Wave 1: 250,000'
 				],
-			preferredSquads: [74,75,78],
+			preferredSquads: [74,75,78,77],
 			dangerousEnemies: [28],//acklay
             reqs: [4],
 			}, {
@@ -563,7 +563,7 @@ Vue.component('mission', {
 			rewards: [
                 'Wave 1: 250,000'
 				],
-            preferredSquads: [76,77,75],
+            preferredSquads: [76,77,75,74],
 			dangerousEnemies: [27],//reek
             reqs: [4],
 			},
