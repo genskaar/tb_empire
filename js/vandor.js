@@ -521,7 +521,13 @@ Vue.component('mission', {
         "Wave 1: 3x Pike Sentinel (L), Pirate Spy, Pirate Saboteur, Pirate Leader",
         "Wave 2: Qi'ra, L3-37, Young Han Solo, Young Lando Calrissian, Vandor Chewbacca, Pirate Leader",
         "Wave 2: 3x Pike Sentinel (L), Pirate Spy, Pirate Saboteur, Pirate Enforcer",
-
+        "Executor, Hound's Tooth, Xanadu Blood, Razor Crest, IG-2000 (R), SLave I (R)",
+        "Wave 1: 3x Pike Sentinel (L), Pirate Spy, Pirate Enforcer, (Supply Crate)",//50
+        "Wave 2: 3x Pike Sentinel (L), Pirate Spy, Pirate Saboteur, Pirate Enforcer",
+        "Wave 1: Stormtrooper Commander (L), Stormtrooper, 2x Range Trooper, Tie Pilot, (Supply Crate)",
+        "Wave 2: Imperial Officer (L), Stormtrooper, Stormtrooper Commando, 2x Range Trooper, Tie Pilot",
+        "Wave 1: Cartel Spy (L), 2x Cartel Bruiser, 2x Cartel Saboteur, (Supply Crate)",
+        "Wave 2: Enfys Nest (L), 2x Cartel Bruiser, 2x Cartel Spy, Cartel Saboteur",//55
 		],
 		platoons: [
         [  "Grand Inquisitor",	"7","Commander Ahsoka Tano",	"6",
@@ -604,7 +610,7 @@ Vue.component('mission', {
 				'Wave 1: 1,443,488',
 				],
             preferredSquads: [24],//fleet
-			dangerousEnemies: [34],
+			dangerousEnemies: [49],
             reqs: [21],
             modifiers: [4],
 			},	{
@@ -617,7 +623,7 @@ Vue.component('mission', {
                 'Wave 2: 721,744'
 				],
 			preferredSquads: [24],//tr generic
-			dangerousEnemies: [34],
+			dangerousEnemies: [52,53],
 			modifiers: [5,6],
             reqs: [22],
 			}, {
@@ -643,7 +649,7 @@ Vue.component('mission', {
                 'Wave 2: 721,744'
 				],
 			preferredSquads: [24],//bl generic
-			dangerousEnemies: [34],
+			dangerousEnemies: [54,55],
 			modifiers: [5,6],
             reqs: [22],
 			},
@@ -657,7 +663,7 @@ Vue.component('mission', {
                 'Wave 2: 721,744'
 				],
 				preferredSquads: [81],//mid r jabba
-				dangerousEnemies: [34],
+				dangerousEnemies: [50,51],
 				modifiers: [5,6],
             reqs: [24],
 			}, 
