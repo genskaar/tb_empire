@@ -521,6 +521,7 @@ Vue.component('mission', {
         "Wave 1: 3x Pike Sentinel (L), Pirate Spy, Pirate Saboteur, Pirate Leader",
         "Wave 2: Qi'ra, L3-37, Young Han Solo, Young Lando Calrissian, Vandor Chewbacca, Pirate Leader",
         "Wave 2: 3x Pike Sentinel (L), Pirate Spy, Pirate Saboteur, Pirate Enforcer",
+        "Executrix, Tie Advanced X1, Tie Fighter, Scythe, Tie Bomber, Tie Fighter, Tie Interceptor (R)",
 
 		],
 		platoons: [
@@ -600,8 +601,8 @@ Vue.component('mission', {
 			rewards: [
 				'Wave 1: 1,443,488',
 				],
-            preferredSquads: [24],//fleet
-			dangerousEnemies: [34],
+            preferredSquads: [75],//fleet
+			dangerousEnemies: [49],
             reqs: [21],
 			},	{
 			id: 1,
