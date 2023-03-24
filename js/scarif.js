@@ -551,7 +551,12 @@ Vue.component('mission', {
         'At the beginning of battle, each side summons a random Corellian Engineering Cargo Ship. At the start of their turn, Cargo Ships gain Protection Over Time (10%) for 1 turn.',
         'Coaxium: +25% Critical Damage and Speed; -15% Accuracy; will be critically hit if able; enemies can ignore Taunt to target this character; if this character is defeated by a status effect, Coaxium will not be granted to anyone',
         "Summons Probe Droid whenever possible",
-        "Whenever a character/ship uses a Special ability, they gain a stack of Confuse (max 3) until the end of the encounter. All characters gain the granted ability Clear Head at the start of battle (remove all stacks of confused)."
+        "Whenever a character/ship uses a Special ability, they gain a stack of Confuse (max 3) until the end of the encounter. All characters gain the granted ability Clear Head at the start of battle (remove all stacks of confused).",
+        "Every 10 turns, all characters take massive damage, which can't be evaded.",
+        'Enemies start with 5 stacks of Endless Ranks.',
+        "At the start of battle and whenever a Capital Ship uses their Call Reinforcement ability, reduce the cooldown of Call Reinforcement by 2."
+
+        
         ],
         notes:[
         'With Lord Vader\'s ultimate ability, this can be done on full auto',
@@ -579,7 +584,10 @@ Vue.component('mission', {
         '5x characters (Relic 8+), Jabba the Hutt',
         "Ships (7-Star), Ghost",
         '5x characters (Relic 8+), Qi\'ra, L3-37',
-        '5x characters (Relic 8+)'//20
+        '5x characters (Relic 8+)',//20
+        '5x Light Side or Neutral (Relic 9+), Baze Malbus, Chirrut Îmwe, Scarif Rebel Pathfinder',
+        '5x Light Side or Neutral (Relic 9+)',
+        '5x Light Side or Neutral (Relic 9+), Cassian Andor, K-2SO, Pao'
         ],
 		platims:[
 		'Phase 6 LS Scarif (self)',//0
@@ -590,37 +598,38 @@ Vue.component('mission', {
 			type: 'fleet',
 			position: 'left',
 			rewards: [
-				'Wave 1: 987,188',
+				'Wave 1: 2,303,438',
 				],
-            preferredSquads: [80,75],//fleet
-			dangerousEnemies: [45],
-            reqs: [18],
-            modifiers: [3],
+            preferredSquads: [75],//fleet
+			dangerousEnemies: [34],
+            reqs: [16],
+            modifiers: [6],
 			},	{
 			id: 1,
 			name: 'c2',
 			type: 'usual',
-			position: 'left',
+			position: 'right',
 			rewards: [
-				'Wave 1: 219,375',
-                'Wave 2: 493,594'
+				'Wave 1: 460,668',
+                'Wave 2: 1,151,719'
 				],
-			preferredSquads: [82],//tr
-			dangerousEnemies: [46,48],
-			modifiers: [3],
-            reqs: [20],
+			preferredSquads: [24],//tr
+			dangerousEnemies: [34],
+			modifiers: [4,5],
+            reqs: [23],
 			}, {
 			id: 2,
 			name: 'c3',
-			type: 'special',
+			type: 'usual',
 			position: 'right',
 			rewards: [
-				'20 GET3',
+				'Wave 1: 460,668',
+                'Wave 2: 1,151,719'
 				],
             preferredSquads: [24],//special
 			dangerousEnemies: [34],
-            reqs: [19],
-            modifiers: [3],
+            reqs: [22],
+            modifiers: [4,5],
 			},
             {
 			id: 5,
@@ -628,13 +637,13 @@ Vue.component('mission', {
 			type: 'usual',
 			position: 'left',
 			rewards: [
-				'Wave 1: 219,375',
-                'Wave 2: 493,594'
+				'Wave 1: 460,668',
+                'Wave 2: 1,151,719'
 				],
-			preferredSquads: [81],//br Jabba
-			dangerousEnemies: [46,47],
-			modifiers: [3],
-            reqs: [17],
+			preferredSquads: [24],//br Jabba
+			dangerousEnemies: [34],
+			modifiers: [4,5],
+            reqs: [22],
 			},
 			{
 			id: 5,
@@ -642,13 +651,13 @@ Vue.component('mission', {
 			type: 'usual',
 			position: 'right',
 			rewards: [
-				'Wave 1: 219,375',
-                'Wave 2: 493,594'
+				'Wave 1: 460,668',
+                'Wave 2: 1,151,719'
 				],
-				preferredSquads: [82],//tl
-				dangerousEnemies: [46,48],
-				modifiers: [3],
-            reqs: [20],
+				preferredSquads: [24],//tl
+				dangerousEnemies: [34],
+				modifiers: [4,5],
+            reqs: [21],
 			}, 
             {
 			id: 6,
@@ -656,10 +665,10 @@ Vue.component('mission', {
 			type: 'deploy',
 			position: 'right',
             stars: [
-               '1 Star: 235,143,105',
-               '2 Stars: 400,243,583',
-               '3 Stars: 500,304,479',
-               '3 Stars after maximum preload: 265,161,374 ',
+               '1 Star: 555,710,999',
+               '2 Stars: 1,010,383,635',
+               '3 Stars: 1,188,686,629',
+               '3 Stars after maximum preload: 632,975,630 ',
             ]
 			}, 
 			{id: 30, name: 'm2', type: 'platoon', position: 'left',preqs:["Characters: Relic 9","Ships: 7-Star"], requiredToons: [0], platzones: [0]}
