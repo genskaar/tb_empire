@@ -512,7 +512,7 @@ Vue.component('mission', {
             'Phase 6 DS - Death Star'
             ],
             notes: [
-            'Recommended teams - coming soon'
+            'Click for recommended teams'
             ]
 			},
             {
@@ -709,7 +709,7 @@ Vue.component('mission', {
             'Phase 6 Mixed - Hoth'
             ],
             notes: [
-            'Recommended teams - coming soon'
+            'Click for recommended teams'
             ]
 			},
 			{
@@ -817,7 +817,7 @@ Vue.component('mission', {
             'Phase 6 LS - Scarif'
             ],
             notes: [
-            'Recommended teams - coming soon'
+            'Click for recommended teams'
             ]
 			}
 		],
