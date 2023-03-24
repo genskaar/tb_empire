@@ -466,6 +466,11 @@ Vue.component('mission', {
 				name: 'SLKR',
 				toons: ['gl_kylo', 'sith_trooper', 'kylo_ren_(unmasked)', 'general_hux', 'first_order_stormtrooper'],
 			},
+            {
+                id:83,
+                name: "Doctor Aphra & Droids (variants available)",
+                toons: ['doctoraphra','bt1','triplezero','ig-88','hk-47']
+             },
              
 
 
@@ -553,7 +558,10 @@ Vue.component('mission', {
         'At the beginning of battle, each side summons a random Corellian Engineering Cargo Ship. At the start of their turn, Cargo Ships gain Protection Over Time (10%) for 1 turn.',
         'Coaxium: +25% Critical Damage and Speed; -15% Accuracy; will be critically hit if able; enemies can ignore Taunt to target this character; if this character is defeated by a status effect, Coaxium will not be granted to anyone',
         "Summons Probe Droid whenever possible",
-        "Whenever a character/ship uses a Special ability, they gain a stack of Confuse (max 3) until the end of the encounter. All characters gain the granted ability Clear Head at the start of battle (remove all stacks of confused)."
+        "Whenever a character/ship uses a Special ability, they gain a stack of Confuse (max 3) until the end of the encounter. All characters gain the granted ability Clear Head at the start of battle (remove all stacks of confused).",
+        "At the end of every other turn, all units are inflicted with Damage Over Time until defeated, which can't be resisted.",
+        "Gain a stack of frostbite every turn. At 10 stacks units are defeated. Use granted ability to remove 2 stacks.",
+        "All units gain the Smells Bad on the Outside ability. All units start with Deadly Storm. The first time an ally would be defeated, they instead dispel all debuffs on themselves and remove Deadly Storm from all allies, recover 100% Health and Protection, gain Damage Immunity and Stun for 1 turn. Use Smells Bad From the Outside ability to remove Deadly Storm.",
         ],
         notes:[
         'With Lord Vader\'s ultimate ability, this can be done on full auto',
@@ -581,7 +589,12 @@ Vue.component('mission', {
         '5x characters (Relic 8+), Jabba the Hutt',
         "Ships (7-Star), Ghost",
         '5x characters (Relic 8+), Qi\'ra, L3-37',
-        '5x characters (Relic 8+)'//20
+        '5x characters (Relic 8+)',//20,
+        '5x characters (Relic 9+)',
+        '5x characters (Relic 9+), Doctor Aphra, BT-1, 0-0-0',
+        '5x characters (Relic 9+), Jabba the Hutt',
+        "Ships (7-Star)",
+        
         ],
 		platims:[
 		'Phase 6 Mixed Hoth (self)',//0
@@ -592,37 +605,38 @@ Vue.component('mission', {
 			type: 'fleet',
 			position: 'left',
 			rewards: [
-				'Wave 1: 987,188',
+				'Wave 1: 2,303,438',
 				],
-            preferredSquads: [80,75],//fleet
-			dangerousEnemies: [45],
-            reqs: [18],
-            modifiers: [3],
+            preferredSquads: [24],//fleet
+			dangerousEnemies: [34],
+            reqs: [24],
+            modifiers: [4],
 			},	{
 			id: 1,
 			name: 'c2',
 			type: 'usual',
-			position: 'left',
+			position: 'right',
 			rewards: [
-				'Wave 1: 219,375',
-                'Wave 2: 493,594'
+				'Wave 1: 460,668',
+                'Wave 2: 1,151,719'
 				],
-			preferredSquads: [82],//tr
-			dangerousEnemies: [46,48],
-			modifiers: [3],
-            reqs: [20],
+			preferredSquads: [24],//tr
+			dangerousEnemies: [34],
+			modifiers: [5,6],
+            reqs: [21],
 			}, {
 			id: 2,
 			name: 'c3',
-			type: 'special',
+			type: 'usual',
 			position: 'right',
 			rewards: [
-				'20 GET3',
+				'Wave 1: 460,668',
+                'Wave 2: 1,151,719'
 				],
-            preferredSquads: [24],//special
+            preferredSquads: [24],//bl
 			dangerousEnemies: [34],
-            reqs: [19],
-            modifiers: [3],
+            reqs: [21],
+            modifiers: [5,6],
 			},
             {
 			id: 5,
@@ -630,13 +644,13 @@ Vue.component('mission', {
 			type: 'usual',
 			position: 'left',
 			rewards: [
-				'Wave 1: 219,375',
-                'Wave 2: 493,594'
+				'Wave 1: 460,668',
+                'Wave 2: 1,151,719'
 				],
-			preferredSquads: [81],//br Jabba
-			dangerousEnemies: [46,47],
-			modifiers: [3],
-            reqs: [17],
+			preferredSquads: [83],//br aphra
+			dangerousEnemies: [34],
+			modifiers: [5,6],
+            reqs: [22],
 			},
 			{
 			id: 5,
@@ -644,13 +658,13 @@ Vue.component('mission', {
 			type: 'usual',
 			position: 'right',
 			rewards: [
-				'Wave 1: 219,375',
-                'Wave 2: 493,594'
+				'Wave 1: 460,668',
+                'Wave 2: 1,151,719'
 				],
-				preferredSquads: [82],//tl
-				dangerousEnemies: [46,48],
-				modifiers: [3],
-            reqs: [20],
+				preferredSquads: [81],//tl
+				dangerousEnemies: [34],
+				modifiers: [5,6],
+            reqs: [23],
 			}, 
             {
 			id: 6,
@@ -658,13 +672,13 @@ Vue.component('mission', {
 			type: 'deploy',
 			position: 'right',
             stars: [
-               '1 Star: 235,143,105',
-               '2 Stars: 400,243,583',
-               '3 Stars: 500,304,479',
-               '3 Stars after maximum preload: 265,161,374 ',
+               '1 Star: 582,632,425',
+               '2 Stars: 1,059,331,682',
+               '3 Stars: 1,246,272,567',
+               '3 Stars after maximum preload: 663,640,142 ',
             ]
 			}, 
-			{id: 30, name: 'm2', type: 'platoon', position: 'left',preqs:["Characters: Relic 9","Ships: 7-Star"], requiredToons: [0], platzones: [0]}
+			{id: 30, name: 'm2', type: 'platoon', position: 'right',preqs:["Characters: Relic 9","Ships: 7-Star"], requiredToons: [0], platzones: [0]}
 		],
 		selectedMission: '',
 		seen: false,
