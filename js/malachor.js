@@ -526,6 +526,10 @@ Vue.component('mission', {
         "Wave 1: 3x Pike Sentinel (L), Pirate Spy, Pirate Saboteur, Pirate Leader",
         "Wave 2: Qi'ra, L3-37, Young Han Solo, Young Lando Calrissian, Vandor Chewbacca, Pirate Leader",
         "Wave 2: 3x Pike Sentinel (L), Pirate Spy, Pirate Saboteur, Pirate Enforcer",
+        "Wave 1: Ahsoka Tano (Fulcrum)",
+        "Wave 2: Maul (L), Ezra Bridger",//50
+        "Wave 1: Rebel Officer (L), 2x Rebel Pilot, 2x Rebel Soldier",
+        "Wave 2: Kanan Jarrus (L), Ahsoka Tano (Fulcrum), Zeb"
 
 		],
 		platoons: [
@@ -606,7 +610,7 @@ Vue.component('mission', {
 				'Wave 2: 721,744',
 				],
             preferredSquads: [24],//bl generic
-			dangerousEnemies: [34],
+			dangerousEnemies: [51,52],
             reqs: [21],
             modifiers: [4],
 			},	{
@@ -633,7 +637,7 @@ Vue.component('mission', {
 				'Wave 2: 721,744',
 				],
 			preferredSquads: [83],//br inquisitors
-			dangerousEnemies: [34],
+			dangerousEnemies: [49,50],
 			modifiers: [4],
             reqs: [22],
 			},
