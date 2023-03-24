@@ -466,6 +466,22 @@ Vue.component('mission', {
 				name: 'SLKR',
 				toons: ['gl_kylo', 'sith_trooper', 'kylo_ren_(unmasked)', 'general_hux', 'first_order_stormtrooper'],
 			},
+            {
+                id:83,
+                name: 'Darth Vader (solo)',
+                toons: ['darth_vader','noone','noone','noone','noone']
+            },
+            {
+                id:84,
+                name: 'Empire',
+                toons: ['executrix','imperial_tie_fighter', 'scythe', 'tie_advanced_x1', 'imperial_tie_bomber','tie_defender', 'tie_interceptor', 'gauntlet_starfighter' ]
+            },
+            {
+                id:85,
+                name: 'Iden Trooper',
+                toons: ['iden_versio','shoretrooper', 'stormtrooper', 'death_trooper', 'range_trooper']
+            },
+            
              
 
 
@@ -521,6 +537,10 @@ Vue.component('mission', {
         "Wave 1: 3x Pike Sentinel (L), Pirate Spy, Pirate Saboteur, Pirate Leader",
         "Wave 2: Qi'ra, L3-37, Young Han Solo, Young Lando Calrissian, Vandor Chewbacca, Pirate Leader",
         "Wave 2: 3x Pike Sentinel (L), Pirate Spy, Pirate Saboteur, Pirate Enforcer",
+        "Wave 1: Rebel Officer (L), 3x Rebel Soldier, 2x Rebel Pilot",
+        "Wave 2: Rebel Officer (L), 3x Rebel Soldier, 2x Rebel Pilot",//50
+        "Wave 1: Home one, Rebel X-wing, Wedge's X-wing, Bigg's X-wing, Phantom II, Han's Millenium Falcon"
+        
 
 		],
 		platoons: [
@@ -555,7 +575,9 @@ Vue.component('mission', {
         'At the beginning of battle, each side summons a random Corellian Engineering Cargo Ship. At the start of their turn, Cargo Ships gain Protection Over Time (10%) for 1 turn.',
         'Coaxium: +25% Critical Damage and Speed; -15% Accuracy; will be critically hit if able; enemies can ignore Taunt to target this character; if this character is defeated by a status effect, Coaxium will not be granted to anyone',
         "Summons Probe Droid whenever possible",
-        "Whenever a character/ship uses a Special ability, they gain a stack of Confuse (max 3) until the end of the encounter. All characters gain the granted ability Clear Head at the start of battle (remove all stacks of confused)."
+        "Whenever a character/ship uses a Special ability, they gain a stack of Confuse (max 3) until the end of the encounter. All characters gain the granted ability Clear Head at the start of battle (remove all stacks of confused).",
+        "The cooldown of Call Reinforcement on both Capital Ships is reduced by 1.",
+        "Granted ability - Instantly defeat target enemy and prevent them from reviving. Charge 5% every turn."
         ],
         notes:[
         'With Lord Vader\'s ultimate ability, this can be done on full auto',
@@ -583,7 +605,10 @@ Vue.component('mission', {
         '5x characters (Relic 8+), Jabba the Hutt',
         "Ships (7-Star), Ghost",
         '5x characters (Relic 8+), Qi\'ra, L3-37',
-        '5x characters (Relic 8+)'//20
+        '5x characters (Relic 8+)',//20,
+        'Dark Side or Neutral (Relic 9+)',
+        'Dark Side or Neutral (Relic 9+), Iden Versio',
+        'Darth Vader (Relic 9+)',
         ],
 		platims:[
 		'Phase 6 DS Death Star (self)',//0
@@ -594,37 +619,38 @@ Vue.component('mission', {
 			type: 'fleet',
 			position: 'left',
 			rewards: [
-				'Wave 1: 987,188',
+				'Wave 1: 2,303,438',
 				],
-            preferredSquads: [80,75],//fleet
-			dangerousEnemies: [45],
+            preferredSquads: [84],//fleet
+			dangerousEnemies: [51],
             reqs: [18],
-            modifiers: [3],
+            modifiers: [4],
 			},	{
 			id: 1,
 			name: 'c2',
 			type: 'usual',
 			position: 'left',
 			rewards: [
-				'Wave 1: 219,375',
-                'Wave 2: 493,594'
+				'Wave 1: 460,668',
+                'Wave 2: 1,151,719'
 				],
-			preferredSquads: [82],//tr
-			dangerousEnemies: [46,48],
-			modifiers: [3],
-            reqs: [20],
+			preferredSquads: [83],//vader
+			dangerousEnemies: [34],
+			modifiers: [5],
+            reqs: [23],
 			}, {
 			id: 2,
 			name: 'c3',
-			type: 'special',
+			type: 'usual',
 			position: 'right',
 			rewards: [
-				'20 GET3',
+				'Wave 1: 460,668',
+                'Wave 2: 1,151,719'
 				],
             preferredSquads: [24],//special
-			dangerousEnemies: [34],
-            reqs: [19],
-            modifiers: [3],
+			dangerousEnemies: [49,50],
+            reqs: [21],
+            modifiers: [5],
 			},
             {
 			id: 5,
@@ -632,13 +658,13 @@ Vue.component('mission', {
 			type: 'usual',
 			position: 'left',
 			rewards: [
-				'Wave 1: 219,375',
-                'Wave 2: 493,594'
+				'Wave 1: 460,668',
+                'Wave 2: 1,151,719'
 				],
-			preferredSquads: [81],//br Jabba
-			dangerousEnemies: [46,47],
-			modifiers: [3],
-            reqs: [17],
+			preferredSquads: [24],//br Jabba
+			dangerousEnemies: [49,50],
+			modifiers: [5],
+            reqs: [21],
 			},
 			{
 			id: 5,
@@ -646,13 +672,13 @@ Vue.component('mission', {
 			type: 'usual',
 			position: 'right',
 			rewards: [
-				'Wave 1: 219,375',
-                'Wave 2: 493,594'
+				'Wave 1: 460,668',
+                'Wave 2: 1,151,719'
 				],
-				preferredSquads: [82],//tl
-				dangerousEnemies: [46,48],
-				modifiers: [3],
-            reqs: [20],
+				preferredSquads: [85],//iden
+				dangerousEnemies: [34],
+				modifiers: [5],
+            reqs: [22],
 			}, 
             {
 			id: 6,
@@ -660,13 +686,13 @@ Vue.component('mission', {
 			type: 'deploy',
 			position: 'right',
             stars: [
-               '1 Star: 235,143,105',
-               '2 Stars: 400,243,583',
-               '3 Stars: 500,304,479',
-               '3 Stars after maximum preload: 265,161,374 ',
+               '1 Star: 582,632,425',
+               '2 Stars: 1,059,331,682',
+               '3 Stars: 1,246,272,567',
+               '3 Stars after maximum preload: 663,640,142 ',
             ]
 			}, 
-			{id: 30, name: 'm2', type: 'platoon', position: 'left',preqs:["Characters: Relic 9","Ships: 7-Star"], requiredToons: [0], platzones: [0]}
+			{id: 30, name: 'm2', type: 'platoon', position: 'right',preqs:["Characters: Relic 9","Ships: 7-Star"], requiredToons: [0], platzones: [0]}
 		],
 		selectedMission: '',
 		seen: false,
