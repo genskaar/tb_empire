@@ -502,7 +502,7 @@ Vue.component('mission', {
 			name: 'c1',
 			type: 'deathstar',
 			position: 'right',
-			planetlink: 'main.html',
+			planetlink: 'deathstar.html',
 			rewards: [
 				'1*: 582,632,425',
                 '2*: 1,059,331,682',
@@ -699,7 +699,7 @@ Vue.component('mission', {
 			name: 'c13',
 			type: 'hoth',
 			position: 'right',
-			planetlink: 'main.html',
+			planetlink: 'hoth.html',
 			rewards: [
 				'1*: 582,632,425',
                 '2*: 1,059,331,682',
@@ -807,7 +807,7 @@ Vue.component('mission', {
 			name: 'c4',
 			type: 'scarif',
 			position: 'left',
-			planetlink: 'main.html',
+			planetlink: 'scarif.html',
 			rewards: [
 				'1*: 555,710,999',
                 '2*: 1,010,383,635',
