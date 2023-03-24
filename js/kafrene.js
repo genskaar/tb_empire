@@ -600,7 +600,7 @@ Vue.component('mission', {
 			rewards: [
 				'Wave 1: 1,443,488',
 				],
-            preferredSquads: [24],//fleet
+            preferredSquads: [75],//fleet
 			dangerousEnemies: [34],
             reqs: [21],
 			},	{
