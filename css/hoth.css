@@ -232,3 +232,9 @@ td {
 		margin-right: 0.5%;
 	}
 }
+
+.topcorner{
+   position:absolute;
+   top:0;
+   right:0;
+}
