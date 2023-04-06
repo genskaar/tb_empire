@@ -418,7 +418,8 @@ Vue.component('mission', {
              {
                 id:73,
                 name: 'Lord Vader (solo)',
-                toons: ['gl_vader','noone','noone','noone','noone']
+                toons: ['gl_vader','noone','noone','noone','noone'],
+                video: "https://youtu.be/S88QWy8_nMg?t=1899"
              },
              {
 				id: 74,

@@ -428,8 +428,8 @@ Vue.component('mission', {
              {
 				id: 75,
 				name: 'Home One Rebel Fleet with Outrider',
-				toons: ['home_one', 'han\'s_millennium_falcon', 'rebel_y-wing', 'outrider', 'biggs_darklighter\'s_x-wing', 'phantom_ii', 'cassian\'s_u-wing','ghost']
-				
+				toons: ['home_one', 'han\'s_millennium_falcon', 'rebel_y-wing', 'outrider', 'biggs_darklighter\'s_x-wing', 'phantom_ii', 'cassian\'s_u-wing','ghost'],
+				video: "https://youtu.be/wvU3g6gjpcs?t=1521"
 		 	 },
              {
 				id: 76,
@@ -441,6 +441,7 @@ Vue.component('mission', {
 				 id:77,
 				 name: 'Galactic Legend Luke (variants available)',
 				 toons: ['gl_luke','jedi_knight_luke_skywalker','hermit_yoda','jolee_bindo','jedi_knight_revan',],
+                 video: "https://www.youtube.com/watch?v=zUWJGU0fHbI&list=PLDskqmL-F0lZ--JvKdrc0Cqj-wEcAr1WH&t=132s"
 			 },
              {
 				 id:78,
@@ -456,11 +457,13 @@ Vue.component('mission', {
 				 id:80,
 				 name: 'Galactic Republic Jedi',
 				 toons: ['mace_windu','gl_kenobi','ahsoka_tano','ki-adi-mundi','kit_fisto',],
+                 video: "https://youtu.be/wvU3g6gjpcs?t=729"
 			 },
              {
 				 id:81,
 				 name: 'Padme with Republic',
 				 toons: ['padmé_amidala','commander_ahsoka_tano','general_kenobi','general_skywalker','jedi_knight_anakin'],
+                 video: "https://youtu.be/zUWJGU0fHbI?list=PLDskqmL-F0lZ--JvKdrc0Cqj-wEcAr1WH&t=379"
 			 }
              
 
