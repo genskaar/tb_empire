@@ -31,8 +31,9 @@
 		v-bind:key="mission.name" 
 		v-bind:class="mission.name"
 		v-bind:src="'../media/mission_' +  mission.type + '.png'"
-		@mouseover="isMobile ? null : selectedMission = mission; seen = true" @mouseleave="seen = false"
-		>
+		@mouseover="isMobile ? null : selectedMission = mission; seen = true"
+        v-custom-click-outside="hide"
+        >
 		<!--v-click-outside="hide"-->
 		<div v-if="seen" class="description" v-bind:class="'desc_' + selectedMission.position">
 			

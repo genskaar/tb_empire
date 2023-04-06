@@ -1,5 +1,5 @@
 /* Custom directive for detecting click outside of element */
-/*Vue.directive('click-outside', {
+Vue.directive('custom-click-outside', {
 	bind: function (el, binding, vnode) {
 		this.event = function (event) {
 		if (!(el == event.target || el.contains(event.target))) {
@@ -12,7 +12,6 @@
 		document.body.removeEventListener('click', this.event)
 	},
 });
-	*/
 Vue.component('mission', {
 	data: function () {
 		return {
@@ -666,18 +665,17 @@ Vue.component('mission', {
 		],
 		selectedMission: '',
 		seen: false,
-		hide: function() {
-			this.seen = false;
-		}
 	}
 	},
 	template: '#mission',
 	methods: {
 		mq () {
 			this.isMobile = window.matchMedia('(max-width: 600px)').matches;
-		},
-		
-	}
+		},	
+        hide: function() {
+			this.seen = false;
+		}
+	},
 })
 
 let app = new Vue({
