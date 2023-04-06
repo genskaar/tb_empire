@@ -445,7 +445,8 @@ Vue.component('mission', {
              {
                 id:78,
                 name: 'Bounty Hunters with Wat and BobaSOJ/Fennec',
-                toons: ['bossk', 'boba_fett', 'jango_fett', 'boba_soj','wat_tambor']
+                toons: ['bossk', 'boba_fett', 'jango_fett', 'boba_soj','wat_tambor'],
+                video: "https://www.youtube.com/watch?v=enArZ-wAySo"
              },
              
 

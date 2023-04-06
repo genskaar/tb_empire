@@ -440,6 +440,7 @@ Vue.component('mission', {
 				 id:77,
 				 name: 'Galactic Legend Rey (variants available)',
 				 toons: ['rey_(jedi_training)','gl_rey','bb-8','c-3po','r2-d2'],
+                 video: "https://youtu.be/5gZy6Mq8rIE"
 			 },
 			 {
                 id:78,
@@ -449,7 +450,9 @@ Vue.component('mission', {
              {
                 id:79,
                 name: 'oRolo with Rebels',
-                toons: ['rolo', 'han_solo', 'chewbacca', 'threepio_&_chewie', 'ahsoka_tano_(fulcrum)']
+                toons: ['rolo', 'han_solo', 'chewbacca', 'threepio_&_chewie', 'ahsoka_tano_(fulcrum)'],
+                video: "https://www.youtube.com/watch?v=qsnjQTzB9XQ",
+
              },
              {
                 id:80,
