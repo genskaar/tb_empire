@@ -242,7 +242,6 @@ Vue.component('mission', {
 				id:44,
 				name: 'Rebels (Either CLS or oROLO Lead)',
 				toons: ['commander_luke_skywalker', 'chewbacca', 'han_solo', 'threepio_&_chewie', 'c-3po'],
-                video: "https://swgoh.gg",
 			 },
 			 {
 				id:45,
