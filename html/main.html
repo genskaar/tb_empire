@@ -197,7 +197,9 @@
 
 			<div class="rewards mb-3" v-if="selectedMission.rewards">
 				<p class="h4">Points Needed</p>
-				<span v-for="item in selectedMission.rewards">&nbsp;&nbsp;{{item}}&nbsp;&nbsp;&nbsp;</span>
+				<ul>
+					<li class="text-justify" v-for="item in selectedMission.rewards">{{item}}</li>
+				</ul>
 			</div>
 		</div>
 	</div>
