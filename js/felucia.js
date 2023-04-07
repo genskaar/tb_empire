@@ -1,18 +1,3 @@
-/* Custom directive for detecting click outside of element */
-/*Vue.directive('click-outside', {
-	bind: function (el, binding, vnode) {
-		this.event = function (event) {
-		if (!(el == event.target || el.contains(event.target))) {
-			vnode.context[binding.expression](event);
-		}
-	};
-	document.body.addEventListener('click', this.event)
-	},
-	unbind: function (el) {
-		document.body.removeEventListener('click', this.event)
-	},
-});
-	*/
 Vue.component('mission', {
 	data: function () {
 		return {
@@ -257,7 +242,6 @@ Vue.component('mission', {
 				id:44,
 				name: 'Rebels (Either CLS or oROLO Lead)',
 				toons: ['commander_luke_skywalker', 'chewbacca', 'han_solo', 'threepio_&_chewie', 'c-3po'],
-				 
 			 },
 			 {
 				id:45,
@@ -438,7 +422,8 @@ Vue.component('mission', {
              {
                 id:77,
                 name: 'Executor',
-                toons: ['executor','hound\'s_tooth','razor_crest','xanadu_blood','slave_i','ig-2000']
+                toons: ['executor','hound\'s_tooth','razor_crest','xanadu_blood','slave_i','ig-2000'],
+                video: 'https://youtu.be/4qAsN4u5Ejo?t=467'
              },
              {
                 id:78,
@@ -476,7 +461,8 @@ Vue.component('mission', {
 			 {
 				id: 84,
 				name: 'Malevolence Fleet',
-				toons: ['malevolence', 'hyena_bomber', 'vulture_droid','sun_fac\'s_geonosian_starfighter', 'geonosian_spy_starfighter', 'geonosian_soldier\'s_starfighter']
+				toons: ['malevolence', 'hyena_bomber', 'vulture_droid','sun_fac\'s_geonosian_starfighter', 'geonosian_spy_starfighter', 'geonosian_soldier\'s_starfighter'],
+                video: 'https://youtu.be/4qAsN4u5Ejo?t=538'
 				
 			},
              
@@ -666,18 +652,17 @@ Vue.component('mission', {
 		],
 		selectedMission: '',
 		seen: false,
-		hide: function() {
-			this.seen = false;
-		}
 	}
 	},
 	template: '#mission',
 	methods: {
 		mq () {
 			this.isMobile = window.matchMedia('(max-width: 600px)').matches;
-		},
-		
-	}
+		},	
+        hide: function() {
+			    this.seen = false;
+		}
+	},
 })
 
 let app = new Vue({

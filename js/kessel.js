@@ -454,7 +454,8 @@ Vue.component('mission', {
              {
                 id:80,
                 name: 'Executor',
-                toons: ['executor','hound\'s_tooth','razor_crest','ghost','xanadu_blood','slave_i','ig-2000', 'ebon_hawk']
+                toons: ['executor','hound\'s_tooth','razor_crest','ghost','xanadu_blood','slave_i','ig-2000', 'ebon_hawk'],
+                video: 'https://www.youtube.com/watch?v=xS-HFba9jOU'
              },
              {
                 id:81,
@@ -702,19 +703,19 @@ Vue.component('mission', {
 		],
 		selectedMission: '',
 		seen: false,
-		hide: function() {
-			this.seen = false;
-		}
 	}
 	},
 	template: '#mission',
 	methods: {
 		mq () {
 			this.isMobile = window.matchMedia('(max-width: 600px)').matches;
-		},
-		
-	}
+		},	
+        hide: function() {
+			    this.seen = false;
+		}
+	},
 })
+
 
 let app = new Vue({
 	el: '#app',

@@ -8,7 +8,8 @@
 	<meta name="description" content="Interactive Rise of the Empire Territory Battle Map SWGoH">
 	<meta name="keywords" content="swgoh, star wars, rote, territory, battle, map, tactics, interactive, tb_geo, genskaar">
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-	<link rel="stylesheet" href="../css/lothal.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="../css/lothal.css">
 	<link rel="icon" type="image" href="../media/favicon/get3.png">
 </head>
 <body>
@@ -31,11 +32,15 @@
 		v-bind:key="mission.name" 
 		v-bind:class="mission.name"
 		v-bind:src="'../media/mission_' +  mission.type + '.png'"
-		@mouseover="isMobile ? null : selectedMission = mission; seen = true" @mouseleave="seen = false"
+        @click="selectedMission = mission; seen = true"
 		>
 		<!--v-click-outside="hide"-->
 		<div v-if="seen" class="description" v-bind:class="'desc_' + selectedMission.position">
 			
+            <div class="mb-3">
+            <p><i class="fa fa-window-close fa-fw topcorner" @click="hide"></i></p>
+            </div>
+            
             <div class="mb-3" v-if="selectedMission.reqs">
 				<p class="h4">Requirements</p>
 					<div v-for="item in selectedMission.reqs">
@@ -47,7 +52,7 @@
 			<div class="mb-3" v-if="selectedMission.preferredSquads">
 				<p  class="h4">Preferred teams</p>
 				<div v-for="item in selectedMission.preferredSquads">
-					<p>{{squads[item].name}}</p>
+                    <p><a :href="squads[item].video">{{squads[item].name}}</a></p>
 					<div class="img_block">
 						<img 
 						v-for="pic in squads[item].toons"
@@ -113,6 +118,7 @@
 				<span v-for="item in selectedMission.rewards">&nbsp;&nbsp;{{item}}&nbsp;&nbsp;&nbsp;</span>
 			</div>
             <div class="rewards mb-3" v-if="selectedMission.stars">
+                                <h2>Lothal</h2>
 				<p class="h4">Star Requirements</p>
                 <ul>
 				    <li class="text-justify" v-for="item in selectedMission.stars">{{item}}</li>
@@ -121,7 +127,7 @@
 		</div>
 	</div>
 </template>
-<div class="top-left"><a href="main.html" style="color:#FFFFFF;"> &#127968 Home </a><br>
+<div class="top-left"><a href="main.html" style="color:#FFFFFF;"> <i class="fa fa-home fa-fw"></i>Full Map </a><br>
 <script src="../js/vue.min.js"></script>
 <script src="../js/lothal.js"></script>
 <!-- Google tag (gtag.js) -->

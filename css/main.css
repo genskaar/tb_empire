@@ -69,6 +69,7 @@ text:hover {
 	color: #ffffff;
 	z-index: 100;
 	border-radius: 1%;
+    word-wrap: normal;
 }
 .desc_left {
 	left: 3%;
