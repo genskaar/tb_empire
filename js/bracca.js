@@ -430,11 +430,13 @@ Vue.component('mission', {
 				 id:75,
 				 name: 'Galactic Legend Luke (variants available)',
 				 toons: ['gl_luke','jedi_knight_luke_skywalker','hermit_yoda','jolee_bindo','jedi_knight_revan',],
+                 video: 'https://youtu.be/s34PRPeJKsQ?t=323'
 			 },
 			 {
 				 id:76,
 				 name: 'Galactic Legend Kenobi with Republic (variants available)',
 				 toons: ['gl_kenobi','commander_ahsoka_tano','padmé_amidala','general_kenobi','general_skywalker',],
+                 video: 'https://youtu.be/s34PRPeJKsQ?t=525'
 			 },
 			 {
 				 id:77,

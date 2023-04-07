@@ -423,7 +423,8 @@ Vue.component('mission', {
              {
                 id:77,
                 name: 'Executor',
-                toons: ['executor','hound\'s_tooth','razor_crest','xanadu_blood','slave_i','ig-2000']
+                toons: ['executor','hound\'s_tooth','razor_crest','xanadu_blood','slave_i','ig-2000'],
+                video: 'https://youtu.be/4qAsN4u5Ejo?t=467'
              },
              {
                 id:78,
@@ -461,7 +462,8 @@ Vue.component('mission', {
 			 {
 				id: 84,
 				name: 'Malevolence Fleet',
-				toons: ['malevolence', 'hyena_bomber', 'vulture_droid','sun_fac\'s_geonosian_starfighter', 'geonosian_spy_starfighter', 'geonosian_soldier\'s_starfighter']
+				toons: ['malevolence', 'hyena_bomber', 'vulture_droid','sun_fac\'s_geonosian_starfighter', 'geonosian_spy_starfighter', 'geonosian_soldier\'s_starfighter'],
+                video: 'https://youtu.be/4qAsN4u5Ejo?t=538'
 				
 			},
              

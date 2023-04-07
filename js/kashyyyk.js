@@ -435,11 +435,13 @@ Vue.component('mission', {
 				 id:76,
 				 name: 'Galactic Legend Luke (variants available)',
 				 toons: ['jedi_knight_luke_skywalker','gl_luke','hermit_yoda','jolee_bindo','jedi_knight_revan',],
+                 video: 'https://youtu.be/IRNnaG4W6oU?t=417'
 			 },
 			 {
 				 id:77,
 				 name: 'Galactic Legend Kenobi with Republic (variants available)',
 				 toons: ['gl_kenobi','commander_ahsoka_tano','padmé_amidala','general_kenobi','general_skywalker',],
+                 video: 'https://www.youtube.com/watch?v=XSJLv4XCUxk'
 			 },
 			 {
                 id:78,
@@ -449,7 +451,8 @@ Vue.component('mission', {
              {
                 id:79,
                 name: 'oRolo with Rebels',
-                toons: ['rolo', 'han_solo', 'chewbacca', 'threepio_&_chewie', 'ahsoka_tano_(fulcrum)']
+                toons: ['rolo', 'han_solo', 'chewbacca', 'threepio_&_chewie', 'ahsoka_tano_(fulcrum)'],
+                video: 'https://www.youtube.com/watch?v=wh2Jq_MZl1Y'
              },
               {
                 id:80,

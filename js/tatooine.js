@@ -203,8 +203,9 @@ Vue.component('mission', {
 			},
 			{
 				id: 35,
-				name: 'GAS 501st / Rey 501st',
-				toons: ['general_skywalker', 'arc_trooper', 'ct-21-0408__echo_', 'ct-7567__rex_', 'ct-5555__fives_']
+				name: 'Rey 501st / Gas 501st',
+				toons: ['general_skywalker', 'arc_trooper', 'ct-21-0408__echo_', 'ct-7567__rex_', 'ct-5555__fives_'],
+                video: 'https://youtu.be/sI8t5Pg3NX8?t=496' 
 				
 			},
 			{
@@ -423,7 +424,8 @@ Vue.component('mission', {
              {
                 id:74,
                 name: 'Executor',
-                toons: ['executor','hound\'s_tooth','razor_crest','xanadu_blood','slave_i','ig-2000']
+                toons: ['executor','hound\'s_tooth','razor_crest','xanadu_blood','slave_i','ig-2000'],
+                video: 'https://youtu.be/sI8t5Pg3NX8?t=790'
              },
              {
                 id:75,
