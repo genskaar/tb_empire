@@ -65,10 +65,18 @@ text:hover {
 	transform: translate(0, -45%);
 	top: 50%;
 	max-width: 48%;
-	padding: 1rem;
+    max-height: 85%;
+	padding: 0.5rem;
 	color: #ffffff;
 	z-index: 100;
 	border-radius: 1%;
+    
+    overflow: scroll;
+    text-overflow: ellipsis;
+    word-wrap: break-word;
+    display: block;
+    line-height: 1em;
+    overflow-x: hidden;
 }
 .desc_left {
 	left: 3%;
@@ -214,6 +222,7 @@ td {
 		min-width: 100%;
 		min-height: 300px;
 		transform: none;
+        max-height: 200%;
 	}
 	.desc_left {
 		left: 0;
@@ -228,4 +237,10 @@ td {
 		border: 2px solid #ffffff;
 		margin-right: 0.5%;
 	}
+}
+
+.topcorner{
+   position:absolute;
+   top:0;
+   right:0;
 }

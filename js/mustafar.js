@@ -418,7 +418,8 @@ Vue.component('mission', {
              {
                 id:73,
                 name: 'Lord Vader (solo)',
-                toons: ['gl_vader','noone','noone','noone','noone']
+                toons: ['gl_vader','noone','noone','noone','noone'],
+                video: "https://youtu.be/S88QWy8_nMg?t=1899"
              },
              {
 				id: 74,
@@ -605,19 +606,19 @@ Vue.component('mission', {
 		],
 		selectedMission: '',
 		seen: false,
-		hide: function() {
-			this.seen = false;
-		}
 	}
 	},
 	template: '#mission',
 	methods: {
 		mq () {
 			this.isMobile = window.matchMedia('(max-width: 600px)').matches;
-		},
-		
-	}
+		},	
+        hide: function() {
+			    this.seen = false;
+		}
+	},
 })
+
 
 let app = new Vue({
 	el: '#app',

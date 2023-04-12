@@ -430,16 +430,19 @@ Vue.component('mission', {
 				 id:75,
 				 name: 'Galactic Legend Luke (variants available)',
 				 toons: ['gl_luke','jedi_knight_luke_skywalker','hermit_yoda','jolee_bindo','jedi_knight_revan',],
+                 video: 'https://youtu.be/s34PRPeJKsQ?t=323'
 			 },
 			 {
 				 id:76,
 				 name: 'Galactic Legend Kenobi with Republic (variants available)',
 				 toons: ['gl_kenobi','commander_ahsoka_tano','padmé_amidala','general_kenobi','general_skywalker',],
+                 video: 'https://youtu.be/s34PRPeJKsQ?t=525'
 			 },
 			 {
 				 id:77,
 				 name: 'Galactic Legend Rey (variants available)',
 				 toons: ['rey_(jedi_training)','gl_rey','bb-8','c-3po','r2-d2'],
+                 video: "https://youtu.be/5gZy6Mq8rIE"
 			 },
 			 {
                 id:78,
@@ -449,7 +452,9 @@ Vue.component('mission', {
              {
                 id:79,
                 name: 'oRolo with Rebels',
-                toons: ['rolo', 'han_solo', 'chewbacca', 'threepio_&_chewie', 'ahsoka_tano_(fulcrum)']
+                toons: ['rolo', 'han_solo', 'chewbacca', 'threepio_&_chewie', 'ahsoka_tano_(fulcrum)'],
+                video: "https://www.youtube.com/watch?v=qsnjQTzB9XQ",
+
              },
              {
                 id:80,
@@ -651,18 +656,17 @@ Vue.component('mission', {
 		],
 		selectedMission: '',
 		seen: false,
-		hide: function() {
-			this.seen = false;
-		}
 	}
 	},
 	template: '#mission',
 	methods: {
 		mq () {
 			this.isMobile = window.matchMedia('(max-width: 600px)').matches;
-		},
-		
-	}
+		},	
+        hide: function() {
+			    this.seen = false;
+		}
+	},
 })
 
 let app = new Vue({

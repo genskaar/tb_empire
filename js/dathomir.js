@@ -423,7 +423,8 @@ Vue.component('mission', {
              {
                 id:74,
                 name: 'Lord Vader Empire (Variants Available)',
-                toons: ['gl_vader','darth_vader','royal_guard','admiral_piett','grand_admiral_thrawn']
+                toons: ['gl_vader','darth_vader','royal_guard','admiral_piett','grand_admiral_thrawn'],
+                video: 'https://youtu.be/p9LAD2WlaoU?t=261'
              },
              {
                 id:75,
@@ -631,19 +632,19 @@ Vue.component('mission', {
 		],
 		selectedMission: '',
 		seen: false,
-		hide: function() {
-			this.seen = false;
-		}
 	}
 	},
 	template: '#mission',
 	methods: {
 		mq () {
 			this.isMobile = window.matchMedia('(max-width: 600px)').matches;
-		},
-		
-	}
+		},	
+        hide: function() {
+			    this.seen = false;
+		}
+	},
 })
+
 
 let app = new Vue({
 	el: '#app',

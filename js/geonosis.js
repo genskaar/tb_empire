@@ -423,13 +423,15 @@ Vue.component('mission', {
              {
 				id: 74,
 				name: 'Galactic Legend Kylo',
-				toons: ['gl_kylo', 'first_order_officer', 'kylo_ren_(unmasked)','general_hux','sith_trooper']
+				toons: ['gl_kylo', 'first_order_officer', 'kylo_ren_(unmasked)','general_hux','sith_trooper'],
+                video: 'https://youtu.be/GWRtcATtOho?t=291'
 				
 			 },
 			 {
                 id:75,
                 name: 'Lord Vader',
-                toons: ['gl_vader','maul','royal_guard','admiral_piett','darth_vader']
+                toons: ['gl_vader','maul','royal_guard','admiral_piett','darth_vader'],
+                video: 'https://youtu.be/GWRtcATtOho?t=414'
              },
              {
 				id: 76,
@@ -440,12 +442,30 @@ Vue.component('mission', {
              {
                 id:77,
                 name: 'Inquisitors',
-                toons: ['grand_inquisitor', 'seventh_sister', 'ninth_sister', 'fifth_brother','eighth_brother']
+                toons: ['grand_inquisitor', 'seventh_sister', 'ninth_sister', 'fifth_brother','eighth_brother'],
+                video: 'https://youtu.be/GWRtcATtOho?t=536'
              },
              {
                 id:78,
                 name: 'Bounty Hunters with Wat and BobaSOJ/Fennec',
-                toons: ['bossk', 'boba_fett', 'jango_fett', 'boba_soj','wat_tambor']
+                toons: ['bossk', 'boba_fett', 'jango_fett', 'boba_soj','wat_tambor'],
+                video: "https://www.youtube.com/watch?v=enArZ-wAySo"
+             },
+             {
+				id: 79,
+				name: 'Galactic Legend Kylo',
+				toons: ['gl_kylo', 'first_order_officer', 'kylo_ren_(unmasked)','general_hux','sith_trooper'],
+				
+			 },
+             {
+                id:80,
+                name: 'Lord Vader',
+                toons: ['gl_vader','maul','royal_guard','admiral_piett','darth_vader'],
+             },
+             {
+                id:81,
+                name: 'Inquisitors',
+                toons: ['grand_inquisitor', 'seventh_sister', 'ninth_sister', 'fifth_brother','eighth_brother'],
              },
              
 
@@ -541,7 +561,7 @@ Vue.component('mission', {
 				'Wave 1: 125,000',
                 'Wave 2: 250,000'
 				],
-            preferredSquads: [74,75],
+            preferredSquads: [74,80],
 			dangerousEnemies: [25,26],//nexu
             reqs: [4],
 			},	{
@@ -552,7 +572,7 @@ Vue.component('mission', {
 			rewards: [
                 'Wave 1: 250,000'
 				],
-			preferredSquads: [74,75,78,77],
+			preferredSquads: [79,75,78,81],
 			dangerousEnemies: [28],//acklay
             reqs: [4],
 			}, {
@@ -563,7 +583,7 @@ Vue.component('mission', {
 			rewards: [
                 'Wave 1: 250,000'
 				],
-            preferredSquads: [76,77,75,74],
+            preferredSquads: [76,77,80,79],
 			dangerousEnemies: [27],//reek
             reqs: [4],
 			},
@@ -610,19 +630,19 @@ Vue.component('mission', {
 		],
 		selectedMission: '',
 		seen: false,
-		hide: function() {
-			this.seen = false;
-		}
 	}
 	},
 	template: '#mission',
 	methods: {
 		mq () {
 			this.isMobile = window.matchMedia('(max-width: 600px)').matches;
-		},
-		
-	}
+		},	
+        hide: function() {
+			    this.seen = false;
+		}
+	},
 })
+
 
 let app = new Vue({
 	el: '#app',
