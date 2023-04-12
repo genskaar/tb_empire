@@ -461,6 +461,11 @@ Vue.component('mission', {
                 name: 'oFinn',
                 toons: ['finn_o', 'rey_(jedi_training)', 'poe_dameron', 'bb-8', 'r2-d2']
              },
+             {
+                id:81,
+                name: 'Cere and Cal',
+                toons: ['cere_junda', 'cal_kestis', 'noone', 'noone', 'noone']
+             },
              
 
 
@@ -510,6 +515,8 @@ Vue.component('mission', {
         "Wave 2: Ninth Sister (L), 3x Purge Trooper, Stormtrooper",//40
         "Wave 2: Crosshair, 2x Purge Trooper, Stormtrooper, Stormtrooper Commando",//41
         "Wave 2: Second Sister, 3x Purge Trooper, Stormtrooper",//42
+        "Wave 1: 2x Purge Trooper",
+		"Wave 2: Second Sister (L), Purge Trooper"
 		],
 		platoons: [
         ["Razor Crest",	"12","Ben Solo",	"10","Commander Ahsoka Tano",	"5","Grand Master Yoda",	"4","BB-8",	"2","BTL-B Y-wing Starfighter",	"2","C-3PO",	"2",
@@ -561,7 +568,7 @@ Vue.component('mission', {
         'Light Side Ships (7-Star)',
         "5x Jedi (Relic 6+)",
         "5x Light Side or Neutral (Relic 6+)",
-        
+        "Cere Junda (Relic 7+), Any Cal Kestis(Relic 7+)" 
         ],
 		platims:[
         'Phase 2 LS Bracca (self)',
@@ -608,6 +615,19 @@ Vue.component('mission', {
 			dangerousEnemies: [39,41],
             reqs: [13],
             modifiers: [2,3],
+			},
+            {
+			id: 4,
+			name: 'c4',
+			type: 'special',
+			position: 'right',
+			rewards: [
+				'Wave 1: 50 GET2',
+				],
+            preferredSquads: [81],//generic
+			dangerousEnemies: [43,44],
+			modifiers: [2,3],
+            reqs: [14],
 			},
 			{
 			id: 5,
