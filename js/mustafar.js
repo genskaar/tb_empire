@@ -430,7 +430,7 @@ Vue.component('mission', {
              {
 				id: 75,
 				name: 'SEE with Wat and Trio or with Sith Empire',
-				toons: ['gl_palp', 'wat_tambor', 'darth_nihilus','darth_sion','darth_traya']
+				toons: ['gl_palp', 'wat_tambor', 'darth_nihilus','darth_sion','darth_traya'],
 				
 			 },
              {
@@ -442,13 +442,26 @@ Vue.component('mission', {
 			{
                 id:77,
                 name: 'Inquisitors',
-                toons: ['grand_inquisitor', 'seventh_sister', 'ninth_sister', 'fifth_brother','eighth_brother']
+                toons: ['grand_inquisitor', 'seventh_sister', 'ninth_sister', 'fifth_brother','eighth_brother'],
+                video: "https://www.youtube.com/watch?v=-OFAp5BwpaA"
              },
              {
                 id:78,
                 name: 'Empire (Variants in initial lineup of 3 possible)',
                 toons: ['executrix', 'imperial_tie_bomber', 'scythe', 'tie_advanced_x1','tie_defender', 'tie_interceptor', 'gauntlet_starfighter' ]
              },
+             {
+				id: 79,
+				name: 'Palpatine and Empire',
+				toons: ['emperor_palpatine', 'darth_vader', 'mara_jade_teh','grand_admiral_thrawn','admiral_piett'],
+				video: "https://www.youtube.com/watch?v=fh4Bx7VB_Ac"
+			 },
+             {
+				id: 80,
+				name: 'SEE with Wat and Trio or with Sith Empire',
+				toons: ['gl_palp', 'wat_tambor', 'darth_nihilus','darth_sion','darth_traya'],
+				video: "https://www.youtube.com/watch?v=0d9jDzbQI4E"
+			 },
              
 
 
@@ -530,7 +543,7 @@ Vue.component('mission', {
 				'Wave 1: 100,000',
                 'Wave 2: 200,000'
 				],
-            preferredSquads: [75,76],
+            preferredSquads: [80,76],
 			dangerousEnemies: [19,21],
             reqs: [1],
             modifiers: [0]
@@ -571,7 +584,7 @@ Vue.component('mission', {
 				'Wave 1: 100,000',
                 'Wave 2: 200,000'
 				],
-            preferredSquads: [74,76],
+            preferredSquads: [74,79],
 			dangerousEnemies: [19,22],//geo
             reqs: [1],
             modifiers: [0]

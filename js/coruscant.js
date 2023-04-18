@@ -423,7 +423,8 @@ Vue.component('mission', {
              {
                 id:74,
                 name: 'Mon Mothma with Omicron Kyle Katarn',
-                toons: ['mon_mothma', 'pao', 'hoth_rebel_scout', 'cara_dune', 'kyle_katarn_o']
+                toons: ['mon_mothma', 'pao', 'hoth_rebel_scout', 'cara_dune', 'kyle_katarn_o'],
+                video: "https://youtu.be/dNXwh41TdDI?t=358"
              },
              {
 				id: 75,
@@ -434,7 +435,8 @@ Vue.component('mission', {
              {
 				id: 76,
 				name: 'Profundity Fleet with Outrider',
-				toons: ['profundity', 'han\'s_millennium_falcon', 'rebel_y-wing', 'outrider', 'biggs_darklighter\'s_x-wing', 'phantom_ii', 'cassian\'s_u-wing','ghost']
+				toons: ['profundity', 'han\'s_millennium_falcon', 'rebel_y-wing', 'outrider', 'biggs_darklighter\'s_x-wing', 'phantom_ii', 'cassian\'s_u-wing','ghost'],
+                video: "https://www.youtube.com/watch?v=aoP5GEUjL7I"
 				
 		 	 },
              {
