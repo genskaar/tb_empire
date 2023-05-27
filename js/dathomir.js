@@ -42,7 +42,7 @@ Vue.component('mission', {
 			{
 				id: 4,
 				name: 'Night Sisters',
-				toons: ['mother_talzin', 'asajj_ventress', 'nightsister_zombie', 'old_daka', 'nightsister_spirit' ]
+				toons: ['mother_talzin', 'asajj_ventress', 'nightsister_zombie', 'old_daka', 'merrin' ]
 			},
 			{
 				id: 5,
@@ -508,6 +508,8 @@ Vue.component('mission', {
         "Wave 2: Qi'ra (L), Young Han, Cartel Bruiser, Cartel Spy, Cartel Saboteur ",
         "Wave 1: 2x Nightsister Acolyte (L), Nightsister Initiate, Nightsister Zombie, Nightsister Spirit",
         "Wave 2: Mother Talzin (L), Old Daka, Nightsister Acolyte, Nightsister Zombie, Nightsister Spirit", 
+        "Wave 1: Hondo Onaka (L), 2x Jabba's Enforcer, IG-88, Weequay Saboteur",
+        "Wave 2: Maul (L), Qi'ra, Dash Rendar, Cartel Spy, Cartel Bruiser"
 		],
 		platoons: [
         ["Darth Malgus",	"9","Scythe",	"9","TIE/IN Interceptor Prototype",	"8","Lord Vader",	"6","Maul",	"6","Boba Fett, Scion of Jango",	"4","Sith Eternal Emperor",	"4","General Grievous",	"3","Wat Tambor",	"3","Dengar",	"2","Imperial Probe Droid",	"2",
@@ -554,7 +556,8 @@ Vue.component('mission', {
         'Lando\'s Millenium Falcon (7-Star)',//10,
         "Dark Side or Neutral (Relic 7+)",
         "Dark Side or Neutral (Relic 7+), Doctor Aphra",
-        "Empire (Relic 7+)"
+        "Empire (Relic 7+)",
+        "Nightsisters (Relic 7+), Merrin"
         ],
 		platims:[
 		'Phase 6 DS Death Star',//0
@@ -600,6 +603,18 @@ Vue.component('mission', {
             reqs: [13],
             modifiers: [2],
             notes: [4],
+			},{
+			id: 3,
+			name: 'c4',
+			type: 'special',
+			position: 'right',
+			rewards: [
+				'50 GET2',
+				],
+            preferredSquads: [4],//ns
+			dangerousEnemies: [40,41],
+            reqs: [14],
+            modifiers: [2],
 			},
 			{
 			id: 5,
