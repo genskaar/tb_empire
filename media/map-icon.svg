@@ -1,0 +1,45 @@
+<svg width="100" height="45" viewBox="0 0 100 45" fill="none" xmlns="http://www.w3.org/2000/svg">
+<g clip-path="url(#clip0_614_38)">
+<circle cx="44.4644" cy="41.3693" r="2.75799" fill="white"/>
+<circle cx="77.766" cy="17.7233" r="2.53191" fill="white"/>
+<circle cx="76.9393" cy="8.87891" r="2.75" fill="white"/>
+<circle cx="62.8509" cy="2.75799" r="2.75799" fill="white"/>
+<circle cx="24.5455" cy="9.19275" r="2.45154" fill="white"/>
+<circle cx="23.0134" cy="17.467" r="2.75799" fill="white"/>
+<circle cx="77.5602" cy="27.8859" r="2.75799" fill="white"/>
+<circle cx="53.8997" cy="7.90234" r="3" fill="white"/>
+<circle cx="59.1656" cy="14.3955" r="2.75" fill="white"/>
+<circle cx="72" cy="34" r="3" fill="white"/>
+<circle cx="49.5214" cy="20.585" r="2.5" fill="white"/>
+<circle cx="61.0123" cy="34.6281" r="2.75799" fill="white"/>
+<circle cx="53.6576" cy="27.8859" r="2.75799" fill="white"/>
+<circle cx="57.077" cy="41.1113" r="2.5" fill="white"/>
+<circle cx="50.5932" cy="36.467" r="2.75799" fill="white"/>
+<circle cx="29.7551" cy="35.2404" r="2.75799" fill="white"/>
+<circle cx="40.5291" cy="34.3701" r="2.5" fill="white"/>
+<path d="M24.5455 28.0312L22.4224 24.3539L26.6686 24.3539L24.5455 28.0312Z" fill="white"/>
+<line x1="23.9428" y1="11.2997" x2="22.8174" y2="16.5713" stroke="white"/>
+<line x1="24.4436" y1="25.7692" x2="28.6361" y2="33.827" stroke="white"/>
+<line x1="38.7152" y1="34.7348" x2="31.0742" y2="35.3272" stroke="white"/>
+<line x1="70.9774" y1="34.2613" x2="63.3365" y2="34.5575" stroke="white"/>
+<line x1="57.3846" y1="40.4865" x2="60.7608" y2="35.0964" stroke="white"/>
+<line x1="50.9415" y1="35.6055" x2="53.3108" y2="29.09" stroke="white"/>
+<line x1="73.3292" y1="33.4794" x2="76.4092" y2="28.9778" stroke="white"/>
+<line x1="77.9795" y1="26.3545" x2="77.9795" y2="18.9999" stroke="white"/>
+<line x1="77.5674" y1="15.797" x2="77.0935" y2="10.0515" stroke="white"/>
+<line x1="54.747" y1="6.79135" x2="61.7821" y2="3.11069" stroke="white"/>
+<line x1="50.0282" y1="20.2434" x2="57.0176" y2="16.038" stroke="white"/>
+<line x1="40.8088" y1="35.5555" x2="44.4812" y2="41.0049" stroke="white"/>
+<line x1="54.1953" y1="8.19128" x2="57.8677" y2="13.6406" stroke="white"/>
+<line x1="49.1606" y1="21.0438" x2="52.833" y2="26.4932" stroke="white"/>
+<line x1="23.1773" y1="19.8215" x2="24.3027" y2="26.6924" stroke="white"/>
+<circle cx="49.5" cy="54.5" r="34.5" stroke="white" stroke-opacity="0.5" stroke-width="2"/>
+<path d="M92 53.5C92 76.4088 73.207 95 50 95C26.793 95 8 76.4088 8 53.5C8 30.5912 26.793 12 50 12C73.207 12 92 30.5912 92 53.5Z" stroke="white" stroke-opacity="0.5" stroke-width="2"/>
+<circle cx="50" cy="52" r="49" stroke="white" stroke-opacity="0.5" stroke-width="2"/>
+</g>
+<defs>
+<clipPath id="clip0_614_38">
+<rect width="100" height="45" fill="white"/>
+</clipPath>
+</defs>
+</svg>
