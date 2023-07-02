@@ -466,6 +466,11 @@ Vue.component('mission', {
 				 name: 'Padme with Republic',
 				 toons: ['padmé_amidala','commander_ahsoka_tano','general_kenobi','general_skywalker','jedi_knight_anakin'],
                  video: "https://youtu.be/zUWJGU0fHbI?list=PLDskqmL-F0lZ--JvKdrc0Cqj-wEcAr1WH&t=379"
+			 },
+             {
+				 id:82,
+				 name: 'Bad Batch (variants available)',
+				 toons: ['hunter','echo','tech','wrecker','omega'],
 			 }
              
 
@@ -611,7 +616,7 @@ Vue.component('mission', {
 				'Wave 1: 100,000',
                 'Wave 2: 200,000'
 				],
-            preferredSquads: [74,81,78,79],//generic
+            preferredSquads: [74,81,78,79,82],//generic
 			dangerousEnemies: [38,40],
             reqs: [11],
             modifiers: [2,3],
@@ -626,7 +631,7 @@ Vue.component('mission', {
 				'Wave 1: 100,000',
                 'Wave 2: 200,000'
 				],
-            preferredSquads: [74,81,78,79],
+            preferredSquads: [74,81,78,79,82],
 			dangerousEnemies: [38,40],
             reqs: [11],
             modifiers: [2,3],

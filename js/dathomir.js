@@ -41,8 +41,8 @@ Vue.component('mission', {
 			},
 			{
 				id: 4,
-				name: 'Night Sisters',
-				toons: ['mother_talzin', 'asajj_ventress', 'nightsister_zombie', 'old_daka', 'nightsister_spirit' ]
+				name: 'Nightsisters',
+				toons: ['mother_talzin', 'asajj_ventress', 'nightsister_zombie', 'old_daka', 'merrin' ]
 			},
 			{
 				id: 5,
@@ -508,6 +508,8 @@ Vue.component('mission', {
         "Wave 2: Qi'ra (L), Young Han, Cartel Bruiser, Cartel Spy, Cartel Saboteur ",
         "Wave 1: 2x Nightsister Acolyte (L), Nightsister Initiate, Nightsister Zombie, Nightsister Spirit",
         "Wave 2: Mother Talzin (L), Old Daka, Nightsister Acolyte, Nightsister Zombie, Nightsister Spirit", 
+        "Wave 1: Hondo Onaka (L), IG-88, 2x Jabba's Enforcer, Weequay Saboteur",
+        "Wave 2: Maul (L), Qi-ra, Dash Rendar, Cartel Spy, Cartel Bruiser"
 		],
 		platoons: [
         ["Darth Malgus",	"9","Scythe",	"9","TIE/IN Interceptor Prototype",	"8","Lord Vader",	"6","Maul",	"6","Boba Fett, Scion of Jango",	"4","Sith Eternal Emperor",	"4","General Grievous",	"3","Wat Tambor",	"3","Dengar",	"2","Imperial Probe Droid",	"2",
@@ -554,7 +556,8 @@ Vue.component('mission', {
         'Lando\'s Millenium Falcon (7-Star)',//10,
         "Dark Side or Neutral (Relic 7+)",
         "Dark Side or Neutral (Relic 7+), Doctor Aphra",
-        "Empire (Relic 7+)"
+        "Empire (Relic 7+)",
+        "Nightsisters (Relic 7+), Merrin"
         ],
 		platims:[
 		'Phase 6 DS Death Star',//0
@@ -627,6 +630,19 @@ Vue.component('mission', {
                '3 Stars: 339,116,667',
                '3 Stars after maximum preload: 180,155,729 ',
             ]
+			}, 
+            {
+			id: 7,
+			name: 'c8',
+			type: 'special2',
+			position: 'right',
+			rewards: [
+				'50 GET2',
+				],
+				preferredSquads: [4],//ns
+				dangerousEnemies: [40,41],
+				modifiers: [2],
+            reqs: [14],
 			}, 
 			{id: 30, name: 'm2', type: 'platoon', position: 'right',preqs:["Characters: Relic 7","Ships: 7-Star"], requiredToons: [0], platzones: [0,]}
 		],

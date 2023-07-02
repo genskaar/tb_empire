@@ -592,7 +592,7 @@ Vue.component('mission', {
 			type: 'fleet',
 			position: 'left',
 			rewards: [
-				'Wave 1: 628,500',
+				'Wave 1: 682,500',
 				],
             preferredSquads: [74],//aphra
 			dangerousEnemies: [45],
