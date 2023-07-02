@@ -563,6 +563,7 @@ Vue.component('mission', {
         ],
 		platims:[
 		'Phase 3 LS Kashyyyk (self)',//0
+        'Phase 3 LS Bonus Zeffo',
 		'Phase 4 LS Lothal',
 		'Phase 5 LS Ring of Kafrene',
         'Phase 6 LS Scarif',
@@ -573,7 +574,7 @@ Vue.component('mission', {
 			type: 'fleet',
 			position: 'left',
 			rewards: [
-				'Wave 1: 628,500',
+				'Wave 1: 682,500',
 				],
             preferredSquads: [75],//aphra
 			dangerousEnemies: [43],
@@ -631,7 +632,7 @@ Vue.component('mission', {
                '3 Stars after maximum preload: 216,413,542 ',
             ]
 			}, 
-			{id: 30, name: 'm2', type: 'platoon', position: 'right',preqs:["Characters: Relic 7","Ships: 7-Star"], requiredToons: [0], platzones: [0,1,2,3]}
+			{id: 30, name: 'm2', type: 'platoon', position: 'right',preqs:["Characters: Relic 7","Ships: 7-Star"], requiredToons: [0], platzones: [0,1,2,3,4]}
 		],
 		selectedMission: '',
 		seen: false,

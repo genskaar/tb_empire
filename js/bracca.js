@@ -463,8 +463,8 @@ Vue.component('mission', {
              },
              {
                 id:81,
-                name: 'Cere and Cal',
-                toons: ['cere_junda', 'cal_kestis', 'noone', 'noone', 'noone']
+                name: 'Cere and Jedi Cal',
+                toons: ['cere_junda', 'jedi_cal', 'noone', 'noone', 'noone']
              },
              
 
@@ -551,7 +551,8 @@ Vue.component('mission', {
         "Currently Bugged!",
         "Currently Bugged! Allows relic 5 Jedi to be used - Potentially Fixed",
         "Rey is likely a 1/2. Rey 501st can also work.",
-        "Ninth Sister's lead prevents speed limiting effects e.g. jkl"
+        "Ninth Sister's lead prevents speed limiting effects e.g. jkl",
+        "Need 30 successful attempts each TB to unlock bonus planet - Zeffo"
         ],
         reqs:[
         'Lord Vader (Relic 5+)',
@@ -628,6 +629,7 @@ Vue.component('mission', {
 			dangerousEnemies: [43,44],
 			modifiers: [2,3],
             reqs: [14],
+            notes: [6]
 			},
 			{
 			id: 5,

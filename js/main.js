@@ -805,6 +805,24 @@ Vue.component('mission', {
             notes: [
             'Click for recommended teams'
             ]
+			},
+            {
+			id: 31,
+			name: 'c19',
+			type: 'zeffo',
+			position: 'left',
+			planetlink: 'zeffo.html',
+			rewards: [
+				'Tier 1: 143,589,583',
+                'Tier 2: 229,743,333',
+                '1 star: 287,179,167',
+				],
+		    planet: [
+            'Phase 3 LS Bonus - Zeffo'
+            ],
+            notes: [
+            'Click for recommended teams'
+            ]
 			}
 		],
 		selectedMission: '',
