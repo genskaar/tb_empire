@@ -647,6 +647,7 @@ Vue.component('mission', {
 				dangerousEnemies: [45,46],
 				modifiers: [2],
             reqs: [17],
+            notes: [1],
 			}, 
 			{id: 30, name: 'm2', type: 'platoon', position: 'right',preqs:["Characters: Relic 7","Ships: 7-Star"], requiredToons: [0], platzones: [0,1,2,3,4]}
 		],
