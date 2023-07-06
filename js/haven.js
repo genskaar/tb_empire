@@ -458,13 +458,19 @@ Vue.component('mission', {
              },
              {
                 id:81,
-                name: 'Lord Vader Empire (Variants Available)',
+                name: 'Lord Vader Empire (Variants Available, Maul highly recommended)',
                 toons: ['gl_vader','darth_vader','royal_guard','admiral_piett','maul']
              },
              {
 				id: 82,
 				name: 'Galactic Legend Kylo (Variants Available)',
 				toons: ['gl_kylo', 'first_order_officer', 'kylo_ren_(unmasked)','general_hux','sith_trooper']
+				
+			 },
+			 {
+				id: 83,
+				name: 'SEE + Sith Empire',
+				toons: ['gl_palp', 'darth_malak', 'darth_revan','darth_malgus','sith_empire_trooper']
 				
 			 },
              
@@ -563,7 +569,9 @@ Vue.component('mission', {
         'With Lord Vader\'s ultimate ability, this can be done on full auto',
         'Unclear if this is even possible right now',
         "Currently Bugged!",
-        "This mission is different from the other 3 and is a lot harder. Unclear if this is even possible right now."
+        "This mission is different from the other 3 and is a lot harder. Unclear if this is even possible right now.",
+        "If running LV, Maul is highly recommended to be able to reach ultimate quickly.",
+        "Recommended to remove brain worms at 3+ stacks"
         ],
         reqs:[
         'Lord Vader (Relic 5+)',
@@ -598,10 +606,11 @@ Vue.component('mission', {
                 'Wave 1: 219,375',
                 'Wave 2: 493,594'
 				],
-            preferredSquads: [81,82],//br
+            preferredSquads: [81,82,83],//br
 			dangerousEnemies: [45,46],
             reqs: [18],
             modifiers: [3],
+            notes: [4,5],
 			},	{
 			id: 1,
 			name: 'c2',
@@ -611,10 +620,11 @@ Vue.component('mission', {
 				'Wave 1: 219,375',
                 'Wave 2: 493,594'
 				],
-			preferredSquads: [81,82],//tr
+			preferredSquads: [81,82,83],//tr
 			dangerousEnemies: [45,46],
 			modifiers: [3],
             reqs: [18],
+            notes: [4,5],
 			}, {
 			id: 2,
 			name: 'c3',
@@ -637,10 +647,11 @@ Vue.component('mission', {
 				'Wave 1: 219,375',
                 'Wave 2: 493,594'
 				],
-				preferredSquads: [81,82],//m
+				preferredSquads: [81,82,83],//m
 				dangerousEnemies: [45,46],
 				modifiers: [3],
             reqs: [18],
+            notes: [4,5],
 			}, 
             {
 			id: 4,
