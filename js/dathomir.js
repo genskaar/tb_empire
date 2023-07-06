@@ -454,14 +454,19 @@ Vue.component('mission', {
              },
              {
                 id:80,
-                name: 'Separatists',
-                toons: [  'general_grievous','jango_fett','count_dooku', 'nute_gunrey','wat_tambor']
+                name: 'GG + Separatists',
+                toons: ['general_grievous','jango_fett','count_dooku', 'nute_gunrey','wat_tambor']
              },
              {
                 id:81,
                 name: 'Empire (Variants Available)',
                 toons: ['emperor_palpatine','darth_vader','royal_guard','admiral_piett','mara_jade_teh']
              },
+             {
+				id: 82,
+				name: 'Trench + Separatists',
+				toons: ['admiral_trench', 'nute_gunrey', 'jango_fett','count_dooku', 'wat_tambor' ],
+			 },
              
 
 
@@ -584,7 +589,7 @@ Vue.component('mission', {
 				'Wave 1: 162,500',
                 'Wave 2: 341,250'
 				],
-			preferredSquads: [75,76,77,80],//gen
+			preferredSquads: [75,76,77,82,80],//gen
 			dangerousEnemies: [38,39],
 			modifiers: [2],
             reqs: [11],
@@ -613,7 +618,7 @@ Vue.component('mission', {
 				'Wave 1: 162,500',
                 'Wave 2: 341,250'
 				],
-				preferredSquads: [75,76,77,80],//gen
+				preferredSquads: [75,76,77,82,80],//gen
 				dangerousEnemies: [38,39],
 				modifiers: [2],
             reqs: [11],
