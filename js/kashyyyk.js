@@ -459,6 +459,11 @@ Vue.component('mission', {
                 name: 'oFinn',
                 toons: ['finn_o', 'rey_(jedi_training)', 'poe_dameron', 'bb-8', 'r2-d2']
              },
+             {
+		id:81,
+		name: 'Saw + Rebel Fighters',
+		toons: ['saw_gerrera', 'jyn_erso', 'cara_dune', 'cassian_andor', 'k-2so']
+	     }
              
 
 
@@ -511,7 +516,7 @@ Vue.component('mission', {
         "Executrix, Tie Advanced X1, Scythe, Tie Fighter, Tie Interceptor (R)",
         "Wave 2: Ninth Sister (L), 2x Purge Trooper",
         "Wave 1: AT-ST Driver (L), 2x Purge Trooper, Imperial Officer, Recon Trooper",
-        "Wave 2: Unknown"
+        "Wave 2: Stormtrooper Commander (L), Recon Trooper, AT-ST Driver, Purge Trooper, Imperial Officer"
 		],
 		platoons: [
         [        "Ben Solo",	"6","Commander Ahsoka Tano",	"6","Razor Crest",	"6",
@@ -643,11 +648,10 @@ Vue.component('mission', {
 			rewards: [
 				'50 GET2',
 				],
-				preferredSquads: [24],//saw
+				preferredSquads: [81],//saw
 				dangerousEnemies: [45,46],
 				modifiers: [2],
             reqs: [17],
-            notes: [1],
 			}, 
 			{id: 30, name: 'm2', type: 'platoon', position: 'right',preqs:["Characters: Relic 7","Ships: 7-Star"], requiredToons: [0], platzones: [0,1,2,3,4]}
 		],
