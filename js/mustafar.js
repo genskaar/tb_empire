@@ -447,8 +447,8 @@ Vue.component('mission', {
              },
              {
                 id:78,
-                name: 'Empire (Variants in initial lineup of 3 possible)',
-                toons: ['executrix', 'imperial_tie_bomber', 'scythe', 'tie_advanced_x1','tie_defender', 'tie_interceptor', 'gauntlet_starfighter' ]
+                name: 'Empire (Variants possible)',
+                toons: ['executrix','sith_fighter', 'scythe', 'tie_advanced_x1','tie_defender', 'tie_interceptor', 'gauntlet_starfighter', 'imperial_tie_bomber' ]
              },
              {
 				id: 79,
@@ -461,6 +461,12 @@ Vue.component('mission', {
 				name: 'SEE with Wat and Trio or with Sith Empire',
 				toons: ['gl_palp', 'wat_tambor', 'darth_nihilus','darth_sion','darth_traya'],
 				video: "https://www.youtube.com/watch?v=0d9jDzbQI4E"
+			 },
+			 {
+				id: 81,
+				name: 'Trench + Seps',
+				toons: ['admiral_trench', 'nute_gunrey', 'geonosian_brood_alpha','count_dooku', 'wat_tambor' ],
+				video: "https://youtu.be/vtOoPROo0Ho?t=310"
 			 },
              
 
@@ -543,7 +549,7 @@ Vue.component('mission', {
 				'Wave 1: 100,000',
                 'Wave 2: 200,000'
 				],
-            preferredSquads: [80,76],
+            preferredSquads: [80,76,81],
 			dangerousEnemies: [19,21],
             reqs: [1],
             modifiers: [0]
