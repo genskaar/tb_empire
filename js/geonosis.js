@@ -467,6 +467,11 @@ Vue.component('mission', {
                 name: 'Inquisitors',
                 toons: ['grand_inquisitor', 'seventh_sister', 'ninth_sister', 'fifth_brother','eighth_brother'],
              },
+             			 {
+				id: 82,
+				name: 'Trench + Seps',
+				toons: ['admiral_trench', 'nute_gunrey', 'jango_fett','count_dooku', 'wat_tambor' ],
+			 },
              
 
 
@@ -583,7 +588,7 @@ Vue.component('mission', {
 			rewards: [
                 'Wave 1: 250,000'
 				],
-            preferredSquads: [76,77,80,79],
+            preferredSquads: [76,77,80,79,82],
 			dangerousEnemies: [27],//reek
             reqs: [4],
 			},
