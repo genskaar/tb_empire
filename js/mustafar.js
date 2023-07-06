@@ -447,8 +447,8 @@ Vue.component('mission', {
              },
              {
                 id:78,
-                name: 'Empire (Variants in initial lineup of 3 possible)',
-                toons: ['executrix', 'imperial_tie_bomber', 'scythe', 'tie_advanced_x1','tie_defender', 'tie_interceptor', 'gauntlet_starfighter' ]
+                name: 'Empire (Variants possible)',
+                toons: ['executrix','sith_fighter', 'scythe', 'tie_advanced_x1','tie_defender', 'tie_interceptor', 'gauntlet_starfighter', 'imperial_tie_bomber' ]
              },
              {
 				id: 79,
