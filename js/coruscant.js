@@ -422,7 +422,7 @@ Vue.component('mission', {
              },
              {
                 id:74,
-                name: 'Mon Mothma with Omicron Kyle Katarn',
+                name: 'Mon Mothma with Kyle Katarn',
                 toons: ['mon_mothma', 'pao', 'hoth_rebel_scout', 'cara_dune', 'kyle_katarn_o'],
                 video: "https://youtu.be/dNXwh41TdDI?t=358"
              },
@@ -454,6 +454,7 @@ Vue.component('mission', {
 				 id:79,
 				 name: 'Galactic Legend Rey (variants available)',
 				 toons: ['gl_rey','resistance_hero_finn','resistance_hero_poe','r2-d2','amilyn_holdo'],
+				 video: "https://youtu.be/wvU3g6gjpcs?t=1312"
 			 },
              {
 				 id:80,
@@ -471,6 +472,7 @@ Vue.component('mission', {
 				 id:82,
 				 name: 'Bad Batch (variants available)',
 				 toons: ['hunter','echo','tech','wrecker','omega'],
+				 video: "https://youtu.be/wvU3g6gjpcs?t=1068"
 			 }
              
 

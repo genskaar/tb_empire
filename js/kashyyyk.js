@@ -171,7 +171,8 @@ Vue.component('mission', {
              {
 				id:29,
 				name: 'Jedi Training Rey',
-				toons: ['rey_(jedi_training)', 'c-3po', 'r2-d2', 'finn', 'bb-8'],
+				toons: ['rey_(jedi_training)', 'c-3po', 'r2-d2', 'rey_(scavenger)', 'bb-8'],
+				video: "https://www.youtube.com/watch?v=IRNnaG4W6oU&t=595s"
 				 
 			 },
 			 {
@@ -596,7 +597,7 @@ Vue.component('mission', {
 				'Wave 1: 162,500',
                 'Wave 2: 341,250'
 				],
-			preferredSquads: [77,76,78,80],//gen
+			preferredSquads: [77,76,29,78,80,],//gen
 			dangerousEnemies: [40,41],
 			modifiers: [2],
             reqs: [14],
@@ -609,7 +610,7 @@ Vue.component('mission', {
 				'Wave 1: 162,500',
                 'Wave 2: 341,250'
 				],
-            preferredSquads: [76,77,78,79,80],//empire
+            preferredSquads: [76,77,29,78,79,80],//empire
 			dangerousEnemies: [40,42],
             reqs: [14],
             modifiers: [2],

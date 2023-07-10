@@ -428,24 +428,28 @@ Vue.component('mission', {
              },
              {
                 id:75,
-                name: 'Trio with SEE',
-                toons: ['darth_traya','darth_sion','darth_nihilus','gl_palp','sith_empire_trooper']
+                name: 'Sith with SEE',
+                toons: ['darth_revan','darth_malak','darth_malgus','gl_palp','wat_tambor'],
+                video: "https://youtu.be/p9LAD2WlaoU?t=393S"
              },
              {
                 id:76,
                 name: 'Sith Empire with SEE',
-                toons: ['darth_revan','darth_malak','darth_malgus','gl_palp','wat_tambor']
+                toons: ['darth_revan','darth_malak','darth_malgus','gl_palp','wat_tambor'],
+
              },
              {
 				id: 77,
 				name: 'Galactic Legend Kylo',
-				toons: ['gl_kylo', 'first_order_officer', 'kylo_ren_(unmasked)','general_hux','sith_trooper']
+				toons: ['gl_kylo', 'first_order_officer', 'kylo_ren_(unmasked)','general_hux','sith_trooper'],
+				video: "https://youtu.be/p9LAD2WlaoU?t=572"
 				
 			 },
              {
                 id:78,
                 name: "Doctor Aphra & Droids (variants available)",
-                toons: ['doctoraphra','bt1','triplezero','ig-88','hk-47']
+                toons: ['doctoraphra','bt1','triplezero','ig-88','hk-47'],
+                video: "https://youtu.be/uZxgBx1S91E?t=193"
              },
              {
                 id:79,
@@ -589,7 +593,7 @@ Vue.component('mission', {
 				'Wave 1: 162,500',
                 'Wave 2: 341,250'
 				],
-			preferredSquads: [75,76,77,82,80],//gen
+			preferredSquads: [75,77,82,80],//gen
 			dangerousEnemies: [38,39],
 			modifiers: [2],
             reqs: [11],
@@ -618,7 +622,7 @@ Vue.component('mission', {
 				'Wave 1: 162,500',
                 'Wave 2: 341,250'
 				],
-				preferredSquads: [75,76,77,82,80],//gen
+				preferredSquads: [75,77,82,80],//gen
 				dangerousEnemies: [38,39],
 				modifiers: [2],
             reqs: [11],
