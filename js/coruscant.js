@@ -422,7 +422,7 @@ Vue.component('mission', {
              },
              {
                 id:74,
-                name: 'Mon Mothma with Omicron Kyle Katarn',
+                name: 'Mon Mothma with Kyle Katarn',
                 toons: ['mon_mothma', 'pao', 'hoth_rebel_scout', 'cara_dune', 'kyle_katarn_o'],
                 video: "https://youtu.be/dNXwh41TdDI?t=358"
              },
