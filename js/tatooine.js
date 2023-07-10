@@ -430,12 +430,14 @@ Vue.component('mission', {
              {
                 id:75,
                 name: 'Jabba the Hutt',
-                toons: ['gl_jabba','krrsantan','skiff_lando','boba_fett','boushh']
+                toons: ['gl_jabba','krrsantan','skiff_lando','boba_fett','boushh'],
+                video: "https://youtu.be/k_Msldf_jqA?t=366"
              },
              {
                 id:76,
                 name: 'Inquisitors',
-                toons: ['grand_inquisitor', 'seventh_sister', 'ninth_sister', 'fifth_brother','eighth_brother']
+                toons: ['grand_inquisitor', 'seventh_sister', 'ninth_sister', 'fifth_brother','eighth_brother'],
+                video: "https://www.youtube.com/watch?v=2Q8f_Gpnkcg"
              },
              {
                 id:77,
