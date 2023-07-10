@@ -424,7 +424,8 @@ Vue.component('mission', {
              {
 				id: 74,
 				name: 'Galactic Legend Kylo',
-				toons: ['gl_kylo', 'first_order_officer', 'kylo_ren_(unmasked)','general_hux','sith_trooper']
+				toons: ['gl_kylo', 'first_order_officer', 'kylo_ren_(unmasked)','general_hux','sith_trooper'],
+				video: "https://youtu.be/cNBvWc03ErI?t=425"
 				
 			 },
              {
