@@ -407,7 +407,8 @@ Vue.component('mission', {
              {
                 id:74,
                 name: 'Jabba the Hutt',
-                toons: ['gl_jabba','krrsantan','skiff_lando','boba_fett','boushh']
+                toons: ['gl_jabba','krrsantan','skiff_lando','boba_fett','boushh'],
+                video: "https://youtu.be/k_Msldf_jqA?t=165"
              },
              {
                 id:75,
@@ -438,8 +439,9 @@ Vue.component('mission', {
 			 },
 			 {
 				id: 80,
-				name: 'Starkiller',
-				toons: ['emperor_palpatine', 'starkiller', 'mara_jade_teh','visas_marr','barriss_offee']
+				name: 'Palp w/Empire or Starkiller',
+				toons: ['emperor_palpatine', 'starkiller', 'mara_jade_teh','visas_marr','barriss_offee'],
+				video: "https://youtu.be/4qAsN4u5Ejo?t=283"
 				
 			 },
 			 {
