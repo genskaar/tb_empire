@@ -436,7 +436,8 @@ Vue.component('mission', {
              {
 				id: 76,
 				name: 'SEE with Wat and Trio or with Sith Empire',
-				toons: ['gl_palp', 'wat_tambor', 'darth_nihilus','darth_sion','darth_traya']
+				toons: ['gl_palp', 'wat_tambor', 'darth_nihilus','darth_sion','darth_traya'],
+				video: "https://www.youtube.com/watch?v=GWRtcATtOho&t=662s"
 				
 			 },
              {
