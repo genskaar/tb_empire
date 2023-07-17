@@ -457,7 +457,7 @@ Vue.component('mission', {
              {
                 id:80,
                 name: 'Phoenix Squadron',
-                toons: ['hera_syndulla', 'kanan_jarrus', 'chopper', 'garazeb__zeb__orrelios', 'ezra_bridger']
+                toons: ['hera_syndulla', 'ezra_bridger', 'chopper', 'garazeb__zeb__orrelios', 'captain_rex']
              },
              {
                 id:81,
@@ -530,6 +530,7 @@ Vue.component('mission', {
         "Chimaera, Tie Advanced X1, Tie Bomber, Tie Fighter, Tie Interceptor (R)",//45,
         "Wave 1: Stormtrooper Commander (L), Stormtrooper, Recon Trooper, 2x Scout Trooper",
         "Wave 2: Imperial Officer (L), Stormtrooper Commander, Stormtrooper, Recon Trooper, 2x Scout Trooper",
+        "Wave 2: Grand Admiral Thrawn (L), 2x Death Trooper, Stormtrooper Commando, Stormtrooper"
 
 		],
 		platoons: [
@@ -639,7 +640,7 @@ Vue.component('mission', {
                 'Wave 2: 493,594'
 				],
             preferredSquads: [80],//bl
-			dangerousEnemies: [34],
+			dangerousEnemies: [46,48],
             reqs: [19],
             modifiers: [3,4],
 			},
