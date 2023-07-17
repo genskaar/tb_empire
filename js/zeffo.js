@@ -400,7 +400,7 @@ Vue.component('mission', {
 			 },
 			 {
 				id: 70,
-				name: 'Bad Batch (22k+ Power)',
+				name: 'Bad Batch',
 				toons: ['hunter', 'echo','wrecker','tech','omega',]
 				
 			 },
@@ -459,6 +459,18 @@ Vue.component('mission', {
                 name: 'oFinn',
                 toons: ['finn_o', 'rey_(jedi_training)', 'poe_dameron', 'bb-8', 'r2-d2']
              },
+             {
+                id:81,
+                name: 'Rey + UFUs',
+                toons: ['gl_rey', 'rey_(jedi_training)', 'cere_junda', 'cal_kestis', 'ben_solo']
+             },
+             {
+                id:81,
+                name: 'JKC and Jedi',
+                toons: ['jedi_cal', 'unknown', 'unknown', 'unknown', 'unknown']
+             },
+             
+             
              
 
 
@@ -510,7 +522,13 @@ Vue.component('mission', {
         "Wave 2: Imperial Officer (L), Stormtrooper Commander, Stormtrooper, Recon Trooper, Tie Pilot, Scout Trooper",
         "Executrix, Tie Advanced X1, Scythe, Tie Fighter, Tie Interceptor (R)",
         "Wave 2: Ninth Sister (L), 2x Purge Trooper",
-        "Malevolence, Hyena Bomber, Vulture Droid"
+        "Malevolence, Hyena Bomber, Vulture Droid",//45
+        "Wave 1: Stormtrooper Commando (L), 2x Purge Trooper, 2x KX-series Security Droid",
+        "Wave 2: Imperial AT-ST",
+        "Wave 1: Miktrull Tomb Guardian (L), 2x Eilram Tomb Guardian",
+        "Wave 2: Jedi General Chiata (L), Padawan Marseph",
+        "Wave 1: Purge Trooper (L), 2x KX-series Security Droid, 2x Stormtrooper",//50
+        "Wave 2: Second Sister (L), 2x Purge Trooper"
 		],
 		platoons: [
         [      "General Skywalker",	"6","Jedi Knight Luke Skywalker",	"6",
@@ -550,7 +568,8 @@ Vue.component('mission', {
         'With Lord Vader\'s ultimate ability, this can be done on full auto',
         'Unclear if this is even possible right now',
         "Currently Bugged!",
-        "Need 30 successful attempts each TB on Bracca special mission to unlock Zeffo"
+        "Need 30 successful attempts each TB on Bracca special mission to unlock Zeffo",
+        "Tomb Guardians cannot be defeated unless stunned"
         ],
         reqs:[
         'Lord Vader (Relic 5+)',
@@ -599,8 +618,8 @@ Vue.component('mission', {
 				'Wave 1: 162,500',
                 'Wave 2: 341,250'
 				],
-			preferredSquads: [24],//ufu
-			dangerousEnemies: [34],
+			preferredSquads: [81],//ufu
+			dangerousEnemies: [46,47],
 			modifiers: [2,3,6],
             reqs: [20],
 			}, {
@@ -611,10 +630,11 @@ Vue.component('mission', {
 			rewards: [
 				'50 GET2',
 				],
-            preferredSquads: [24],//empire
-			dangerousEnemies: [34],
+            preferredSquads: [70],//clones
+			dangerousEnemies: [48,49],
             reqs: [17],
             modifiers: [3],
+            notes: [4],
 			},
 			{
 			id: 5,
@@ -652,8 +672,8 @@ Vue.component('mission', {
 				'Wave 1: 487,500',
                 'Wave 2: 1,023,750'
 				],
-				preferredSquads: [24],//jkck
-				dangerousEnemies: [34],
+				preferredSquads: [82],//jkck
+				dangerousEnemies: [50,51],
 				modifiers: [2,3,6],
             reqs: [19],
 			}, 
