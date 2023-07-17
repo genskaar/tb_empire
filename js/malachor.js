@@ -597,7 +597,7 @@ Vue.component('mission', {
 
         ],
 		platims:[
-		'Phase 5 DS Kessel (self)',//0
+		'Phase 5 DS Malachor (self)',//0
 		'Phase 6 DS Death Star',
 		],
 		missions: [{
