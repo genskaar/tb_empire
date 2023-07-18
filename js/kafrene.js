@@ -522,7 +522,8 @@ Vue.component('mission', {
         "Wave 2: Qi'ra, L3-37, Young Han Solo, Young Lando Calrissian, Vandor Chewbacca, Pirate Leader",
         "Wave 2: 3x Pike Sentinel (L), Pirate Spy, Pirate Saboteur, Pirate Enforcer",
         "Executrix, Tie Advanced X1, Tie Fighter, Scythe, Tie Bomber, Tie Fighter, Tie Interceptor (R)",
-
+        "Wave 1: Mob Enforcer (L), 2x Cartel Bruiser, 2x Cartel Spy, Cartel Saboteur",//50
+        "Wave 2: Mob Enforcer (L), 2x Cartel Bruiser, 2x Cartel Spy, Cartel Saboteur",
 		],
 		platoons: [
         [     "Jedi Knight Luke Skywalker",	"11","General Skywalker",	"7",
@@ -627,7 +628,7 @@ Vue.component('mission', {
                 'Wave 2: 721,744'
 				],
             preferredSquads: [24],//special
-			dangerousEnemies: [34],
+			dangerousEnemies: [50,51],
             reqs: [23],
             modifiers: [4,2,5],
 			},
