@@ -449,12 +449,13 @@ Vue.component('mission', {
 				 id:78,
 				 name: 'Galactic Legend Kenobi with Republic (variants available)',
 				 toons: ['gl_kenobi','commander_ahsoka_tano','padmé_amidala','general_kenobi','general_skywalker',],
+				 video: "https://youtu.be/gy4z_DimieQ?t=41"
 			 },
              {
 				 id:79,
-				 name: 'Galactic Legend Rey (variants available)',
+				 name: 'Galactic Legend Rey (variants available - Resistance/501st/BB/Ufu)',
 				 toons: ['gl_rey','resistance_hero_finn','resistance_hero_poe','r2-d2','amilyn_holdo'],
-				 video: "https://youtu.be/wvU3g6gjpcs?t=1312"
+				 video: "https://youtu.be/gy4z_DimieQ?t=241"
 			 },
              {
 				 id:80,
