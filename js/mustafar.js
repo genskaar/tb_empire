@@ -437,7 +437,8 @@ Vue.component('mission', {
              {
 				id: 76,
 				name: 'Palpatine and Empire',
-				toons: ['emperor_palpatine', 'darth_vader', 'mara_jade_teh','grand_admiral_thrawn','admiral_piett']
+				toons: ['emperor_palpatine', 'darth_vader', 'mara_jade_teh','grand_admiral_thrawn','admiral_piett'],
+				video: 'https://youtu.be/XQ0ML_qnRtY?t=39'
 				
 			 },
 			{
@@ -467,7 +468,13 @@ Vue.component('mission', {
 				id: 81,
 				name: 'Trench + Seps',
 				toons: ['admiral_trench', 'nute_gunrey', 'geonosian_brood_alpha','count_dooku', 'wat_tambor' ],
-				video: "https://youtu.be/vtOoPROo0Ho?t=310"
+				video: "https://youtu.be/XQ0ML_qnRtY?t=232"
+			 },
+			              {
+				id: 82,
+				name: 'Palpatine and Empire',
+				toons: ['emperor_palpatine', 'darth_vader', 'mara_jade_teh','grand_admiral_thrawn','admiral_piett'],
+				
 			 },
              
 
@@ -550,7 +557,7 @@ Vue.component('mission', {
 				'Wave 1: 100,000',
                 'Wave 2: 200,000'
 				],
-            preferredSquads: [80,76,81],
+            preferredSquads: [80,82,81],
 			dangerousEnemies: [19,21],
             reqs: [1],
             modifiers: [0]

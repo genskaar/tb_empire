@@ -456,23 +456,38 @@ Vue.component('mission', {
 				id: 79,
 				name: 'Galactic Legend Kylo',
 				toons: ['gl_kylo', 'first_order_officer', 'kylo_ren_(unmasked)','general_hux','sith_trooper'],
+				video: "https://youtu.be/XQ0ML_qnRtY?t=232"
 				
 			 },
              {
                 id:80,
                 name: 'Lord Vader',
                 toons: ['gl_vader','maul','royal_guard','admiral_piett','darth_vader'],
+                video: "https://www.youtube.com/watch?v=3EUB7pnqIIQ&t=190s"
              },
              {
                 id:81,
                 name: 'Inquisitors',
                 toons: ['grand_inquisitor', 'seventh_sister', 'ninth_sister', 'fifth_brother','eighth_brother'],
+                video: "https://youtu.be/3EUB7pnqIIQ?t=104"
              },
              			 {
 				id: 82,
 				name: 'Trench + Seps',
 				toons: ['admiral_trench', 'nute_gunrey', 'jango_fett','count_dooku', 'wat_tambor' ],
+				video: "https://youtu.be/3EUB7pnqIIQ?t=320"
 			 },
+			              {
+                id:83,
+                name: 'Lord Vader',
+                toons: ['gl_vader','maul','royal_guard','admiral_piett','darth_vader'],
+                video: "https://www.youtube.com/live/53171nJlggY?feature=share&t=2991"
+             },
+                          {
+				id: 84,
+				name: 'Galactic Legend Kylo',
+				toons: ['gl_kylo', 'first_order_officer', 'kylo_ren_(unmasked)','general_hux','sith_trooper'],
+			 }
              
 
 
@@ -589,7 +604,7 @@ Vue.component('mission', {
 			rewards: [
                 'Wave 1: 250,000'
 				],
-            preferredSquads: [76,77,80,79,82],
+            preferredSquads: [76,77,83,84,82],
 			dangerousEnemies: [27],//reek
             reqs: [4],
 			},
