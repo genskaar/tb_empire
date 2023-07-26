@@ -408,7 +408,8 @@ Vue.component('mission', {
                 id:74,
                 name: 'Jabba the Hutt',
                 toons: ['gl_jabba','krrsantan','skiff_lando','boba_fett','boushh'],
-                video: "https://youtu.be/k_Msldf_jqA?t=165"
+                video: "https://youtu.be/k_Msldf_jqA?t=165",
+                videosource: "bd"
              },
              {
                 id:75,
@@ -424,7 +425,8 @@ Vue.component('mission', {
                 id:77,
                 name: 'Executor',
                 toons: ['executor','hound\'s_tooth','razor_crest','xanadu_blood','slave_i','ig-2000'],
-                video: 'https://youtu.be/4qAsN4u5Ejo?t=467'
+                video: 'https://youtu.be/4qAsN4u5Ejo?t=467',
+                videosource: "bd"
              },
              {
                 id:78,
@@ -441,7 +443,8 @@ Vue.component('mission', {
 				id: 80,
 				name: 'Palp w/Empire or Starkiller',
 				toons: ['emperor_palpatine', 'starkiller', 'mara_jade_teh','visas_marr','barriss_offee'],
-				video: "https://youtu.be/4qAsN4u5Ejo?t=283"
+				video: "https://youtu.be/4qAsN4u5Ejo?t=283",
+				videosource: "bd"
 				
 			 },
 			 {
@@ -458,14 +461,16 @@ Vue.component('mission', {
 				id: 83,
 				name: 'Rey/Gas 501st',
 				toons: ['gl_rey', 'ct-21-0408__echo_','ct-7567__rex_','arc_trooper','ct-5555__fives_',],
-				video: "https://www.youtube.com/watch?v=PaU-AA1Re3Q"
+				video: "https://www.youtube.com/watch?v=PaU-AA1Re3Q",
+				videosource: "gs"
 				
 			 },
 			 {
 				id: 84,
 				name: 'Malevolence Fleet',
 				toons: ['malevolence', 'hyena_bomber', 'vulture_droid','sun_fac\'s_geonosian_starfighter', 'geonosian_spy_starfighter', 'geonosian_soldier\'s_starfighter'],
-                video: 'https://youtu.be/4qAsN4u5Ejo?t=538'
+                video: 'https://youtu.be/4qAsN4u5Ejo?t=538',
+                videosource: "bd"
 				
 			},
              
