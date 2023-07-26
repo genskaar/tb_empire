@@ -445,7 +445,9 @@ Vue.component('mission', {
              {
                 id:77,
                 name: "oFinn",
-                toons: ['finn','rey_(scavenger)','resistance_hero_finn','resistance_hero_poe','rey_(jedi_training)']
+                toons: ['finn','rey_(scavenger)','resistance_hero_finn','resistance_hero_poe','rey_(jedi_training)'],
+                video: "https://www.youtube.com/watch?v=w4zNLvN_ndI",
+                videosource: "gs"
              },
 			{
                 id:78,
