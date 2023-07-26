@@ -447,7 +447,8 @@ Vue.component('mission', {
                 id:78,
                 name: "Doctor Aphra & Droids",
                 toons: ['doctoraphra','bt1','triplezero','ig-88','darth_vader'],
-                video: "https://youtu.be/uZxgBx1S91E?t=29"
+                video: "https://youtu.be/uZxgBx1S91E?t=29",
+                videosource: "bd"
              },
 
              
