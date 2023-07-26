@@ -257,7 +257,8 @@ Vue.component('mission', {
 				id:44,
 				name: 'Rebels (Either CLS or oROLO Lead)',
 				toons: ['commander_luke_skywalker', 'chewbacca', 'han_solo', 'threepio_&_chewie', 'c-3po'],
-                video: "https://youtu.be/g-5NNZKiEMM?t=169"
+                video: "https://youtu.be/g-5NNZKiEMM?t=169",
+                videosource: "skel"
 			 },
 			 {
 				id:45,
@@ -424,30 +425,36 @@ Vue.component('mission', {
                 id:74,
                 name: 'Jabba the Hutt',
                 toons: ['gl_jabba','krrsantan','skiff_lando','boba_fett','boushh'],
-                video: "https://youtu.be/g-5NNZKiEMM?t=18"
+                video: "https://youtu.be/g-5NNZKiEMM?t=18",
+                videosource: "skel"
              },
              {
                 id:75,
                 name: 'Executor',
                 toons: ['executor','hound\'s_tooth','razor_crest','lando\'s_millennium_falcon','xanadu_blood','slave_i','ig-2000'],
-                video: "https://youtu.be/g-5NNZKiEMM?t=270"
+                video: "https://youtu.be/g-5NNZKiEMM?t=270",
+                videosource: "skel"
              },
              {
                 id:76,
                 name: "Qi'ra Scoundrals",
                 toons: ['qi\'ra','dash_rendar','ig-11','kuiil','young_han_solo'],
-                video: "https://youtu.be/g-5NNZKiEMM?t=447"
+                video: "https://youtu.be/g-5NNZKiEMM?t=447",
+                videosource: "skel"
              },
              {
                 id:77,
                 name: "oFinn",
-                toons: ['finn','rey_(scavenger)','resistance_hero_finn','resistance_hero_poe','rey_(jedi_training)']
+                toons: ['finn','rey_(scavenger)','resistance_hero_finn','resistance_hero_poe','rey_(jedi_training)'],
+                video: "https://www.youtube.com/watch?v=w4zNLvN_ndI",
+                videosource: "gs"
              },
 			{
                 id:78,
                 name: "Doctor Aphra & Droids",
                 toons: ['doctoraphra','bt1','triplezero','ig-88','darth_vader'],
-                video: "https://youtu.be/uZxgBx1S91E?t=29"
+                video: "https://youtu.be/uZxgBx1S91E?t=29",
+                videosource: "bd"
              },
 
              

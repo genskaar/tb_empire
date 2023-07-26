@@ -424,56 +424,65 @@ Vue.component('mission', {
                 id:74,
                 name: 'Mon Mothma with Kyle Katarn',
                 toons: ['mon_mothma', 'pao', 'hoth_rebel_scout', 'cara_dune', 'kyle_katarn_o'],
-                video: "https://youtu.be/dNXwh41TdDI?t=358"
+                video: "https://youtu.be/dNXwh41TdDI?t=358",
+                videosource: "bd"
              },
              {
 				id: 75,
 				name: 'Home One Rebel Fleet with Outrider',
 				toons: ['home_one', 'han\'s_millennium_falcon', 'rebel_y-wing', 'outrider', 'biggs_darklighter\'s_x-wing', 'phantom_ii', 'cassian\'s_u-wing','ghost'],
-				video: "https://youtu.be/wvU3g6gjpcs?t=1521"
+				video: "https://youtu.be/wvU3g6gjpcs?t=1521",
+                videosource: "bd"
 		 	 },
              {
 				id: 76,
 				name: 'Profundity Fleet with Outrider',
 				toons: ['profundity', 'han\'s_millennium_falcon', 'rebel_y-wing', 'outrider', 'biggs_darklighter\'s_x-wing', 'phantom_ii', 'cassian\'s_u-wing','ghost'],
-                video: "https://www.youtube.com/watch?v=aoP5GEUjL7I"
+                video: "https://www.youtube.com/watch?v=aoP5GEUjL7I",
+                videosource: "gs"
 				
 		 	 },
              {
 				 id:77,
 				 name: 'Galactic Legend Luke (variants available)',
 				 toons: ['gl_luke','jedi_knight_luke_skywalker','hermit_yoda','jolee_bindo','jedi_knight_revan',],
-                 video: "https://www.youtube.com/watch?v=zUWJGU0fHbI&list=PLDskqmL-F0lZ--JvKdrc0Cqj-wEcAr1WH&t=132s"
+                 video: "https://www.youtube.com/watch?v=zUWJGU0fHbI&list=PLDskqmL-F0lZ--JvKdrc0Cqj-wEcAr1WH&t=132s",
+                 videosource: "xp"
 			 },
              {
 				 id:78,
 				 name: 'Galactic Legend Kenobi with Republic (variants available)',
 				 toons: ['gl_kenobi','commander_ahsoka_tano','padmé_amidala','general_kenobi','general_skywalker',],
-				 video: "https://youtu.be/gy4z_DimieQ?t=41"
+				 video: "https://youtu.be/gy4z_DimieQ?t=41",
+                 videosource: "bd"
 			 },
              {
 				 id:79,
 				 name: 'Galactic Legend Rey (variants available - Resistance/501st/BB/Ufu)',
 				 toons: ['gl_rey','resistance_hero_finn','resistance_hero_poe','r2-d2','amilyn_holdo'],
-				 video: "https://youtu.be/gy4z_DimieQ?t=241"
+				 video: "https://youtu.be/gy4z_DimieQ?t=241",
+                 videosource: "bd"
 			 },
              {
 				 id:80,
 				 name: 'Galactic Republic Jedi',
 				 toons: ['mace_windu','gl_kenobi','ahsoka_tano','ki-adi-mundi','kit_fisto',],
-                 video: "https://youtu.be/wvU3g6gjpcs?t=729"
+                 video: "https://youtu.be/wvU3g6gjpcs?t=729",
+                 videosource: "bd"
 			 },
              {
 				 id:81,
 				 name: 'Padme with Republic',
 				 toons: ['padmé_amidala','commander_ahsoka_tano','general_kenobi','general_skywalker','jedi_knight_anakin'],
-                 video: "https://youtu.be/zUWJGU0fHbI?list=PLDskqmL-F0lZ--JvKdrc0Cqj-wEcAr1WH&t=379"
+                 video: "https://youtu.be/zUWJGU0fHbI?list=PLDskqmL-F0lZ--JvKdrc0Cqj-wEcAr1WH&t=379",
+                 videosource: "xp"
 			 },
              {
 				 id:82,
 				 name: 'Bad Batch (variants available)',
-				 toons: ['hunter','echo','tech','wrecker','omega'],
-				 video: "https://youtu.be/wvU3g6gjpcs?t=1068"
+				 toons: ['hunter','bb_echo','tech','wrecker','omega'],
+				 video: "https://youtu.be/wvU3g6gjpcs?t=1068",
+                 videosource: "bd"
 			 }
              
 

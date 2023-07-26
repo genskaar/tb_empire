@@ -429,20 +429,23 @@ Vue.component('mission', {
 				id: 75,
 				name: 'Profundity Fleet',
 				toons: ['profundity', 'han\'s_millennium_falcon', 'rebel_y-wing', 'outrider', 'biggs_darklighter\'s_x-wing', 'phantom_ii', 'cassian\'s_u-wing','ghost'],
-                video: 'https://www.youtube.com/watch?v=fiX4CkIO0w8'
+                video: 'https://www.youtube.com/watch?v=fiX4CkIO0w8',
+                videosource: "gs"
 				
 		 	 },
 		 	 {
 				 id:76,
 				 name: 'Galactic Legend Luke (variants available)',
 				 toons: ['gl_luke','jedi_knight_luke_skywalker','hermit_yoda','jolee_bindo','jedi_knight_revan',],
-			     video: 'https://www.youtube.com/watch?v=JerwheUl9z8'
+			     video: 'https://www.youtube.com/watch?v=JerwheUl9z8',
+			     videosource: "gs"
              },
 			 {
 				 id:77,
 				 name: 'Galactic Legend Kenobi with Republic (variants available)',
 				 toons: ['gl_kenobi','commander_ahsoka_tano','padmé_amidala','general_kenobi','general_skywalker',],
-			     video: 'https://www.youtube.com/watch?v=_V0Z6R7Txz4'
+			     video: 'https://www.youtube.com/watch?v=_V0Z6R7Txz4',
+			     videosource: "gs"
              },
 			 {
                 id:78,

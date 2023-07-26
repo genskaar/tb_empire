@@ -424,13 +424,15 @@ Vue.component('mission', {
                 id:74,
                 name: 'Lord Vader Empire (Variants Available)',
                 toons: ['gl_vader','darth_vader','royal_guard','admiral_piett','grand_admiral_thrawn'],
-                video: 'https://youtu.be/p9LAD2WlaoU?t=261'
+                video: 'https://youtu.be/p9LAD2WlaoU?t=261',
+                videosource: "bd"
              },
              {
                 id:75,
                 name: 'Sith with SEE',
                 toons: ['darth_revan','darth_malak','darth_malgus','gl_palp','wat_tambor'],
-                video: "https://youtu.be/p9LAD2WlaoU?t=393S"
+                video: "https://youtu.be/p9LAD2WlaoU?t=393S",
+                videosource: "bd"
              },
              {
                 id:76,
@@ -442,14 +444,16 @@ Vue.component('mission', {
 				id: 77,
 				name: 'Galactic Legend Kylo',
 				toons: ['gl_kylo', 'first_order_officer', 'kylo_ren_(unmasked)','general_hux','sith_trooper'],
-				video: "https://youtu.be/p9LAD2WlaoU?t=572"
+				video: "https://youtu.be/p9LAD2WlaoU?t=572",
+				videosource: "bd"
 				
 			 },
              {
                 id:78,
                 name: "Doctor Aphra & Droids (variants available)",
                 toons: ['doctoraphra','bt1','triplezero','ig-88','hk-47'],
-                video: "https://youtu.be/uZxgBx1S91E?t=193"
+                video: "https://youtu.be/uZxgBx1S91E?t=193",
+                videosource: "bd"
              },
              {
                 id:79,

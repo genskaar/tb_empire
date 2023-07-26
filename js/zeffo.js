@@ -401,7 +401,7 @@ Vue.component('mission', {
 			 {
 				id: 70,
 				name: 'Bad Batch',
-				toons: ['hunter', 'echo','wrecker','tech','omega',]
+				toons: ['hunter', 'bb_echo','wrecker','tech','omega',]
 				
 			 },
 			 {

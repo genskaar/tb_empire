@@ -424,64 +424,74 @@ Vue.component('mission', {
 				id: 74,
 				name: 'Galactic Legend Kylo',
 				toons: ['gl_kylo', 'first_order_officer', 'kylo_ren_(unmasked)','general_hux','sith_trooper'],
-                video: 'https://youtu.be/GWRtcATtOho?t=291'
+                video: 'https://youtu.be/GWRtcATtOho?t=291',
+                videosource: "bd"
 				
 			 },
 			 {
                 id:75,
                 name: 'Lord Vader',
                 toons: ['gl_vader','maul','royal_guard','admiral_piett','darth_vader'],
-                video: 'https://youtu.be/GWRtcATtOho?t=414'
+                video: 'https://youtu.be/GWRtcATtOho?t=414',
+                videosource: "bd"
              },
              {
 				id: 76,
 				name: 'SEE with Wat and Trio or with Sith Empire',
 				toons: ['gl_palp', 'wat_tambor', 'darth_nihilus','darth_sion','darth_traya'],
-				video: "https://www.youtube.com/watch?v=GWRtcATtOho&t=662s"
+				video: "https://www.youtube.com/watch?v=GWRtcATtOho&t=662s",
+				videosource: "bd"
 				
 			 },
              {
                 id:77,
                 name: 'Inquisitors',
                 toons: ['grand_inquisitor', 'seventh_sister', 'ninth_sister', 'fifth_brother','eighth_brother'],
-                video: 'https://youtu.be/GWRtcATtOho?t=536'
+                video: 'https://youtu.be/GWRtcATtOho?t=536',
+                videosource: "bd"
              },
              {
                 id:78,
                 name: 'Bounty Hunters with Wat and BobaSOJ/Fennec',
                 toons: ['bossk', 'boba_fett', 'jango_fett', 'boba_soj','wat_tambor'],
-                video: "https://www.youtube.com/watch?v=enArZ-wAySo"
+                video: "https://www.youtube.com/watch?v=enArZ-wAySo",
+                videosource: "gs"
              },
              {
 				id: 79,
 				name: 'Galactic Legend Kylo',
 				toons: ['gl_kylo', 'first_order_officer', 'kylo_ren_(unmasked)','general_hux','sith_trooper'],
-				video: "https://youtu.be/XQ0ML_qnRtY?t=232"
+				video: "https://youtu.be/XQ0ML_qnRtY?t=232",
+				videosource: "bd"
 				
 			 },
              {
                 id:80,
                 name: 'Lord Vader',
                 toons: ['gl_vader','maul','royal_guard','admiral_piett','darth_vader'],
-                video: "https://www.youtube.com/watch?v=3EUB7pnqIIQ&t=190s"
+                video: "https://www.youtube.com/watch?v=3EUB7pnqIIQ&t=190s",
+                videosource: "bd"
              },
              {
                 id:81,
                 name: 'Inquisitors',
                 toons: ['grand_inquisitor', 'seventh_sister', 'ninth_sister', 'fifth_brother','eighth_brother'],
-                video: "https://youtu.be/3EUB7pnqIIQ?t=104"
+                video: "https://youtu.be/3EUB7pnqIIQ?t=104",
+                videosource: "bd"
              },
              			 {
 				id: 82,
 				name: 'Trench + Seps',
 				toons: ['admiral_trench', 'nute_gunrey', 'jango_fett','count_dooku', 'wat_tambor' ],
-				video: "https://youtu.be/3EUB7pnqIIQ?t=320"
+				video: "https://youtu.be/3EUB7pnqIIQ?t=320",
+				videosource: "bd"
 			 },
 			              {
                 id:83,
                 name: 'Lord Vader',
                 toons: ['gl_vader','maul','royal_guard','admiral_piett','darth_vader'],
-                video: "https://www.youtube.com/live/53171nJlggY?feature=share&t=2991"
+                video: "https://www.youtube.com/live/53171nJlggY?feature=share&t=2991",
+                videosource: "bd"
              },
                           {
 				id: 84,

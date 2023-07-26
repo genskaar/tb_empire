@@ -205,7 +205,8 @@ Vue.component('mission', {
 				id: 35,
 				name: 'Rey 501st / Gas 501st',
 				toons: ['general_skywalker', 'arc_trooper', 'ct-21-0408__echo_', 'ct-7567__rex_', 'ct-5555__fives_'],
-                video: 'https://youtu.be/sI8t5Pg3NX8?t=496' 
+                video: 'https://youtu.be/sI8t5Pg3NX8?t=496',
+                videosource: "bd"
 				
 			},
 			{
@@ -425,19 +426,22 @@ Vue.component('mission', {
                 id:74,
                 name: 'Executor',
                 toons: ['executor','hound\'s_tooth','razor_crest','xanadu_blood','slave_i','ig-2000'],
-                video: 'https://youtu.be/sI8t5Pg3NX8?t=790'
+                video: 'https://youtu.be/sI8t5Pg3NX8?t=790',
+                videosource: "bd"
              },
              {
                 id:75,
                 name: 'Jabba the Hutt',
                 toons: ['gl_jabba','krrsantan','skiff_lando','boba_fett','boushh'],
-                video: "https://youtu.be/k_Msldf_jqA?t=366"
+                video: "https://youtu.be/k_Msldf_jqA?t=366",
+                videosource: "bd"
              },
              {
                 id:76,
                 name: 'Inquisitors',
                 toons: ['grand_inquisitor', 'seventh_sister', 'ninth_sister', 'fifth_brother','eighth_brother'],
-                video: "https://www.youtube.com/watch?v=2Q8f_Gpnkcg"
+                video: "https://www.youtube.com/watch?v=2Q8f_Gpnkcg",
+                videosource: "bd"
              },
              {
                 id:77,
@@ -457,7 +461,9 @@ Vue.component('mission', {
              {
                 id:80,
                 name: 'oFinn',
-                toons: ['finn_o', 'rey_(jedi_training)', 'poe_dameron', 'resistance_pilot', 'rose_tico']
+                toons: ['finn_o', 'rey_(jedi_training)', 'poe_dameron', 'resistance_pilot', 'rose_tico'],
+                video: "https://youtu.be/w4zNLvN_ndI?t=1068",
+                videosource: "gs"
              },
              {
 				id:81,
