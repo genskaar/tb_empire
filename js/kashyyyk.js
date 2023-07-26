@@ -172,7 +172,8 @@ Vue.component('mission', {
 				id:29,
 				name: 'Jedi Training Rey',
 				toons: ['rey_(jedi_training)', 'c-3po', 'r2-d2', 'rey_(scavenger)', 'bb-8'],
-				video: "https://www.youtube.com/watch?v=IRNnaG4W6oU&t=595s"
+				video: "https://www.youtube.com/watch?v=IRNnaG4W6oU&t=595s",
+				videosource: "bd"
 				 
 			 },
 			 {
@@ -436,13 +437,15 @@ Vue.component('mission', {
 				 id:76,
 				 name: 'Galactic Legend Luke (variants available)',
 				 toons: ['jedi_knight_luke_skywalker','gl_luke','hermit_yoda','jolee_bindo','jedi_knight_revan',],
-                 video: 'https://youtu.be/IRNnaG4W6oU?t=417'
+                 video: 'https://youtu.be/IRNnaG4W6oU?t=417',
+                 videosource: "bd"
 			 },
 			 {
 				 id:77,
 				 name: 'Galactic Legend Kenobi with Republic (variants available)',
 				 toons: ['gl_kenobi','commander_ahsoka_tano','padmé_amidala','general_kenobi','general_skywalker',],
-                 video: 'https://www.youtube.com/watch?v=XSJLv4XCUxk'
+                 video: 'https://www.youtube.com/watch?v=XSJLv4XCUxk',
+                 videosource: "gs"
 			 },
 			 {
                 id:78,
@@ -453,12 +456,15 @@ Vue.component('mission', {
                 id:79,
                 name: 'oRolo with Rebels',
                 toons: ['rolo', 'han_solo', 'chewbacca', 'threepio_&_chewie', 'ahsoka_tano_(fulcrum)'],
-                video: 'https://www.youtube.com/watch?v=wh2Jq_MZl1Y'
+                video: 'https://www.youtube.com/watch?v=wh2Jq_MZl1Y',
+                videosource: "gs"
              },
               {
                 id:80,
                 name: 'oFinn',
-                toons: ['finn_o', 'rey_(jedi_training)', 'poe_dameron', 'bb-8', 'r2-d2']
+                toons: ['finn_o', 'rey_(jedi_training)', 'poe_dameron', 'bb-8', 'r2-d2'],
+                video: "https://youtu.be/w4zNLvN_ndI?t=722",
+                videosource: "gs"
              },
              {
 		id:81,
