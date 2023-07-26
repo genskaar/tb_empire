@@ -455,7 +455,8 @@ Vue.component('mission', {
                 id:80,
                 name: 'Executor',
                 toons: ['executor','hound\'s_tooth','razor_crest','ghost','xanadu_blood','slave_i','ig-2000', 'ebon_hawk'],
-                video: 'https://www.youtube.com/watch?v=xS-HFba9jOU'
+                video: 'https://www.youtube.com/watch?v=xS-HFba9jOU',
+                videosource: "yt"
              },
              {
                 id:81,
