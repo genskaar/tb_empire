@@ -52,7 +52,7 @@
 			<div class="mb-3" v-if="selectedMission.preferredSquads">
 				<p  class="h4">Preferred teams</p>
 				<div v-for="item in selectedMission.preferredSquads">
-                    <p><img v-bind:src="'../media/'+squads[item].videosource+'.png'" alt="vid" @error="noimage"><a :href="squads[item].video"> {{squads[item].name}}</a></p>
+                    <p><img v-bind:src="'../media/'+squads[item].videosource+'.png'" onerror="this.src='../media/none.png';" alt="vid" ><a :href="squads[item].video"> {{squads[item].name}}</a></p>
 					<div class="img_block">
 						<img 
 						v-for="pic in squads[item].toons"
