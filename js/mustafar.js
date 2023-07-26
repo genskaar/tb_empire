@@ -419,33 +419,37 @@ Vue.component('mission', {
                 id:73,
                 name: 'Lord Vader (solo)',
                 toons: ['gl_vader','noone','noone','noone','noone'],
-                video: "https://youtu.be/S88QWy8_nMg?t=1899"
+                video: "https://youtu.be/S88QWy8_nMg?t=1899",
+                videosource: "gs"
              },
              {
 				id: 74,
 				name: 'Galactic Legend Kylo',
 				toons: ['gl_kylo', 'first_order_officer', 'kylo_ren_(unmasked)','general_hux','sith_trooper'],
-				video: "https://youtu.be/cNBvWc03ErI?t=425"
+				video: "https://youtu.be/cNBvWc03ErI?t=425",
+                videosource: "bd"
 				
 			 },
              {
 				id: 75,
 				name: 'SEE with Wat and Trio or with Sith Empire',
 				toons: ['gl_palp', 'wat_tambor', 'darth_nihilus','darth_sion','darth_traya'],
+                videosource:"none"
 				
 			 },
              {
 				id: 76,
 				name: 'Palpatine and Empire',
 				toons: ['emperor_palpatine', 'darth_vader', 'mara_jade_teh','grand_admiral_thrawn','admiral_piett'],
-				video: 'https://youtu.be/XQ0ML_qnRtY?t=39'
-				
+				video: 'https://youtu.be/XQ0ML_qnRtY?t=39',
+                videosource: "bd"
 			 },
 			{
                 id:77,
                 name: 'Inquisitors',
                 toons: ['grand_inquisitor', 'seventh_sister', 'ninth_sister', 'fifth_brother','eighth_brother'],
-                video: "https://www.youtube.com/watch?v=-OFAp5BwpaA"
+                video: "https://www.youtube.com/watch?v=-OFAp5BwpaA",
+                videosource: "gs"
              },
              {
                 id:78,
@@ -456,25 +460,28 @@ Vue.component('mission', {
 				id: 79,
 				name: 'Palpatine and Empire',
 				toons: ['emperor_palpatine', 'darth_vader', 'mara_jade_teh','grand_admiral_thrawn','admiral_piett'],
-				video: "https://www.youtube.com/watch?v=fh4Bx7VB_Ac"
+				video: "https://www.youtube.com/watch?v=fh4Bx7VB_Ac",
+                videosource: "gs"
 			 },
              {
 				id: 80,
 				name: 'SEE with Wat and Trio or with Sith Empire',
 				toons: ['gl_palp', 'wat_tambor', 'darth_nihilus','darth_sion','darth_traya'],
-				video: "https://www.youtube.com/watch?v=0d9jDzbQI4E"
+				video: "https://www.youtube.com/watch?v=0d9jDzbQI4E",
+                videosource: "gs"
 			 },
 			 {
 				id: 81,
 				name: 'Trench + Seps',
 				toons: ['admiral_trench', 'nute_gunrey', 'geonosian_brood_alpha','count_dooku', 'wat_tambor' ],
-				video: "https://youtu.be/XQ0ML_qnRtY?t=232"
+				video: "https://youtu.be/XQ0ML_qnRtY?t=232",
+                videosource: "bd"
 			 },
-			              {
+                {
 				id: 82,
 				name: 'Palpatine and Empire',
 				toons: ['emperor_palpatine', 'darth_vader', 'mara_jade_teh','grand_admiral_thrawn','admiral_piett'],
-				
+				videosource:"none"
 			 },
              
 
