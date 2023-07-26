@@ -454,7 +454,9 @@ Vue.component('mission', {
              {
                 id:78,
                 name: 'Empire (Variants possible)',
-                toons: ['executrix','sith_fighter', 'scythe', 'tie_advanced_x1','tie_defender', 'tie_interceptor', 'gauntlet_starfighter', 'imperial_tie_bomber' ]
+                toons: ['executrix','sith_fighter', 'scythe', 'tie_advanced_x1','tie_defender', 'tie_interceptor', 'gauntlet_starfighter', "emperor's_shuttle" ],
+                video: "https://youtu.be/vtOoPROo0Ho?t=35",
+                videosource: "bd"
              },
              {
 				id: 79,

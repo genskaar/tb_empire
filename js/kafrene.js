@@ -428,7 +428,9 @@ Vue.component('mission', {
              {
 				id: 75,
 				name: 'Profundity Fleet',
-				toons: ['profundity', 'rebel_y-wing', 'outrider','ghost', 'biggs_darklighter\'s_x-wing', 'han\'s_millennium_falcon', 'phantom_ii', 'cassian\'s_u-wing']
+				toons: ['profundity', 'rebel_y-wing', 'outrider','ghost', 'biggs_darklighter\'s_x-wing', 'han\'s_millennium_falcon', 'phantom_ii', 'cassian\'s_u-wing'],
+				video: "https://www.youtube.com/watch?v=mw0ByoqQK94",
+				videosource: "gs"
 				
 		 	 },
 		 	 {
