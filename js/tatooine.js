@@ -468,7 +468,16 @@ Vue.component('mission', {
              {
 				id:81,
 				name: 'Rebels (Either CLS or oROLO Lead)',
-				toons: ['commander_luke_skywalker', 'chewbacca', 'han_solo', 'ahsoka_tano_(fulcrum)', 'c-3po'],
+				toons: ['commander_luke_skywalker', 'chewbacca', 'han_solo', 'admiral_raddus', 'threepio_&_chewie'],
+                video: "https://www.youtube.com/watch?v=55198kl4gD0",
+                videosource: "gs"
+             },
+             {
+				id:82,
+				name: 'Ignore Fennec and use JMK',
+				toons: ['gl_kenobi','commander_ahsoka_tano','padmé_amidala','general_kenobi','fennec_shand'],
+                video: "https://www.youtube.com/watch?v=YRyM41CtNOg",
+                videosource: "gs"
              }
              
              
@@ -627,7 +636,7 @@ Vue.component('mission', {
 				'Wave 1: 162,500',
                 'Wave 2: 341,250'
 				],
-            preferredSquads: [77,78],//fennec
+            preferredSquads: [77,78,82],//fennec
 			dangerousEnemies: [50,51],
             reqs: [18],
             modifiers: [3],
