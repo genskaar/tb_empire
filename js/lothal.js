@@ -183,7 +183,9 @@ Vue.component('mission', {
 			 {
                 id:31,
                 name: 'Kenobi Negotiator Fleet w/ Y-Wing',
-                toons: ['negotiator', 'anakin\'s_eta-2_starfighter', 'BTL-B_Y-wing_Starfighter', 'umbaran_starfighter','ahsoka_tano\'s_jedi_starfighter', 'plo_koon\'s_jedi_starfighter', 'clone_sergeant\'s_arc-170', 'rex\'s_arc-170',]
+                toons: ['negotiator', 'anakin\'s_eta-2_starfighter', 'BTL-B_Y-wing_Starfighter', 'umbaran_starfighter','ahsoka_tano\'s_jedi_starfighter', 'plo_koon\'s_jedi_starfighter', 'clone_sergeant\'s_arc-170', 'rex\'s_arc-170',],
+		video: "https://www.youtube.com/watch?v=9IUeAhCowi8",
+		videosource: "gs"
              },
              {
                 id:32,
