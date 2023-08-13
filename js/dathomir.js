@@ -430,8 +430,8 @@ Vue.component('mission', {
              {
                 id:75,
                 name: 'Sith with SEE',
-                toons: ['darth_revan','darth_malak','darth_malgus','gl_palp','wat_tambor'],
-                video: "https://youtu.be/p9LAD2WlaoU?t=393S",
+                toons: ['darth_revan','darth_malak','darth_malgus','gl_palp','sith_marauder'],
+                video: "https://youtu.be/nNPhAaob1LE?t=311",
                 videosource: "bd"
              },
              {
@@ -474,6 +474,8 @@ Vue.component('mission', {
 				id: 82,
 				name: 'Trench + Separatists',
 				toons: ['admiral_trench', 'nute_gunrey', 'jango_fett','count_dooku', 'wat_tambor' ],
+				video: 'https://youtu.be/nNPhAaob1LE?t=49',
+				videosource: 'bd'
 			 },
              
 
@@ -553,7 +555,8 @@ Vue.component('mission', {
         'Unclear if this is even possible right now',
         "Currently Bugged!",
         "Do not use SEE lead here (prevents ally revives)",
-        "Using LV with leftover empire can let you use 'Good' empire elsewhere for 2/2."
+        "Using LV with leftover empire can let you use 'Good' empire elsewhere for 2/2.",
+		"Wat tambor makes every team here more reliable because of revive preventing tech."
         ],
         reqs:[
         'Lord Vader (Relic 5+)',
@@ -601,7 +604,7 @@ Vue.component('mission', {
 			dangerousEnemies: [38,39],
 			modifiers: [2],
             reqs: [11],
-            notes: [3],
+            notes: [3,5],
 			}, {
 			id: 2,
 			name: 'c3',
@@ -630,7 +633,7 @@ Vue.component('mission', {
 				dangerousEnemies: [38,39],
 				modifiers: [2],
             reqs: [11],
-            notes: [3],
+            notes: [3,5],
 			}, 
             {
 			id: 6,

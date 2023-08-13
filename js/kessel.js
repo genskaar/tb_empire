@@ -461,7 +461,9 @@ Vue.component('mission', {
              {
                 id:81,
                 name: 'Jabba the Hutt',
-                toons: ['gl_jabba','krrsantan','skiff_lando','boba_fett','boushh']
+                toons: ['gl_jabba','krrsantan','skiff_lando','boba_fett','boushh'],
+				video: 'https://www.youtube.com/watch?v=u0Ckt7z-qJ0',
+				videosource: "gs"
              },
              {
 		id: 82,
@@ -482,7 +484,9 @@ Vue.component('mission', {
 	     {
 		id: 85,
 		name: 'Galactic Legend Kenobi (Variants Available)',
-		toons: ['gl_kenobi', 'general_skywalker','commander_ahsoka_tano','general_kenobi','padmé_amidala',]
+		toons: ['gl_kenobi', 'ahsoka_tano','commander_ahsoka_tano','general_kenobi','padmé_amidala',],
+	    video: 'https://www.youtube.com/watch?v=HeZru8NE6_w',
+	    videosource: 'gs'
 		
 	     },
              {   
@@ -641,7 +645,7 @@ Vue.component('mission', {
 				'Wave 1: 219,375',
                 'Wave 2: 493,594'
 				],
-			preferredSquads: [82,87,84,83],//tr
+			preferredSquads: [82,87,84,85],//tr
 			dangerousEnemies: [46,48],
 			modifiers: [3],
             reqs: [20],
@@ -682,7 +686,7 @@ Vue.component('mission', {
 				'Wave 1: 219,375',
                 'Wave 2: 493,594'
 				],
-				preferredSquads: [82,87,84,83],//tl
+				preferredSquads: [82,87,84,85],//tl
 				dangerousEnemies: [46,48],
 				modifiers: [3],
 				notes: [3],
