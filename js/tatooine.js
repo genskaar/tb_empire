@@ -573,7 +573,7 @@ Vue.component('mission', {
         'Unclear if this is even possible right now',
         "Currently Bugged!",
         "Potentially a wampa team could be consistent here.",
-        "Join the 50 Shards of KAM server for streaming with the experts who know this mission better than anyone"
+        "Join the 50 Shards of KAM server for streaming with the experts who know this mission better than anyone."
         ],
         reqs:[
         'Lord Vader (Relic 5+)',
