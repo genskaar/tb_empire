@@ -603,7 +603,7 @@ Vue.component('mission', {
         "5x Light Side Wookiees (Relic 7+)",//15
         "Light Side Ships (7-Star), Profundity",
         '5x characters (Relic 8+), Jabba the Hutt',
-        "Ships (7-Star), Ghost",
+        'Dark Side Ships (7-Star), Imperial TIE Fighter',
         '5x characters (Relic 8+), Qi\'ra, L3-37',
         '5x characters (Relic 8+)',//20,
         'Dark Side or Neutral (Relic 9+)',
