@@ -472,7 +472,23 @@ Vue.component('mission', {
                 video: 'https://youtu.be/4qAsN4u5Ejo?t=538',
                 videosource: "bd"
 				
-			},
+			 },
+			 {
+				id: 85,
+				name: 'LV with Hondo',
+				toons: ['gl_vader','admiral_piett', 'grand_admiral_thrawn','royal_guard','hondo_ohnaka'],
+				video: "https://youtu.be/1CFcPqwoYOE?t=28",
+				videosource: "bd"
+				
+			 },
+			 {
+				id: 86,
+				name: 'SEE with Lando',
+				toons: ['gl_palp', 'darth_malak','darth_malgus','darth_nihilus','young_lando_calrissian',],
+				video: "https://youtu.be/1CFcPqwoYOE?t=287",
+				videosource: "bd"
+				
+			 },
              
              
 
@@ -601,7 +617,7 @@ Vue.component('mission', {
 				'Wave 1: 125,000',
                 'Wave 2: 250,000'
 				],
-			preferredSquads: [78],//lando
+			preferredSquads: [86],//lando
 			dangerousEnemies: [41,44],
             reqs: [13],
 			}, {
@@ -627,7 +643,7 @@ Vue.component('mission', {
 				'Wave 1: 125,000',
                 'Wave 2: 250,000'
 				],
-            preferredSquads: [75,76],//hondo
+            preferredSquads: [75,76,85],//hondo
 			dangerousEnemies: [41,43],
             reqs: [14],
 			}, 

@@ -454,7 +454,9 @@ Vue.component('mission', {
              {
                 id:80,
                 name: 'Executor',
-                toons: ['executor','hound\'s_tooth','razor_crest','ghost','xanadu_blood','slave_i','ig-2000', 'ebon_hawk']
+                toons: ['executor','hound\'s_tooth','razor_crest','xanadu_blood','slave_i','ig-2000', 'ebon_hawk'],
+				video: 'https://www.youtube.com/watch?v=CxP9YmjJWy4',
+				videosource: 'gs'
              },
              {
                 id:81,
@@ -466,6 +468,11 @@ Vue.component('mission', {
 				name: 'SLKR',
 				toons: ['gl_kylo', 'sith_trooper', 'kylo_ren_(unmasked)', 'general_hux', 'first_order_stormtrooper'],
 			},
+             {
+				id: 83,
+				name: 'Leviathan',
+				toons: ['leviathan', 'b-28_extinction-class_bomber','tie_dagger','fury_class_interceptor','sith_supremacy_class','sith_fighter','scimitar']	
+			 }
              
 
 
@@ -609,7 +616,7 @@ Vue.component('mission', {
 			rewards: [
 				'Wave 1: 1,443,488',
 				],
-            preferredSquads: [24],//fleet
+            preferredSquads: [80,83],//fleet
 			dangerousEnemies: [49],
             reqs: [21],
             modifiers: [4],
