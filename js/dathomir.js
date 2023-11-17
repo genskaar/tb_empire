@@ -42,7 +42,9 @@ Vue.component('mission', {
 			{
 				id: 4,
 				name: 'Nightsisters',
-				toons: ['mother_talzin', 'asajj_ventress', 'nightsister_zombie', 'old_daka', 'merrin' ]
+				toons: ['mother_talzin', 'asajj_ventress', 'nightsister_zombie', 'old_daka', 'merrin' ],
+                video: "https://youtu.be/w754OsqH5vs?t=465&si=mMyf-a14KOwA9626",
+                videosource: "bd"
 			},
 			{
 				id: 5,
@@ -477,6 +479,18 @@ Vue.component('mission', {
 				video: 'https://youtu.be/nNPhAaob1LE?t=49',
 				videosource: 'bd'
 			 },
+             {
+				id: 83,
+				name: 'Nightsisters (Daka Lead)',
+				toons: ['old_daka', 'mother_talzin', 'asajj_ventress', 'nightsister_zombie', 'merrin' ]
+                
+			 },
+             {
+				id: 84,
+				name: 'Inquisitors',
+				toons: ['third_sister', 'grand_inquisitor', 'fifth_brother', 'eighth_brother', 'seventh_sister' ]
+                
+			 }
              
 
 
@@ -600,7 +614,7 @@ Vue.component('mission', {
 				'Wave 1: 162,500',
                 'Wave 2: 341,250'
 				],
-			preferredSquads: [75,77,82,80],//gen
+			preferredSquads: [75,77,82,80,84],//gen
 			dangerousEnemies: [38,39],
 			modifiers: [2],
             reqs: [11],
@@ -629,7 +643,7 @@ Vue.component('mission', {
 				'Wave 1: 162,500',
                 'Wave 2: 341,250'
 				],
-				preferredSquads: [75,77,82,80],//gen
+				preferredSquads: [75,77,82,80,84],//gen
 				dangerousEnemies: [38,39],
 				modifiers: [2],
             reqs: [11],
@@ -655,7 +669,7 @@ Vue.component('mission', {
 			rewards: [
 				'50 GET2',
 				],
-				preferredSquads: [4],//ns
+				preferredSquads: [4,83],//ns
 				dangerousEnemies: [40,41],
 				modifiers: [2],
             reqs: [14],
