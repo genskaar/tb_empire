@@ -41,8 +41,8 @@ Vue.component('mission', {
 			},
 			{
 				id: 4,
-				name: 'Night Sisters',
-				toons: ['mother_talzin', 'asajj_ventress', 'nightsister_zombie', 'old_daka', 'nightsister_spirit' ]
+				name: 'NightSisters',
+				toons: ['mother_talzin', 'asajj_ventress', 'nightsister_zombie', 'old_daka', 'merrin' ]
 			},
 			{
 				id: 5,
@@ -566,7 +566,7 @@ Vue.component('mission', {
 				'Wave 1: 100,000',
                 'Wave 2: 200,000'
 				],
-            preferredSquads: [80,82,81],
+            preferredSquads: [80,82,81,4],
 			dangerousEnemies: [19,21],
             reqs: [1],
             modifiers: [0]
@@ -593,7 +593,7 @@ Vue.component('mission', {
 				'Wave 1: 100,000',
                 'Wave 2: 200,000'
 				],
-            preferredSquads: [75,76,77],
+            preferredSquads: [75,76,77,4],
 			dangerousEnemies: [19,20],
             reqs: [1],
             modifiers: [0]

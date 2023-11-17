@@ -57,7 +57,9 @@ Vue.component('mission', {
 			{
 				id: 7,
 				name: 'Geonosians',
-				toons: ['geonosian_brood_alpha', 'geonosian_soldier', 'geonosian_spy', 'poggle_the_lesser', 'sun_fac']
+				toons: ['geonosian_brood_alpha', 'geonosian_soldier', 'geonosian_spy', 'poggle_the_lesser', 'sun_fac'],
+                video: "https://youtu.be/w754OsqH5vs?t=40&si=WBiXgwQf5Cm0wurB",
+                videosource: "bd"
 			},
 			{
 				id: 8,
