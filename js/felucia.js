@@ -26,8 +26,8 @@ Vue.component('mission', {
 			},
 			{
 				id: 4,
-				name: 'Night Sisters',
-				toons: ['mother_talzin', 'asajj_ventress', 'nightsister_zombie', 'old_daka', 'nightsister_spirit' ]
+				name: 'NightSisters',
+				toons: ['mother_talzin', 'asajj_ventress', 'nightsister_zombie', 'old_daka', 'merrin' ]
 			},
 			{
 				id: 5,
@@ -489,6 +489,14 @@ Vue.component('mission', {
 				videosource: "bd"
 				
 			 },
+			 {
+				id: 87,
+				name: 'JMK with Lando',
+				toons: ['gl_kenobi', 'commander_ahsoka_tano','general_kenobi','wat_tambor','young_lando_calrissian',],
+				video: "https://www.youtube.com/watch?v=4voIp1MhJhc",
+				videosource: "gs"
+				
+			 },
              
              
 
@@ -617,7 +625,7 @@ Vue.component('mission', {
 				'Wave 1: 125,000',
                 'Wave 2: 250,000'
 				],
-			preferredSquads: [86],//lando
+			preferredSquads: [87,86],//lando
 			dangerousEnemies: [41,44],
             reqs: [13],
 			}, {
@@ -629,7 +637,7 @@ Vue.component('mission', {
 				'Wave 1: 125,000',
                 'Wave 2: 250,000'
 				],
-            preferredSquads: [83,82,44,80],//generic
+            preferredSquads: [83,82,44,80,4],//generic
 			dangerousEnemies: [39,40],
             reqs: [12],
             notes: [3]
