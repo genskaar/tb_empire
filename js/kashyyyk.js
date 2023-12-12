@@ -425,7 +425,7 @@ Vue.component('mission', {
              {
                 id:74,
                 name: 'Wookies',
-                toons: ['clone_wars_chewbacca','threepio_&_chewie','chewbacca','zaalbar','veteran_smuggler_chewbacca']
+                toons: ['tarfful','threepio_&_chewie','chewbacca','zaalbar','veteran_smuggler_chewbacca']
              },
              {
 				id: 75,
@@ -468,11 +468,17 @@ Vue.component('mission', {
                 video: "https://youtu.be/w4zNLvN_ndI?t=722",
                 videosource: "gs"
              },
+             
              {
 		id:81,
 		name: 'Saw + Rebel Fighters',
 		toons: ['saw_gerrera', 'jyn_erso', 'cara_dune', 'cassian_andor', 'k-2so']
-	     }
+	     },
+	          {
+				id:82,
+				name: 'GL Leia (Variants Available)',
+				toons: ['gl_leia','captain_drogan','r2-d2','commander_luke_skywalker','captain_rex']
+			 }
              
 
 
@@ -605,7 +611,7 @@ Vue.component('mission', {
 				'Wave 1: 162,500',
                 'Wave 2: 341,250'
 				],
-			preferredSquads: [77,76,29,78,80,],//gen
+			preferredSquads: [77,76,82,29,78,80,],//gen
 			dangerousEnemies: [40,41],
 			modifiers: [2],
             reqs: [14],
@@ -618,7 +624,7 @@ Vue.component('mission', {
 				'Wave 1: 162,500',
                 'Wave 2: 341,250'
 				],
-            preferredSquads: [76,77,29,78,79,80],//empire
+            preferredSquads: [76,82,77,29,79,80],//empire
 			dangerousEnemies: [40,42],
             reqs: [14],
             modifiers: [2],

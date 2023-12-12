@@ -545,10 +545,10 @@ Vue.component('mission', {
         [ "Boba Fett, Scion of Jango",	"6","Darth Malgus",	"5","Maul",	"5","TIE/IN Interceptor Prototype",	"5","Jedi Knight Luke Skywalker",	"4","Razor Crest",	"4",
 "Scythe",	"4","Commander Ahsoka Tano",	"3","Jedi Master Kenobi",	"3","Sith Eternal Emperor",	"3","Bastila Shan (Fallen)",	"2",
 "Darth Malak",	"2","Jedi Master Luke Skywalker",	"2","Obi-Wan Kenobi (Old Ben)",	"2","Rey",	"2","Starkiller",	"2","Supreme Leader Kylo Ren",	"2","50R-T",	"1",
-"B1 Battle Droid",	"1","Barriss Offee",	"1","Ben Solo",	"1","Bodhi Rook",	"1","Cara Dune",	"1","Chirrut ÃŽmwe",	"1","Coruscant Underworld Police",	"1","Ewok Elder",	"1","Ewok Scout",	"1","Fifth Brother",	"1",
+"B1 Battle Droid",	"1","Barriss Offee",	"1","Ben Solo",	"1","Bodhi Rook",	"1","Cara Dune",	"1","Chirrut ÃŽmwe",	"1","Coruscant Underworld Police",	"1","Ewok Elder",	"1","Ewok Scout",	"1",
 "Finalizer",	"1","First Order SF TIE Fighter",	"1","Gauntlet Starfighter",	"1","General Skywalker",	"1","Geonosian Spy",	"1","HK-47",	"1","Hondo Ohnaka",	"1","Hoth Rebel Scout",	"1",
 "Hunter",	"1","IG-2000",	"1","Kylo Ren (Unmasked)",	"1","Luminara Unduli",	"1","Mara Jade, The Emperor's Hand",	"1","Nightsister Acolyte",	"1","Outrider",	"1",
-"Qui-Gon Jinn",	"1","Resistance Hero Finn",	"1","Resistance Hero Poe",	"1","Rose Tico",	"1","Skiff Guard (Lando Calrissian)",	"1","Teebo",	"1","TIE Reaper",	"1",
+"Qui-Gon Jinn",	"1","Resistance Hero Finn",	"1","Resistance Hero Poe",	"1","Rose Tico",	"1","Skiff Guard (Lando Calrissian)",	"1","Teebo",	"1","TIE Reaper","1", "Tusken Chieften",	"1", 
 "Young Han Solo",	"1", ]
 		],
 		guides:[

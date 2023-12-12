@@ -453,9 +453,9 @@ Vue.component('mission', {
              },
              {
                 id:78,
-                name: 'Empire (Variants possible)',
+                name: 'Empire with Sith Fighter Start (Variants possible)',
                 toons: ['executrix','sith_fighter', 'scythe', 'tie_advanced_x1','tie_defender', 'tie_interceptor', 'gauntlet_starfighter', "emperor's_shuttle" ],
-                video: "https://youtu.be/vtOoPROo0Ho?t=35",
+                video: "https://youtu.be/uHcSSLVyH1E?t=104",
                 videosource: "bd"
              },
              {
@@ -485,6 +485,13 @@ Vue.component('mission', {
 				toons: ['emperor_palpatine', 'darth_vader', 'mara_jade_teh','grand_admiral_thrawn','admiral_piett'],
 				videosource:"none"
 			 },
+			 {
+                id:83,
+                name: 'Empire With MK6 Start (Variants possible)',
+                toons: ['executrix','sith_supremacy_class', 'scythe', 'tie_advanced_x1','tie_defender', 'tie_interceptor', 'gauntlet_starfighter', "emperor's_shuttle" ],
+                video: "https://youtu.be/uHcSSLVyH1E?t=288",
+                videosource: "bd"
+             },
              
 
 
@@ -621,7 +628,7 @@ Vue.component('mission', {
 			rewards: [
 				'Wave 1: 400,000',
 				],
-				preferredSquads: [78],
+				preferredSquads: [83, 78],
 				dangerousEnemies: [23],
             reqs: [2],
             modifiers: [0]
