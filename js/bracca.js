@@ -472,9 +472,15 @@ Vue.component('mission', {
              {
                 id:81,
                 name: 'Cere and Jedi Cal',
-                toons: ['cere_junda', 'jedi_cal', 'noone', 'noone', 'noone']
+                toons: ['cere_junda', 'jedi_cal', 'noone', 'noone', 'noone'],
+                video: "https://www.youtube.com/watch?v=CmeL_UsIZzM",
+                videosource: "bd"
              },
-             
+             {
+				id:82,
+				name: 'GL Leia (Variants Available)',
+				toons: ['gl_leia','captain_drogan','r2-d2','commander_luke_skywalker','captain_rex']
+			 }
 
 
 
@@ -560,7 +566,8 @@ Vue.component('mission', {
         "Currently Bugged! Allows relic 5 Jedi to be used - Potentially Fixed",
         "Rey is likely a 1/2. Rey 501st can also work.",
         "Ninth Sister's lead prevents speed limiting effects e.g. jkl",
-        "Need 30 successful attempts each TB to unlock bonus planet - Zeffo"
+        "Need 30 successful attempts each TB to unlock bonus planet - Zeffo",
+        "JKCK is easier than OG Cal, but both are possible."
         ],
         reqs:[
         'Lord Vader (Relic 5+)',
@@ -593,7 +600,7 @@ Vue.component('mission', {
 				'Wave 1: 125,000',
                 'Wave 2: 250,000'
 				],
-            preferredSquads: [76,79,78,77,80],//generic
+            preferredSquads: [76,79,82,78,77,80],//generic
 			dangerousEnemies: [39,42],
 			modifiers: [2,3],
             reqs: [13],
@@ -620,7 +627,7 @@ Vue.component('mission', {
 				'Wave 1: 125,000',
                 'Wave 2: 250,000'
 				],
-            preferredSquads: [76,79,78,77,80],//generic
+            preferredSquads: [76,79,82,78,77,80],//generic
 			dangerousEnemies: [39,41],
             reqs: [13],
             modifiers: [2,3],
@@ -637,7 +644,7 @@ Vue.component('mission', {
 			dangerousEnemies: [43,44],
 			modifiers: [2,3],
             reqs: [14],
-            notes: [6]
+            notes: [7,6]
 			},
 			{
 			id: 5,

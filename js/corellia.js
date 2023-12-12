@@ -533,7 +533,8 @@ Vue.component('mission', {
         'With Lord Vader\'s ultimate ability, this can be done on full auto',
         'Unclear if this is even possible right now',
         "Currently Bugged!",
-		"With bt-1 and 0-0-0 needed for platoons, aphra + separatist droids should also work"
+		"With bt-1 and 0-0-0 needed for platoons, aphra + separatist droids should also work",
+		"This is probably the easist mission in ROTE TB - All Gls will work here"
         ],
         reqs:[
         'Lord Vader (Relic 5+)',
@@ -596,6 +597,7 @@ Vue.component('mission', {
 			dangerousEnemies: [31,32],
             reqs: [6],
             modifiers: [1],
+            notes: [4],
 			},
 			{
 			id: 4,

@@ -541,10 +541,9 @@ Vue.component('mission', {
 		platoons: [
         [      "Jedi Master Luke Skywalker",	"8","Profundity",	"7",
 "Commander Ahsoka Tano",	"5","Hermit Yoda",	"5","Razor Crest",	"4","Rebel Officer Leia Organa",	"4",
-"Ben Solo",	"3","General Kenobi",	"3","50R-T",	"2","Chewbacca",	"2",
-"Ghost",	"2","Han Solo",	"2","Jedi Knight Revan",	"2",
+"Ben Solo",	"3","General Kenobi",	"3","50R-T",	"2","Chewbacca",	"2","Han Solo",	"2","Jedi Knight Revan",	"2",
 "Jedi Master Kenobi",	"2","Ki-Adi-Mundi",	"2","Logray",	"2",
-"Padme Amidala",	"2","Scarif Rebel Pathfinder",	"2","Xanadu Blood",	"2","Zaalbar",	"2",
+"Padme Amidala", "2", "Plo Koons Jedi Starfighter",	"2","Scarif Rebel Pathfinder",	"2","Xanadu Blood",	"2","Zaalbar",	"2",
 "Aayla Secura",	"1","BB-8",	"1","Bistan",	"1","Chief Nebit",	"1","Dash Rendar",	"1",
 "Ebon Hawk",	"1","Echo",	"1","Eeth Koth",	"1",
 "Finn",	"1","Grand Master Yoda",	"1","Han's Millennium Falcon",	"1",
