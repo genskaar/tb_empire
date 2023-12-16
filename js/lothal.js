@@ -600,7 +600,7 @@ Vue.component('mission', {
         "Light Side Ships (7-Star), Profundity",
         "Light Side Ships (7-Star)",
         '5x Pheonix (Relic 8+)',
-        "5x Light Side or Neutral (Relic 7+)",
+        "5x Light Side or Neutral (Relic 8+)",
         "5x Jedi (Relic 8+)",//20
         ],
 		platims:[
@@ -645,7 +645,7 @@ Vue.component('mission', {
 				],
             preferredSquads: [80],//bl
 			dangerousEnemies: [46,48],
-            reqs: [19],
+            reqs: [18],
             modifiers: [3,4],
 			},
 			{
