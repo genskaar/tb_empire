@@ -27,7 +27,9 @@ Vue.component('mission', {
 			{
 				id: 4,
 				name: 'NightSisters',
-				toons: ['mother_talzin', 'asajj_ventress', 'nightsister_zombie', 'old_daka', 'merrin' ]
+				toons: ['mother_talzin', 'asajj_ventress', 'nightsister_zombie', 'old_daka', 'merrin' ],
+                video: 'https://www.youtube.com/watch?v=8fxiwyH3m5s',
+                videosource: 'gs'
 			},
 			{
 				id: 5,

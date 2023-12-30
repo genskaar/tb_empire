@@ -192,8 +192,8 @@ Vue.component('mission', {
              },
              {
 				id:33,
-				name: 'JKL Lead (Required: Jedi)',
-				toons: ['jedi_knight_luke_skywalker', 'hermit_yoda', 'obi-wan_kenobi_(old_ben)', 'grand_master_yoda', 'aayla_secura'],
+				name: 'JKL Lead (0-speed) stun',
+				toons: ['jedi_knight_luke_skywalker', 'gl_luke', 'aayla_secura', 'jedi_knight_revan', 'shaak_ti'],
 			 },
 			 {
 				id: 34,
@@ -450,9 +450,10 @@ Vue.component('mission', {
              },
              {
                 id:79,
-                name: 'oRolo with Rebels',
+                name: 'CLS/oRolo with Rebels',
                 toons: ['rolo', 'han_solo', 'chewbacca', 'threepio_&_chewie', 'ahsoka_tano_(fulcrum)'],
-                video: 'https://www.youtube.com/watch?v=wh2Jq_MZl1Y'
+                video: 'https://www.youtube.com/watch?v=ivV6wmbjbOs&t=2s',
+                videosource: 'gs'
              },
               {
                 id:80,
@@ -462,12 +463,36 @@ Vue.component('mission', {
              {
                 id:81,
                 name: 'Rey + UFUs',
-                toons: ['gl_rey', 'rey_(jedi_training)', 'cere_junda', 'cal_kestis', 'ben_solo']
+                toons: ['gl_rey', 'ahsoka_tano_(fulcrum)', 'cere_junda', 'cal_kestis', 'ben_solo'],
+                video: 'https://www.youtube.com/watch?v=mHxMdfZkSWY',
+                videosource: 'gs'
              },
              {
-                id:81,
-                name: 'JKC and Jedi',
+                id:82,
+                name: 'JKCK and Jedi',
                 toons: ['jedi_cal', 'unknown', 'unknown', 'unknown', 'unknown']
+             },
+             {
+                id:83,
+                name: 'Kenobi Negotiator Fleet w/ Marauder',
+                toons: ['negotiator', 'anakin\'s_eta-2_starfighter', 'BTL-B_Y-wing_Starfighter', 'marauder','umbaran_starfighter' ,'ahsoka_tano\'s_jedi_starfighter', 'plo_koon\'s_jedi_starfighter', 'rex\'s_arc-170']
+             },
+             {
+                id:84,
+                name: 'Kenobi Negotiator Fleet w/o Marauder',
+                toons: ['negotiator', 'anakin\'s_eta-2_starfighter', 'BTL-B_Y-wing_Starfighter', 'rex\'s_arc-170', 'umbaran_starfighter' ,'ahsoka_tano\'s_jedi_starfighter', 'plo_koon\'s_jedi_starfighter', 'clone_sergeant\'s_arc-170'],
+                video: 'https://www.youtube.com/watch?v=wk6dBfH0lR8',
+                videosource: 'gs'
+             },
+             {
+                id:85,
+                name: '501st with Captain Rex',
+                toons: [ 'ct-7567__rex_', 'arc_trooper', 'ct-21-0408__echo_',  'ct-5555__fives_', 'captain_rex'],
+             },
+             {
+                id:86,
+                name: '501st with Captain Rex and echo',
+                toons: [ 'ct-7567__rex_', 'captain_rex', 'ct-21-0408__echo_',  'ct-5555__fives_', 'bb_echo'],
              },
              
              
@@ -528,7 +553,9 @@ Vue.component('mission', {
         "Wave 1: Miktrull Tomb Guardian (L), 2x Eilram Tomb Guardian",
         "Wave 2: Jedi General Chiata (L), Padawan Marseph",
         "Wave 1: Purge Trooper (L), 2x KX-series Security Droid, 2x Stormtrooper",//50
-        "Wave 2: Second Sister (L), 2x Purge Trooper"
+        "Wave 2: Second Sister (L), 2x Purge Trooper",
+        "Wave 1: Haxion Brood Droid Captain (L), 2x Haxion Brood Bounty Droid, 3x Bounty Hunter",
+        "Wave 2: Miktrull Tomb Guardian (L), 2x Eilram Tomb Guardian",
 		],
 		platoons: [
         [      "General Skywalker",	"6","Jedi Knight Luke Skywalker",	"6",
@@ -605,7 +632,7 @@ Vue.component('mission', {
 			rewards: [
 				'Wave 1: 682,500',
 				],
-            preferredSquads: [31],//aphra
+            preferredSquads: [83,84],//aphra
 			dangerousEnemies: [45],
             reqs: [18],
             modifiers: [4,5]
@@ -630,7 +657,7 @@ Vue.component('mission', {
 			rewards: [
 				'50 GET2',
 				],
-            preferredSquads: [70],//clones
+            preferredSquads: [85,86,70],//clones
 			dangerousEnemies: [48,49],
             reqs: [17],
             modifiers: [3],
@@ -645,8 +672,8 @@ Vue.component('mission', {
 				'Wave 1: 162,500',
                 'Wave 2: 341,250'
 				],
-				preferredSquads: [24],//ls
-				dangerousEnemies: [34],
+				preferredSquads: [79,33],//ls
+				dangerousEnemies: [52,53],
 				modifiers: [3],
             reqs: [14],
 			}, 

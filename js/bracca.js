@@ -479,7 +479,9 @@ Vue.component('mission', {
              {
 				id:82,
 				name: 'GL Leia (Variants Available)',
-				toons: ['gl_leia','captain_drogan','r2-d2','commander_luke_skywalker','captain_rex']
+				toons: ['gl_leia','captain_drogan','r2-d2','commander_luke_skywalker','captain_rex'],
+                video: 'https://www.youtube.com/watch?v=JkuCZONbt6I',
+                videosource: 'gs'
 			 }
 
 
