@@ -194,6 +194,8 @@ Vue.component('mission', {
 				id:33,
 				name: 'JKL Lead (0-speed) stun',
 				toons: ['jedi_knight_luke_skywalker', 'gl_luke', 'aayla_secura', 'jedi_knight_revan', 'shaak_ti'],
+		                video: 'https://youtu.be/ZG0vG58-j_0?si=ioExdzO81GC-PRP8',
+		                videosource: 'gs'
 			 },
 			 {
 				id: 34,
