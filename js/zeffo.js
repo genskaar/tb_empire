@@ -492,6 +492,8 @@ Vue.component('mission', {
                 id:85,
                 name: '501st with Captain Rex',
                 toons: [ 'ct-7567__rex_', 'arc_trooper', 'ct-21-0408__echo_',  'ct-5555__fives_', 'captain_rex'],
+		video: 'https://www.youtube.com/watch?v=bwxqqQs5210',
+		videosource: 'gs'
              },
              {
                 id:86,
