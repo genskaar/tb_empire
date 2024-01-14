@@ -428,7 +428,7 @@ Vue.component('mission', {
              {
 				id: 75,
 				name: 'Profundity Fleet',
-				toons: ['profundity', 'rebel_y-wing', 'outrider','ghost', 'biggs_darklighter\'s_x-wing', 'han\'s_millennium_falcon', 'phantom_ii', 'cassian\'s_u-wing'],
+				toons: ['profundity',  'han\'s_millennium_falcon', 'rebel_y-wing', 'outrider','ghost', 'biggs_darklighter\'s_x-wing','phantom_ii', 'cassian\'s_u-wing'],
 				video: "https://www.youtube.com/watch?v=mw0ByoqQK94",
 				videosource: "gs"
 				
@@ -526,6 +526,8 @@ Vue.component('mission', {
         "Executrix, Tie Advanced X1, Tie Fighter, Scythe, Tie Bomber, Tie Fighter, Tie Interceptor (R)",
         "Wave 1: Mob Enforcer (L), 2x Cartel Bruiser, 2x Cartel Spy, Cartel Saboteur",//50
         "Wave 2: Mob Enforcer (L), 2x Cartel Bruiser, 2x Cartel Spy, Cartel Saboteur",
+		"Wave 1: TBC: Some combination of Stormtroopers",
+		"Wave 2: TBC: Mara Jade/Imperial Officer/Stormtrooper Commander + Stormtroopers"
 		],
 		platoons: [
         [     "Jedi Knight Luke Skywalker",	"11","General Skywalker",	"7",
@@ -564,7 +566,8 @@ Vue.component('mission', {
         notes:[
         'With Lord Vader\'s ultimate ability, this can be done on full auto',
         'Unclear if this is even possible right now',
-        "Currently Bugged!"
+        "Currently Bugged!",
+		"If you are able to do this mission, please send me a screenshot on discord so I can confirm the wave breakdown!"
         ],
         reqs:[
         'Lord Vader (Relic 5+)',
@@ -617,7 +620,8 @@ Vue.component('mission', {
                 'Wave 2: 721,744'
 				],
 			preferredSquads: [24],//tr
-			dangerousEnemies: [34],
+			dangerousEnemies: [52,53],
+			notes: [3],
 			modifiers: [4,2,5],
             reqs: [22],
 			}, {
@@ -644,7 +648,8 @@ Vue.component('mission', {
                 'Wave 2: 721,744'
 				],
 			preferredSquads: [24],//br Jabba
-			dangerousEnemies: [34],
+			dangerousEnemies: [52,53],
+			notes: [3],
 			modifiers: [4,2,5],
             reqs: [23],
 			},
@@ -658,7 +663,8 @@ Vue.component('mission', {
                 'Wave 2: 721,744'
 				],
 				preferredSquads: [24],//tl
-				dangerousEnemies: [34],
+				dangerousEnemies: [52,53],
+				notes: [3],
 				modifiers: [4,2,5],
             reqs: [23],
 			}, 

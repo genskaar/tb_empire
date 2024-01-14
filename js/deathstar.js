@@ -539,8 +539,9 @@ Vue.component('mission', {
         "Wave 2: 3x Pike Sentinel (L), Pirate Spy, Pirate Saboteur, Pirate Enforcer",
         "Wave 1: Rebel Officer (L), 3x Rebel Soldier, 2x Rebel Pilot",
         "Wave 2: Rebel Officer (L), 3x Rebel Soldier, 2x Rebel Pilot",//50
-        "Wave 1: Home one, Rebel X-wing, Wedge's X-wing, Bigg's X-wing, Phantom II, Han's Millenium Falcon"
-        
+        "Wave 1: Home one, Rebel X-wing, Wedge's X-wing, Bigg's X-wing, Phantom II, Han's Millenium Falcon",
+        "TBC: Some combination of Rebel Officer/Rebel Solider/Old Ben",
+		"TBC: Some combination of Luke, R2, C3po, Stormtrooper Han, Leia, Chewbacca",
 
 		],
 		platoons: [
@@ -582,7 +583,8 @@ Vue.component('mission', {
         notes:[
         'With Lord Vader\'s ultimate ability, this can be done on full auto',
         'Unclear if this is even possible right now',
-        "Currently Bugged!"
+        "Currently Bugged!",
+		"If you are able to do this mission, please send me a screenshot on discord so I can confirm the wave breakdown!"
         ],
         reqs:[
         'Lord Vader (Relic 5+)',
@@ -635,8 +637,9 @@ Vue.component('mission', {
                 'Wave 2: 1,151,719'
 				],
 			preferredSquads: [83],//vader
-			dangerousEnemies: [34],
+			dangerousEnemies: [52],
 			modifiers: [5],
+		    notes: [3],
             reqs: [23],
 			}, {
 			id: 2,
@@ -676,9 +679,10 @@ Vue.component('mission', {
                 'Wave 2: 1,151,719'
 				],
 				preferredSquads: [85],//iden
-				dangerousEnemies: [34],
+				dangerousEnemies: [53],
 				modifiers: [5],
             reqs: [22],
+		    notes: [3],
 			}, 
             {
 			id: 6,

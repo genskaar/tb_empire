@@ -428,7 +428,7 @@ Vue.component('mission', {
              {
 				id: 75,
 				name: 'Profundity Fleet',
-				toons: ['profundity', 'rebel_y-wing', 'outrider','ghost', 'biggs_darklighter\'s_x-wing', 'han\'s_millennium_falcon', 'phantom_ii', 'cassian\'s_u-wing']
+				toons: ['profundity', 'han\'s_millennium_falcon','rebel_y-wing', 'outrider','ghost', 'biggs_darklighter\'s_x-wing',  'phantom_ii', 'cassian\'s_u-wing']
 				
 		 	 },
 		 	 {
@@ -466,6 +466,16 @@ Vue.component('mission', {
 				name: 'SLKR',
 				toons: ['gl_kylo', 'sith_trooper', 'kylo_ren_(unmasked)', 'general_hux', 'first_order_stormtrooper'],
 			},
+			{
+				id: 83,
+				name: 'Unknown with Cassian, K2 and Pao',
+				toons: ['unknown', 'cassian_andor', 'k-2so', 'pao', 'unknown'],
+			},
+			{
+				id: 84,
+				name: 'Unknown with Baze, Chirrut and SRP',
+				toons: ['unknown', 'baze_malbus', 'chirrut_imwe', 'scarif_rebel_pathfinder', 'unknown'],
+			}
              
 
 
@@ -521,7 +531,8 @@ Vue.component('mission', {
         "Wave 1: 3x Pike Sentinel (L), Pirate Spy, Pirate Saboteur, Pirate Leader",
         "Wave 2: Qi'ra, L3-37, Young Han Solo, Young Lando Calrissian, Vandor Chewbacca, Pirate Leader",
         "Wave 2: 3x Pike Sentinel (L), Pirate Spy, Pirate Saboteur, Pirate Enforcer",
-
+        "Chimaera, Tie Fighter, Tie Advanced X1, Tie Bomber",
+		"TBC: Some combination of - Stormtroopers, AT-ST Drivers, Death Troopers, Imperial Officers, Shore Troopers, Director Krennic, Scout Troopers"
 		],
 		platoons: [
         [ "Ben Solo",	"7","Jedi Master Luke Skywalker",	"7",
@@ -561,7 +572,8 @@ Vue.component('mission', {
         notes:[
         'With Lord Vader\'s ultimate ability, this can be done on full auto',
         'Unclear if this is even possible right now',
-        "Currently Bugged!"
+        "Currently Bugged!",
+		"If you are able to do this mission, please send me a screenshot on discord so I can confirm the wave breakdown!"
         ],
         reqs:[
         'Lord Vader (Relic 5+)',
@@ -601,7 +613,7 @@ Vue.component('mission', {
 				'Wave 1: 2,303,438',
 				],
             preferredSquads: [75],//fleet
-			dangerousEnemies: [34],
+			dangerousEnemies: [49],
             reqs: [16],
             modifiers: [6],
 			},	{
@@ -613,8 +625,9 @@ Vue.component('mission', {
 				'Wave 1: 460,668',
                 'Wave 2: 1,151,719'
 				],
-			preferredSquads: [24],//tr
-			dangerousEnemies: [34],
+			preferredSquads: [83],//tr
+			dangerousEnemies: [50],
+			notes: [3],
 			modifiers: [4,5],
             reqs: [23],
 			}, {
@@ -627,8 +640,9 @@ Vue.component('mission', {
                 'Wave 2: 1,151,719'
 				],
             preferredSquads: [24],//special
-			dangerousEnemies: [34],
-            reqs: [22],
+			dangerousEnemies: [50],
+            notes: [3],
+			reqs: [22],
             modifiers: [4,5],
 			},
             {
@@ -641,7 +655,8 @@ Vue.component('mission', {
                 'Wave 2: 1,151,719'
 				],
 			preferredSquads: [24],//br Jabba
-			dangerousEnemies: [34],
+			dangerousEnemies: [50],
+			notes: [3],
 			modifiers: [4,5],
             reqs: [22],
 			},
@@ -654,10 +669,11 @@ Vue.component('mission', {
 				'Wave 1: 460,668',
                 'Wave 2: 1,151,719'
 				],
-				preferredSquads: [24],//tl
-				dangerousEnemies: [34],
+				preferredSquads: [84],//tl
+				dangerousEnemies: [50],
 				modifiers: [4,5],
-            reqs: [21],
+            notes: [3],
+		    reqs: [21],
 			}, 
             {
 			id: 6,
