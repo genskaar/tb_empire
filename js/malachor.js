@@ -445,7 +445,7 @@ Vue.component('mission', {
                 id:78,
                 name: 'Mon Mothma with Omicron Kyle Katarn',
                 toons: ['mon_mothma', 'pao', 'hoth_rebel_scout', 'cara_dune', 'kyle_katarn_o']
-             },
+              },
              {
                 id:79,
                 name: 'oRolo with Rebels',
@@ -469,8 +469,23 @@ Vue.component('mission', {
 			 {
                 id:83,
                 name: 'Inquisitors',
-                toons: ['grand_inquisitor', 'seventh_sister', 'ninth_sister', 'fifth_brother','eighth_brother']
+                toons: ['grand_inquisitor', 'seventh_sister', 'third_sister', 'fifth_brother','eighth_brother']
              },
+			 {
+				id:84,
+				name: 'SLKR (Variants available)',
+				toons: ['gl_kylo', 'sith_trooper','kylo_ren_(unmasked)','first_order_stormtrooper','general_hux'],
+			 },
+			{
+				id:85,
+				name: 'Lord Vader (Variants available)',
+				toons: ['gl_vader', 'maul','dark_trooper_moff_gideon','admiral_piett','royal_guard'],
+			},
+			{
+				id:86,
+				name: 'SEE with Sith Empire (Variants available)',
+				toons: ['gl_palp', 'darth_malak', 'darth_malgus', 'sith_empire_trooper', 'darth_sion'],
+			}
              
 
 
@@ -529,8 +544,9 @@ Vue.component('mission', {
         "Wave 1: Ahsoka Tano (Fulcrum)",
         "Wave 2: Maul (L), Ezra Bridger",//50
         "Wave 1: Rebel Officer (L), 2x Rebel Pilot, 2x Rebel Soldier",
-        "Wave 2: Kanan Jarrus (L), Ahsoka Tano (Fulcrum), Zeb"
-
+        "Wave 2: Kanan Jarrus (L), Ahsoka Tano (Fulcrum), Zeb",
+		"Wave 2: Hera (L), Sabine Wren, Chopper",
+		"Wave 1: Hera (L), Zeb, Sabine, Chopper, Fulcrum, Kanan"
 		],
 		platoons: [
         [ "Starkiller",	"9","Boba Fett, Scion of Jango",	"7",
@@ -609,7 +625,7 @@ Vue.component('mission', {
 				'Wave 1: 307,125',
 				'Wave 2: 721,744',
 				],
-            preferredSquads: [24],//bl generic
+            preferredSquads: [84],//bl generic
 			dangerousEnemies: [51,52],
             reqs: [21],
             modifiers: [4],
@@ -622,8 +638,8 @@ Vue.component('mission', {
 				'Wave 1: 307,125',
 				'Wave 2: 721,744',
 				],
-			preferredSquads: [24],//tr generic
-			dangerousEnemies: [34],
+			preferredSquads: [85],//tr generic
+			dangerousEnemies: [51,54],
 			modifiers: [4],
             reqs: [21],
 			},
@@ -650,8 +666,8 @@ Vue.component('mission', {
 				'Wave 1: 307,125',
 				'Wave 2: 721,744',
 				],
-				preferredSquads: [24],//tl generic
-				dangerousEnemies: [34],
+				preferredSquads: [86],//tl generic
+				dangerousEnemies: [51,53],
 				modifiers: [4],
             reqs: [21],
 			}, 
