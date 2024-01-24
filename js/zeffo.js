@@ -171,7 +171,9 @@ Vue.component('mission', {
              {
 				id:29,
 				name: 'Jedi Training Rey',
-				toons: ['rey_(jedi_training)', 'c-3po', 'r2-d2', 'finn', 'bb-8'],
+				toons: ['rey_(jedi_training)', 'c-3po', 'r2-d2', 'rey_(scavenger)', 'bb-8'],
+				video: 'https://youtu.be/EkS1iNQyKTI?t=1437&si=aRAhh6VM-aCfb-0r',
+				videosource: 'bd'
 				 
 			 },
 			 {
@@ -396,8 +398,10 @@ Vue.component('mission', {
 			 },
 			 {
 				id: 69,
-				name: 'Galactic Legend Kenobi (Required: GR, 21k+ Power) (Variants Available)',
-				toons: ['gl_kenobi', 'mace_windu','commander_ahsoka_tano','aayla_secura','padmé_amidala',]
+				name: 'Galactic Legend Kenobi (Variants available)',
+				toons: ['gl_kenobi', 'jedi_knight_anakin','commander_ahsoka_tano','general_kenobi','padmé_amidala',],
+				video: 'https://youtu.be/EkS1iNQyKTI?t=1610&si=tfFLeCswY5WDbRzm',
+				videosource: 'bd'
 				
 			 },
 			 {
@@ -453,7 +457,7 @@ Vue.component('mission', {
              {
                 id:79,
                 name: 'CLS/oRolo with Rebels',
-                toons: ['rolo', 'han_solo', 'chewbacca', 'threepio_&_chewie', 'ahsoka_tano_(fulcrum)'],
+                toons: ['rolo', 'han_solo', 'chewbacca', 'threepio_&_chewie', 'c-3po'],
                 video: 'https://www.youtube.com/watch?v=ivV6wmbjbOs&t=2s',
                 videosource: 'gs'
              },
@@ -471,7 +475,7 @@ Vue.component('mission', {
              },
              {
                 id:82,
-                name: 'JKCK and Jedi',
+                name: 'omicron JKCK and Jedi',
                 toons: ['jedi_cal', 'unknown', 'unknown', 'unknown', 'unknown']
              },
              {
@@ -500,7 +504,20 @@ Vue.component('mission', {
                 name: '501st with Captain Rex and echo',
                 toons: [ 'ct-7567__rex_', 'captain_rex', 'ct-21-0408__echo_',  'ct-5555__fives_', 'bb_echo'],
              },
-             
+			 {
+				id:87,
+				name: 'GL Leia (variants available)',
+				toons: ['gl_leia','commander_luke_skywalker','han_solo','admiral_raddus','kanan_jarrus'],
+				video: 'https://youtu.be/EkS1iNQyKTI?t=1225&si=LwYjh66kohY_W2Z5',
+				videosource: 'bd',
+			 },
+	         {
+                id:88,
+                name: 'JKCK and Good Jedi (variants available)',
+                toons: ['jedi_cal', 'gl_luke', 'jedi_knight_luke_skywalker', 'general_skywalker', 'shaak_ti'],
+				video: "https://youtu.be/EkS1iNQyKTI?t=834&si=lPTrTxnjSd9VqpFW",
+				videosource: "bd"
+             },		 
              
              
 
@@ -678,7 +695,7 @@ Vue.component('mission', {
 				'Wave 1: 162,500',
                 'Wave 2: 341,250'
 				],
-				preferredSquads: [79,33],//ls
+				preferredSquads: [79,33,69,87,29],//ls
 				dangerousEnemies: [52,53],
 				modifiers: [3],
             reqs: [14],
@@ -705,7 +722,7 @@ Vue.component('mission', {
 				'Wave 1: 487,500',
                 'Wave 2: 1,023,750'
 				],
-				preferredSquads: [82],//jkck
+				preferredSquads: [88,82],//jkck
 				dangerousEnemies: [50,51],
 				modifiers: [2,3,6],
             reqs: [19],

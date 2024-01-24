@@ -415,8 +415,11 @@ Vue.component('mission', {
              },
              {
                 id:75,
-                name: 'Rey + Scoundrals',
-                toons: ['gl_rey','hondo_ohnaka','ig-11','kuiil','dash_rendar']
+                name: 'Rey + Ufus',
+                toons: ['gl_rey','hondo_ohnaka','ben_solo','rey_(jedi_training)','cal_kestis'],
+				video: "https://youtu.be/D691KlENDrQ?t=58&si=txHlYt8QA4RDgXGZ",
+				videosource: "bd",
+
              },
              {
                 id:76,
@@ -499,6 +502,13 @@ Vue.component('mission', {
 				videosource: "gs"
 				
 			 },
+			{
+				id: 88,
+				name: 'SLKR (stormtooper cheese)',
+				toons: ['gl_kylo', 'kylo_ren_(unmasked)','sith_trooper','general_hux','young_lando_calrissian'],
+				video: "https://youtu.be/D691KlENDrQ?t=361&si=F3CxwDXavtcHleY_",
+				videosource: "bd"
+			}
              
              
 
@@ -627,7 +637,7 @@ Vue.component('mission', {
 				'Wave 1: 125,000',
                 'Wave 2: 250,000'
 				],
-			preferredSquads: [87,86],//lando
+			preferredSquads: [88,87,86],//lando
 			dangerousEnemies: [41,44],
             reqs: [13],
 			}, {
