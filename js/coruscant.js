@@ -483,6 +483,13 @@ Vue.component('mission', {
 				 toons: ['hunter','bb_echo','tech','wrecker','omega'],
 				 video: "https://youtu.be/wvU3g6gjpcs?t=1068",
                  videosource: "bd"
+			 },
+			 {
+				 id:83,
+				 name: 'GL Leia (variants available)',
+				 toons: ['gl_leia', 'r2-d2', 'captain_drogan', 'captain_rex', 'obi-wan_kenobi_(old_ben)'],
+				 video: 'https://www.youtube.com/watch?v=tuijX4-bWP8&t=49s',
+				 videosource: 'bd',
 			 }
              
 
@@ -628,7 +635,7 @@ Vue.component('mission', {
 				'Wave 1: 100,000',
                 'Wave 2: 200,000'
 				],
-            preferredSquads: [74,81,78,79,82],//generic
+            preferredSquads: [83,74,81,78,79,82],//generic
 			dangerousEnemies: [38,40],
             reqs: [11],
             modifiers: [2,3],
@@ -643,7 +650,7 @@ Vue.component('mission', {
 				'Wave 1: 100,000',
                 'Wave 2: 200,000'
 				],
-            preferredSquads: [74,81,78,79,82],
+            preferredSquads: [83,74,81,78,79,82],
 			dangerousEnemies: [38,40],
             reqs: [11],
             modifiers: [2,3],

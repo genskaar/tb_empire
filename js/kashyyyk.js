@@ -425,7 +425,9 @@ Vue.component('mission', {
              {
                 id:74,
                 name: 'Wookies',
-                toons: ['tarfful','threepio_&_chewie','chewbacca','zaalbar','veteran_smuggler_chewbacca']
+                toons: ['tarfful','threepio_&_chewie','vandor_chewbacca','zaalbar','veteran_smuggler_chewbacca'],
+				video: "https://youtu.be/-HaHCj_IYNs?t=54&si=5Zj_gcgYY0hUb6AQ",
+				videosource: "bd",
              },
              {
 				id: 75,
@@ -470,14 +472,19 @@ Vue.component('mission', {
              },
              
              {
-		id:81,
-		name: 'Saw + Rebel Fighters',
-		toons: ['saw_gerrera', 'jyn_erso', 'cara_dune', 'cassian_andor', 'k-2so']
-	     },
-	          {
+        	    id:81,
+     	        name: 'Saw + Rebel Fighters',
+	            toons: ['saw_gerrera', 'captain_drogan', 'cara_dune', 'cassian_andor', 'baze_malbus'],
+				video: "https://youtu.be/-HaHCj_IYNs?t=655&si=9lnnvxCph1bhhcP9",
+				videosource: "bd"
+
+	         },
+	         {
 				id:82,
 				name: 'GL Leia (Variants Available)',
-				toons: ['gl_leia','captain_drogan','r2-d2','commander_luke_skywalker','captain_rex']
+				toons: ['gl_leia','captain_drogan','r2-d2','commander_luke_skywalker','captain_rex'],
+				video: "https://www.youtube.com/watch?v=tuijX4-bWP8&t=403s",
+				videosource: "bd"
 			 }
              
 
