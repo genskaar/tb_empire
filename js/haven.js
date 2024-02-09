@@ -459,7 +459,9 @@ Vue.component('mission', {
              {
                 id:81,
                 name: 'Lord Vader Empire (Variants Available, Maul highly recommended)',
-                toons: ['gl_vader','darth_vader','royal_guard','admiral_piett','maul']
+                toons: ['gl_vader','darth_vader','royal_guard','admiral_piett','maul'],
+		video: 'https://www.youtube.com/watch?v=f5r8s8BGz4Q',
+		videosource: 'gs'
              },
              {
 				id: 82,
@@ -470,9 +472,18 @@ Vue.component('mission', {
 			 {
 				id: 83,
 				name: 'SEE + Sith Empire',
-				toons: ['gl_palp', 'darth_malak', 'darth_revan','darth_malgus','sith_empire_trooper']
+				toons: ['gl_palp', 'darth_malak', 'darth_revan','darth_malgus','wat_tambor'],
+				video: 'https://www.youtube.com/watch?v=yjIdxUKZOuc',
+				videosource: "gs"
 				
 			 },
+			{
+				id: 84,
+				name: 'Nightsisters',
+				toons: ['mother_talzin', 'old_daka', 'asajj_ventress', 'nightsister_zombie', 'merrin' ],
+				video: 'https://www.youtube.com/watch?v=fmQvJuPsVaY',
+				videosource: "gs"
+			},
              
 
 
@@ -606,7 +617,7 @@ Vue.component('mission', {
                 'Wave 1: 219,375',
                 'Wave 2: 493,594'
 				],
-            preferredSquads: [81,82,83],//br
+            preferredSquads: [81,84,83,82],//br
 			dangerousEnemies: [45,46],
             reqs: [18],
             modifiers: [3],
@@ -620,7 +631,7 @@ Vue.component('mission', {
 				'Wave 1: 219,375',
                 'Wave 2: 493,594'
 				],
-			preferredSquads: [81,82,83],//tr
+			preferredSquads: [81,84,83,82],//tr
 			dangerousEnemies: [45,46],
 			modifiers: [3],
             reqs: [18],
@@ -647,7 +658,7 @@ Vue.component('mission', {
 				'Wave 1: 219,375',
                 'Wave 2: 493,594'
 				],
-				preferredSquads: [81,82,83],//m
+				preferredSquads: [81,84,83,82],//m
 				dangerousEnemies: [45,46],
 				modifiers: [3],
             reqs: [18],
