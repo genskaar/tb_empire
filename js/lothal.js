@@ -480,6 +480,13 @@ Vue.component('mission', {
                 toons: ['finn_o', 'rey_(jedi_training)', 'poe_dameron', 'bb-8', 'r2-d2']
              },
            
+	         {
+				id:84,
+				name: 'GL Leia (Variants Available)',
+				toons: ['gl_leia','captain_drogan','r2-d2','commander_luke_skywalker','captain_rex'],
+				video: "https://www.youtube.com/watch?v=U5lGS0YNfS4",
+				videosource: "gs"
+			 }
                  
              
 
