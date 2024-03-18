@@ -438,9 +438,9 @@ Vue.component('mission', {
 		 	 {
 				 id:76,
 				 name: 'Galactic Legend Luke (variants available)',
-				 toons: ['gl_luke','jedi_knight_luke_skywalker','hermit_yoda','jolee_bindo','jedi_knight_revan',],
-			     video: 'https://www.youtube.com/watch?v=JerwheUl9z8',
-			     videosource: "gs"
+				 toons: ['jedi_knight_luke_skywalker','gl_luke','jedi_cal','grand_master_yoda','general_skywalker',],
+			     video: 'https://youtu.be/zXfD449EcQ0?t=645&si=o2O-2uaTgFFbPvZh',
+			     videosource: "bd"
              },
 			 {
 				 id:77,
@@ -462,7 +462,9 @@ Vue.component('mission', {
              {
                 id:80,
                 name: 'Phoenix Squadron',
-                toons: ['hera_syndulla', 'ezra_bridger', 'chopper', 'garazeb__zeb__orrelios', 'captain_rex']
+                toons: ['hera_syndulla', 'ezra_bridger', 'chopper', 'kanan_jarrus', 'captain_rex'],
+                video: 'https://youtu.be/zXfD449EcQ0?t=812&si=b525wgxACLCwGh4t',
+		videosource: "bd"
              },
              {
                 id:81,
