@@ -467,7 +467,22 @@ Vue.component('mission', {
 				id: 82,
 				name: 'SLKR',
 				toons: ['gl_kylo', 'sith_trooper', 'kylo_ren_(unmasked)', 'general_hux', 'first_order_stormtrooper'],
-			},
+			 },
+			 {
+				 id:83,
+				 name: 'oJKCK Jedi (Variants Available)',
+				 toons: ['jedi_cal','jedi_knight_luke_skywalker','gl_luke','mace_windu','general_skywalker',],
+             },
+             {
+				id:84,
+				name: 'GL Leia (Variants Available)',
+				toons: ['gl_leia','captain_drogan','r2-d2','admiral_raddus','captain_rex'],
+	         },
+	         {
+				id:85,
+				name: 'Bo-Katan Mandalorians',
+				toons: ['mandalorbokatan','paz_visla','ig12','beskar_mando','bo-katan_kryze'],
+			 },
              
 
 
@@ -526,8 +541,12 @@ Vue.component('mission', {
         "Executrix, Tie Advanced X1, Tie Fighter, Scythe, Tie Bomber, Tie Fighter, Tie Interceptor (R)",
         "Wave 1: Mob Enforcer (L), 2x Cartel Bruiser, 2x Cartel Spy, Cartel Saboteur",//50
         "Wave 2: Mob Enforcer (L), 2x Cartel Bruiser, 2x Cartel Spy, Cartel Saboteur",
-		"Wave 1: TBC: Some combination of Stormtroopers",
-		"Wave 2: TBC: Mara Jade/Imperial Officer/Stormtrooper Commander + Stormtroopers"
+	"Wave 1: TBC: Some combination of Stormtroopers",
+	"Wave 2: TBC: Mara Jade/Imperial Officer/Stormtrooper Commander + Stormtroopers",
+	"Wave 1: Stormtrooper Commander (L), Stormtrooper, Death Trooper, Scout Trooper, Recon Stormtrooper",
+	"Wave 2: Imperial Officer (L), Death Trooper, Stormtrooper Commander, Stormtrooper, Recon Stormtrooper",//55
+	"Wave 2: Mara Jade (L), Death Trooper, Stormtrooper Commander, Stormtrooper, Recon Stormtrooper, Scout Trooper",
+	"Wave 2: Stormtrooper Commander (L), Stormtrooper, Death Trooper, Scout Trooper, Recon Stormtrooper"
 		],
 		platoons: [
         [     "Jedi Knight Luke Skywalker",	"11","General Skywalker",	"7",
@@ -620,8 +639,7 @@ Vue.component('mission', {
                 'Wave 2: 721,744'
 				],
 			preferredSquads: [24],//tr
-			dangerousEnemies: [52,53],
-			notes: [3],
+			dangerousEnemies: [54,57],
 			modifiers: [4,2,5],
             reqs: [22],
 			}, {
@@ -633,7 +651,7 @@ Vue.component('mission', {
 				'Wave 1: 307,125',
                 'Wave 2: 721,744'
 				],
-            preferredSquads: [24],//special
+            preferredSquads: [77,84,83],//tl
 			dangerousEnemies: [50,51],
             reqs: [23],
             modifiers: [4,2,5],
@@ -647,9 +665,8 @@ Vue.component('mission', {
 				'Wave 1: 307,125',
                 'Wave 2: 721,744'
 				],
-			preferredSquads: [24],//br Jabba
-			dangerousEnemies: [52,53],
-			notes: [3],
+			preferredSquads: [83,44],//br MJ
+			dangerousEnemies: [54,56],
 			modifiers: [4,2,5],
             reqs: [23],
 			},
@@ -662,9 +679,8 @@ Vue.component('mission', {
 				'Wave 1: 307,125',
                 'Wave 2: 721,744'
 				],
-				preferredSquads: [24],//tl
-				dangerousEnemies: [52,53],
-				notes: [3],
+				preferredSquads: [85],//mid IO
+				dangerousEnemies: [54,55],
 				modifiers: [4,2,5],
             reqs: [23],
 			}, 
