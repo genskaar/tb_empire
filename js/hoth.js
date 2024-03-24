@@ -476,11 +476,16 @@ Vue.component('mission', {
                 name: 'Lord Vader Empire (Variants Available)',
                 toons: ['gl_vader','dark_trooper_moff_gideon','royal_guard','admiral_piett','maul'],
              },
-			 {
-				id: 85,
-				name: 'SEE + Sith Empire',
-				toons: ['gl_palp', 'darth_malak', 'darth_revan','darth_malgus','wat_tambor'],
-			 },
+	     {
+		id: 85,
+		name: 'SEE + Sith Empire',
+		toons: ['gl_palp', 'darth_malak', 'darth_revan','darth_malgus','wat_tambor'],
+	     },
+	     {
+                id:86,
+                name: 'Inquisitors',
+                toons: ['third_sister','grand_inquisitor', 'seventh_sister', 'ninth_sister', 'fifth_brother']
+             },
  
 
 
@@ -542,7 +547,9 @@ Vue.component('mission', {
 		"Wave 2: 3x Wampa",
         "Wave 1: Mob Enforcer (L), 2x Cartel Spy, 2x Cartel Bruiser, Cartel Saboteur",
         "Wave 2: Dash Rendar (L), 2x Cartel Spy, 2x Cartel Bruiser, Cartel Saboteur",
-        "Wave 2: Mob Enforcer (L), 2x Cartel Spy, 2x Cartel Bruiser, Cartel Saboteur",
+        "Wave 2: Mob Enforcer (L), 2x Cartel Spy, 2x Cartel Bruiser, Cartel Saboteur",//55
+	"Wave 1: Hoth Rebel Commander (L), 3x Hoth Rebel Soldier, Hoth Rebel Scout",
+	"Wave 2: Sana Starros (L), Chewbacca, Rolo, Hoth Rebel Soldier, C-3PO, Captain Han"
 		],
 		platoons: [
         [  "Darth Malgus",	"7","Scythe",	"6","Commander Ahsoka Tano",	"5","Rey",	"5","Supreme Leader Kylo Ren",	"4",
@@ -637,10 +644,9 @@ Vue.component('mission', {
 				'Wave 1: 460,668',
                 'Wave 2: 1,151,719'
 				],
-			preferredSquads: [84],//Wampa
+			preferredSquads: [84,44],//Wampa
 			dangerousEnemies: [51,52],
 			modifiers: [5,6],
-			notes: [3],
             reqs: [21],
 			}, {
 			id: 2,
@@ -651,10 +657,9 @@ Vue.component('mission', {
 				'Wave 1: 460,668',
                 'Wave 2: 1,151,719'
 				],
-            preferredSquads: [85],//bl
+            preferredSquads: [85, 86],//bl
 			dangerousEnemies: [53,55],
             reqs: [21],
-			notes: [3],
             modifiers: [5,6],
 			},
             {
@@ -667,9 +672,8 @@ Vue.component('mission', {
                 'Wave 2: 1,151,719'
 				],
 			preferredSquads: [83],//br aphra
-			dangerousEnemies: [50],
+			dangerousEnemies: [56,57],
 			modifiers: [5,6],
-			notes: [3],
             reqs: [22],
 			},
 			{
@@ -685,7 +689,6 @@ Vue.component('mission', {
 				dangerousEnemies: [53,54],
 				modifiers: [5,6],
             reqs: [23],
-			notes: [3],
 			}, 
             {
 			id: 6,

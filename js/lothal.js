@@ -488,8 +488,15 @@ Vue.component('mission', {
 				toons: ['gl_leia','captain_drogan','r2-d2','commander_luke_skywalker','captain_rex'],
 				video: "https://www.youtube.com/watch?v=U5lGS0YNfS4",
 				videosource: "gs"
-			 }
-                 
+	     },
+        	 {
+				 id:85,
+				 name: 'oJKCK Jedi (Variants Available)',
+				 toons: ['jedi_cal','jedi_knight_luke_skywalker','ahsoka_tano','mace_windu','general_skywalker',],
+			     video: 'https://www.youtube.com/watch?v=NmBF2Gdn_g8',
+			     videosource: "gs"
+             },
+	         
              
 
 
@@ -626,7 +633,7 @@ Vue.component('mission', {
 				'Wave 1: 219,375',
                 'Wave 2: 493,594'
 				],
-            preferredSquads: [76,82],//br
+            preferredSquads: [76,85,82],//br
 			dangerousEnemies: [46,47],
             modifiers: [3,4],
             reqs: [20],
