@@ -472,7 +472,12 @@ Vue.component('mission', {
 				id: 83,
 				name: 'Leviathan',
 				toons: ['leviathan', 'b-28_extinction-class_bomber','tie_dagger','fury_class_interceptor','sith_supremacy_class','sith_fighter','scimitar']	
-			 }
+			 },
+			 {
+                id:84,
+                name: 'Rey',
+                toons: ['gl_rey', 'vandor_chewbacca', 'young_han_solo', 'l3-37', 'ben_solo'],
+             },
              
 
 
@@ -535,6 +540,8 @@ Vue.component('mission', {
         "Wave 2: Imperial Officer (L), Stormtrooper, Stormtrooper Commando, 2x Range Trooper, Tie Pilot",
         "Wave 1: Cartel Spy (L), 2x Cartel Bruiser, 2x Cartel Saboteur, (Supply Crate)",
         "Wave 2: Enfys Nest (L), 2x Cartel Bruiser, 2x Cartel Spy, Cartel Saboteur",//55
+        "Wave 1: 2x Range Trooper (L), 2x Snowtrooper Scout, Snowtrooper Commander, (Supply Crate)",
+        "Wave 2: 2x Range Trooper (L), 2x Snowtrooper Scout, Snowtrooper Commander, (Supply Crate)",
 		],
 		platoons: [
         [  "Grand Inquisitor",	"7","Commander Ahsoka Tano",	"6",
@@ -641,8 +648,8 @@ Vue.component('mission', {
 			rewards: [
 				'20 GET3',
 				],
-            preferredSquads: [24],//special
-			dangerousEnemies: [34],
+            preferredSquads: [84],//special
+			dangerousEnemies: [56,57],
             reqs: [23],
             modifiers: [5,6],
 			},
