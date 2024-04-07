@@ -499,7 +499,15 @@ Vue.component('mission', {
 				id: 84,
 				name: 'Galactic Legend Kylo',
 				toons: ['gl_kylo', 'first_order_officer', 'kylo_ren_(unmasked)','general_hux','sith_trooper'],
-			 }
+			 },
+			 {
+                id:85,
+                name: 'Leviathan',
+                toons: ['leviathan','sith_fighter','fury_class_interceptor','b-28_extinction-class_bomber','sith_supremacy_class', 'tie_dagger', 'scimitar'],
+                video: "https://youtu.be/v5AJ8YN5E1o",
+                videosource: "bd"
+             },
+
              
 
 
@@ -569,7 +577,7 @@ Vue.component('mission', {
         ],
         notes:[
         'With Lord Vader\'s ultimate ability, this can be done on full auto',
-        'Unclear if this is even possible right now',
+        'Whilst possible, this is still very difficult',
         "Currently Bugged! Granted ability not working"
         ],
         reqs:[
@@ -642,7 +650,7 @@ Vue.component('mission', {
 			rewards: [
 				'Wave 1: 500,000',
 				],
-				preferredSquads: [24],
+				preferredSquads: [85],
 				dangerousEnemies: [24],
             reqs: [3],
             notes: [1]

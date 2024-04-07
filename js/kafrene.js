@@ -483,6 +483,11 @@ Vue.component('mission', {
 				name: 'Bo-Katan Mandalorians',
 				toons: ['mandalorbokatan','paz_visla','ig12','beskar_mando','bo-katan_kryze'],
 			 },
+			 {
+				id:86,
+				name: 'Rogue One',
+				toons: ['admiral_raddus','cassian_andor','k-2so','jyn_erso','scarif_rebel_pathfinder']
+			 }
              
 
 
@@ -546,7 +551,7 @@ Vue.component('mission', {
 	"Wave 1: Stormtrooper Commander (L), Stormtrooper, Death Trooper, Scout Trooper, Recon Stormtrooper",
 	"Wave 2: Imperial Officer (L), Death Trooper, Stormtrooper Commander, Stormtrooper, Recon Stormtrooper",//55
 	"Wave 2: Mara Jade (L), Death Trooper, Stormtrooper Commander, Stormtrooper, Recon Stormtrooper, Scout Trooper",
-	"Wave 2: Stormtrooper Commander (L), Stormtrooper, Death Trooper, Scout Trooper, Recon Stormtrooper"
+	"Wave 2: Stormtrooper Commander (L), 4 x Stormtrooper"
 		],
 		platoons: [
         [     "Jedi Knight Luke Skywalker",	"11","General Skywalker",	"7",
@@ -586,7 +591,8 @@ Vue.component('mission', {
         'With Lord Vader\'s ultimate ability, this can be done on full auto',
         'Unclear if this is even possible right now',
         "Currently Bugged!",
-		"If you are able to do this mission, please send me a screenshot on discord so I can confirm the wave breakdown!"
+		"If you are able to do this mission, please send me a screenshot on discord so I can confirm the wave breakdown!",
+		"Wave 2: All units have 30 stacks of endless ranks - bringing someone who gives allies permanent kills (e.g. Raddus) is likely needed." 
         ],
         reqs:[
         'Lord Vader (Relic 5+)',
@@ -638,10 +644,11 @@ Vue.component('mission', {
 				'Wave 1: 307,125',
                 'Wave 2: 721,744'
 				],
-			preferredSquads: [24],//tr
+			preferredSquads: [86],//tr
 			dangerousEnemies: [54,57],
 			modifiers: [4,2,5],
             reqs: [22],
+			notes: [4],
 			}, {
 			id: 2,
 			name: 'c3',
