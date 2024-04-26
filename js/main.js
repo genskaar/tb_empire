@@ -823,6 +823,24 @@ Vue.component('mission', {
             notes: [
             'Click for recommended teams'
             ]
+			},
+			{
+			id: 32,
+			name: 'c20',
+			type: 'mandalore',
+			position: 'right',
+			planetlink: 'mandalore.html',
+			rewards: [
+				'Tier 1: 197,748,650',
+                'Tier 2: 316,397,840',
+                '1 star: 396,497,300',
+				],
+		    planet: [
+            'Phase 4 Mixed Bonus - Mandalore'
+            ],
+            notes: [
+            'Click for recommended teams'
+            ]
 			}
 		],
 		selectedMission: '',

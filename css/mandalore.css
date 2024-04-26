@@ -24,13 +24,13 @@ p {
 	top: -10%;
 	width: 100vw;
 	height: auto;
-	background: url('../media/map_rote_lines.jpeg') no-repeat ;
+	background: url('../media/planets/kessel.png') no-repeat ;
 	background-size: contain;
 
 }
 .part {
 	opacity: .3;
-	opacity: 0.2;
+	opacity: 0.1;
 	stroke: white;
 	stroke-width: 1%;
 	stroke-linejoin: round;
@@ -65,11 +65,18 @@ text:hover {
 	transform: translate(0, -45%);
 	top: 50%;
 	max-width: 48%;
-	padding: 1rem;
+    max-height: 85%;
+	padding: 0.5rem;
 	color: #ffffff;
 	z-index: 100;
 	border-radius: 1%;
-    word-wrap: normal;
+    
+    overflow: scroll;
+    text-overflow: ellipsis;
+    word-wrap: break-word;
+    display: block;
+    line-height: 1em;
+    overflow-x: hidden;
 }
 .desc_left {
 	left: 3%;
@@ -107,11 +114,11 @@ text:hover {
 	transition: all 0.5s ease;
 }
 .mission:hover, .squad_fill:hover {
-	transform: scale(1.7);
+	transform: scale(1.2);
 	transition: all 0.5s ease;
 }
 .mission:hover {
-	/*background: url('../media/focus.svg') no-repeat;*/
+	background: url('../media/focus.svg') no-repeat;
 	background-size: contain;
 }
 /* Home button text */
@@ -171,94 +178,35 @@ td {
 
 
 /*Mission positions*/
-
-.c1 {/*death star*/
-	top: 25%;
-	left: 18%;
+.c1 {/*P4 middle battle*/
+	top: 65%;
+	left: 68%;
 }
-.c2 {/*malachor*/
-	top: 37.5%;
-	left: 16.5%;
-}
-.c3 {/*Haven*/
-	top: 53%;
-	left: 18%;
-}
-.c5 {/*lothal*/
-	top: 53%;
-	left: 77%;
-}
-.c6 {/*kessel*/
-	top: 33%;
+.c2 {/*P4 top battle*/
+	top: 39%;
 	left: 55%;
 }
-
-.c7 {/*P3 DS Dathomir*/
-	top: 64%;
-	left: 23%;
+.c3 {/*P4 lower battle*/
+	top: 60%;
+	left: 30%;
 }
-.c8 {/*P2 ds geonosis*/
-	top: 63%;
-	left: 34%;
-}
-.c9 {/*P3 middle tatooine*/
-	top: 43%;
-	left: 45%;
-}
-.c10 {/*P1 DS mustafar*/
-	top: 73%;
-	left: 38%;
-}
-.c11 {/*p1m corellia*/
-	top: 66%;
-	left: 47%;
-}
-
-.c12 {/*vandor*/
-	top: 22%;
+.c4 {/*P4 lower battle*/
+	top: 57%;
 	left: 50%;
 }
-
-.c13 {/*hoth*/
-	top: 15%;
-	left: 59%;
+.c6 {/*P3 top special*/
+	top: 32%;
+	left: 29%;
 }
-.c14 {/*P2 middle felucia*/
-	top: 53%;
-	left: 50%;
+.c7 {/*P3 top special*/
+	top: 44%;
+	left: 35%;
 }
-.c15 {/*p3 ls kashyyyk*/
-	top: 63%;
-	left: 72%;
+.m2 {/*P3 middle platoons*/
+	top: 28%;
+	left: 48%;
 }
-.c16 {/*P1 Coruscant*/
-	top: 73%;
-	left: 56%;
 }
-.c17 {/*P2 ls bracca*/
-	top: 63%;
-	left: 60%;
-
-}
-
-.c18 {/*kafrene*/
-	top: 37%;
-	left: 77%;
-}
-.c4 {/*scarif*/
-	top: 24%;
-	left: 76%;
-}
-.c19 {/*zeffo*/
-	top: 47%;
-	left: 60%;
-}
-.c20 {/*mandalor*/
-	top: 34%;
-	left: 38%;
-}
-
-
 @media (min-width: 1700px) {
 	.map {
 		width: 80vw;
@@ -277,6 +225,7 @@ td {
 		min-width: 100%;
 		min-height: 300px;
 		transform: none;
+        max-height: 200%;
 	}
 	.desc_left {
 		left: 0;
@@ -291,4 +240,10 @@ td {
 		border: 2px solid #ffffff;
 		margin-right: 0.5%;
 	}
+}
+
+.topcorner{
+   position:absolute;
+   top:0;
+   right:0;
 }

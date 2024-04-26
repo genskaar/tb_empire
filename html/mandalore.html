@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="ennto">
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>ROTE - Kessel</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta name="description" content="Interactive Rise of the Empire Territory Battle Map SWGoH">
+	<meta name="keywords" content="swgoh, star wars, rote, territory, battle, map, tactics, interactive, tb_geo, genskaar">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="../css/mandalore.css">
+	<link rel="icon" type="image" href="../media/favicon/get3.png">
+</head>
+<body>
+<div class="wrapper">
+	<div class="container-fluid ">
+		<div class="row justify-content-center h-100 text-center">
+			<div id="app" class="map">
+                <svg viewBox="0 0 1000 667">
+				</svg>
+				<mission></mission>
+			</div>
+		</div>
+	</div>
+</div>
+<!--Templates for Vue-->
+<template id="mission">
+	<div>
+		<img class="mission"
+		v-for="mission in missions" 
+		v-bind:key="mission.name" 
+		v-bind:class="mission.name"
+		v-bind:src="'../media/mission_' +  mission.type + '.png'"
+        @click="selectedMission = mission; seen = true"
+		>
+		<!--v-click-outside="hide"-->
+		<div v-if="seen" class="description" v-bind:class="'desc_' + selectedMission.position">
+			
+            <div class="mb-3">
+            <h3><i class="fa fa-window-close fa-fw topcorner" @click="hide"></i></h3>
+            </div>
+            
+            <div class="mb-3" v-if="selectedMission.reqs">
+				<p class="h4">Requirements</p>
+					<div v-for="item in selectedMission.reqs">
+                        <p>{{reqs[item]}}</p>
+                    </div>
+			</div>
+            
+            
+			<div class="mb-3" v-if="selectedMission.preferredSquads">
+				<p  class="h4">Preferred teams</p>
+				<div v-for="item in selectedMission.preferredSquads">
+                    <p><img v-bind:src="'../media/'+squads[item].videosource+'.png'" onerror="this.src='../media/none.png';" alt="vid" ><a :href="squads[item].video"> {{squads[item].name}}</a></p>
+					<div class="img_block">
+						<img 
+						v-for="pic in squads[item].toons"
+						v-bind:src="'../media/toons/' + pic + '.png'"
+						>
+					</div>
+				</div>
+			</div>
+			
+			<div class="mb-3" v-if="selectedMission.dangerousEnemies">
+				<p class="h4">Wave Breakdown</p>
+				<ul>
+					<li class="text-justify" v-for="item in selectedMission.dangerousEnemies">{{enemies[item]}}</li>
+				</ul>
+			</div>
+
+			<div class="mb-3 " v-if="selectedMission.requiredToons">
+                <p class="h4">Operation Requirements</p>
+				<span v-for="item in selectedMission.preqs">&nbsp;&nbsp;{{item}}&nbsp;&nbsp;&nbsp;</span>
+			    
+				<p class="h4">Required toons</p>
+					<div v-for="item in selectedMission.requiredToons" class="row justify-content-center .flex-nowrap">
+							<div class="platoons" v-for="item in platoons[item]">{{item}}</div>
+					</div>
+					
+				<p class="h4"> Affected Territories </p>
+				  
+					  <ul>
+					<li class="text-justify" v-for="item in selectedMission.platzones">{{platims[item]}}</li>
+				     </ul>
+				     					  <div>
+				      <img src="../media/platoons/kessel.png" style="width:512px;height:256px;">
+				      </div>
+					  <!-- <div class="img_block">
+				       <img 
+						v-for="pic in platims[item]"
+						v-bind:src="'../media/platoons/' + pic + '.png'"
+						style="width:120px;height:120px;"
+						>
+				       </div> 
+				       <div v-for= "pic in platims[item]">
+					    <img src="../media/platoons/z1t.png" style="width:200px;height:150px;"> 
+					    
+				       </div>
+				       <img src="../media/mission_KAM.svg" alt="KAM" style="width:42px;height:42px;"> -->
+				   
+			</div>
+			
+			<div class="mb-3" v-if="selectedMission.modifiers">
+				<p class="h4">Important Modifiers</p>
+				<ul>
+					<li class="text-justify" v-for="item in selectedMission.modifiers">{{modifiers[item]}}</li>
+				</ul>
+			</div>
+            <div class="mb-3" v-if="selectedMission.notes">
+				<p class="h4">Notes</p>
+				<ul>
+					<li class="text-justify" v-for="item in selectedMission.notes">{{notes[item]}}</li>
+				</ul>
+			</div>
+
+
+			<div class="rewards mb-3" v-if="selectedMission.rewards">
+				<p class="h4">Rewards</p>
+				<span v-for="item in selectedMission.rewards">&nbsp;&nbsp;{{item}}&nbsp;&nbsp;&nbsp;</span>
+			</div>
+            <div class="rewards mb-3" v-if="selectedMission.stars">
+                                <h2>Kessel</h2>
+				<p class="h4">Star Requirements</p>
+                <ul>
+				    <li class="text-justify" v-for="item in selectedMission.stars">{{item}}</li>
+                </ul>
+			</div>
+		</div>
+	</div>
+</template>
+<div class="top-left"><a href="main.html" style="color:#FFFFFF;"> <i class="fa fa-home fa-fw"></i>Full Map </a><br>
+<script src="../js/vue.min.js"></script>
+<script src="../js/mandalore.js"></script>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-7G9QJXCBX4"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-7G9QJXCBX4');
+</script>
+
+
+</body>
+</html>
