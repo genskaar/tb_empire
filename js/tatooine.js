@@ -478,6 +478,11 @@ Vue.component('mission', {
 				toons: ['gl_kenobi','commander_ahsoka_tano','padmé_amidala','general_kenobi','fennec_shand'],
                 video: "https://www.youtube.com/watch?v=YRyM41CtNOg",
                 videosource: "gs"
+             },
+             {
+                id:83,
+                name: 'Mandalorian',
+                toons: ['mandalorbokatan', 'beskar_mando', 'unknown']
              }
              
              
@@ -540,6 +545,7 @@ Vue.component('mission', {
         "Wave 2: Tusken Elder, Tusken Brute, 2x Tusken Raider, Tusken Shaman, (?)Pirate Leader",
         "Wave 1: Chief Nebit (L), Jawa Scavenger, Jawa Engineer, Jawa, Dathcha, (?)Pirate Leader",
         "Wave 2: Jedi Master Kenobi, (?)Pirate Leader",
+        "Krayt Dragon"
 		],
 		platoons: [
         [ "Boba Fett, Scion of Jango",	"6","Darth Malgus",	"5","Maul",	"5","TIE/IN Interceptor Prototype",	"5","Jedi Knight Luke Skywalker",	"4","Razor Crest",	"4",
@@ -573,7 +579,9 @@ Vue.component('mission', {
         'Unclear if this is even possible right now',
         "Currently Bugged!",
         "Potentially a wampa team could be consistent here.",
-        "Join the 50 Shards of KAM server for streaming with the experts who know this mission better than anyone."
+        "Join the 50 Shards of KAM server for streaming with the experts who know this mission better than anyone.",
+        "Testing Underway - Potential good choices for third slot include ig11/grogu and oPaz",
+        "Need 25 successes per tb to unlock Mandalore"
         ],
         reqs:[
         'Lord Vader (Relic 5+)',
@@ -597,7 +605,8 @@ Vue.component('mission', {
         "5x characters (Relic 7+), Fennec Shand",
         "5x Inquisitorius (Relic 7+), Grand Inquisitor",
         "5x characters (Relic 7+), Jabba the Hutt",//20
-        "5x characters (Relic 7+)"
+        "5x characters (Relic 7+)",
+        "Bo-Katan (Mand'alor), The Mandalorian (Beskar Armor), +1 Mandalorian (Relic 7+, Max Units: 3)"
         ],
 		platims:[
 		'Phase 3 Mixed Tatooine (self)',//0
@@ -654,6 +663,20 @@ Vue.component('mission', {
             reqs: [19],
             modifiers: [3],
             notes: [4],
+			},
+            {
+			id: 3,
+			name: 'c5',
+			type: 'special',
+			position: 'left',
+			rewards: [
+				'50 GET2',
+				],
+            preferredSquads: [83],//mando
+			dangerousEnemies: [54],
+            reqs: [22],
+            modifiers: [3],
+            notes: [6,5],
 			},
 			{
 			id: 5,
