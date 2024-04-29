@@ -650,9 +650,7 @@ Vue.component('mission', {
 				],
 			preferredSquads: [24],//tr
 			dangerousEnemies: [51],
-			modifiers: [3],
-            reqs: [20],
-            notes: [3]
+            reqs: [20]
 			}, {
 			id: 2,
 			name: 'c3',
