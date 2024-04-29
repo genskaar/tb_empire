@@ -184,10 +184,10 @@ td {
 }
 .c2 {/*P4 top battle*/
 	top: 34%;
-	left: 44%;
+	left: 42%;
 }
 .c3 {/*P4 lower battle*/
-	top: 60%;
+	top: 56%;
 	left: 23%;
 }
 .c6 {/*P3 top special*/
@@ -204,7 +204,11 @@ td {
 }
 .c4 {/*Reva*/
 	top: 64%;
-	left: 48%;
+	left: 46%;
+}
+.c5 {/*Mandalore*/
+	top: 64%;
+	left: 30%;
 }
 }
 @media (min-width: 1700px) {

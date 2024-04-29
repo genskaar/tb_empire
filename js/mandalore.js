@@ -556,7 +556,9 @@ Vue.component('mission', {
         "Wave 1: 3x Pike Sentinel (L), Pirate Spy, Pirate Saboteur, Pirate Leader",
         "Wave 2: Qi'ra, L3-37, Young Han Solo, Young Lando Calrissian, Vandor Chewbacca, Pirate Leader",
         "Wave 2: 3x Pike Sentinel (L), Pirate Spy, Pirate Saboteur, Pirate Enforcer",
-
+        "Negotiator",//49
+        "tbc - 2 Waves of Mandalorian Enemies",
+        "tbc - 2 Waves of Empire Enemies"
 		],
 		platoons: [
         ["Doctor Aphra",	"4","Leia Organa",	"4","Leviathan",	"4","Admiral Trench",	"3",
@@ -592,7 +594,9 @@ Vue.component('mission', {
         'Unclear if this is even possible right now',
         "Currently Bugged!",
         "JMK and JKL(JML) teams can also work here if not needed on LS path",
-        "Executor mirror here is reliable but can be painful. Use only basics abilities with non-capitol ships, put taunt on HT with executors special and wait. It may take up to the second ulitmate ability to win."
+        "Executor mirror here is reliable but can be painful. Use only basics abilities with non-capitol ships, put taunt on HT with executors special and wait. It may take up to the second ulitmate ability to win.",
+        "Testing ongoing",
+        "Need 25 successful attempts each TB on Tatooine special mission to unlock Mandalore",
         ],
         reqs:[
         'Lord Vader (Relic 5+)',
@@ -615,10 +619,13 @@ Vue.component('mission', {
         '5x characters (Relic 8+), Jabba the Hutt',
         "Ships (7-Star), Ghost",
         '5x characters (Relic 8+), Qi\'ra, L3-37',
-        '5x characters (Relic 8+)'//20
+        '5x characters (Relic 8+)',
+        'Ships (7-Star), Gauntlet Starfighter',//21
+        '5x Mandalorians (Relic 9), Bo-Katan (Mand\'alor)',
+        '5x Characters (Relic 8+), Dark Trooper Moff Gideon'
         ],
 		platims:[
-		'Phase 4 Mixed Kessel (self)',//0
+		'Phase 4 Mixed Mandalore (self)',//0
 		],
 		missions: [{
 			id: 0,
@@ -628,11 +635,10 @@ Vue.component('mission', {
 			rewards: [
 				'Wave 1: 987,188',
 				],
-            preferredSquads: [80,75],//fleet
-			dangerousEnemies: [45],
-            reqs: [18],
-            modifiers: [3],
-            notes: [4],
+            preferredSquads: [24],//fleet
+			dangerousEnemies: [49],
+            reqs: [21],
+            notes: [5],
 			},	{
 			id: 1,
 			name: 'c2',
@@ -642,37 +648,23 @@ Vue.component('mission', {
 				'Wave 1: 219,375',
                 'Wave 2: 493,594'
 				],
-			preferredSquads: [82,87,84,85],//tr
-			dangerousEnemies: [46,48],
+			preferredSquads: [24],//tr
+			dangerousEnemies: [51],
 			modifiers: [3],
             reqs: [20],
             notes: [3]
 			}, {
 			id: 2,
 			name: 'c3',
-			type: 'special',
+			type: 'usual',
 			position: 'right',
 			rewards: [
-				'20 GET3',
+                'Wave 1: 658,125',
+				'Wave 2: 1,480,782',
 				],
-            preferredSquads: [86],//special
-			dangerousEnemies: [46,48],
-            reqs: [19],
-            modifiers: [3],
-			},
-            {
-			id: 5,
-			name: 'c4',
-			type: 'usual',
-			position: 'left',
-			rewards: [
-				'Wave 1: 219,375',
-                'Wave 2: 493,594'
-				],
-			preferredSquads: [81],//br Jabba
-			dangerousEnemies: [46,47],
-			modifiers: [3],
-            reqs: [17],
+            preferredSquads: [24],//bkm
+			dangerousEnemies: [51],
+            reqs: [22],
 			},
 			{
 			id: 5,
@@ -683,22 +675,21 @@ Vue.component('mission', {
 				'Wave 1: 219,375',
                 'Wave 2: 493,594'
 				],
-				preferredSquads: [82,87,84,85],//tl
-				dangerousEnemies: [46,48],
-				modifiers: [3],
-				notes: [3],
-            reqs: [20],
+				preferredSquads: [24],//DTMG
+				dangerousEnemies: [50],
+            reqs: [23],
 			}, 
             {
 			id: 6,
 			name: 'c7',
 			type: 'deploy',
 			position: 'right',
+            notes: [6],
             stars: [
-               '1 Star: 235,143,105',
-               '2 Stars: 400,243,583',
-               '3 Stars: 500,304,479',
-               '3 Stars after maximum preload: 265,161,374 ',
+               'Tier 1 rewards (175 GETIII and 50 Kyros): 197,748,650',
+               'Tier 2 rewards (350 GETIII and 50 Kyros): 316,397,840',
+               'Tier 3 rewards (1 star): 396,497,300',
+               '1 Star after maximum preload: 198,748,651',
             ]
 			}, 
 			{id: 30, name: 'm2', type: 'platoon', position: 'left',preqs:["Characters: Relic 8","Ships: 7-Star"], requiredToons: [0], platzones: [0]}
