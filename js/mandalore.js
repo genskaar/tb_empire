@@ -484,8 +484,8 @@ Vue.component('mission', {
 	     {
 		id: 85,
 		name: 'Galactic Legend Kenobi (Variants Available)',
-		toons: ['gl_kenobi', 'ahsoka_tano','commander_ahsoka_tano','general_kenobi','padmé_amidala',],
-	    video: 'https://www.youtube.com/watch?v=HeZru8NE6_w',
+		toons: ['gl_kenobi', 'general_skywalker','commander_ahsoka_tano','general_kenobi','padmé_amidala',],
+	    video: 'https://www.youtube.com/watch?v=PaHgmVgmab4',
 	    videosource: 'gs'
 		
 	     },
@@ -500,7 +500,49 @@ Vue.component('mission', {
                 name: 'Lord Vader Empire (Variants Available)',
                 toons: ['gl_vader','darth_vader','royal_guard','admiral_piett','grand_admiral_thrawn']
              },
-             
+         {
+                id:88,
+                name: 'GL Leia (Variants Available)',
+                toons: ['gl_leia','r2-d2','captain_drogan','captain_rex','commander_luke_skywalker']
+             },
+     {
+                id:89,
+                name: 'Nightsisters',
+                toons: ['mother_talzin','old_daka','merrin','asajj_ventress','nightsister_zombie'],
+		        video: 'https://www.youtube.com/watch?v=lE8LyUu1Yj4',
+		        videosource: 'gs'
+             },
+             {
+                id:90,
+                name: 'DTMG & Lord Vader Empire (Variants Available)',
+                toons: ['dark_trooper_moff_gideon','gl_vader','royal_guard','admiral_piett','scout_trooper'],
+				video: 'https://www.youtube.com/watch?v=QmBd9rW6flI',
+				videosource: 'gs'
+             },
+			 {
+				id:91,
+				name: 'Bo-Katan Mandalorians',
+				toons: ['mandalorbokatan','ig12','paz_visla','beskar_mando','bo-katan_kryze'],
+			 },
+		     {
+				id: 92,
+				name: 'Chimaera',
+				toons: ['chimaera', "scythe", "gauntlet_starfighter", "tie_advanced_x1", "tie_interceptor", "tie_defender", "imperial_tie_bomber", "imperial_tie_fighter"]
+			 },
+			 {
+				id: 93,
+				name: 'Malevolence',
+				toons: ['malevolence',"hyena_bomber","gauntlet_starfighter","vulture_droid", "sun_fac\'s_geonosian_starfighter", "geonosian_spy_starfighter", "geonosian_soldier\'s_starfighter"]
+			 },
+			{
+				id: 94,
+				name: 'Leviathan',
+				toons: ['leviathan', 'b-28_extinction-class_bomber','gauntlet_starfighter','tie_dagger','fury_class_interceptor','sith_supremacy_class','sith_fighter','scimitar']	
+			 },
+
+
+
+
 
 
 
@@ -556,9 +598,11 @@ Vue.component('mission', {
         "Wave 1: 3x Pike Sentinel (L), Pirate Spy, Pirate Saboteur, Pirate Leader",
         "Wave 2: Qi'ra, L3-37, Young Han Solo, Young Lando Calrissian, Vandor Chewbacca, Pirate Leader",
         "Wave 2: 3x Pike Sentinel (L), Pirate Spy, Pirate Saboteur, Pirate Enforcer",
-        "Negotiator",//49
-        "tbc - 2 Waves of Mandalorian Enemies",
-        "tbc - 2 Waves of Empire Enemies"
+        "Negotiator, Anakins Starfighter, Marauder, Republic Y-Wing",//49
+        "Wave 1: Maul (L), Canderous, Jango Fett, Imperial Super Commando, Gar Saxon",
+        "Wave 2: Bo-Katan (Mand'alor) (L), Armorer, Beskar Armor Mando, Paz Visla, Ig12/Grogu",
+		"Wave 1: Veers (L), Death Trooper, 2x Stormtrooper, Scout Trooper",
+	    "Wave 2: Moff Gideon (L), Dark Trooper, Death Trooper, Scout Trooper, Stormtrooper"
 		],
 		platoons: [
         ["Doctor Aphra",	"4","Leia Organa",	"4","Leviathan",	"4","Admiral Trench",	"3",
@@ -597,6 +641,7 @@ Vue.component('mission', {
         "Executor mirror here is reliable but can be painful. Use only basics abilities with non-capitol ships, put taunt on HT with executors special and wait. It may take up to the second ulitmate ability to win.",
         "Testing ongoing",
         "Need 25 successful attempts each TB on Tatooine special mission to unlock Mandalore",
+		"Adding Maul to the lineup here can help when ops are filled but wont charge LV's ultimate faster"
         ],
         reqs:[
         'Lord Vader (Relic 5+)',
@@ -635,10 +680,9 @@ Vue.component('mission', {
 			rewards: [
 				'Wave 1: 987,188',
 				],
-            preferredSquads: [24],//fleet
+            preferredSquads: [92,93,94],//fleet
 			dangerousEnemies: [49],
             reqs: [21],
-            notes: [5],
 			},	{
 			id: 1,
 			name: 'c2',
@@ -648,9 +692,10 @@ Vue.component('mission', {
 				'Wave 1: 219,375',
                 'Wave 2: 493,594'
 				],
-			preferredSquads: [24],//tr
-			dangerousEnemies: [51],
-            reqs: [20]
+			preferredSquads: [85,88,89],//tr
+			dangerousEnemies: [52,53],
+            reqs: [20],
+		    modifiers: [2]
 			}, {
 			id: 2,
 			name: 'c3',
@@ -660,9 +705,10 @@ Vue.component('mission', {
                 'Wave 1: 658,125',
 				'Wave 2: 1,480,782',
 				],
-            preferredSquads: [24],//bkm
-			dangerousEnemies: [51],
+            preferredSquads: [91],//bkm
+			dangerousEnemies: [52,53],
             reqs: [22],
+			modifiers: [2],
 			},
 			{
 			id: 5,
@@ -673,9 +719,11 @@ Vue.component('mission', {
 				'Wave 1: 219,375',
                 'Wave 2: 493,594'
 				],
-				preferredSquads: [24],//DTMG
-				dangerousEnemies: [50],
+				preferredSquads: [90],//DTMG
+				dangerousEnemies: [50,51],
             reqs: [23],
+		    notes: [7],
+			modifiers: [2]
 			}, 
             {
 			id: 6,
