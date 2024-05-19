@@ -41,8 +41,10 @@ Vue.component('mission', {
 			},
 			{
 				id: 4,
-				name: 'Night Sisters',
-				toons: ['mother_talzin', 'asajj_ventress', 'nightsister_zombie', 'old_daka', 'nightsister_spirit' ]
+				name: 'Nightsisters',
+				toons: ['mother_talzin', 'asajj_ventress', 'nightsister_zombie', 'old_daka', 'merrin' ],
+				video: 'https://www.youtube.com/watch?v=NUEhZQmbIco',
+				videosource: 'gs'
 			},
 			{
 				id: 5,
@@ -477,7 +479,7 @@ Vue.component('mission', {
              }, 
              {
 		id: 84,
-		name: 'Rey 501st',
+		name: 'Rey 501st/Ufus (When not also doing Zeffo)',
 		toons: ['gl_rey', 'arc_trooper', 'ct-21-0408__echo_', 'ct-7567__rex_', 'ct-5555__fives_']
 			
 	     },
@@ -645,7 +647,7 @@ Vue.component('mission', {
 				'Wave 1: 219,375',
                 'Wave 2: 493,594'
 				],
-			preferredSquads: [82,87,84,85],//tr
+			preferredSquads: [82,87,84,85,4],//tr
 			dangerousEnemies: [46,48],
 			modifiers: [3],
             reqs: [20],
@@ -686,7 +688,7 @@ Vue.component('mission', {
 				'Wave 1: 219,375',
                 'Wave 2: 493,594'
 				],
-				preferredSquads: [82,87,84,85],//tl
+				preferredSquads: [82,87,84,85,4],//tl
 				dangerousEnemies: [46,48],
 				modifiers: [3],
 				notes: [3],

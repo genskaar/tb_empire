@@ -481,8 +481,15 @@ Vue.component('mission', {
              },
              {
                 id:83,
-                name: 'Mandalorian',
-                toons: ['mandalorbokatan', 'beskar_mando', 'unknown']
+                name: 'Mandalorian (Ig12 Variant)',
+                toons: ['mandalorbokatan', 'beskar_mando', 'ig12']
+             },
+			 {
+                id:83,
+                name: 'Mandalorian (Paz Variant)',
+                toons: ['mandalorbokatan', 'beskar_mando', 'paz_visla'],
+				video: "https://www.youtube.com/watch?v=2O2Zh0Ext_s",
+				videosource: "gs"
              }
              
              
@@ -645,7 +652,7 @@ Vue.component('mission', {
 				'Wave 1: 162,500',
                 'Wave 2: 341,250'
 				],
-            preferredSquads: [77,78,82],//fennec
+            preferredSquads: [78,82],//fennec
 			dangerousEnemies: [50,51],
             reqs: [18],
             modifiers: [3],
@@ -672,11 +679,11 @@ Vue.component('mission', {
 			rewards: [
 				'50 GET2',
 				],
-            preferredSquads: [83],//mando
+            preferredSquads: [83,84],//mando
 			dangerousEnemies: [54],
             reqs: [22],
             modifiers: [3],
-            notes: [6,5],
+            notes: [6],
 			},
 			{
 			id: 5,

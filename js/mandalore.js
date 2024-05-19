@@ -539,6 +539,22 @@ Vue.component('mission', {
 				name: 'Leviathan',
 				toons: ['leviathan', 'b-28_extinction-class_bomber','gauntlet_starfighter','tie_dagger','fury_class_interceptor','sith_supremacy_class','sith_fighter','scimitar']	
 			 },
+			{
+				id: 95,
+				name: 'Profundity',
+				toons: ['profundity', 'han\'s_millennium_falcon', 'gauntlet_starfighter', 'rebel_y-wing', 'outrider','phantom_ii', 'cassian\'s_u-wing','biggs_darklighter\'s_x-wing'],
+				videosource: 'gs',
+				video: 'https://www.youtube.com/watch?v=yz4Iotf15sM'
+
+			},
+			{
+				id: 96,
+				name: 'Bo-Katan Mandalorians (if not needed for r9 mission)',
+				toons: ['mandalorbokatan','ig12','paz_visla','beskar_mando','bo-katan_kryze'],
+				video: 'https://www.youtube.com/watch?v=-43V27zSBls&t=7s',
+				videosource: 'gs'
+			},
+
 
 
 
@@ -602,7 +618,8 @@ Vue.component('mission', {
         "Wave 1: Maul (L), Canderous, Jango Fett, Imperial Super Commando, Gar Saxon",
         "Wave 2: Bo-Katan (Mand'alor) (L), Armorer, Beskar Armor Mando, Paz Visla, Ig12/Grogu",
 		"Wave 1: Veers (L), Death Trooper, 2x Stormtrooper, Scout Trooper",
-	    "Wave 2: Moff Gideon (L), Dark Trooper, Death Trooper, Scout Trooper, Stormtrooper"
+	    "Wave 2: Moff Gideon (L), Dark Trooper, Death Trooper, Scout Trooper, Stormtrooper",
+	    "Wave 2: Dark Trooper Moff Gideon (L), Moff Gideon, Death Trooper, Scout Trooper, Stormtrooper"
 		],
 		platoons: [
         ["Doctor Aphra",	"4","Leia Organa",	"4","Leviathan",	"4","Admiral Trench",	"3",
@@ -680,7 +697,7 @@ Vue.component('mission', {
 			rewards: [
 				'Wave 1: 987,188',
 				],
-            preferredSquads: [92,93,94],//fleet
+            preferredSquads: [92,95,93,94],//fleet
 			dangerousEnemies: [49],
             reqs: [21],
 			},	{
@@ -692,7 +709,7 @@ Vue.component('mission', {
 				'Wave 1: 219,375',
                 'Wave 2: 493,594'
 				],
-			preferredSquads: [85,88,89],//tr
+			preferredSquads: [85,88,89,96],//tr
 			dangerousEnemies: [52,53],
             reqs: [20],
 		    modifiers: [2]
@@ -706,7 +723,7 @@ Vue.component('mission', {
 				'Wave 2: 1,480,782',
 				],
             preferredSquads: [91],//bkm
-			dangerousEnemies: [52,53],
+			dangerousEnemies: [52,54],
             reqs: [22],
 			modifiers: [2],
 			},
