@@ -542,7 +542,7 @@ Vue.component('mission', {
 		],
 		platoons: [
         [        "Ben Solo",	"6","Commander Ahsoka Tano",	"6","Razor Crest",	"6",
-"Han's Millennium Falcon",	"5","Jedi Master Luke Skywalker",	"5","Logray",	"5","Rey",	"5","The Mandalorian (Beskar Armor)",	"5",
+"Han's Millennium Falcon",	"5","Jedi Master Luke Skywalker",	"5","Logray",	"5","Rey",	"5","Greef Karga",	"5",
 "R2-D2",	"4","BB-8",	"3","C-3PO",	"3","Commander Luke Skywalker",	"3","Ki-Adi-Mundi",	"3","Padme Amidala",	"3","Grand Master Yoda",	"2",
 "Han Solo",	"2","Hermit Yoda",	"2","Jedi Knight Revan",	"2","Jedi Master Kenobi",	"2","Rebel Officer Leia Organa",	"2",
 "Resistance Trooper",	"2","Clone Sergeant - Phase I",	"1",
