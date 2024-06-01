@@ -449,7 +449,9 @@ Vue.component('mission', {
              {
                 id:79,
                 name: 'oRolo with Rebels',
-                toons: ['rolo', 'han_solo', 'chewbacca', 'threepio_&_chewie', 'ahsoka_tano_(fulcrum)']
+                toons: ['rolo', 'han_solo', 'chewbacca', 'threepio_&_chewie', 'c-3po'],
+	        video: "https://www.youtube.com/watch?v=grP13P8QXoI",
+		videosource: "gs"
              },
              {
                 id:80,
@@ -709,7 +711,7 @@ Vue.component('mission', {
 				'Wave 1: 219,375',
                 'Wave 2: 493,594'
 				],
-			preferredSquads: [85,88,89,96],//tr
+			preferredSquads: [85,79,88,89,96],//tr
 			dangerousEnemies: [52,53],
             reqs: [20],
 		    modifiers: [2]
