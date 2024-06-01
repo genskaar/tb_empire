@@ -496,6 +496,11 @@ Vue.component('mission', {
 			     video: 'https://www.youtube.com/watch?v=NmBF2Gdn_g8',
 			     videosource: "gs"
              },
+	     {
+                id:86,
+                name: 'GL Leia (Variants Available)',
+                toons: ['gl_leia','r2-d2','captain_drogan','captain_rex','commander_luke_skywalker']
+             },
 	         
              
 
@@ -646,7 +651,7 @@ Vue.component('mission', {
 				'Wave 1: 219,375',
                 'Wave 2: 493,594'
 				],
-			preferredSquads: [77,81,83],//tr
+			preferredSquads: [86,77,81,83],//tr
 			dangerousEnemies: [46,47],
 			modifiers: [3,4],
             reqs: [19],

@@ -479,8 +479,8 @@ Vue.component('mission', {
              }, 
              {
 		id: 84,
-		name: 'Rey 501st/Ufus (When not also doing Zeffo)',
-		toons: ['gl_rey', 'arc_trooper', 'ct-21-0408__echo_', 'ct-7567__rex_', 'ct-5555__fives_']
+		name: 'Rey Ufus/501st (When not also doing Zeffo)',
+		toons: ['gl_rey', 'ben_solo', 'cal_kestis', 'cere_junda', 'rey_(jedi_training)',]
 			
 	     },
 	     {
@@ -502,7 +502,11 @@ Vue.component('mission', {
                 name: 'Lord Vader Empire (Variants Available)',
                 toons: ['gl_vader','darth_vader','royal_guard','admiral_piett','grand_admiral_thrawn']
              },
-             
+             {
+                                id: 88,
+                                name: 'Bo-Katan Mandalorians (if not needed on Mandalore)',
+                                toons: ['mandalorbokatan','ig12','paz_visla','beskar_mando','bo-katan_kryze'],
+                        }, 
 
 
 
@@ -647,7 +651,7 @@ Vue.component('mission', {
 				'Wave 1: 219,375',
                 'Wave 2: 493,594'
 				],
-			preferredSquads: [82,87,84,85,4],//tr
+			preferredSquads: [82,87,84,85,4,88],//tr
 			dangerousEnemies: [46,48],
 			modifiers: [3],
             reqs: [20],
@@ -688,7 +692,7 @@ Vue.component('mission', {
 				'Wave 1: 219,375',
                 'Wave 2: 493,594'
 				],
-				preferredSquads: [82,87,84,85,4],//tl
+				preferredSquads: [82,87,84,85,4,88],//tl
 				dangerousEnemies: [46,48],
 				modifiers: [3],
 				notes: [3],
