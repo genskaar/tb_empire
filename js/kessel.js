@@ -471,6 +471,8 @@ Vue.component('mission', {
 		id: 82,
 		name: 'SLKR (Variants Available)',
 		toons: ['gl_kylo', 'sith_trooper', 'kylo_ren_(unmasked)', 'general_hux', 'first_order_stormtrooper'],
+		video: "https://youtu.be/8iwD4tC9H8g?t=657&si=kuwZHd2G98R9Eddi",
+		videosource: "bd"
              },
 	     {
                 id:83,
@@ -494,7 +496,9 @@ Vue.component('mission', {
              {   
 		id: 86,
 		name: 'Rey + Scoundrals',
-		toons: ['gl_rey', "qi'ra",'l3-37','han_solo','chewbacca',]
+		toons: ['gl_rey', "qi'ra",'l3-37','han_solo','chewbacca',],
+		video: "https://youtu.be/8iwD4tC9H8g?t=386&si=tqcehwjtKt55c7ps",
+		videosource: "bd"
 			
 	     },
 	     {

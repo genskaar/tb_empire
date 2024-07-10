@@ -456,6 +456,11 @@ Vue.component('mission', {
                 video: "https://youtu.be/uZxgBx1S91E?t=29",
                 videosource: "bd"
              },
+			{
+				id:79,
+				name: "GL Leia",
+				toons: ["qi'ra", "gl_leia","captain_drogan","r2-d2","young_han_solo"],
+			}
 
              
 
@@ -607,7 +612,7 @@ Vue.component('mission', {
 			rewards: [
 				'15 GET3',
 				],
-            preferredSquads: [76],
+            preferredSquads: [79,76],
 			dangerousEnemies: [31,35],
             reqs: [9],
 			}, 
