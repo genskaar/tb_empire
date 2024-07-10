@@ -482,7 +482,9 @@ Vue.component('mission', {
              {
                 id:83,
                 name: 'Mandalorian (Ig12 Variant)',
-                toons: ['mandalorbokatan', 'beskar_mando', 'ig12']
+                toons: ['mandalorbokatan', 'beskar_mando', 'ig12'],
+				video: "https://www.youtube.com/watch?v=1ENfddA1z2M",
+				videosource: "bd"
              },
 			 {
                 id:83,
