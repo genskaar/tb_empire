@@ -454,14 +454,16 @@ Vue.component('mission', {
              {
                 id:80,
                 name: 'Inquisitors',
-                toons: ['third_sister','grand_inquisitor', 'seventh_sister', 'ninth_sister', 'fifth_brother']
+                toons: ['third_sister','grand_inquisitor', 'seventh_sister', 'ninth_sister', 'fifth_brother'],
+				video: 'https://youtu.be/8Kfh8g1DAxg?t=517',
+				videosource: "bd"
              },
              {
                 id:81,
                 name: 'Lord Vader Empire (Variants Available, Maul highly recommended)',
                 toons: ['gl_vader','darth_vader','royal_guard','admiral_piett','maul'],
-		video: 'https://www.youtube.com/watch?v=f5r8s8BGz4Q',
-		videosource: 'gs'
+		video: 'https://youtu.be/8Kfh8g1DAxg?t=1249',
+		videosource: 'bd'
              },
              {
 				id: 82,
@@ -471,7 +473,7 @@ Vue.component('mission', {
 			 },
 			 {
 				id: 83,
-				name: 'SEE + Sith Empire',
+				name: 'SEE + Sith Empire (Variants Available)',
 				toons: ['gl_palp', 'darth_malak', 'darth_revan','darth_malgus','wat_tambor'],
 				video: 'https://www.youtube.com/watch?v=yjIdxUKZOuc',
 				videosource: "gs"
@@ -481,10 +483,18 @@ Vue.component('mission', {
 				id: 84,
 				name: 'Nightsisters',
 				toons: ['mother_talzin', 'old_daka', 'asajj_ventress', 'nightsister_zombie', 'merrin' ],
-				video: 'https://www.youtube.com/watch?v=fmQvJuPsVaY',
-				videosource: "gs"
+				video: 'https://youtu.be/8Kfh8g1DAxg?t=766',
+				videosource: "bd"
 			},
-             
+            {
+				id: 85,
+				name: 'Galactic Legend Kylo with Bastila and Kru (Variants Available)',
+				toons: ['kylo_ren_(unmasked)','gl_kylo', 'bastila_shan_(fallen)', 'darth_malak','darth_malgus'],
+				video: 'https://youtu.be/8Kfh8g1DAxg?t=1488',
+				videosource: "bd"
+				
+			},
+	         
 
 
 
@@ -580,7 +590,7 @@ Vue.component('mission', {
         'With Lord Vader\'s ultimate ability, this can be done on full auto',
         'Unclear if this is even possible right now',
         "Currently Bugged!",
-        "This mission is different from the other 3 and is a lot harder. Unclear if this is even possible right now.",
+        "This mission is different from the other 3 and is a lot harder.",
         "If running LV, Maul is highly recommended to be able to reach ultimate quickly.",
         "Recommended to remove brain worms at 3+ stacks"
         ],
@@ -673,7 +683,7 @@ Vue.component('mission', {
 				'Wave 1: 219,375',
                 'Wave 2: 493,594'
 				],
-				preferredSquads: [24],//left
+				preferredSquads: [85],//left
 				dangerousEnemies: [47],
 				modifiers: [3],
             reqs: [18],
