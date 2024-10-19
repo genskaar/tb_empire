@@ -478,6 +478,19 @@ Vue.component('mission', {
                 name: 'Rey',
                 toons: ['gl_rey', 'vandor_chewbacca', 'young_han_solo', 'l3-37', 'ben_solo'],
              },
+			 {
+                id:85,
+                name: 'Gungans',
+                toons: ['boss_nass', 'jar_jar_binks', 'captain_tarpals', 'gungan_phalanx', 'gungan_boomadier'],
+             },
+			 {
+                id:86,
+                name: 'oJKCK with Rey',
+                toons: ['jedi_cal', 'rey', 'ben_solo', 'commander_ahsoka_tano', 'ahsoka_tano'],
+             },
+
+
+
              
 
 
@@ -581,7 +594,8 @@ Vue.component('mission', {
         notes:[
         'With Lord Vader\'s ultimate ability, this can be done on full auto',
         'Unclear if this is even possible right now',
-        "Currently Bugged!"
+        "Currently Bugged!",
+		"A lot of teams can get 1/2 here fairly consistently - GLs, QA"
         ],
         reqs:[
         'Lord Vader (Relic 5+)',
@@ -636,9 +650,10 @@ Vue.component('mission', {
 				'Wave 1: 307,125',
                 'Wave 2: 721,744'
 				],
-			preferredSquads: [24],//tr generic
+			preferredSquads: [85,86],//tr generic
 			dangerousEnemies: [52,53],
 			modifiers: [5,6],
+			notes: [3],
             reqs: [22],
 			}, {
 			id: 2,
@@ -662,9 +677,10 @@ Vue.component('mission', {
 				'Wave 1: 307,125',
                 'Wave 2: 721,744'
 				],
-			preferredSquads: [24],//bl generic
+			preferredSquads: [85,86],//bl generic
 			dangerousEnemies: [54,55],
 			modifiers: [5,6],
+			notes: [3],
             reqs: [22],
 			},
 			{

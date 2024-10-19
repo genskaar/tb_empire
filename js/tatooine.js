@@ -492,7 +492,12 @@ Vue.component('mission', {
                 toons: ['mandalorbokatan', 'beskar_mando', 'paz_visla'],
 				video: "https://www.youtube.com/watch?v=2O2Zh0Ext_s",
 				videosource: "gs"
-             }
+             },
+            {
+                id:84,
+                name: 'Gungans',
+                toons: ['boss_nass', 'jar_jar_binks', 'captain_tarpals', 'gungan_phalanx', 'gungan_boomadier'],
+             },
              
              
 
@@ -696,7 +701,7 @@ Vue.component('mission', {
 				'Wave 1: 162,500',
                 'Wave 2: 341,250'
 				],
-				preferredSquads: [35,80,81,79],//gen
+				preferredSquads: [35,80,81,79,85],//gen
 				dangerousEnemies: [48,49],
 				modifiers: [3],
             reqs: [21],

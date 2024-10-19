@@ -510,7 +510,13 @@ Vue.component('mission', {
                                 id: 88,
                                 name: 'Bo-Katan Mandalorians (if not needed on Mandalore)',
                                 toons: ['mandalorbokatan','ig12','paz_visla','beskar_mando','bo-katan_kryze'],
-                        }, 
+                        },
+			{
+                id:89,
+                name: 'Gungans',
+                toons: ['boss_nass', 'jar_jar_binks', 'captain_tarpals', 'gungan_phalanx', 'gungan_boomadier'],
+             },
+
 
 
 
@@ -655,7 +661,7 @@ Vue.component('mission', {
 				'Wave 1: 219,375',
                 'Wave 2: 493,594'
 				],
-			preferredSquads: [82,87,84,85,4,88],//tr
+			preferredSquads: [82,87,84,85,4,88,89],//tr
 			dangerousEnemies: [46,48],
 			modifiers: [3],
             reqs: [20],
@@ -696,7 +702,7 @@ Vue.component('mission', {
 				'Wave 1: 219,375',
                 'Wave 2: 493,594'
 				],
-				preferredSquads: [82,87,84,85,4,88],//tl
+				preferredSquads: [82,87,84,85,4,88,89],//tl
 				dangerousEnemies: [46,48],
 				modifiers: [3],
 				notes: [3],
