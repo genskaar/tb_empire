@@ -501,6 +501,11 @@ Vue.component('mission', {
                 name: 'GL Leia (Variants Available)',
                 toons: ['gl_leia','r2-d2','captain_drogan','captain_rex','commander_luke_skywalker']
              },
+            {
+                id: 87,
+                name: 'Bo-Katan Mandalorians (if not needed on Mandalore)',
+                toons: ['mandalorbokatan','ig12','paz_visla','beskar_mando','bo-katan_kryze'],
+                },
 	         
              
 
@@ -651,7 +656,7 @@ Vue.component('mission', {
 				'Wave 1: 219,375',
                 'Wave 2: 493,594'
 				],
-			preferredSquads: [86,77,81,83],//tr
+			preferredSquads: [86,77,81,83,87],//tr
 			dangerousEnemies: [46,47],
 			modifiers: [3,4],
             reqs: [19],

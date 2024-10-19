@@ -460,7 +460,17 @@ Vue.component('mission', {
 				id:79,
 				name: "GL Leia",
 				toons: ["qi'ra", "gl_leia","captain_drogan","r2-d2","young_han_solo"],
-			}
+			},
+            {
+                id: 80,
+                name: 'Bo-Katan Mandalorians',
+                toons: ['mandalorbokatan','ig12','paz_visla','beskar_mando','bo-katan_kryze'],
+              },
+			{
+                id:81,
+                name: 'Gungans',
+                toons: ['boss_nass', 'jar_jar_binks', 'captain_tarpals', 'gungan_phalanx', 'gungan_boomadier'],
+             },
 
              
 
@@ -598,7 +608,7 @@ Vue.component('mission', {
 				'Wave 1: 100,000',
                 'Wave 2: 200,000'
 				],
-            preferredSquads: [44,77],//generic
+            preferredSquads: [44,77,80,81],//generic
 			dangerousEnemies: [31,32],
             reqs: [6],
             modifiers: [1],
