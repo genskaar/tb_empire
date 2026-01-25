@@ -535,14 +535,14 @@ Vue.component('mission', {
 		"Wave 2: Second Sister (L), Purge Trooper"
 		],
 		platoons: [
-        ["Razor Crest",	"13","Ben Solo",	"10","Commander Ahsoka Tano",	"5","Grand Master Yoda",	"4","BB-8",	"2","BTL-B Y-wing Starfighter",	"2","C-3PO",	"2",
+        ["Razor Crest",	"12","Ben Solo",	"10","Commander Ahsoka Tano",	"5","Grand Master Yoda",	"4","BB-8",	"2","BTL-B Y-wing Starfighter",	"2","C-3PO",	"2",
 "Chewbacca",	"2","Ghost",	"2","Greef Karga",	"2","Jedi Master Kenobi",	"2","Kanan Jarrus",	"2","Outrider",	"2",
 "Profundity",	"2","R2-D2",	"2","Rey",	"2","Rey (Jedi Training)",	"2","Aayla Secura",	"1","ARC Trooper",	"1",
 "Bistan's U-wing",	"1","Bodhi Rook",	"1","Boushh (Leia Organa)",	"1","Clone Sergeant - Phase I",	"1","Commander Luke Skywalker",	"1","CT-21-0408 Echo",	"1","CT-5555 Fives",	"1",
 "CT-7567 Rex",	"1","Ebon Hawk",	"1","Endurance",	"1","Enfys Nest",	"1","Ezra Bridger",	"1","Han's Millennium Falcon",	"1","Jedi Consular's Starfighter",	"1",
 "Jedi Knight Revan",	"1","Juhani",	"1","L3-37",	"1","Mon Mothma",	"1","Omega",	"1","Padme Amidala",	"1","Pao",	"1",
 "Poe Dameron's X-wing",	"1","Raven's Claw",	"1","Rose Tico",	"1","Teebo",	"1","Threepio & Chewie",	"1","Vandor Chewbacca",	"1",
-"Veteran Smuggler Chewbacca",	"1","Wedge Antilles",	"1","Young Han Solo",	"1",        ]
+"Veteran Smuggler Chewbacca",	"1","Wedge Antilles",	"1","Young Han Solo",	"1", "Admiral Raddus": "1"        ]
 		],
 		guides:[
 		'See also: 50 Shards of Kam Discord Server',
@@ -695,3 +695,4 @@ let app = new Vue({
 		isVisible: false
 	},
 });
+
