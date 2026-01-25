@@ -524,17 +524,19 @@ Vue.component('mission', {
         "Malevolence, Hyena Bomber, Vulture Droid, Geo Starfighter"
 		],
 		platoons: [
-        ["Darth Traya",	"7","Chimaera",	"6","Darth Revan",	"5","General Grevious",	"5",
-         "Emperor Palpatine",	"4", "Wat Tambor",	"4", "0-0-0",	"4", "Grand Admiral Thrawn",	"3",
-"Ugnaught",	"3","Darth Sidious",	"2","Canderous Ordo",	"2","IG-88",	"2","Darth Sion",	"2",
-"Darth Vader",	"2","BT-1",	"2","Imperial Probe Droid",	"2","First Order Officer",	"2","Darth Maul",	"2",
-"Droideka",	"2","First Order SF Pilot",	"1","Tusken Shaman",	"1","IG-86",	"1",
-"Ninth Sister",	"1","Nute Gunray",	"1",
-"Dengar",	"1","Jango Fett",	"1",
-"Fifth Brother",	"1","Boba Fett",	"1",
-"Mara Jade",	"1","First Order SF Tie Pilot",	"1", "Embo",	"1","Sith Assassin",	"1",
-"Asajj Ventress",	"1","Sith Trooper",	"1","Imperial Super Commando",	"1","Gamorrean Guard",	"1",
-"Count Dooku",	"1","B1 Battle Droid",	"1","Dark Trooper",	"1","Tie Fighter Pilot",	"1"]
+			["Darth Traya", "7", "Chimaera", "6", "Darth Revan", "5", "General Grievous", "5",
+			"Emperor Palpatine", "4", "Wat Tambor", "4", "0-0-0", "4", "Grand Admiral Thrawn", "3",
+			"Ugnaught", "3", "Darth Sidious", "2", "Canderous Ordo", "2", "IG-88", "2", "Darth Sion", "2",
+			"Darth Vader", "2", "BT-1", "2", "Imperial Probe Droid", "2", "First Order Officer", "2", "Darth Maul", "2",
+			"Droideka", "2", "First Order SF TIE Pilot", "2", "Hound's Tooth", "2",
+			"Tusken Shaman", "1", "IG-86 Sentinel Droid", "1", "Ninth Sister", "1", "Nute Gunray", "1",
+			"Dengar", "1", "Jango Fett", "1", "Fifth Brother", "1", "Boba Fett", "1",
+			"Mara Jade, The Emperor's Hand", "1", "Embo", "1", "Sith Assassin", "1",
+			"Asajj Ventress", "1", "Sith Trooper", "1", "Imperial Super Commando", "1", "Gamorrean Guard", "1",
+			"Count Dooku", "1", "B1 Battle Droid", "1", "Dark Trooper", "1", "TIE Fighter Pilot", "1",
+			"Gauntlet Starfighter", "1", "Geonosian Spy's Starfighter", "1", "Hyena Bomber", "1",
+			"Imperial TIE Bomber", "1", "Imperial TIE Fighter", "1", "Nightsister Initiate", "1"
+			]
 		],
 		guides:[
 		'See also: 50 Shards of Kam Discord Server',

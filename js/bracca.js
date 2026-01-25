@@ -535,7 +535,7 @@ Vue.component('mission', {
 		"Wave 2: Second Sister (L), Purge Trooper"
 		],
 		platoons: [
-        ["Razor Crest",	"12","Ben Solo",	"10","Commander Ahsoka Tano",	"5","Grand Master Yoda",	"4","BB-8",	"2","BTL-B Y-wing Starfighter",	"2","C-3PO",	"2",
+        ["Razor Crest",	"13","Ben Solo",	"10","Commander Ahsoka Tano",	"5","Grand Master Yoda",	"4","BB-8",	"2","BTL-B Y-wing Starfighter",	"2","C-3PO",	"2",
 "Chewbacca",	"2","Ghost",	"2","Greef Karga",	"2","Jedi Master Kenobi",	"2","Kanan Jarrus",	"2","Outrider",	"2",
 "Profundity",	"2","R2-D2",	"2","Rey",	"2","Rey (Jedi Training)",	"2","Aayla Secura",	"1","ARC Trooper",	"1",
 "Bistan's U-wing",	"1","Bodhi Rook",	"1","Boushh (Leia Organa)",	"1","Clone Sergeant - Phase I",	"1","Commander Luke Skywalker",	"1","CT-21-0408 Echo",	"1","CT-5555 Fives",	"1",
