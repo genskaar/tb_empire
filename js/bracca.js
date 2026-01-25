@@ -542,7 +542,7 @@ Vue.component('mission', {
 "CT-7567 Rex",	"1","Ebon Hawk",	"1","Endurance",	"1","Enfys Nest",	"1","Ezra Bridger",	"1","Han's Millennium Falcon",	"1","Jedi Consular's Starfighter",	"1",
 "Jedi Knight Revan",	"1","Juhani",	"1","L3-37",	"1","Mon Mothma",	"1","Omega",	"1","Padme Amidala",	"1","Pao",	"1",
 "Poe Dameron's X-wing",	"1","Raven's Claw",	"1","Rose Tico",	"1","Teebo",	"1","Threepio & Chewie",	"1","Vandor Chewbacca",	"1",
-"Veteran Smuggler Chewbacca",	"1","Wedge Antilles",	"1","Young Han Solo",	"1",        ]
+"Veteran Smuggler Chewbacca",	"1","Wedge Antilles",	"1","Young Han Solo",	"1", "Admiral Raddus": "1"        ]
 		],
 		guides:[
 		'See also: 50 Shards of Kam Discord Server',
@@ -695,3 +695,4 @@ let app = new Vue({
 		isVisible: false
 	},
 });
+
