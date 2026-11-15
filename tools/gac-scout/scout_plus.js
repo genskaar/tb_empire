@@ -141,6 +141,7 @@
   .hrs span{display:block;width:100%;background:#1f6feb;border-radius:3px 3px 0 0;min-height:1px}.hrs small{color:#8f9ab5;font-size:10px}
   .about li{margin:8px 0;max-width:800px}
   details{margin:6px 0}summary{cursor:pointer;font-size:13px}
+  .dchint{border-bottom:1px dotted #5d6a88;cursor:help}
   .picker{display:flex;gap:8px;align-items:center;flex-wrap:wrap;margin-bottom:8px}#addu{width:260px;margin:0}
   .locked{margin-bottom:8px}button.u.lk{cursor:pointer;color:inherit;font:inherit;font-size:12px}button.u.lk:hover{border-color:#ff7b72}
   .ban{font-size:16px;color:#ffd166}.gstat{color:#8f9ab5;font-size:12px}
@@ -235,8 +236,12 @@
           const j = JSON.parse(el.getAttribute('data-player-datacron-tooltip-app'));
           const dv = j.derived || {};
           // character tiers carry unit_target_base_id; stat and reroll tiers don't, so this keeps only the boosted characters
-          const chars = [...new Set((dv.tiers || []).filter(x => x.derived && x.derived.unit_target_base_id && x.derived.scope_target_name).map(x => x.derived.scope_target_name))];
-          return { s: j.set_id || 0, t: dv.tier || 0, n: dv.name || '', f: !!j.focused, c: chars };
+          const charTiers = (dv.tiers || []).filter(x => x.derived && x.derived.unit_target_base_id && x.derived.scope_target_name);
+          const chars = [...new Set(charTiers.map(x => x.derived.scope_target_name))];
+          // their ability text, so hovering the datacron line shows what it actually does (capped to keep the cache small)
+          const abil = charTiers.filter(x => x.derived.ability_description).slice(0, 3)
+            .map(x => (x.derived.scope_target_name + ': ' + x.derived.ability_description.replace(/\s+/g, ' ')).slice(0, 180));
+          return { s: j.set_id || 0, t: dv.tier || 0, n: dv.name || '', f: !!j.focused, c: chars, a: abil };
         } catch (e) { return null; }
       };
       const adc = dc('.gac-counters-battle-summary__side--attacker'), ddc = dc('.gac-counters-battle-summary__side--defense');
@@ -268,12 +273,12 @@
     const res = await pool(rounds, 3, async r => {
       const k = ally + '|' + r.h;
       let c = cache.rounds[k];
-      if (c && c.m && c.v === 3) c.t = Date.now();
+      if (c && c.m && c.v === 4) c.t = Date.now();
       else {
         const p = await parseRound(r, owner);
         // only keep a round once its attack phase has been over for 12 hours, so a half-played round is never frozen
         const finished = Date.now() > r.epoch + 2 * r.rn * DAY + DAY / 2;
-        if (p && p.b.length && finished) { c = { t: Date.now(), m: p.m, b: p.b, v: 3 }; cache.rounds[k] = c; }
+        if (p && p.b.length && finished) { c = { t: Date.now(), m: p.m, b: p.b, v: 4 }; cache.rounds[k] = c; }
         else c = p;
       }
       status(`Reading ${esc(owner)}'s GAC history: ${++done}/${rounds.length} rounds…`);
@@ -656,7 +661,8 @@
     const d = e.dc;
     const big = d.t >= 12;
     const when = e.ep === S.maxEp ? 'latest round' : 'last seen ' + new Date(e.ep).toLocaleDateString(undefined, { day: 'numeric', month: 'short' });
-    return `<div class="sub">Datacron: <span class="${big ? 'warn' : ''}">Lvl ${d.t}${big ? ' ⚠' : ''}</span> ${esc(d.n)}${d.f ? ' (focused)' : ''}${d.c.length ? ' → ' + esc(d.c.join(', ')) : ''} <small>(${when})</small></div>`;
+    const tip = (d.a && d.a.length) ? ` title="${esc(d.a.join('\n'))}"` : '';
+    return `<div class="sub"${tip}>Datacron: <span class="${big ? 'warn' : ''}">Lvl ${d.t}${big ? ' ⚠' : ''}</span> <span class="${tip ? 'dchint' : ''}">${esc(d.n)}</span>${d.f ? ' (focused)' : ''}${d.c.length ? ' → ' + esc(d.c.join(', ')) : ''} <small>(${when})</small></div>`;
   };
   const recTxt = c => `${c.n ? `${c.w}/${c.n} in these histories` : 'not in these histories'}${c.myN ? ` · you ${c.myW}/${c.myN}` : ''}${c.gN ? ` · swgoh.gg ${pct(c.gRate)} of ${kNum(c.gN)}${c.gSquad ? '' : ` (all ${esc(nm(c.lead))} teams)`}` : ''}`;
   const delayMs = r => { const t = S.byRound[r.h]; if (!t || !t.t.length) return null; return Date.parse(t.t[0]) - (r.epoch + DAY + (r.rn - 1) * 2 * DAY); };
@@ -915,7 +921,7 @@
       <li><b>Their usual squad</b> for each leader is the line-up they set most, with the latest season counted 4 times and the one before twice, so a team they changed recently shows the new version.</li>
       <li><b>Zones</b> (Front top, Front bottom, Back, Fleet) are where each of their defences was placed most often, counted once per round.</li>
       <li><b>Round by round</b> lists each of their rounds: result and score, first attack time, delay from attacks opening, the attacks their defence held against, and their own failed attacks.</li>
-      <li><b>Datacrons</b> are shown, not modelled: each defence and attack team shows the datacron they last ran with it (level, set, and who it boosts), taken from their newest recorded battles. ⚠ marks Lvl 12+. They are left out of the win % on purpose: sets rotate every few weeks, so most recorded battles ran under datacrons that no longer exist.</li>
+      <li><b>Datacrons</b> are shown, not modelled: each defence and attack team shows the datacron they last ran with it (level, set, and who it boosts), taken from their newest recorded battles. Hover the set name for the ability text. ⚠ marks Lvl 12+. They are left out of the win % on purpose: sets rotate every few weeks, so most recorded battles ran under datacrons that no longer exist. For deciding what to build on your own account each rotation, see <a href="https://ahnaldt101.com/swgoh/datacrons" target="_blank">AhnaldT101's datacron guide</a>.</li>
       <li><b>What it can't see:</b> mods, omicrons and turn-meter luck. Datacron abilities and rerolls since their last recorded round are also invisible. A defence nobody attacked never appears in swgoh.gg's history, and the event being played right now isn't listed until it ends.</li>
       <li>Everything is read from public swgoh.gg pages in your own browser. Nothing is sent anywhere else. Finished rounds are cached in this browser, and swgoh.gg counters pages for 3 days, so later scouts are much faster.</li>
       <li>Credits: original GAC Scout by FireFight; GAC Scout+ (battle plan, defence planner, zones, banners) by samobudo; round-by-round report by Arrikhan (PHX).</li></ul>`;

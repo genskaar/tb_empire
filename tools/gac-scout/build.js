@@ -106,7 +106,7 @@ details{margin-top:14px}summary{cursor:pointer;color:#8cc8ff}
 <li><b>Est. for you</b> starts from the swgoh.gg win rate, adds the battles in your two histories, and is nudged up to ±12% for the relic gap between your counter and their defence. Each figure is labelled solid, some or thin data.</li>
 <li>It runs on swgoh.gg itself and reads the same public pages you can open, from your own browser. Nothing is sent anywhere else.</li>
 <li>The bookmark loads the tool's code from this site (GitHub Pages) each time you click it. The source is in the <a href="https://github.com/seanvintin-wwws/tb_empire/tree/main/tools/gac-scout" style="color:#8cc8ff">tools/gac-scout</a> folder of the repository.</li>
-<li>Datacrons are shown (from their newest battles) but kept out of the win %, because sets rotate every few weeks. Mods and omicrons are invisible, so treat the odds as a guide.</li>
+<li>Datacrons are shown (from their newest battles, with ability text on hover) but kept out of the win %, because sets rotate every few weeks. Mods and omicrons are invisible, so treat the odds as a guide. For what to build on your own account, see <a href="https://ahnaldt101.com/swgoh/datacrons" style="color:#8cc8ff">AhnaldT101's datacron guide</a>.</li>
 <li>Made for ANZGC. Original GAC Scout by FireFight; GAC Scout+ battle plan, defence planner, zones and banners by samobudo; round-by-round report by Arrikhan (PHX).</li>
 </ul>
 <script>
