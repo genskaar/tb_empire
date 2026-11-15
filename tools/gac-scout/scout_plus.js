@@ -295,6 +295,24 @@
     return { name: owner, rounds, battles, fmt: useFmt, seasons: seasons.filter(s => rounds.some(r => r.season === s)), listed: links.length };
   }
 
+  // ---------- swgoh.gg datacron catalogue (set id -> name, active, expiry) ----------
+  async function loadSets() {
+    if (gstore.sets && Date.now() - gstore.sets.t < DAY) return gstore.sets.map;
+    const doc = await getDoc('/datacrons/');
+    if (!doc) return (gstore.sets && gstore.sets.map) || {};
+    const map = {};
+    doc.querySelectorAll('main a[href]').forEach(a => {
+      const m = (a.getAttribute('href') || '').match(/^\/datacrons\/(\d+)\/$/);
+      if (!m) return;
+      const txt = a.textContent.replace(/\s+/g, ' ').trim();
+      const nm = txt.match(/^(.*?) (Active|Expired)\b/);
+      const dt = txt.match(/(?:Expires|Expired) ([A-Z][a-z]{2} \d{1,2}, \d{4})/);
+      if (nm) map[m[1]] = { n: nm[1], active: nm[2] === 'Active', exp: dt ? new Date(dt[1]).getTime() : 0 };
+    });
+    if (Object.keys(map).length) { gstore.sets = { t: Date.now(), map }; gsave(); }
+    return map;
+  }
+
   // ---------- swgoh.gg GAC counters page ----------
   const seasonParam = {}; // fmt -> '' (default page) or '&season_id=...'
   function parseCounterRows(doc) {
@@ -590,7 +608,7 @@
   }
 
   // ---------- run ----------
-  let S = null;
+  let S = null, S0_sets = {};
   async function run(oppAlly) {
     const myAlly = digits($('#me').value);
     if (!/^\d{9}$/.test(myAlly)) return status('Enter your own 9-digit ally code first. It is remembered in this browser.', true);
@@ -606,6 +624,7 @@
     try {
       status('Loading unit names and both rosters…');
       await loadUnits();
+      S0_sets = await loadSets();
       const [me, opp] = await Promise.all([loadRoster(myAlly), loadRoster(oppAlly)]);
       if (!opp || !me) {
         if (fails.n) return status(blockedMsg('the rosters'), true);
@@ -661,8 +680,11 @@
     const d = e.dc;
     const big = d.t >= 12;
     const when = e.ep === S.maxEp ? 'latest round' : 'last seen ' + new Date(e.ep).toLocaleDateString(undefined, { day: 'numeric', month: 'short' });
+    const si = S0_sets[d.s];
+    const days = si && si.active && si.exp ? Math.max(0, Math.round((si.exp - Date.now()) / DAY)) : null;
+    const setNote = si && !si.active ? ' · <span class="warn">set expired, cron is gone</span>' : days != null && days <= 21 ? ` · <span class="warn">set expires in ${days}d</span>` : '';
     const tip = (d.a && d.a.length) ? ` title="${esc(d.a.join('\n'))}"` : '';
-    return `<div class="sub"${tip}>Datacron: <span class="${big ? 'warn' : ''}">Lvl ${d.t}${big ? ' ⚠' : ''}</span> <span class="${tip ? 'dchint' : ''}">${esc(d.n)}</span>${d.f ? ' (focused)' : ''}${d.c.length ? ' → ' + esc(d.c.join(', ')) : ''} <small>(${when})</small></div>`;
+    return `<div class="sub"${tip}>Datacron: <span class="${big ? 'warn' : ''}">Lvl ${d.t}${big ? ' ⚠' : ''}</span> <span class="${tip ? 'dchint' : ''}">${esc(d.n)}</span>${d.f ? ' (focused)' : ''}${d.c.length ? ' → ' + esc(d.c.join(', ')) : ''} <small>(${when})</small>${setNote}</div>`;
   };
   const recTxt = c => `${c.n ? `${c.w}/${c.n} in these histories` : 'not in these histories'}${c.myN ? ` · you ${c.myW}/${c.myN}` : ''}${c.gN ? ` · swgoh.gg ${pct(c.gRate)} of ${kNum(c.gN)}${c.gSquad ? '' : ` (all ${esc(nm(c.lead))} teams)`}` : ''}`;
   const delayMs = r => { const t = S.byRound[r.h]; if (!t || !t.t.length) return null; return Date.parse(t.t[0]) - (r.epoch + DAY + (r.rn - 1) * 2 * DAY); };
@@ -921,7 +943,7 @@
       <li><b>Their usual squad</b> for each leader is the line-up they set most, with the latest season counted 4 times and the one before twice, so a team they changed recently shows the new version.</li>
       <li><b>Zones</b> (Front top, Front bottom, Back, Fleet) are where each of their defences was placed most often, counted once per round.</li>
       <li><b>Round by round</b> lists each of their rounds: result and score, first attack time, delay from attacks opening, the attacks their defence held against, and their own failed attacks.</li>
-      <li><b>Datacrons</b> are shown, not modelled: each defence and attack team shows the datacron they last ran with it (level, set, and who it boosts), taken from their newest recorded battles. Hover the set name for the ability text. ⚠ marks Lvl 12+. They are left out of the win % on purpose: sets rotate every few weeks, so most recorded battles ran under datacrons that no longer exist. For deciding what to build on your own account each rotation, see <a href="https://ahnaldt101.com/swgoh/datacrons" target="_blank">AhnaldT101's datacron guide</a>.</li>
+      <li><b>Datacrons</b> are shown, not modelled: each defence and attack team shows the datacron they last ran with it (level, set, and who it boosts), taken from their newest recorded battles. Hover the set name for the ability text. ⚠ marks Lvl 12+, and expiring or expired sets are flagged from swgoh.gg's datacron catalogue. They are left out of the win % on purpose: sets rotate every few weeks, so most recorded battles ran under datacrons that no longer exist. For deciding what to build on your own account each rotation, see <a href="https://ahnaldt101.com/swgoh/datacrons" target="_blank">AhnaldT101's datacron guide</a>.</li>
       <li><b>What it can't see:</b> mods, omicrons and turn-meter luck. Datacron abilities and rerolls since their last recorded round are also invisible. A defence nobody attacked never appears in swgoh.gg's history, and the event being played right now isn't listed until it ends.</li>
       <li>Everything is read from public swgoh.gg pages in your own browser. Nothing is sent anywhere else. Finished rounds are cached in this browser, and swgoh.gg counters pages for 3 days, so later scouts are much faster.</li>
       <li>Credits: original GAC Scout by FireFight; GAC Scout+ (battle plan, defence planner, zones, banners) by samobudo; round-by-round report by Arrikhan (PHX).</li></ul>`;
