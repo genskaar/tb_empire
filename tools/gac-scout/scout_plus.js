@@ -33,25 +33,27 @@
   const sqKey = s => [...s].sort().join(',');
 
   // every page that fails to load is counted, so the report can say when it is working from partial data
-  const fails = { n: 0, codes: {} };
+  // After 5 failures in a row it stops waiting and retrying, so a blocked or overloaded swgoh.gg fails in seconds, not minutes.
+  const fails = { n: 0, codes: {}, streak: 0 };
   async function get(url, type = 'text', tries = 4) {
     let code = 'no connection';
     for (let i = 0; i < tries; i++) {
+      if (fails.streak >= 5 && i) break;
       let wait = 1200 * (i + 1);
       try {
         const r = await fetch(url, { credentials: 'include' });
-        if (r.ok) return type === 'json' ? await r.json() : await r.text();
+        if (r.ok) { const body = type === 'json' ? await r.json() : await r.text(); fails.streak = 0; return body; }
         code = r.status;
-        if (r.status === 404) return null;
+        if (r.status === 404) { fails.streak = 0; return null; }
         if (r.status === 403 && i) break; // blocked (usually swgoh.gg's bot check): one retry is enough
         if (r.status === 429 || r.status === 503) { // "slow down": wait as long as asked, up to 15 seconds
           const ra = parseFloat(r.headers.get('retry-after'));
           wait = Math.min(ra > 0 ? ra * 1000 : 3000 * (i + 1), 15000);
         }
       } catch (e) { code = 'no connection'; }
-      if (i < tries - 1) await sleep(wait);
+      if (i < tries - 1 && fails.streak < 5) await sleep(wait);
     }
-    fails.n++; inc(fails.codes, code);
+    fails.n++; fails.streak++; inc(fails.codes, code);
     return null;
   }
   const getDoc = async url => { const t = await get(url); return t ? new DOMParser().parseFromString(t, 'text/html') : null; };
@@ -146,7 +148,7 @@
   .kpis{display:grid;grid-template-columns:repeat(auto-fill,minmax(140px,1fr));gap:8px;max-width:760px}.kpi{background:#111829;border:1px solid #263050;border-radius:10px;padding:8px 12px}.kpi b{display:block;font-size:18px}.kpi small{color:#8f9ab5;font-size:11px}
   td.w{border-left:4px solid #238636}td.l{border-left:4px solid #b62324}.att li{margin:2px 0}.att{margin:4px 0 0 16px;padding:0}
   .lose{color:#ff9e9e;font-weight:700}.draw{color:#ffd166;font-weight:700}
-  @media (max-width:700px){header{padding:10px}main{padding:12px}table.stack,.stack tbody,.stack tr,.stack td{display:block;width:100%}.stack tr:first-child{display:none}.stack tr{border-bottom:1px solid #263050;padding:6px 0}.stack td{border:0;padding:4px 0}}</style>
+  @media (max-width:700px){header{padding:10px;position:static}.x{position:absolute;top:8px;right:10px}main{padding:12px}table.stack,.stack tbody,.stack tr,.stack td{display:block;width:100%}.stack tr:first-child{display:none}.stack tr{border-bottom:1px solid #263050;padding:6px 0}.stack td{border:0;padding:4px 0}}</style>
   <div class="wrap"><header>
   <div class="brand">GAC Scout<span>+</span><span class="ver">v${VERSION}</span></div>
   <form id="f"><label>Your ally code <input id="me" inputmode="numeric" autocomplete="off" placeholder="123-456-789"></label>
@@ -564,7 +566,7 @@
     if (oppAlly === myAlly) return status("That's your own ally code. Enter your opponent's.", true);
     MY = myAlly; store.myAlly = myAlly; store.lastOpp = oppAlly; save();
     $('#go').disabled = true; $('#out').innerHTML = ''; $('#tabs').innerHTML = '';
-    fails.n = 0; fails.codes = {};
+    fails.n = 0; fails.codes = {}; fails.streak = 0;
     const blockedMsg = what => {
       const codes = Object.keys(fails.codes).join(', ');
       return `swgoh.gg wouldn't give me ${what}${codes ? ` (error ${esc(codes)})` : ''}. Reload this swgoh.gg page, complete any "checking your browser" step, sign in to swgoh.gg if it asks you to, then click the bookmark again.`;
@@ -734,7 +736,7 @@
       <td>${squadH(d.squad, 'opp')}<div class="sub">${zoneLong(d)} · set in ${pct(d.likely)} of their last ${S.span} rounds${d.recent ? '' : ' · not used last season'} · held ${pct(d.holdRate)} of ${d.n} attacks</div></td>
       <td>${pick ? squadH(pick.squad, 'me') + `<div class="sub">${recTxt(pick)}</div>` : clash ? `<span class="warn">Best owned counter (${esc(nm(clash.lead))}, ${pct(clash.est)}) needs ${clashWith.map(nm).map(esc).join(', ')}, already on your defence or used above.</span>` : '<span class="warn">No recorded counter you own. Check the counters tab with "All recorded".</span>'}</td>
       <td>${pick ? bar(pick.est) + confH(pick) + (pick.delta ? `<div class="sub">${pick.delta > 0 ? '+' : ''}${pick.delta.toFixed(1)} relic vs their team</div>` : '') : ''}</td>
-      <td>${pick ? `<b class="ban">${banTxt(pick)}</b>${pick.avgBan ? '<div class="sub">per win</div>' : ''}` : ''}</td></tr>`).join('')}</table>`;
+      <td>${pick ? `<b class="ban">${banTxt(pick)}</b>${pick.avgBan ? '<div class="sub">banners per win</div>' : ''}` : ''}</td></tr>`).join('')}</table>`;
     if (S.unseen.length) h += `<h2>Other teams they could set</h2><p class="sub">Strong teams in their roster that haven't shown up on their defence (swgoh.gg only records defences that got attacked). Your best free counter, not counted in the plan above.</p>
       <table class="stack"><tr><th>Their team</th><th>Your best counter</th><th>Est. win</th></tr>${S.unseen.map(d => {
         const c = d.counters.find(c => c.own && !c.squad.some(u => S.locked.has(u) || S.fleet.has(u)));
