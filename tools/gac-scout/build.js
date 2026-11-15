@@ -13,14 +13,16 @@ fs.writeFileSync(path.join(root, 'js', 'gac-scout-plus.js'), min + '\n');
 
 const URL_ = 'https://seanvintin-wwws.github.io/tb_empire/js/gac-scout-plus.js';
 const loaderSrc = `(()=>{if(!/(^|\\.)swgoh\\.gg$/.test(location.hostname)){alert('GAC Scout+ runs on swgoh.gg. Open swgoh.gg in this tab, then click the bookmark again.');return}var s=document.createElement('script');s.src='${URL_}?v='+Date.now();s.onerror=function(){alert('GAC Scout+ could not load from ${URL_.split('/')[2]}. Check your connection or ad blocker, or use the full-code bookmark from the install page.')};document.body.appendChild(s)})()`;
-// The loader is fully percent-encoded. The full version is wrapped so the bookmark never returns a value (which would
-// replace the page), and encodes only what a javascript: URL needs, to stay under Firefox's 65,536-character bookmark limit.
+// Both bookmarks are fully percent-encoded, so no browser has anything left to rewrite when it saves them.
+// The full version carries the whole tool gzipped and base64-encoded (about 25,000 characters, well under
+// Firefox's 65,536-character bookmark limit) and unpacks it with the browser's built-in DecompressionStream.
+// `void` stops the bookmark returning a value, which would otherwise replace the page.
 const loader = 'javascript:' + encodeURIComponent(loaderSrc);
-const fullSrc = `(()=>{${min}})()`;
-const light = c => fullSrc.replace(/[%#"<>\n\r\t\\^`{|}]/g, ch => '%' + ch.charCodeAt(0).toString(16).toUpperCase().padStart(2, '0')).replace(/ /g, c);
-let full = 'javascript:' + light('%20');
-if (full.length > 65000) full = 'javascript:' + light(' ');
-if (full.length > 65000) console.warn('WARNING: full bookmark is', full.length, 'chars: too long for Firefox');
+const b64 = require('zlib').gzipSync(Buffer.from(min, 'utf8'), { level: 9 }).toString('base64');
+const fullSrc = `void(async()=>{try{if(!/(^|\\.)swgoh\\.gg$/.test(location.hostname)){alert("GAC Scout+ runs on swgoh.gg. Open swgoh.gg in this tab, then click the bookmark again.");return}var b=Uint8Array.from(atob("${b64}"),function(c){return c.charCodeAt(0)}),t=await new Response(new Blob([b]).stream().pipeThrough(new DecompressionStream("gzip"))).text();(0,eval)(t)}catch(e){alert("GAC Scout+ could not start ("+e.message+"). Update your browser, or use the main GAC Scout+ bookmark.")}})()`;
+const full = 'javascript:' + encodeURIComponent(fullSrc);
+if (full.length > 60000) throw new Error('full bookmark is ' + full.length + ' characters: too long for Firefox');
+if (require('zlib').gunzipSync(Buffer.from(b64, 'base64')).toString('utf8') !== min) throw new Error('packed script does not unpack to the original');
 for (const [name, url, want] of [['loader', loader, loaderSrc], ['full', full, fullSrc]]) {
   if (decodeURIComponent(url.slice('javascript:'.length)) !== want) throw new Error(name + ' bookmark does not decode back to its source');
   new Function(want); // must parse
@@ -72,7 +74,7 @@ details{margin-top:14px}summary{cursor:pointer;color:#8cc8ff}
 <textarea id="code" readonly>${txt(loader)}</textarea>
 <button class="copy" data-for="code">Copy code</button>
 <details><summary>Full-code version (only if the bookmark above won't load)</summary>
-<p class="note">This contains the whole tool, so it works even if this site is down, but it won't update itself. Reinstall it from here to get new versions.</p>
+<p class="note">This contains the whole tool (packed), so it works even if this site can't be reached, but it won't update itself. Reinstall it from here to get new versions.</p>
 <p><a class="btn btn2" href="${attr(full)}" onclick="alert('Drag this button to your bookmarks bar instead of clicking it.');return false;">GAC Scout+ (full)</a></p>
 <textarea id="full" readonly>${txt(full)}</textarea>
 <button class="copy" data-for="full">Copy full code</button>
