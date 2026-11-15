@@ -12,7 +12,7 @@
    - Round by round tab (from Arrikhan): result, score, first attack time and delay, their holds and their drops.
 */
 (async () => {
-  const VERSION = '2.2';
+  const VERSION = '2.3';
   if (!/(^|\.)swgoh\.gg$/.test(location.hostname)) {
     alert('GAC Scout+ runs on swgoh.gg. Open https://swgoh.gg in this tab, then click the bookmark again.');
     return;
@@ -227,8 +227,20 @@
       const ids = sel => [...card.querySelectorAll(sel + ' [data-unit-def-tooltip-app]')].map(e => e.getAttribute('data-unit-def-tooltip-app'));
       const att = ids('.gac-counters-battle-summary__side--attacker'), def = ids('.gac-counters-battle-summary__side--defense');
       if (!att.length || !def.length) continue;
+      // the datacron each side brought: set, level, name, focused, and which characters its top tiers boost
+      const dc = sel => {
+        const el = card.querySelector(sel + ' [data-player-datacron-tooltip-app]');
+        if (!el) return null;
+        try {
+          const j = JSON.parse(el.getAttribute('data-player-datacron-tooltip-app'));
+          const dv = j.derived || {};
+          const chars = [...new Set((dv.tiers || []).filter(x => x.derived && x.derived.tier_id >= 9 && x.derived.scope_target_name).map(x => x.derived.scope_target_name))];
+          return { s: j.set_id || 0, t: dv.tier || 0, n: dv.name || '', f: !!j.focused, c: chars };
+        } catch (e) { return null; }
+      };
+      const adc = dc('.gac-counters-battle-summary__side--attacker'), ddc = dc('.gac-counters-battle-summary__side--defense');
       const isDef = !!head && !!(head.compareDocumentPosition(card) & Node.DOCUMENT_POSITION_FOLLOWING);
-      b.push({ side: isDef ? 'DEF' : 'ATT', date: st.date || '', zone: st.zone, zn: st.zn, out: st.outcome || '', win: st.outcome === 'Win', banners: parseInt(st.banners) || null, att, def });
+      b.push({ side: isDef ? 'DEF' : 'ATT', date: st.date || '', zone: st.zone, zn: st.zn, out: st.outcome || '', win: st.outcome === 'Win', banners: parseInt(st.banners) || null, att, def, adc, ddc });
     }
     return { m: meta, b };
   }
@@ -255,12 +267,12 @@
     const res = await pool(rounds, 3, async r => {
       const k = ally + '|' + r.h;
       let c = cache.rounds[k];
-      if (c && c.m) c.t = Date.now();
+      if (c && c.m && c.v === 3) c.t = Date.now();
       else {
         const p = await parseRound(r, owner);
         // only keep a round once its attack phase has been over for 12 hours, so a half-played round is never frozen
         const finished = Date.now() > r.epoch + 2 * r.rn * DAY + DAY / 2;
-        if (p && p.b.length && finished) { c = { t: Date.now(), m: p.m, b: p.b }; cache.rounds[k] = c; }
+        if (p && p.b.length && finished) { c = { t: Date.now(), m: p.m, b: p.b, v: 3 }; cache.rounds[k] = c; }
         else c = p;
       }
       status(`Reading ${esc(owner)}'s GAC history: ${++done}/${rounds.length} rounds…`);
@@ -419,6 +431,16 @@
     const nFleets = Math.max(0, ...Object.values(roundCaps).map(x => x.size));
     S.fleetDetected = Object.keys(capRounds).sort((a, b) => capRounds[b].size - capRounds[a].size).slice(0, nFleets).flatMap(c => S.myFleetByCap[c]);
     S.myBattles = myHist.battles.filter(b => b.side === 'ATT').length;
+    // the datacron they last ran on each defence, and with each attack team (sets rotate, so only the newest sighting counts)
+    const epOf = b => +((b.r || '').match(/O(\d+)\//) || [0, 0])[1];
+    S.maxEp = Math.max(0, ...oppHist.rounds.map(r => r.epoch));
+    S.dcDef = {}; S.dcAtt = {};
+    oppHist.battles.forEach(b => {
+      const dc = b.side === 'DEF' ? b.ddc : b.adc;
+      if (!dc) return;
+      const map = b.side === 'DEF' ? S.dcDef : S.dcAtt, L = (b.side === 'DEF' ? b.def : b.att)[0], ep = epOf(b);
+      if (!map[L] || ep > map[L].ep || (ep === map[L].ep && dc.t > map[L].dc.t)) map[L] = { ep, dc };
+    });
     const wins = all.filter(b => b.win && b.banners).map(b => b.banners);
     S.defaultBan = wins.length ? mean(wins) : 60;
     // counters for every defence (seen and unseen)
@@ -627,6 +649,14 @@
   const zoneTxt = d => (d.ships ? 'Fleet' : d.zone ? zoneName(d.zone.z, d.zone.of) : 'Zone unknown');
   const zoneLong = d => (d.zone ? `${zoneTxt(d)} <small>(${pct(d.zone.share)} of ${d.zone.n} rounds)</small>` : d.ships ? 'Fleet' : 'Zone unknown');
   const banTxt = c => (c.avgBan ? Math.round(c.avgBan) : '–');
+  const dcLine = (map, lead) => {
+    const e = map[lead];
+    if (!e) return '';
+    const d = e.dc;
+    const big = d.t >= 12;
+    const when = e.ep === S.maxEp ? 'latest round' : 'last seen ' + new Date(e.ep).toLocaleDateString(undefined, { day: 'numeric', month: 'short' });
+    return `<div class="sub">Datacron: <span class="${big ? 'warn' : ''}">Lvl ${d.t}${big ? ' ⚠' : ''}</span> ${esc(d.n)}${d.f ? ' (focused)' : ''}${d.c.length ? ' → ' + esc(d.c.join(', ')) : ''} <small>(${when})</small></div>`;
+  };
   const recTxt = c => `${c.n ? `${c.w}/${c.n} in these histories` : 'not in these histories'}${c.myN ? ` · you ${c.myW}/${c.myN}` : ''}${c.gN ? ` · swgoh.gg ${pct(c.gRate)} of ${kNum(c.gN)}${c.gSquad ? '' : ` (all ${esc(nm(c.lead))} teams)`}` : ''}`;
   const delayMs = r => { const t = S.byRound[r.h]; if (!t || !t.t.length) return null; return Date.parse(t.t[0]) - (r.epoch + DAY + (r.rn - 1) * 2 * DAY); };
   const hm = ms => { if (ms == null || isNaN(ms)) return '—'; const m = Math.max(0, Math.round(ms / 6e4)); return '+' + String(Math.floor(m / 60)).padStart(2, '0') + ':' + String(m % 60).padStart(2, '0'); };
@@ -742,7 +772,7 @@
     h += `<h2>Suggested attack plan</h2><p class="sub">The combination of your counters with the best overall result against the defences they usually set, never reusing a unit or anything on your defence.</p>
       <div class="filters">Rank by: ${chip('odds', 'Best win %')}${chip('banners', 'Most banners')}</div>
       <table class="stack"><tr><th>Their likely defence</th><th>Your counter</th><th>Est. win for you</th><th>Avg banners</th></tr>${S.plan.map(({ d, pick, clash, clashWith }) => `<tr>
-      <td>${squadH(d.squad, 'opp')}<div class="sub">${zoneLong(d)} · set in ${pct(d.likely)} of their last ${S.span} rounds${d.recent ? '' : ' · not used last season'} · held ${pct(d.holdRate)} of ${d.n} attacks</div></td>
+      <td>${squadH(d.squad, 'opp')}<div class="sub">${zoneLong(d)} · set in ${pct(d.likely)} of their last ${S.span} rounds${d.recent ? '' : ' · not used last season'} · held ${pct(d.holdRate)} of ${d.n} attacks</div>${dcLine(S.dcDef, d.lead)}</td>
       <td>${pick ? squadH(pick.squad, 'me') + `<div class="sub">${recTxt(pick)}</div>` : clash ? `<span class="warn">Best owned counter (${esc(nm(clash.lead))}, ${pct(clash.est)}) needs ${clashWith.map(nm).map(esc).join(', ')}, already on your defence or used above.</span>` : '<span class="warn">No recorded counter you own. Check the counters tab with "All recorded".</span>'}</td>
       <td>${pick ? bar(pick.est) + confH(pick) + (pick.delta ? `<div class="sub">${pick.delta > 0 ? '+' : ''}${pick.delta.toFixed(1)} relic vs their team</div>` : '') : ''}</td>
       <td>${pick ? `<b class="ban">${banTxt(pick)}</b>${pick.avgBan ? '<div class="sub">banners per win</div>' : ''}` : ''}</td></tr>`).join('')}</table>`;
@@ -784,7 +814,7 @@
       <div class="filters">Show counters: ${chip('all', 'All recorded')}${chip('own', 'Teams I own')}${chip('ready', 'Teams I own at R5+')}<label class="tog"><input type="checkbox" id="ships" ${store.showShips ? 'checked' : ''}> Show fleets</label></div>
       ${S.defs.filter(d => store.showShips || !d.ships).map(d => {
         const list = pick(d), exact = d.counters.some(c => c.exact && c.gN);
-        return `<section class="card"><div class="dh">${squadH(d.squad, 'opp')}<div class="stats"><div><b>${pct(d.likely)}</b><small>of last ${S.span} rounds</small></div><div><b>${pct(d.holdRate)}</b><small>held (${d.held}/${d.n})</small></div><div><b>${esc(zoneTxt(d))}</b><small>${d.zone ? pct(d.zone.share) + ' of rounds' : 'zone'}</small></div></div></div>
+        return `<section class="card"><div class="dh">${squadH(d.squad, 'opp')}<div class="stats"><div><b>${pct(d.likely)}</b><small>of last ${S.span} rounds</small></div><div><b>${pct(d.holdRate)}</b><small>held (${d.held}/${d.n})</small></div><div><b>${esc(zoneTxt(d))}</b><small>${d.zone ? pct(d.zone.share) + ' of rounds' : 'zone'}</small></div></div></div>${dcLine(S.dcDef, d.lead)}
         ${d.counters.some(c => c.gN) ? `<p class="sub">swgoh.gg data: ${exact ? 'this exact squad' : `any ${esc(nm(d.lead))} team`}.</p>` : ''}
         ${list.length ? counterTable(list) : `<p class="sub">No recorded counters${f !== 'all' ? ' that match this filter' : ''}.</p>`}</section>`;
       }).join('')}`;
@@ -797,7 +827,7 @@
     if (!S.atts.length) return '<p class="warn">No attack history found.</p>';
     return `<h2>Their attacks: what to put on defence</h2><p class="sub">Defences that beat their main attackers are the ones to set. Your levels are shown in green. The Suggested defence on the Battle plan tab turns this into a list.</p>
       <table class="stack"><tr><th>Their attack team</th><th>Wins</th><th>Lost to (set these)</th><th>Beat</th></tr>${S.atts.map(a => `<tr>
-      <td>${squadH(top(a.squads, 1)[0][0].split(','), 'opp')}</td><td>${bar(a.w / a.n, `${a.w}/${a.n}`)}</td>
+      <td>${squadH(top(a.squads, 1)[0][0].split(','), 'opp')}${dcLine(S.dcAtt, a.lead)}</td><td>${bar(a.w / a.n, `${a.w}/${a.n}`)}</td>
       <td>${top(a.lostTo).map(([id, n]) => chipU(id, 'me') + ` <small>×${n}</small>`).join('<br>') || '–'}</td>
       <td>${top(a.beat).map(([id, n]) => `${esc(nm(id))} <small>×${n}</small>`).join('<br>') || '–'}</td></tr>`).join('')}</table>`;
   }
@@ -884,7 +914,8 @@
       <li><b>Their usual squad</b> for each leader is the line-up they set most, with the latest season counted 4 times and the one before twice, so a team they changed recently shows the new version.</li>
       <li><b>Zones</b> (Front top, Front bottom, Back, Fleet) are where each of their defences was placed most often, counted once per round.</li>
       <li><b>Round by round</b> lists each of their rounds: result and score, first attack time, delay from attacks opening, the attacks their defence held against, and their own failed attacks.</li>
-      <li><b>What it can't see:</b> mods, datacrons, omicrons and turn-meter luck. A defence nobody attacked never appears in swgoh.gg's history, and the event being played right now isn't listed until it ends.</li>
+      <li><b>Datacrons</b> are shown, not modelled: each defence and attack team shows the datacron they last ran with it (level, set, and who it boosts), taken from their newest recorded battles. ⚠ marks Lvl 12+. They are left out of the win % on purpose: sets rotate every few weeks, so most recorded battles ran under datacrons that no longer exist.</li>
+      <li><b>What it can't see:</b> mods, omicrons and turn-meter luck. Datacron abilities and rerolls since their last recorded round are also invisible. A defence nobody attacked never appears in swgoh.gg's history, and the event being played right now isn't listed until it ends.</li>
       <li>Everything is read from public swgoh.gg pages in your own browser. Nothing is sent anywhere else. Finished rounds are cached in this browser, and swgoh.gg counters pages for 3 days, so later scouts are much faster.</li>
       <li>Credits: original GAC Scout by FireFight; GAC Scout+ (battle plan, defence planner, zones, banners) by samobudo; round-by-round report by Arrikhan (PHX).</li></ul>`;
   }
