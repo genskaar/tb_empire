@@ -521,7 +521,8 @@
     const blocked = new Set([...S.locked, ...S.fleet]);
     const val = c => (S.rank === 'banners' ? c.est * (c.avgBan || S.defaultBan) : c.est);
     const defs = S.defs.filter(d => d.likely >= 0.1 || d.recent || S.defs.length <= 12).slice(0, 18);
-    const opts = defs.map(d => d.counters.filter(c => c.own && !c.squad.some(u => blocked.has(u))).sort((a, b) => val(b) - val(a)).slice(0, 4));
+    const free = defs.map(d => d.counters.filter(c => c.own && !c.squad.some(u => blocked.has(u))).sort((a, b) => val(b) - val(a)));
+    const opts = free.map(f => f.slice(0, 4));
     let best = { score: -1, pick: [] };
     const used = new Set(), cur = [];
     const N = Math.min(9, defs.length);
@@ -536,14 +537,16 @@
       cur.push(null); go(i + 1, sc); cur.pop();
     })(0, 0);
     const taken = new Set(best.pick.filter(Boolean).flatMap(c => c.squad));
-    for (let i = N; i < defs.length; i++) {
-      const c = opts[i].find(c => !c.squad.some(u => taken.has(u)));
+    // then give every defence still without a counter the best one that only uses units nobody else needs
+    for (let i = 0; i < defs.length; i++) {
+      if (best.pick[i]) continue;
+      const c = free[i].find(c => !c.squad.some(u => taken.has(u)));
       best.pick[i] = c || null;
       if (c) c.squad.forEach(u => taken.add(u));
     }
     S.plan = defs.map((d, i) => {
       const p = best.pick[i];
-      const clash = !p && (opts[i][0] || d.counters.find(c => c.own));
+      const clash = !p && (free[i][0] || d.counters.find(c => c.own));
       return { d, pick: p, clash, clashWith: clash ? clash.squad.filter(u => taken.has(u) || blocked.has(u)) : [] };
     });
     // suggested defence, kept clear of the attack plan, my placed defence and each other
@@ -875,7 +878,7 @@
       <li><b>Format</b> is 3v3 or 5v5. Auto uses their latest finished event. swgoh.gg only lists an event after it ends, so in the first week of a new season choose the format yourself at the top.</li>
       <li><b>Est. for you</b> starts from the swgoh.gg win rate (counted as up to 30 battles), adds the battles in your two histories on top, then nudges ±4% per relic level your counter is above or below their defence, capped at ±12%. With no swgoh.gg data it falls back to a 50/50 start worth two battles. Fleets get no relic adjustment.</li>
       <li><b>Data label</b> counts both sources: solid = 20+ battles, some = 6 to 19, thin = 5 or fewer.</li>
-      <li><b>Battle plan</b> covers up to 18 of their defences (those set in at least 10% of the rounds in their two most recent seasons, or at all in the latest one). It tries every combination of your top 4 owned counters for the 9 most likely, fills the rest one at a time, never reuses a unit, and leaves out everything in Your defence, fleets included. <b>Most banners</b> ranks by win chance × average banners per win.</li>
+      <li><b>Battle plan</b> covers up to 18 of their defences (those set in at least 10% of the rounds in their two most recent seasons, or at all in the latest one). It tries every combination of your top 4 owned counters for the 9 most likely, then fills any gaps with the best counter whose units are all still free. It never reuses a unit, and leaves out everything in Your defence, fleets included. <b>Most banners</b> ranks by win chance × average banners per win.</li>
       <li><b>Your defence</b> is one list saved in this browser. Your fleet defence starts as the fleets you set in your latest season; remove ships or add a capital ship if you've changed it.</li>
       <li><b>Suggested defence</b> scores each squad you own by how often it held against each attack team your opponent uses, weighted by how often they use it. Hold rates blend the two histories with swgoh.gg's numbers for your squad's leader, so a squad with 4 holds from 5 battles can't outrank one with 38 from 81. Galactic Legends are left out unless you untick the switch.</li>
       <li><b>Their usual squad</b> for each leader is the line-up they set most, with the latest season counted 4 times and the one before twice, so a team they changed recently shows the new version.</li>
