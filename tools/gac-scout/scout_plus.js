@@ -12,12 +12,12 @@
    - Round by round tab (from Arrikhan): result, score, first attack time and delay, their holds and their drops.
 */
 (async () => {
-  const VERSION = '2.1';
+  const VERSION = '2.2';
   if (!/(^|\.)swgoh\.gg$/.test(location.hostname)) {
     alert('GAC Scout+ runs on swgoh.gg. Open https://swgoh.gg in this tab, then click the bookmark again.');
     return;
   }
-  const KEY = 'gacScoutPlus:v2', GKEY = 'gacScoutPlus:global';
+  const SKEY = 'gacScoutPlus:settings', RKEY = 'gacScoutPlus:rounds', GKEY = 'gacScoutPlus:global';
   const DAY = 864e5, G_TTL = 3 * DAY;
 
   // ---------- small helpers ----------
@@ -32,13 +32,21 @@
   const kNum = n => (n >= 1000 ? (n / 1000).toFixed(n >= 1e4 ? 0 : 1) + 'K' : String(Math.round(n)));
   const sqKey = s => [...s].sort().join(',');
 
+  // every page that fails to load is counted, so the report can say when it is working from partial data
+  const fails = { n: 0, codes: {} };
   async function get(url, type = 'text', tries = 3) {
+    let code = 'no connection';
     for (let i = 0; i < tries; i++) {
-      const r = await fetch(url, { credentials: 'include' });
-      if (r.ok) return type === 'json' ? r.json() : r.text();
-      if (r.status === 404) return null;
+      try {
+        const r = await fetch(url, { credentials: 'include' });
+        if (r.ok) return type === 'json' ? await r.json() : await r.text();
+        code = r.status;
+        if (r.status === 404) return null;
+        if (r.status === 403 && i) break; // blocked (usually swgoh.gg's bot check): one retry is enough
+      } catch (e) { code = 'no connection'; }
       await sleep(1200 * (i + 1));
     }
+    fails.n++; inc(fails.codes, code);
     return null;
   }
   const getDoc = async url => { const t = await get(url); return t ? new DOMParser().parseFromString(t, 'text/html') : null; };
@@ -51,24 +59,37 @@
   }
 
   // ---------- storage ----------
-  const load = k => { try { return JSON.parse(localStorage.getItem(k) || '{}'); } catch (e) { return {}; } };
-  const store = load(KEY); store.rounds = store.rounds || {};
+  // Settings (your ally code, your defence) are kept apart from the page caches, so a full cache can never stop them saving.
+  const load = k => { try { return JSON.parse(localStorage.getItem(k) || '{}') || {}; } catch (e) { return {}; } };
+  const store = load(SKEY);
+  const cache = load(RKEY); cache.rounds = cache.rounds || {};
   const gstore = load(GKEY); gstore.leads = gstore.leads || {};
-  if (!store.myDefence) { const v1 = load('gacScoutPlus:v1'); if (v1.myDefence) store.myDefence = v1.myDefence; }
+  try { // carry settings over from v2.1 (and your defence from samobudo's Scout+), then drop the v2.1 cache
+    const old = localStorage.getItem('gacScoutPlus:v2');
+    if (old) {
+      const o = JSON.parse(old);
+      ['myAlly', 'lastOpp', 'myDefence', 'rank', 'keepGL', 'showShips'].forEach(k => { if (store[k] == null && o[k] != null) store[k] = o[k]; });
+      localStorage.removeItem('gacScoutPlus:v2');
+    }
+    if (!store.myDefence) { const v1 = load('gacScoutPlus:v1'); if (v1.myDefence && Array.isArray(v1.myDefence.ids)) store.myDefence = v1.myDefence; }
+  } catch (e) {}
   const save = () => {
-    try {
-      const ks = Object.keys(store.rounds);
-      if (ks.length > 600) ks.sort((a, b) => store.rounds[a].t - store.rounds[b].t).slice(0, ks.length - 600).forEach(k => delete store.rounds[k]);
-      localStorage.setItem(KEY, JSON.stringify(store));
-    } catch (e) { console.warn('[GAC Scout+] could not save cache', e); }
+    const put = () => localStorage.setItem(SKEY, JSON.stringify(store));
+    try { put(); } catch (e) {
+      try { localStorage.removeItem(RKEY); localStorage.removeItem(GKEY); put(); } catch (e2) { console.warn('[GAC Scout+] could not save settings', e2); }
+    }
   };
-  const gsave = () => {
-    try {
-      const ks = Object.keys(gstore.leads);
-      if (ks.length > 80) ks.sort((a, b) => gstore.leads[a].t - gstore.leads[b].t).slice(0, ks.length - 80).forEach(k => delete gstore.leads[k]);
-      localStorage.setItem(GKEY, JSON.stringify(gstore));
-    } catch (e) { gstore.leads = {}; try { localStorage.removeItem(GKEY); } catch (e2) {} }
+  // caches keep the most recently used entries, and shrink further if the browser's storage for swgoh.gg is full
+  const putCache = (key, obj, field, max) => {
+    let ks = Object.keys(obj[field]).sort((a, b) => obj[field][b].t - obj[field][a].t);
+    for (let keep = Math.min(max, ks.length); ; keep = Math.floor(keep / 2)) {
+      ks.slice(keep).forEach(k => delete obj[field][k]);
+      ks = ks.slice(0, keep);
+      try { if (keep) localStorage.setItem(key, JSON.stringify(obj)); else localStorage.removeItem(key); return; } catch (e) { if (!keep) return; }
+    }
   };
+  const csave = () => putCache(RKEY, cache, 'rounds', 300);
+  const gsave = () => putCache(GKEY, gstore, 'leads', 60);
   let MY = store.myAlly || localStorage.getItem('gacScoutAlly') || localStorage.getItem('swgoh_gac_scout_ally') || '';
 
   // ---------- overlay ----------
@@ -83,7 +104,7 @@
   header{position:sticky;top:0;z-index:2;display:flex;flex-wrap:wrap;gap:10px 18px;align-items:center;padding:12px 20px;background:#111829;border-bottom:1px solid #263050}
   .brand{font-weight:800;font-size:20px;color:#8cc8ff}.brand span{color:#ffd166}.ver{color:#5d6a88;font-size:11px;margin-left:4px;font-weight:400}
   form{display:flex;flex-wrap:wrap;gap:8px 14px;align-items:center}label{color:#9aa6c0;font-size:13px}
-  input{background:#0b0f1a;color:#fff;border:1px solid #33406a;border-radius:8px;padding:8px 10px;font:inherit;width:140px;margin-left:6px}
+  input,select{background:#0b0f1a;color:#fff;border:1px solid #33406a;border-radius:8px;padding:8px 10px;font:inherit;width:140px;margin-left:6px}select{width:auto}
   #q{width:100%;max-width:320px;margin:0 0 10px}
   button{font:inherit;cursor:pointer}#go{background:#1f6feb;color:#fff;border:0;border-radius:8px;padding:8px 18px;font-weight:700}#go:disabled{opacity:.5}
   .x{margin-left:auto;background:none;border:0;color:#9aa6c0;font-size:20px}
@@ -124,6 +145,7 @@
   <div class="brand">GAC Scout<span>+</span><span class="ver">v${VERSION}</span></div>
   <form id="f"><label>Your ally code <input id="me" inputmode="numeric" autocomplete="off" placeholder="123-456-789"></label>
   <label>Opponent ally code <input id="opp" inputmode="numeric" autocomplete="off" placeholder="123-456-789"></label>
+  <label>Format <select id="fmt"><option value="">Auto</option><option>3v3</option><option>5v5</option></select></label>
   <button id="go">Scout</button></form>
   <button class="x" id="close" title="Close">✕</button></header>
   <div id="status" class="status"></div><nav id="tabs"></nav><main id="out"></main></div>`;
@@ -139,14 +161,15 @@
   $('#f').onsubmit = e => { e.preventDefault(); run(digits($('#opp').value)); };
 
   // ---------- unit database ----------
-  let NAME = null; const IMG = {}, SHIP = {};
+  let NAME = null; const IMG = {}, SHIP = {}, CAP = {};
   const nm = id => (NAME && NAME[id]) || id;
   async function loadUnits() {
     if (NAME) return;
     const [c, s] = await Promise.all([get('/api/characters/', 'json'), get('/api/ships/', 'json')]);
     NAME = {};
     (c || []).forEach(u => { NAME[u.base_id] = u.name; IMG[u.base_id] = u.image; });
-    (s || []).forEach(u => { NAME[u.base_id] = u.name; IMG[u.base_id] = u.image; SHIP[u.base_id] = 1; });
+    (s || []).forEach(u => { NAME[u.base_id] = u.name; IMG[u.base_id] = u.image; SHIP[u.base_id] = 1; if ((u.categories || []).includes('Capital Ship')) CAP[u.base_id] = 1; });
+    if (!c || !s) { NAME = null; throw new Error("couldn't load swgoh.gg's unit list"); }
   }
 
   async function loadRoster(ally) {
@@ -178,7 +201,9 @@
     const m = txt.match(/Round \d Round \d Round \d (.+?) vs (.+?) ([\d,]+) - ([\d,]+)/) || txt.match(/Round \d Round \d Round \d (.+?) vs (.+?) \d/);
     const meta = m ? { foe: m[2].trim(), s1: m[3] ? +m[3].replace(/,/g, '') : null, s2: m[4] ? +m[4].replace(/,/g, '') : null } : { foe: '' };
     const defRe = new RegExp(`'s attacks / .*${owner.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')}'s defenses`);
-    const head = [...doc.querySelectorAll('main *')].find(e => !e.children.length && defRe.test(e.textContent));
+    // the page lists "<owner>'s attacks / ..." first, then ".../ <owner>'s defenses"; fall back to matching the name
+    const heads = [...doc.querySelectorAll('main *')].filter(e => !e.children.length && /'s attacks \/ .*'s defenses/.test(e.textContent));
+    const head = heads.length === 2 ? heads[1] : heads.find(e => defRe.test(e.textContent));
     const b = [];
     for (const card of doc.querySelectorAll('.gac-counters-battle-summary')) {
       const st = {};
@@ -201,7 +226,7 @@
 
   async function loadHistory(ally, wantFmt) {
     const doc = await getDoc(`/p/${ally}/gac-history/`);
-    if (!doc) return { name: ally, rounds: [], battles: [], fmt: wantFmt || '3v3', seasons: [] };
+    if (!doc) return { name: ally, rounds: [], battles: [], fmt: wantFmt || '3v3', seasons: [], failed: true };
     const owner = (doc.title.match(/^(.*?)'s GAC History/) || [, ally])[1];
     const links = []; let season = null, fmt = null;
     doc.querySelectorAll('main *').forEach(el => {
@@ -220,16 +245,19 @@
     let done = 0;
     const res = await pool(rounds, 3, async r => {
       const k = ally + '|' + r.h;
-      let c = store.rounds[k];
-      if (!c || !c.m) {
+      let c = cache.rounds[k];
+      if (c && c.m) c.t = Date.now();
+      else {
         const p = await parseRound(r, owner);
-        if (p && p.b.length) { c = { t: Date.now(), m: p.m, b: p.b }; store.rounds[k] = c; }
+        // only keep a round once its attack phase has been over for 12 hours, so a half-played round is never frozen
+        const finished = Date.now() > r.epoch + 2 * r.rn * DAY + DAY / 2;
+        if (p && p.b.length && finished) { c = { t: Date.now(), m: p.m, b: p.b }; cache.rounds[k] = c; }
         else c = p;
       }
       status(`Reading ${esc(owner)}'s GAC history: ${++done}/${rounds.length} rounds…`);
       return c;
     });
-    save();
+    csave();
     const battles = [];
     rounds.forEach((r, i) => {
       const c = res[i]; if (!c) return;
@@ -237,7 +265,7 @@
       r.result = r.my != null && r.them != null ? (r.my > r.them ? 'W' : 'L') : '';
       c.b.forEach(x => battles.push({ ...x, r: r.h, season: r.season, foe: c.m.foe }));
     });
-    return { name: owner, rounds, battles, fmt: useFmt, seasons: seasons.filter(s => rounds.some(r => r.season === s)) };
+    return { name: owner, rounds, battles, fmt: useFmt, seasons: seasons.filter(s => rounds.some(r => r.season === s)), listed: links.length };
   }
 
   // ---------- swgoh.gg GAC counters page ----------
@@ -264,7 +292,7 @@
     let doc;
     if (seasonParam[fmt] == null) {
       doc = await getDoc(base);
-      if (!doc) return [];
+      if (!doc || !doc.querySelector('main')) return [];
       const sm = doc.querySelector('main').textContent.replace(/\s+/g, ' ').match(/Season:\s*\d+\s*-\s*(\dv\d)/);
       if (!sm || sm[1] === fmt) seasonParam[fmt] = '';
       else {
@@ -274,7 +302,8 @@
       }
     }
     if (!doc) doc = await getDoc(base + seasonParam[fmt]);
-    const rows = doc ? parseCounterRows(doc) : [];
+    if (!doc) return [];
+    const rows = parseCounterRows(doc);
     gstore.leads[ck] = { t: Date.now(), rows };
     return rows;
   }
@@ -353,20 +382,24 @@
     });
     Object.values(S.byRound).forEach(o => o.t.sort());
     // my usual defence squads and fleet
-    const myByLead = {}, seenR = new Set(), fleet = {};
+    const myByLead = {}, seenR = new Set(), fleetSq = {}, capRounds = {}, roundCaps = {};
     const fleetSeason = (myHist.battles.find(b => b.side === 'DEF' && SHIP[b.def[0]]) || {}).season;
     myHist.battles.filter(b => b.side === 'DEF').forEach(b => {
       const k = b.r + '|' + b.def.join(',');
       if (seenR.has(k)) return;
       seenR.add(k);
-      if (SHIP[b.def[0]]) { if (b.season === fleetSeason) inc(fleet, b.def.join(',')); }
-      else inc((myByLead[b.def[0]] = myByLead[b.def[0]] || {}), b.def.join(','));
+      const L = b.def[0];
+      if (SHIP[L]) {
+        inc((fleetSq[L] = fleetSq[L] || {}), b.def.join(','), b.season === fleetSeason ? 3 : 1);
+        if (b.season === fleetSeason) { (roundCaps[b.r] = roundCaps[b.r] || new Set()).add(L); (capRounds[L] = capRounds[L] || new Set()).add(b.r); }
+      } else inc((myByLead[L] = myByLead[L] || {}), b.def.join(','));
     });
     S.myDefByLead = myByLead;
-    // fleet defence = capital ships you set in your latest season (max 4 fleets), with their usual squads
-    const capCount = {};
-    Object.entries(fleet).forEach(([k, n]) => inc(capCount, k.split(',')[0], n));
-    S.myFleet = top(capCount, 4).flatMap(([cap]) => top(Object.fromEntries(Object.entries(fleet).filter(([k]) => k.split(',')[0] === cap)), 1)[0][0].split(',')).filter(u => me.units[u]);
+    // fleet defence: the capital ships you set most in your latest season (as many as you set in one round), with their usual line-ups
+    S.myFleetByCap = {};
+    Object.keys(fleetSq).forEach(c => (S.myFleetByCap[c] = top(fleetSq[c], 1)[0][0].split(',').filter(u => me.units[u])));
+    const nFleets = Math.max(0, ...Object.values(roundCaps).map(x => x.size));
+    S.fleetDetected = Object.keys(capRounds).sort((a, b) => capRounds[b].size - capRounds[a].size).slice(0, nFleets).flatMap(c => S.myFleetByCap[c]);
     S.myBattles = myHist.battles.filter(b => b.side === 'ATT').length;
     const wins = all.filter(b => b.win && b.banners).map(b => b.banners);
     S.defaultBan = wins.length ? mean(wins) : 60;
@@ -386,22 +419,27 @@
     const rows = defSquad.length > 1 && exN >= 20 ? exact : gRows.filter(r => r[4][0] === defLead);
     const g = {};
     rows.forEach(([n, w, avg, att]) => {
-      const o = (g[att[0]] = g[att[0]] || { n: 0, w: 0, ban: 0, banW: 0, squads: {} });
+      const o = (g[att[0]] = g[att[0]] || { n: 0, w: 0, ban: 0, banW: 0, squads: {}, rows: [] });
       o.n += n; o.w += n * w;
       if (avg) { o.ban += avg * n * w; o.banW += n * w; }
       inc(o.squads, att.join(','), n);
+      o.rows.push([n, w, avg, sqKey(att)]);
     });
     const leads = new Set([...Object.keys(hist), ...Object.keys(g)]);
     const out = [...leads].map(a => {
       const h = hist[a] || { n: 0, w: 0, myN: 0, myW: 0, squads: {}, ban: 0, banN: 0 };
-      const gg = g[a] || { n: 0, w: 0, ban: 0, banW: 0, squads: {} };
+      const gAll = g[a] || { n: 0, w: 0, ban: 0, banW: 0, squads: {}, rows: [] };
       const sq = {};
       Object.entries(h.squads).forEach(([k, v]) => inc(sq, k, v * 5));
-      Object.entries(gg.squads).forEach(([k, v]) => inc(sq, k, v));
+      Object.entries(gAll.squads).forEach(([k, v]) => inc(sq, k, v));
       const variants = top(sq, 20).map(([k]) => k.split(','));
       const squad = variants.find(v => v.every(u => me.units[u])) || variants[0];
       const missing = squad.filter(u => !me.units[u]);
       const myLv = mean(squad.map(u => me.units[u]).filter(Boolean).map(u => u.score));
+      // swgoh.gg numbers for this exact attacking squad when it has 20+ battles, otherwise for every squad with this leader
+      const sk = sqKey(squad), same = gAll.rows.filter(r => r[3] === sk), sameN = same.reduce((x, r) => x + r[0], 0);
+      const gSquad = sameN >= 20;
+      const gg = gSquad ? { n: sameN, w: same.reduce((x, r) => x + r[0] * r[1], 0), ban: same.reduce((x, r) => x + (r[2] ? r[2] * r[0] * r[1] : 0), 0), banW: same.reduce((x, r) => x + (r[2] ? r[0] * r[1] : 0), 0) } : gAll;
       const gRate = gg.n ? gg.w / gg.n : null;
       // swgoh.gg rate, itself smoothed towards 50/50 so 1 recorded win isn't read as 100%
       const k = gg.n ? Math.min(gg.n, 30) : 2, prior = gg.n ? (gg.w + 1) / (gg.n + 2) : 0.5;
@@ -409,7 +447,7 @@
       const delta = !SHIP[a] && myLv && theirLv ? clamp(myLv - theirLv, -3, 3) : 0;
       const total = h.n + gg.n;
       return {
-        lead: a, n: h.n, w: h.w, raw: h.n ? h.w / h.n : null, myN: h.myN, myW: h.myW, gN: gg.n, gRate,
+        lead: a, n: h.n, w: h.w, raw: h.n ? h.w / h.n : null, myN: h.myN, myW: h.myW, gN: gg.n, gRate, gSquad,
         squad, missing, own: !missing.length,
         ready: !missing.length && squad.every(u => { const x = me.units[u]; return x.ship ? x.stars >= 7 : x.relic != null && x.relic >= 5; }),
         myLv, delta, est: clamp(base + 0.04 * delta, 0.02, 0.98),
@@ -462,7 +500,7 @@
 
   // ---------- plans ----------
   function plan(S) {
-    const blocked = new Set([...S.locked, ...S.myFleet]);
+    const blocked = new Set([...S.locked, ...S.fleet]);
     const val = c => (S.rank === 'banners' ? c.est * (c.avgBan || S.defaultBan) : c.est);
     const defs = S.defs.filter(d => d.likely >= 0.1 || d.recent || S.defs.length <= 12).slice(0, 18);
     const opts = defs.map(d => d.counters.filter(c => c.own && !c.squad.some(u => blocked.has(u))).sort((a, b) => val(b) - val(a)).slice(0, 4));
@@ -511,17 +549,28 @@
     if (oppAlly === myAlly) return status("That's your own ally code. Enter your opponent's.", true);
     MY = myAlly; store.myAlly = myAlly; store.lastOpp = oppAlly; save();
     $('#go').disabled = true; $('#out').innerHTML = ''; $('#tabs').innerHTML = '';
+    fails.n = 0; fails.codes = {};
+    const blockedMsg = what => {
+      const codes = Object.keys(fails.codes).join(', ');
+      return `swgoh.gg wouldn't give me ${what}${codes ? ` (error ${esc(codes)})` : ''}. Reload this swgoh.gg page, complete any "checking your browser" step, sign in to swgoh.gg if it asks you to, then click the bookmark again.`;
+    };
     try {
       status('Loading unit names and both rosters…');
       await loadUnits();
       const [me, opp] = await Promise.all([loadRoster(myAlly), loadRoster(oppAlly)]);
-      if (!opp) return status(`Couldn't load a roster for ${fmtAlly(oppAlly)}. Check the ally code, and that the player is on swgoh.gg.`, true);
-      if (!me) return status(`Couldn't load your roster (${fmtAlly(myAlly)}). Check your ally code.`, true);
-      const oppHist = await loadHistory(oppAlly);
+      if (!opp || !me) {
+        if (fails.n) return status(blockedMsg('the rosters'), true);
+        return status(!opp ? `Couldn't find a player with ally code ${fmtAlly(oppAlly)} on swgoh.gg. Check the code. A player who has never been synced to swgoh.gg can't be scouted.`
+          : `Couldn't find your ally code (${fmtAlly(myAlly)}) on swgoh.gg. Check it in the "Your ally code" box.`, true);
+      }
+      const wantFmt = $('#fmt').value || undefined;
+      const oppHist = await loadHistory(oppAlly, wantFmt);
+      if (oppHist.failed) return status(blockedMsg(`${esc(opp.name)}'s GAC history`), true);
       const myHist = await loadHistory(myAlly, oppHist.fmt);
-      S = { me, opp, myHist, oppHist, G: {}, filter: 'own', rank: store.rank || 'odds', keepGL: store.keepGL !== false };
-      S.locked = new Set(((store.myDefence && store.myDefence.ids) || []).filter(u => me.units[u]));
+      S = { me, opp, myHist, oppHist, G: {}, filter: 'own', rank: store.rank || 'odds', keepGL: store.keepGL !== false, autoFmt: !wantFmt };
+      S.locked = new Set(((store.myDefence && store.myDefence.ids) || []).filter(u => me.units[u] && !me.units[u].ship));
       analyse(S);
+      S.fleet = new Set((store.myFleet && Array.isArray(store.myFleet.ids) ? store.myFleet.ids : S.fleetDetected).filter(u => me.units[u] && me.units[u].ship));
       // swgoh.gg counters pages: their likely + unseen defences, then my best defence candidates
       const theirLeads = [...S.defs.filter(d => d.likely >= 0.1 || d.recent).slice(0, 18), ...S.unseen].map(d => d.lead);
       const prelim = defenceCandidates(S).slice(0, 14).map(c => c.lead);
@@ -533,11 +582,12 @@
       analyse(S);
       S.defCands = defenceCandidates(S);
       plan(S);
+      S.note = fails.n ? `${fails.n} swgoh.gg page${fails.n === 1 ? '' : 's'} didn't load (error ${esc(Object.keys(fails.codes).join(', '))}), so this report is missing some battles. Press Scout again in a minute to fill the gaps.` : '';
       status('');
       show('plan');
     } catch (e) {
       console.error(e);
-      status('Something went wrong: ' + esc(e.message) + '. Try again in a minute (swgoh.gg may be rate-limiting).', true);
+      status('Something went wrong: ' + esc(e.message) + '. Try again in a minute (swgoh.gg may be rate-limiting). If it keeps happening, swgoh.gg may have changed its pages: tell FireFight.', true);
     } finally {
       $('#go').disabled = false;
     }
@@ -556,7 +606,7 @@
   const zoneTxt = d => (d.ships ? 'Fleet' : d.zone ? zoneName(d.zone.z, d.zone.of) : 'Zone unknown');
   const zoneLong = d => (d.zone ? `${zoneTxt(d)} <small>(${pct(d.zone.share)} of ${d.zone.n} rounds)</small>` : d.ships ? 'Fleet' : 'Zone unknown');
   const banTxt = c => (c.avgBan ? Math.round(c.avgBan) : '–');
-  const recTxt = c => `${c.n ? `${c.w}/${c.n} in these histories` : 'not in these histories'}${c.myN ? ` · you ${c.myW}/${c.myN}` : ''}${c.gN ? ` · swgoh.gg ${pct(c.gRate)} of ${kNum(c.gN)}` : ''}`;
+  const recTxt = c => `${c.n ? `${c.w}/${c.n} in these histories` : 'not in these histories'}${c.myN ? ` · you ${c.myW}/${c.myN}` : ''}${c.gN ? ` · swgoh.gg ${pct(c.gRate)} of ${kNum(c.gN)}${c.gSquad ? '' : ` (all ${esc(nm(c.lead))} teams)`}` : ''}`;
   const delayMs = r => { const t = S.byRound[r.h]; if (!t || !t.t.length) return null; return Date.parse(t.t[0]) - (r.epoch + DAY + (r.rn - 1) * 2 * DAY); };
   const hm = ms => { if (ms == null || isNaN(ms)) return '—'; const m = Math.max(0, Math.round(ms / 6e4)); return '+' + String(Math.floor(m / 60)).padStart(2, '0') + ':' + String(m % 60).padStart(2, '0'); };
   const when = iso => new Date(iso).toLocaleString(undefined, { weekday: 'short', day: 'numeric', month: 'short', hour: '2-digit', minute: '2-digit' });
@@ -565,7 +615,9 @@
     $('#tabs').innerHTML = TABS.map(([k, l]) => `<button data-t="${k}" class="${k === tab ? 'on' : ''}">${l}</button>`).join('');
     $('#tabs').querySelectorAll('button').forEach(b => (b.onclick = () => show(b.dataset.t)));
     const head = `<div class="vs"><div><b>${esc(S.me.name)}</b><small>${gpTxt(S.me.gp)} GP</small></div><div class="v">vs</div><div><b>${esc(S.opp.name)}</b><small>${gpTxt(S.opp.gp)} GP${S.opp.guild ? ' · ' + esc(S.opp.guild) : ''}</small></div></div>
-      <p class="sub">${S.oppHist.battles.length} battles from ${S.oppHist.rounds.length} of their ${S.oppHist.fmt} rounds (seasons ${(S.oppHist.seasons || []).join(', ') || '–'}), plus ${S.myBattles} of your own attacks, blended with swgoh.gg's GAC counters page. <a href="#" data-t="about">How it works</a></p>`;
+      <p class="sub">${S.oppHist.battles.length} battles from ${S.oppHist.rounds.length} of their ${S.oppHist.fmt} rounds (seasons ${(S.oppHist.seasons || []).join(', ') || '–'}), plus ${S.myBattles} of your own attacks, blended with swgoh.gg's GAC counters page. <a href="#" data-t="about">How it works</a></p>
+      ${S.autoFmt ? `<p class="sub">Format: ${S.oppHist.fmt}, from their latest finished event. swgoh.gg only lists an event once it's over, so in the first week of a new season pick the format yourself at the top.</p>` : ''}
+      ${S.note ? `<p class="warn">${S.note}</p>` : ''}`;
     const body = { plan: viewPlan, defs: viewDefs, atts: viewAtts, rounds: viewRounds, time: viewTime, roster: viewRoster, about: viewAbout }[tab]();
     $('#out').innerHTML = head + body;
     wire(tab);
@@ -584,11 +636,15 @@
     out.querySelectorAll('[data-rank]').forEach(b => (b.onclick = () => { S.rank = b.dataset.rank; persistAndReplan(tab); }));
     out.querySelectorAll('[data-unlock]').forEach(b => (b.onclick = () => { S.locked.delete(b.dataset.unlock); persistAndReplan(tab); }));
     out.querySelectorAll('[data-lock]').forEach(b => (b.onclick = () => { b.dataset.lock.split(',').forEach(u => S.locked.add(u)); persistAndReplan(tab); }));
-    out.querySelectorAll('[data-act="clear"]').forEach(b => (b.onclick = () => { S.locked.clear(); persistAndReplan(tab); }));
+    const fleetEdited = () => { store.myFleet = { ids: [...S.fleet] }; };
+    out.querySelectorAll('[data-unfleet]').forEach(b => (b.onclick = () => { S.fleet.delete(b.dataset.unfleet); fleetEdited(); persistAndReplan(tab); }));
+    const fleetReset = () => { delete store.myFleet; S.fleet = new Set(S.fleetDetected); };
+    out.querySelectorAll('[data-act="fleetreset"]').forEach(b => (b.onclick = () => { fleetReset(); persistAndReplan(tab); }));
+    out.querySelectorAll('[data-act="clear"]').forEach(b => (b.onclick = () => { S.locked.clear(); fleetReset(); persistAndReplan(tab); }));
     const gl = $('#keepgl'); if (gl) gl.onchange = () => { S.keepGL = gl.checked; persistAndReplan(tab); };
     const sh = $('#ships'); if (sh) sh.onchange = () => { store.showShips = sh.checked; save(); show(tab); };
     out.querySelectorAll('[data-act="export"]').forEach(b => (b.onclick = () => {
-      const data = { app: 'gac-scout-plus', ally: MY, saved: new Date().toISOString(), defence: [...S.locked].map(id => ({ id, name: nm(id) })) };
+      const data = { app: 'gac-scout-plus', ally: MY, saved: new Date().toISOString(), defence: [...S.locked].map(id => ({ id, name: nm(id) })), fleet: [...S.fleet].map(id => ({ id, name: nm(id) })) };
       const a = document.createElement('a');
       a.href = URL.createObjectURL(new Blob([JSON.stringify(data, null, 2)], { type: 'application/json' }));
       a.download = `gac-defence-${new Date().toISOString().slice(0, 10)}.json`;
@@ -601,10 +657,13 @@
       const f = file.files[0]; if (!f) return;
       try {
         const j = JSON.parse(await f.text());
-        const ids = (j.defence || []).map(x => (typeof x === 'string' ? x : x.id)).filter(id => S.me.units[id] && !S.me.units[id].ship);
-        if (j.app !== 'gac-scout-plus' || !ids.length) throw new Error('not a GAC Scout+ defence file');
-        S.locked = new Set(ids); persistAndReplan(tab);
-        status(`Loaded ${ids.length} units from ${esc(f.name)}.`);
+        const pick = (list, ship) => (Array.isArray(list) ? list : []).map(x => (typeof x === 'string' ? x : x && x.id)).filter(id => S.me.units[id] && !!S.me.units[id].ship === ship);
+        const ids = pick(j.defence, false), ships = pick(j.fleet, true);
+        if (j.app !== 'gac-scout-plus' || !(ids.length + ships.length)) throw new Error('not a GAC Scout+ defence file');
+        S.locked = new Set(ids);
+        if (Array.isArray(j.fleet)) { S.fleet = new Set(ships); fleetEdited(); }
+        persistAndReplan(tab);
+        status(`Loaded ${ids.length} units${ships.length ? ` and ${ships.length} ships` : ''} from ${esc(f.name)}.`);
       } catch (e) { status(`Couldn't load that file: ${esc(e.message)}.`, true); }
     };
     const add = $('#addu');
@@ -612,7 +671,9 @@
       const v = add.value.trim().toLowerCase();
       const u = Object.values(S.me.units).find(x => nm(x.id).toLowerCase() === v);
       if (!u) return;
-      usualSquad(u.id).forEach(id => S.locked.add(id));
+      const ids = usualSquad(u.id);
+      ids.forEach(id => (SHIP[id] ? S.fleet : S.locked).add(id));
+      if (ids.some(id => SHIP[id])) fleetEdited();
       persistAndReplan(tab);
       setTimeout(() => $('#addu') && $('#addu').focus(), 0);
     };
@@ -621,6 +682,8 @@
   }
 
   function usualSquad(lead) {
+    if (SHIP[lead] && !CAP[lead]) return [lead];
+    if (CAP[lead] && S.myFleetByCap[lead] && S.myFleetByCap[lead].length) return S.myFleetByCap[lead];
     const mine = S.myDefByLead[lead] && top(S.myDefByLead[lead], 1)[0];
     if (mine) return mine[0].split(',').filter(u => S.me.units[u]);
     const c = {};
@@ -630,14 +693,18 @@
   }
 
   function viewMyDefence() {
-    const mine = Object.values(S.me.units).filter(u => !u.ship && !S.locked.has(u.id)).sort((a, b) => !!S.myDefByLead[b.id] - !!S.myDefByLead[a.id] || b.power - a.power);
+    const isLead = u => !!(S.myDefByLead[u.id] || (CAP[u.id] && S.myFleetByCap[u.id]));
+    const mine = Object.values(S.me.units).filter(u => !S.locked.has(u.id) && !S.fleet.has(u.id)).sort((a, b) => isLead(b) - isLead(a) || b.power - a.power);
     const saved = store.myDefence && store.myDefence.saved && S.locked.size ? ` Last changed ${esc(when(store.myDefence.saved))}.` : '';
+    const chip = (id, attr) => `<button class="u lk" ${attr}="${esc(id)}" title="Remove">${IMG[id] ? `<img src="${esc(IMG[id])}" alt="">` : ''}<span>${esc(nm(id))}</span><i class="me">${lv(S.me.units[id])}</i> ✕</button>`;
+    const any = S.locked.size || S.fleet.size;
     return `<h2>Your defence</h2><p class="sub">Pick a leader and the team you usually set with it is added. Tap ✕ on any unit to correct it, or add single units. The attack plan won't use them.</p>
       <p class="sub">Saved in this browser (one list, not per opponent), so it carries over to rounds 2 and 3. Use <b>Save to file</b> to move it to another device, and <b>Clear all</b> when a new GAC event starts.${saved}</p>
-      <div class="picker"><input id="addu" list="myunits" placeholder="Add a unit…" autocomplete="off"><datalist id="myunits">${mine.map(u => `<option value="${esc(nm(u.id))}">${lv(u)}${S.myDefByLead[u.id] ? ' · adds your usual team' : ''}</option>`).join('')}</datalist>
-      ${S.locked.size ? '<button class="chip" data-act="export">Save to file</button>' : ''}<button class="chip" data-act="import">Load from file</button><input type="file" id="impfile" accept=".json,application/json" hidden>${S.locked.size ? '<button class="chip" data-act="clear">Clear all</button>' : ''}</div>
-      <div class="sq locked">${[...S.locked].map(id => `<button class="u lk" data-unlock="${esc(id)}" title="Remove">${IMG[id] ? `<img src="${esc(IMG[id])}" alt="">` : ''}<span>${esc(nm(id))}</span><i class="me">${lv(S.me.units[id])}</i> ✕</button>`).join('') || '<span class="sub">None added yet.</span>'}</div>
-      ${S.myFleet.length ? `<p class="sub">Fleet defence (from your history, kept out of the attack plan): ${S.myFleet.map(nm).map(esc).join(', ')}</p>` : ''}`;
+      <div class="picker"><input id="addu" list="myunits" placeholder="Add a unit or ship…" autocomplete="off"><datalist id="myunits">${mine.map(u => `<option value="${esc(nm(u.id))}">${lv(u)}${u.ship ? (CAP[u.id] ? ' · adds your usual fleet' : ' · ship') : S.myDefByLead[u.id] ? ' · adds your usual team' : ''}</option>`).join('')}</datalist>
+      ${any ? '<button class="chip" data-act="export">Save to file</button>' : ''}<button class="chip" data-act="import">Load from file</button><input type="file" id="impfile" accept=".json,application/json" hidden>${S.locked.size || store.myFleet ? '<button class="chip" data-act="clear">Clear all</button>' : ''}</div>
+      <div class="sq locked">${[...S.locked].map(id => chip(id, 'data-unlock')).join('') || '<span class="sub">No squads added yet.</span>'}</div>
+      <p class="sub"><b>Fleet defence</b> ${store.myFleet ? '(edited by you)' : '(taken from your latest season)'}. Tap ✕ to remove a ship, or add a capital ship above to add its usual fleet.${store.myFleet ? ' <button class="chip" data-act="fleetreset">Reset from my history</button>' : ''}</p>
+      <div class="sq locked">${[...S.fleet].map(id => chip(id, 'data-unfleet')).join('') || '<span class="sub">No fleets.</span>'}</div>`;
   }
 
   function viewPlan() {
@@ -653,7 +720,7 @@
       <td>${pick ? `<b class="ban">${banTxt(pick)}</b>${pick.avgBan ? '<div class="sub">per win</div>' : ''}` : ''}</td></tr>`).join('')}</table>`;
     if (S.unseen.length) h += `<h2>Other teams they could set</h2><p class="sub">Strong teams in their roster that haven't shown up on their defence (swgoh.gg only records defences that got attacked). Your best free counter, not counted in the plan above.</p>
       <table class="stack"><tr><th>Their team</th><th>Your best counter</th><th>Est. win</th></tr>${S.unseen.map(d => {
-        const c = d.counters.find(c => c.own && !c.squad.some(u => S.locked.has(u) || S.myFleet.includes(u)));
+        const c = d.counters.find(c => c.own && !c.squad.some(u => S.locked.has(u) || S.fleet.has(u)));
         return `<tr><td>${squadH(d.squad, 'opp')}</td><td>${c ? squadH(c.squad, 'me') + `<div class="sub">${recTxt(c)}</div>` : '<span class="sub">No recorded counter you own</span>'}</td><td>${c ? bar(c.est) + confH(c) : ''}</td></tr>`;
       }).join('')}</table>`;
     const byZone = {};
@@ -677,8 +744,8 @@
 
   function counterTable(list) {
     return `<table class="ct stack"><tr><th>Counter</th><th>Record</th><th>Est. for you</th><th>Avg banners</th></tr>${list.map(c => `<tr class="${c.own ? '' : 'dim'}">
-      <td>${squadH(c.squad, 'me')}${c.missing.length ? `<div class="sub warn">Missing: ${c.missing.map(nm).map(esc).join(', ')}</div>` : ''}${c.squad.some(u => S.locked.has(u)) ? `<div class="sub warn">Uses ${c.squad.filter(u => S.locked.has(u)).map(nm).map(esc).join(', ')} from your defence</div>` : ''}</td>
-      <td>${c.n ? `${c.w}/${c.n}` : '–'}${c.myN ? `<div class="sub">you ${c.myW}/${c.myN}</div>` : ''}${c.gN ? `<div class="gstat">swgoh.gg ${pct(c.gRate)} of ${kNum(c.gN)}</div>` : ''}</td>
+      <td>${squadH(c.squad, 'me')}${c.missing.length ? `<div class="sub warn">Missing: ${c.missing.map(nm).map(esc).join(', ')}</div>` : ''}${c.squad.some(u => S.locked.has(u) || S.fleet.has(u)) ? `<div class="sub warn">Uses ${c.squad.filter(u => S.locked.has(u) || S.fleet.has(u)).map(nm).map(esc).join(', ')} from your defence</div>` : ''}</td>
+      <td>${c.n ? `${c.w}/${c.n}` : '–'}${c.myN ? `<div class="sub">you ${c.myW}/${c.myN}</div>` : ''}${c.gN ? `<div class="gstat">swgoh.gg ${pct(c.gRate)} of ${kNum(c.gN)}${c.gSquad ? '' : ' (all teams with this leader)'}</div>` : ''}</td>
       <td>${bar(c.est)}${confH(c)}</td><td>${banTxt(c)}</td></tr>`).join('')}</table>`;
   }
 
@@ -779,14 +846,16 @@
 
   function viewAbout() {
     return `<h2>How it works</h2><ul class="about">
-      <li><b>Two sources of battles.</b> (1) Every battle in your GAC history and your opponent's (last 8 seasons, same format as their latest season). (2) swgoh.gg's GAC counters page for each of their defences (the current season's page, or the latest season in the same format), which covers thousands of battles. Where swgoh.gg has 20 or more battles against their exact defence squad, only those are used; otherwise any team with the same leader.</li>
+      <li><b>Two sources of battles.</b> (1) Every battle in your GAC history and your opponent's on swgoh.gg (up to 8 seasons in the same format). (2) swgoh.gg's GAC counters page for each of their defences (the page swgoh.gg shows by default, or the latest season in the right format), which covers thousands of battles. Where swgoh.gg has 20 or more battles against their exact defence squad, only those are used; otherwise every team with the same leader. The same rule applies to your attacking squad, and the line under each counter says which you're looking at.</li>
+      <li><b>Format</b> is 3v3 or 5v5. Auto uses their latest finished event. swgoh.gg only lists an event after it ends, so in the first week of a new season choose the format yourself at the top.</li>
       <li><b>Est. for you</b> starts from the swgoh.gg win rate (counted as up to 30 battles), adds the battles in your two histories on top, then nudges ±4% per relic level your counter is above or below their defence, capped at ±12%. With no swgoh.gg data it falls back to a 50/50 start worth two battles. Fleets get no relic adjustment.</li>
       <li><b>Data label</b> counts both sources: solid = 20+ battles, some = 6 to 19, thin = 5 or fewer.</li>
-      <li><b>Battle plan</b> covers up to 18 of their defences (those set in at least 10% of their rounds, or used last season). It tries every combination of your top 4 owned counters for the 9 most likely, fills the rest one at a time, never reuses a unit, and leaves out everything in Your defence and your fleet defence. <b>Most banners</b> ranks by win chance × average banners per win.</li>
-      <li><b>Suggested defence</b> scores each squad you own by how often it held against each attack team your opponent uses, weighted by how often they use it. Hold rates blend the two histories with swgoh.gg's numbers for your squad's leader, so a squad with 4 holds from 5 battles no longer outranks one with 38 from 81. Galactic Legends are left out unless you untick the switch.</li>
-      <li><b>Zones</b> are where each of their defences was placed most often, counted once per round. In 3v3 swgoh.gg's zones are named Front top, Front bottom, Back and Fleet; other layouts show swgoh.gg's zone number.</li>
+      <li><b>Battle plan</b> covers up to 18 of their defences (those set in at least 10% of their rounds, or used last season). It tries every combination of your top 4 owned counters for the 9 most likely, fills the rest one at a time, never reuses a unit, and leaves out everything in Your defence, fleets included. <b>Most banners</b> ranks by win chance × average banners per win.</li>
+      <li><b>Your defence</b> is one list saved in this browser. Your fleet defence starts as the fleets you set in your latest season; remove ships or add a capital ship if you've changed it.</li>
+      <li><b>Suggested defence</b> scores each squad you own by how often it held against each attack team your opponent uses, weighted by how often they use it. Hold rates blend the two histories with swgoh.gg's numbers for your squad's leader, so a squad with 4 holds from 5 battles can't outrank one with 38 from 81. Galactic Legends are left out unless you untick the switch.</li>
+      <li><b>Zones</b> (Front top, Front bottom, Back, Fleet) are where each of their defences was placed most often, counted once per round.</li>
       <li><b>Round by round</b> lists each of their rounds: result and score, first attack time, delay from attacks opening, the attacks their defence held against, and their own failed attacks.</li>
-      <li>Counters are grouped by squad leader, and the squad shown is the most-used version you fully own. Mods, datacrons and turn meter luck aren't modelled.</li>
+      <li><b>What it can't see:</b> mods, datacrons, omicrons and turn-meter luck. A defence nobody attacked never appears in swgoh.gg's history, and the event being played right now isn't listed until it ends.</li>
       <li>Everything is read from public swgoh.gg pages in your own browser. Nothing is sent anywhere else. Finished rounds are cached in this browser, and swgoh.gg counters pages for 3 days, so later scouts are much faster.</li>
       <li>Credits: original GAC Scout by FireFight; GAC Scout+ (battle plan, defence planner, zones, banners) by samobudo; round-by-round report by Arrikhan (PHX).</li></ul>`;
   }
