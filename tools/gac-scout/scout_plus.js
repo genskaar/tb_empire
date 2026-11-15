@@ -33,27 +33,28 @@
   const sqKey = s => [...s].sort().join(',');
 
   // every page that fails to load is counted, so the report can say when it is working from partial data
-  // After 5 failures in a row it stops waiting and retrying, so a blocked or overloaded swgoh.gg fails in seconds, not minutes.
-  const fails = { n: 0, codes: {}, streak: 0 };
+  // Retries share a 45-second waiting budget per scout, so a blocked or overloaded swgoh.gg fails quickly instead of hanging.
+  const fails = { n: 0, codes: {}, waited: 0 };
+  const BUDGET = 45000;
   async function get(url, type = 'text', tries = 4) {
     let code = 'no connection';
     for (let i = 0; i < tries; i++) {
-      if (fails.streak >= 5 && i) break;
+      if (fails.waited >= BUDGET && i) break;
       let wait = 1200 * (i + 1);
       try {
         const r = await fetch(url, { credentials: 'include' });
-        if (r.ok) { const body = type === 'json' ? await r.json() : await r.text(); fails.streak = 0; return body; }
+        if (r.ok) return type === 'json' ? await r.json() : await r.text();
         code = r.status;
-        if (r.status === 404) { fails.streak = 0; return null; }
+        if (r.status === 404) return null;
         if (r.status === 403 && i) break; // blocked (usually swgoh.gg's bot check): one retry is enough
         if (r.status === 429 || r.status === 503) { // "slow down": wait as long as asked, up to 15 seconds
           const ra = parseFloat(r.headers.get('retry-after'));
           wait = Math.min(ra > 0 ? ra * 1000 : 3000 * (i + 1), 15000);
         }
       } catch (e) { code = 'no connection'; }
-      if (i < tries - 1 && fails.streak < 5) await sleep(wait);
+      if (i < tries - 1 && fails.waited < BUDGET) { fails.waited += wait; await sleep(wait); }
     }
-    fails.n++; fails.streak++; inc(fails.codes, code);
+    fails.n++; inc(fails.codes, code);
     return null;
   }
   const getDoc = async url => { const t = await get(url); return t ? new DOMParser().parseFromString(t, 'text/html') : null; };
@@ -566,7 +567,7 @@
     if (oppAlly === myAlly) return status("That's your own ally code. Enter your opponent's.", true);
     MY = myAlly; store.myAlly = myAlly; store.lastOpp = oppAlly; save();
     $('#go').disabled = true; $('#out').innerHTML = ''; $('#tabs').innerHTML = '';
-    fails.n = 0; fails.codes = {}; fails.streak = 0;
+    fails.n = 0; fails.codes = {}; fails.waited = 0;
     const blockedMsg = what => {
       const codes = Object.keys(fails.codes).join(', ');
       return `swgoh.gg wouldn't give me ${what}${codes ? ` (error ${esc(codes)})` : ''}. Reload this swgoh.gg page, complete any "checking your browser" step, sign in to swgoh.gg if it asks you to, then click the bookmark again.`;
@@ -729,7 +730,12 @@
   function viewPlan() {
     const chip = (k, l) => `<button class="chip ${S.rank === k ? 'on' : ''}" data-rank="${k}">${l}</button>`;
     let h = viewMyDefence();
-    if (!S.defs.length) return h + `<p class="warn">No defence history found for ${esc(S.opp.name)}. Their GAC history may be empty or hidden. Try the Roster compare tab.</p>` + viewDefPlan();
+    if (!S.defs.length) {
+      const why = S.note ? `None of ${esc(S.opp.name)}'s rounds could be read, so there's nothing to plan from yet. Press Scout again in a minute.`
+        : !S.oppHist.rounds.length ? `swgoh.gg has no ${S.oppHist.fmt} GAC rounds for ${esc(S.opp.name)}${S.oppHist.listed ? ` (it lists ${S.oppHist.listed} rounds in the other format: change Format at the top)` : ' (their GAC history is empty)'}.`
+        : `swgoh.gg lists ${S.oppHist.rounds.length} rounds for ${esc(S.opp.name)} but no battles could be read from them. swgoh.gg may have changed its pages: tell FireFight.`;
+      return h + `<p class="warn">${why} The Roster compare tab still works.</p>` + viewDefPlan();
+    }
     h += `<h2>Suggested attack plan</h2><p class="sub">The combination of your counters with the best overall result against the defences they usually set, never reusing a unit or anything on your defence.</p>
       <div class="filters">Rank by: ${chip('odds', 'Best win %')}${chip('banners', 'Most banners')}</div>
       <table class="stack"><tr><th>Their likely defence</th><th>Your counter</th><th>Est. win for you</th><th>Avg banners</th></tr>${S.plan.map(({ d, pick, clash, clashWith }) => `<tr>
