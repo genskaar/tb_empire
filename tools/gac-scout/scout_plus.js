@@ -34,17 +34,22 @@
 
   // every page that fails to load is counted, so the report can say when it is working from partial data
   const fails = { n: 0, codes: {} };
-  async function get(url, type = 'text', tries = 3) {
+  async function get(url, type = 'text', tries = 4) {
     let code = 'no connection';
     for (let i = 0; i < tries; i++) {
+      let wait = 1200 * (i + 1);
       try {
         const r = await fetch(url, { credentials: 'include' });
         if (r.ok) return type === 'json' ? await r.json() : await r.text();
         code = r.status;
         if (r.status === 404) return null;
         if (r.status === 403 && i) break; // blocked (usually swgoh.gg's bot check): one retry is enough
+        if (r.status === 429 || r.status === 503) { // "slow down": wait as long as asked, up to 15 seconds
+          const ra = parseFloat(r.headers.get('retry-after'));
+          wait = Math.min(ra > 0 ? ra * 1000 : 3000 * (i + 1), 15000);
+        }
       } catch (e) { code = 'no connection'; }
-      await sleep(1200 * (i + 1));
+      if (i < tries - 1) await sleep(wait);
     }
     fails.n++; inc(fails.codes, code);
     return null;
@@ -132,6 +137,7 @@
   .hrs{display:flex;gap:2px;align-items:flex-end;height:90px;max-width:720px;margin:8px 0 16px}.hrs div{flex:1;height:100%;display:flex;flex-direction:column;justify-content:flex-end;align-items:center}
   .hrs span{display:block;width:100%;background:#1f6feb;border-radius:3px 3px 0 0;min-height:1px}.hrs small{color:#8f9ab5;font-size:10px}
   .about li{margin:8px 0;max-width:800px}
+  details{margin:6px 0}summary{cursor:pointer;font-size:13px}
   .picker{display:flex;gap:8px;align-items:center;flex-wrap:wrap;margin-bottom:8px}#addu{width:260px;margin:0}
   .locked{margin-bottom:8px}button.u.lk{cursor:pointer;color:inherit;font:inherit;font-size:12px}button.u.lk:hover{border-color:#ff7b72}
   .ban{font-size:16px;color:#ffd166}.gstat{color:#8f9ab5;font-size:12px}
@@ -332,10 +338,17 @@
       inc(o.squads, b.att.join(','));
     });
     S.all = all; S.H = H;
-    const nRounds = new Set(oppHist.battles.map(b => b.r)).size || 1;
+    // squads change over time, so the latest season counts 4x and the one before 2x when picking a "usual" line-up
+    const recency = hist => season => { const i = (hist.seasons || []).indexOf(season); return i === 0 ? 4 : i === 1 ? 2 : 1; };
+    const wOpp = recency(oppHist), wMine = recency(myHist);
+    // "how often they set it" is measured over their two most recent seasons (all of them if that is under 6 rounds)
+    const recentSeasons = (oppHist.seasons || []).slice(0, 2);
+    let span = new Set(oppHist.battles.filter(b => recentSeasons.includes(b.season)).map(b => b.r));
+    if (span.size < 6) span = new Set(oppHist.battles.map(b => b.r));
+    S.span = span.size;
     const lastSeason = oppHist.seasons && oppHist.seasons[0];
     // their defences
-    const D = {};
+    const D = {}, setIn = {}; // setIn: lead|round -> the fullest line-up seen for that lead in that round
     oppHist.battles.filter(b => b.side === 'DEF').forEach(b => {
       const L = b.def[0];
       const o = (D[L] = D[L] || { lead: L, n: 0, held: 0, rounds: new Set(), recent: false, squads: {}, zones: {}, zn: 0, ships: !!SHIP[L] });
@@ -343,13 +356,15 @@
       if (b.zone >= 0 && !o.rounds.has(b.r)) { inc(o.zones, b.zone); o.zn = b.zn || o.zn; }
       o.rounds.add(b.r);
       if (b.season === lastSeason) o.recent = true;
-      inc(o.squads, b.def.join(','));
+      const rk = L + '|' + b.r;
+      if (!setIn[rk] || b.def.length > setIn[rk].n) setIn[rk] = { n: b.def.length, key: b.def.join(','), season: b.season };
     });
+    Object.entries(setIn).forEach(([rk, v]) => inc(D[rk.slice(0, rk.indexOf('|'))].squads, v.key, wOpp(v.season)));
     S.defs = Object.values(D).map(o => {
       const squad = top(o.squads, 1)[0][0].split(',');
       const theirLv = mean(squad.map(u => opp.units[u]).filter(Boolean).map(u => u.score));
       const zt = top(o.zones, 1)[0], zn = Object.values(o.zones).reduce((a, b) => a + b, 0);
-      return { ...o, likely: o.rounds.size / nRounds, holdRate: o.held / o.n, squad, theirLv, zone: zt ? { z: +zt[0], share: zt[1] / zn, n: zn, of: o.zn } : null };
+      return { ...o, likely: [...o.rounds].filter(r => span.has(r)).length / (span.size || 1), holdRate: o.held / o.n, squad, theirLv, zone: zt ? { z: +zt[0], share: zt[1] / zn, n: zn, of: o.zn } : null };
     }).sort((a, b) => b.likely - a.likely || b.n - a.n);
     // strong teams in their roster never seen on their defence
     const seenLeads = new Set(Object.keys(D)), U = {};
@@ -372,7 +387,7 @@
       const o = (A[L] = A[L] || { lead: L, n: 0, w: 0, squads: {}, lostTo: {}, beat: {} });
       o.n++;
       if (b.win) { o.w++; inc(o.beat, b.def[0]); } else inc(o.lostTo, b.def[0]);
-      inc(o.squads, b.att.join(','));
+      inc(o.squads, b.att.join(','), wOpp(b.season));
     });
     S.atts = Object.values(A).sort((a, b) => b.n - a.n);
     // timing per round
@@ -390,9 +405,9 @@
       seenR.add(k);
       const L = b.def[0];
       if (SHIP[L]) {
-        inc((fleetSq[L] = fleetSq[L] || {}), b.def.join(','), b.season === fleetSeason ? 3 : 1);
+        inc((fleetSq[L] = fleetSq[L] || {}), b.def.join(','), wMine(b.season));
         if (b.season === fleetSeason) { (roundCaps[b.r] = roundCaps[b.r] || new Set()).add(L); (capRounds[L] = capRounds[L] || new Set()).add(b.r); }
-      } else inc((myByLead[L] = myByLead[L] || {}), b.def.join(','));
+      } else inc((myByLead[L] = myByLead[L] || {}), b.def.join(','), wMine(b.season));
     });
     S.myDefByLead = myByLead;
     // fleet defence: the capital ships you set most in your latest season (as many as you set in one round), with their usual line-ups
@@ -576,7 +591,7 @@
       const prelim = defenceCandidates(S).slice(0, 14).map(c => c.lead);
       const leads = [...new Set([...theirLeads, ...prelim])];
       let n = 0;
-      const got = await pool(leads, 4, async L => { const r = await globalFor(L, oppHist.fmt); status(`Reading swgoh.gg counters: ${++n}/${leads.length}…`); return r; });
+      const got = await pool(leads, 3, async L => { const r = await globalFor(L, oppHist.fmt); status(`Reading swgoh.gg counters: ${++n}/${leads.length}…`); return r; });
       leads.forEach((L, i) => (S.G[L] = got[i] || []));
       gsave();
       analyse(S);
@@ -636,7 +651,8 @@
     out.querySelectorAll('[data-rank]').forEach(b => (b.onclick = () => { S.rank = b.dataset.rank; persistAndReplan(tab); }));
     out.querySelectorAll('[data-unlock]').forEach(b => (b.onclick = () => { S.locked.delete(b.dataset.unlock); persistAndReplan(tab); }));
     out.querySelectorAll('[data-lock]').forEach(b => (b.onclick = () => { b.dataset.lock.split(',').forEach(u => S.locked.add(u)); persistAndReplan(tab); }));
-    const fleetEdited = () => { store.myFleet = { ids: [...S.fleet] }; };
+    const fb = $('#fleetbox'); if (fb) fb.ontoggle = () => { S.fleetOpen = fb.open; };
+    const fleetEdited = () => { store.myFleet = { ids: [...S.fleet] }; S.fleetOpen = true; };
     out.querySelectorAll('[data-unfleet]').forEach(b => (b.onclick = () => { S.fleet.delete(b.dataset.unfleet); fleetEdited(); persistAndReplan(tab); }));
     const fleetReset = () => { delete store.myFleet; S.fleet = new Set(S.fleetDetected); };
     out.querySelectorAll('[data-act="fleetreset"]').forEach(b => (b.onclick = () => { fleetReset(); persistAndReplan(tab); }));
@@ -703,8 +719,9 @@
       <div class="picker"><input id="addu" list="myunits" placeholder="Add a unit or ship…" autocomplete="off"><datalist id="myunits">${mine.map(u => `<option value="${esc(nm(u.id))}">${lv(u)}${u.ship ? (CAP[u.id] ? ' · adds your usual fleet' : ' · ship') : S.myDefByLead[u.id] ? ' · adds your usual team' : ''}</option>`).join('')}</datalist>
       ${any ? '<button class="chip" data-act="export">Save to file</button>' : ''}<button class="chip" data-act="import">Load from file</button><input type="file" id="impfile" accept=".json,application/json" hidden>${S.locked.size || store.myFleet ? '<button class="chip" data-act="clear">Clear all</button>' : ''}</div>
       <div class="sq locked">${[...S.locked].map(id => chip(id, 'data-unlock')).join('') || '<span class="sub">No squads added yet.</span>'}</div>
-      <p class="sub"><b>Fleet defence</b> ${store.myFleet ? '(edited by you)' : '(taken from your latest season)'}. Tap ✕ to remove a ship, or add a capital ship above to add its usual fleet.${store.myFleet ? ' <button class="chip" data-act="fleetreset">Reset from my history</button>' : ''}</p>
-      <div class="sq locked">${[...S.fleet].map(id => chip(id, 'data-unfleet')).join('') || '<span class="sub">No fleets.</span>'}</div>`;
+      <details id="fleetbox" ${S.fleetOpen ? 'open' : ''}><summary><b>Fleet defence:</b> ${[...S.fleet].filter(id => CAP[id]).map(nm).map(esc).join(', ') || (S.fleet.size ? S.fleet.size + ' ships' : 'none')} <span class="sub">(${store.myFleet ? 'edited by you' : 'from your latest season'}; tap to change)</span></summary>
+      <p class="sub">Tap ✕ to remove a ship, or add a capital ship in the box above to add its usual fleet. These ships are kept out of the attack plan.${store.myFleet ? ' <button class="chip" data-act="fleetreset">Reset from my history</button>' : ''}</p>
+      <div class="sq locked">${[...S.fleet].map(id => chip(id, 'data-unfleet')).join('') || '<span class="sub">No ships.</span>'}</div></details>`;
   }
 
   function viewPlan() {
@@ -714,7 +731,7 @@
     h += `<h2>Suggested attack plan</h2><p class="sub">The combination of your counters with the best overall result against the defences they usually set, never reusing a unit or anything on your defence.</p>
       <div class="filters">Rank by: ${chip('odds', 'Best win %')}${chip('banners', 'Most banners')}</div>
       <table class="stack"><tr><th>Their likely defence</th><th>Your counter</th><th>Est. win for you</th><th>Avg banners</th></tr>${S.plan.map(({ d, pick, clash, clashWith }) => `<tr>
-      <td>${squadH(d.squad, 'opp')}<div class="sub">${zoneLong(d)} · set in ${pct(d.likely)} of rounds${d.recent ? ' · used last season' : ''} · held ${pct(d.holdRate)} of ${d.n} attacks</div></td>
+      <td>${squadH(d.squad, 'opp')}<div class="sub">${zoneLong(d)} · set in ${pct(d.likely)} of their last ${S.span} rounds${d.recent ? '' : ' · not used last season'} · held ${pct(d.holdRate)} of ${d.n} attacks</div></td>
       <td>${pick ? squadH(pick.squad, 'me') + `<div class="sub">${recTxt(pick)}</div>` : clash ? `<span class="warn">Best owned counter (${esc(nm(clash.lead))}, ${pct(clash.est)}) needs ${clashWith.map(nm).map(esc).join(', ')}, already on your defence or used above.</span>` : '<span class="warn">No recorded counter you own. Check the counters tab with "All recorded".</span>'}</td>
       <td>${pick ? bar(pick.est) + confH(pick) + (pick.delta ? `<div class="sub">${pick.delta > 0 ? '+' : ''}${pick.delta.toFixed(1)} relic vs their team</div>` : '') : ''}</td>
       <td>${pick ? `<b class="ban">${banTxt(pick)}</b>${pick.avgBan ? '<div class="sub">per win</div>' : ''}` : ''}</td></tr>`).join('')}</table>`;
@@ -756,7 +773,7 @@
       <div class="filters">Show counters: ${chip('all', 'All recorded')}${chip('own', 'Teams I own')}${chip('ready', 'Teams I own at R5+')}<label class="tog"><input type="checkbox" id="ships" ${store.showShips ? 'checked' : ''}> Show fleets</label></div>
       ${S.defs.filter(d => store.showShips || !d.ships).map(d => {
         const list = pick(d), exact = d.counters.some(c => c.exact && c.gN);
-        return `<section class="card"><div class="dh">${squadH(d.squad, 'opp')}<div class="stats"><div><b>${pct(d.likely)}</b><small>rounds set</small></div><div><b>${pct(d.holdRate)}</b><small>held (${d.held}/${d.n})</small></div><div><b>${esc(zoneTxt(d))}</b><small>${d.zone ? pct(d.zone.share) + ' of rounds' : 'zone'}</small></div></div></div>
+        return `<section class="card"><div class="dh">${squadH(d.squad, 'opp')}<div class="stats"><div><b>${pct(d.likely)}</b><small>of last ${S.span} rounds</small></div><div><b>${pct(d.holdRate)}</b><small>held (${d.held}/${d.n})</small></div><div><b>${esc(zoneTxt(d))}</b><small>${d.zone ? pct(d.zone.share) + ' of rounds' : 'zone'}</small></div></div></div>
         ${d.counters.some(c => c.gN) ? `<p class="sub">swgoh.gg data: ${exact ? 'this exact squad' : `any ${esc(nm(d.lead))} team`}.</p>` : ''}
         ${list.length ? counterTable(list) : `<p class="sub">No recorded counters${f !== 'all' ? ' that match this filter' : ''}.</p>`}</section>`;
       }).join('')}`;
@@ -850,9 +867,10 @@
       <li><b>Format</b> is 3v3 or 5v5. Auto uses their latest finished event. swgoh.gg only lists an event after it ends, so in the first week of a new season choose the format yourself at the top.</li>
       <li><b>Est. for you</b> starts from the swgoh.gg win rate (counted as up to 30 battles), adds the battles in your two histories on top, then nudges ±4% per relic level your counter is above or below their defence, capped at ±12%. With no swgoh.gg data it falls back to a 50/50 start worth two battles. Fleets get no relic adjustment.</li>
       <li><b>Data label</b> counts both sources: solid = 20+ battles, some = 6 to 19, thin = 5 or fewer.</li>
-      <li><b>Battle plan</b> covers up to 18 of their defences (those set in at least 10% of their rounds, or used last season). It tries every combination of your top 4 owned counters for the 9 most likely, fills the rest one at a time, never reuses a unit, and leaves out everything in Your defence, fleets included. <b>Most banners</b> ranks by win chance × average banners per win.</li>
+      <li><b>Battle plan</b> covers up to 18 of their defences (those set in at least 10% of the rounds in their two most recent seasons, or at all in the latest one). It tries every combination of your top 4 owned counters for the 9 most likely, fills the rest one at a time, never reuses a unit, and leaves out everything in Your defence, fleets included. <b>Most banners</b> ranks by win chance × average banners per win.</li>
       <li><b>Your defence</b> is one list saved in this browser. Your fleet defence starts as the fleets you set in your latest season; remove ships or add a capital ship if you've changed it.</li>
       <li><b>Suggested defence</b> scores each squad you own by how often it held against each attack team your opponent uses, weighted by how often they use it. Hold rates blend the two histories with swgoh.gg's numbers for your squad's leader, so a squad with 4 holds from 5 battles can't outrank one with 38 from 81. Galactic Legends are left out unless you untick the switch.</li>
+      <li><b>Their usual squad</b> for each leader is the line-up they set most, with the latest season counted 4 times and the one before twice, so a team they changed recently shows the new version.</li>
       <li><b>Zones</b> (Front top, Front bottom, Back, Fleet) are where each of their defences was placed most often, counted once per round.</li>
       <li><b>Round by round</b> lists each of their rounds: result and score, first attack time, delay from attacks opening, the attacks their defence held against, and their own failed attacks.</li>
       <li><b>What it can't see:</b> mods, datacrons, omicrons and turn-meter luck. A defence nobody attacked never appears in swgoh.gg's history, and the event being played right now isn't listed until it ends.</li>
