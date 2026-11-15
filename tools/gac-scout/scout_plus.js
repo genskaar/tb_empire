@@ -354,15 +354,16 @@
     Object.values(S.byRound).forEach(o => o.t.sort());
     // my usual defence squads and fleet
     const myByLead = {}, seenR = new Set(), fleet = {};
+    const fleetSeason = (myHist.battles.find(b => b.side === 'DEF' && SHIP[b.def[0]]) || {}).season;
     myHist.battles.filter(b => b.side === 'DEF').forEach(b => {
       const k = b.r + '|' + b.def.join(',');
       if (seenR.has(k)) return;
       seenR.add(k);
-      if (SHIP[b.def[0]]) inc(fleet, b.def.join(','));
+      if (SHIP[b.def[0]]) { if (b.season === fleetSeason) inc(fleet, b.def.join(',')); }
       else inc((myByLead[b.def[0]] = myByLead[b.def[0]] || {}), b.def.join(','));
     });
     S.myDefByLead = myByLead;
-    // fleet defence = capital ships you set in recent rounds (max 4 fleets), with their usual squads
+    // fleet defence = capital ships you set in your latest season (max 4 fleets), with their usual squads
     const capCount = {};
     Object.entries(fleet).forEach(([k, n]) => inc(capCount, k.split(',')[0], n));
     S.myFleet = top(capCount, 4).flatMap(([cap]) => top(Object.fromEntries(Object.entries(fleet).filter(([k]) => k.split(',')[0] === cap)), 1)[0][0].split(',')).filter(u => me.units[u]);
@@ -402,7 +403,8 @@
       const missing = squad.filter(u => !me.units[u]);
       const myLv = mean(squad.map(u => me.units[u]).filter(Boolean).map(u => u.score));
       const gRate = gg.n ? gg.w / gg.n : null;
-      const k = gg.n ? Math.min(gg.n, 30) : 2, prior = gg.n ? gRate : 0.5;
+      // swgoh.gg rate, itself smoothed towards 50/50 so 1 recorded win isn't read as 100%
+      const k = gg.n ? Math.min(gg.n, 30) : 2, prior = gg.n ? (gg.w + 1) / (gg.n + 2) : 0.5;
       const base = (h.w + k * prior) / (h.n + k);
       const delta = !SHIP[a] && myLv && theirLv ? clamp(myLv - theirLv, -3, 3) : 0;
       const total = h.n + gg.n;
@@ -441,12 +443,12 @@
       const gN = gRows.reduce((a, r) => a + r[0], 0), gW = gRows.reduce((a, r) => a + r[0] * r[1], 0);
       const gHold = gN ? 1 - gW / gN : null;
       const K = gN ? Math.min(gN, 30) : 10;
-      const prior = (o.held + K * (gHold ?? poolHold)) / (o.n + K);
+      const prior = (o.held + K * (gN ? (gN - gW + 10 * poolHold) / (gN + 10) : poolHold)) / (o.n + K);
       const vs = atts.map(a => {
         const h = (H[o.lead] || {})[a.lead], s = h ? h.n : 0, held = h ? h.n - h.w : 0;
         const ga = gRows.filter(r => r[3][0] === a.lead);
         const gaN = ga.reduce((x, r) => x + r[0], 0), gaW = ga.reduce((x, r) => x + r[0] * r[1], 0);
-        const k = gaN ? Math.min(gaN, 30) : 2, p0 = gaN ? 1 - gaW / gaN : prior;
+        const k = gaN ? Math.min(gaN, 30) : 2, p0 = gaN ? (gaN - gaW + 2 * prior) / (gaN + 2) : prior;
         return { lead: a.lead, n: s, held, gN: gaN, gHold: gaN ? 1 - gaW / gaN : null, p: (held + k * p0) / (s + k), weight: a.n / attN };
       });
       const score = atts.length ? vs.reduce((x, v) => x + v.p * v.weight, 0) : prior;
@@ -707,7 +709,7 @@
 
   // Arrikhan's round-by-round report
   function viewRounds() {
-    const rs = S.oppHist.rounds;
+    const rs = [...S.oppHist.rounds].sort((a, b) => b.epoch - a.epoch || b.rn - a.rn);
     if (!rs.length) return '<p class="warn">No rounds found.</p>';
     const done = rs.filter(r => r.result);
     const w = done.filter(r => r.result === 'W').length;
