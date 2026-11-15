@@ -234,7 +234,8 @@
         try {
           const j = JSON.parse(el.getAttribute('data-player-datacron-tooltip-app'));
           const dv = j.derived || {};
-          const chars = [...new Set((dv.tiers || []).filter(x => x.derived && x.derived.tier_id >= 9 && x.derived.scope_target_name).map(x => x.derived.scope_target_name))];
+          // character tiers carry unit_target_base_id; stat and reroll tiers don't, so this keeps only the boosted characters
+          const chars = [...new Set((dv.tiers || []).filter(x => x.derived && x.derived.unit_target_base_id && x.derived.scope_target_name).map(x => x.derived.scope_target_name))];
           return { s: j.set_id || 0, t: dv.tier || 0, n: dv.name || '', f: !!j.focused, c: chars };
         } catch (e) { return null; }
       };
