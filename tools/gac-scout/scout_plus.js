@@ -628,6 +628,9 @@
     const attN = atts.reduce((a, o) => a + o.n, 0) || 1;
     // candidate squads: every meta defence you own at R5+, plus the squad you'd field for each leader in the histories
     const meta = S.HU ? S.HU.meta : S.metaSG || {};
+    // a squad missing from the meta list is rarely set or rarely holds: start it at the lower quartile of meta holds
+    const mh = Object.values(meta).map(m => m.h).sort((a, b) => a - b);
+    const floor = mh.length ? mh[Math.floor(mh.length / 4)] : poolHold;
     const cands = {};
     Object.values(meta).forEach(m => { if (m.n >= 300 && m.u.every(ownR5)) cands[sqKey(m.u)] = m.u; });
     Object.values(C).forEach(o => {
@@ -644,8 +647,8 @@
       const gN = gRows.reduce((a, r) => a + r[0], 0), gW = gRows.reduce((a, r) => a + r[0] * r[1], 0);
       const gHold = gN ? 1 - gW / gN : null;
       // the starting point is the meta hold rate for this exact squad (up to 200 battles' weight); then leader-level data; then the pool
-      const base = mt ? mt.h : gN ? (gN - gW + 10 * poolHold) / (gN + 10) : poolHold;
-      const K = mt ? Math.min(mt.n, 200) : gN ? Math.min(gN, 30) : 10;
+      const base = mt ? mt.h : gN ? (gN - gW + 10 * floor) / (gN + 10) : floor;
+      const K = mt ? Math.min(mt.n, 200) : gN ? Math.min(gN, 30) : 20;
       const prior = (o.held + K * base) / (o.n + K);
       const vs = atts.map(a => {
         const h = (H[L] || {})[a.lead], n = h ? h.n : 0, held = h ? h.n - h.w : 0;
@@ -656,7 +659,7 @@
       });
       // half the score is how it holds in general (meta), half how it holds against this opponent's attack teams
       const vsScore = atts.length ? vs.reduce((x, v) => x + v.p * v.weight, 0) : prior;
-      const score = mt ? 0.5 * prior + 0.5 * vsScore : vsScore;
+      const score = 0.5 * prior + 0.5 * vsScore;
       const evidence = o.n + gN + (mt ? mt.n : 0);
       return {
         lead: L, n: o.n, held: o.held, myN: o.myN, myHeld: o.myHeld, squad, prior, gN, gHold, score, meta: mt || null, metaSrc: S.HU && mt ? 'hu' : 'gg', exactVs: !!mine,
