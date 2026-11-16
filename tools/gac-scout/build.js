@@ -61,7 +61,7 @@ details{margin-top:14px}summary{cursor:pointer;color:#8cc8ff}
 <div class="f"><b>Defence planner</b><p>Squads you own that hold best against the attack teams your opponent uses. Keeps GLs for attack unless you say otherwise.</p></div>
 <div class="f"><b>Zones and banners</b><p>Where they usually put each team (Front top, Front bottom, Back, Fleet), and counters ranked by expected banners.</p></div>
 <div class="f"><b>HotUtils meta</b><p>Optional: paste HotUtils' defence hold % for your own league (live datacrons only) and the defence planner uses it.</p></div>
-<div class="f"><b>Datacrons</b><p>The datacron they last ran on each defence and attack team: level, set and who it boosts. Lvl 12+ gets a warning.</p></div>
+<div class="f"><b>Datacrons</b><p>Your datacrons and theirs are in the odds: each counter and defence is rated from battles with the datacron strength each side can actually bring, and the plan never uses one datacron twice.</p></div>
 <div class="f"><b>Round by round</b><p>Each of their rounds: score, first attack time and delay, what held on their defence and what they dropped.</p></div>
 <div class="f"><b>Their attacks</b><p>What they win with and which defences stopped them.</p></div>
 <div class="f"><b>When they attack</b><p>Their usual attack hours in your time zone, and average delay.</p></div>
@@ -108,7 +108,7 @@ details{margin-top:14px}summary{cursor:pointer;color:#8cc8ff}
 <li><b>Est. for you</b> starts from the swgoh.gg win rate, adds the battles in your two histories, and is nudged up to ±12% for the relic gap between your counter and their defence. Each figure is labelled solid, some or thin data.</li>
 <li>It runs on swgoh.gg itself and reads the same public pages you can open, from your own browser. Nothing is sent anywhere else.</li>
 <li>The bookmark loads the tool's code from this site (GitHub Pages) each time you click it. The source is in the <a href="https://github.com/seanvintin-wwws/tb_empire/tree/main/tools/gac-scout" style="color:#8cc8ff">tools/gac-scout</a> folder of the repository.</li>
-<li>Datacrons are shown (from their newest battles, with ability text on hover) but kept out of the win %, because sets rotate every few weeks. Mods and omicrons are invisible, so treat the odds as a guide. For what to build on your own account, see <a href="https://ahnaldt101.com/swgoh/datacrons" style="color:#8cc8ff">AhnaldT101's datacron guide</a>.</li>
+<li>With swgoh.gg GAC Insight (sign in to swgoh.gg), datacrons are in the win %: both players' datacrons are read, and each number comes from this season's battles where each side had a datacron of the strength they can actually bring to that team. Mods aren't visible and omicrons aren't counted yet, so treat the odds as a guide. For what to build on your own account, see <a href="https://ahnaldt101.com/swgoh/datacrons" style="color:#8cc8ff">AhnaldT101's datacron guide</a>.</li>
 <li>Made for ANZGC. Original GAC Scout by FireFight; GAC Scout+ battle plan, defence planner, zones and banners by samobudo; round-by-round report by Arrikhan (PHX).</li>
 </ul>
 <script>
