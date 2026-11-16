@@ -12,10 +12,56 @@
    - Round by round tab (from Arrikhan): result, score, first attack time and delay, their holds and their drops.
 */
 (async () => {
-  const VERSION = '2.3';
+  const VERSION = '2.4';
+  if (location.hostname === 'players.hotutils.com') return hotutilsHelper();
   if (!/(^|\.)swgoh\.gg$/.test(location.hostname)) {
     alert('GAC Scout+ runs on swgoh.gg. Open https://swgoh.gg in this tab, then click the bookmark again.');
     return;
+  }
+
+  // Step 2 of "Add HotUtils data": this runs in the HotUtils tab that GAC Scout+ opened. It reads the list of squads
+  // to look up from the address bar, asks HotUtils' own public GAC data for them (your league, live datacrons only),
+  // and hands the numbers back to the swgoh.gg tab that opened it. Nothing is sent anywhere else.
+  async function hotutilsHelper() {
+    const box = document.createElement('div');
+    box.style.cssText = 'position:fixed;z-index:2147483647;top:16px;right:16px;max-width:380px;padding:14px 16px;border-radius:10px;background:#111829;color:#dde3f0;border:1px solid #1f6feb;font:14px/1.45 system-ui,sans-serif;box-shadow:0 6px 24px #0008';
+    document.body.appendChild(box);
+    const say = (msg, bad) => { box.innerHTML = '<b style="color:#8cc8ff">GAC Scout+</b><br>'; const t = document.createElement('span'); t.textContent = msg; if (bad) t.style.color = '#ff9e9e'; box.appendChild(t); };
+    const m = location.hash.match(/gacscout=([A-Za-z0-9_-]+)/);
+    if (!m) return say('Open this from GAC Scout+ on swgoh.gg: scout your opponent there, then press "Add HotUtils data". It opens this page with the squads to look up.', true);
+    if (!window.opener) return say('This tab has lost its link to the swgoh.gg tab. Go back to swgoh.gg, press "Add HotUtils data" again, and click the bookmark in the new HotUtils tab.', true);
+    let req;
+    try { req = JSON.parse(decodeURIComponent(escape(atob(m[1].replace(/-/g, '+').replace(/_/g, '/'))))); } catch (e) { return say("Couldn't read the request from swgoh.gg. Press \"Add HotUtils data\" again.", true); }
+    const okIds = a => Array.isArray(a) && a.length && a.length <= 5 && a.every(x => /^[A-Z0-9_]{2,40}$/.test(x));
+    const fmt = req.fmt === '5v5' ? '5v5' : '3v3';
+    const league = /^[A-Z]{3,12}$/.test(req.league || '') ? req.league : 'KYBER';
+    const defs = (req.defs || []).filter(okIds).slice(0, 40), mine = (req.mine || []).filter(okIds).slice(0, 30);
+    const api = async path => { for (let i = 0; i < 3; i++) { try { const r = await fetch('/api/gac/' + path); if (r.ok) return await r.json(); if (r.status === 400 || r.status === 404) return null; } catch (e) {} await new Promise(r => setTimeout(r, 1200 * (i + 1))); } return null; };
+    say('Finding the latest ' + fmt + ' season…');
+    const ss = await api('seasons');
+    const season = ss && (ss.seasons || []).filter(x => x.mode === fmt).sort((a, b) => b.season - a.season)[0];
+    if (!season) return say("HotUtils didn't return its season list. Reload this page and click the bookmark again.", true);
+    const q = `mode=${fmt}&season=${season.season}&league=${league}&division=ALL&hideExpired=1`;
+    const ctr = {}, mineCtr = {};
+    const jobs = [...defs.map(d => ['d', d]), ...mine.map(d => ['m', d])];
+    let done = 0, failed = 0;
+    const pack = j => (j && Array.isArray(j.rows) ? j.rows.filter(r => Array.isArray(r.units)).map(r => [r.battles | 0, Math.round(r.winPct * 10) / 1000, Math.round((r.avgBanners || 0) * 100) / 100, r.units]) : null);
+    const worker = async () => {
+      while (jobs.length) {
+        const [kind, d] = jobs.shift();
+        const rows = pack(await api(`counters?${q}&sort=seen&defense=${d.join(',')}`));
+        if (!rows) failed++; else (kind === 'd' ? ctr : mineCtr)[[...d].sort().join(',')] = rows;
+        say(`Reading HotUtils ${league[0] + league.slice(1).toLowerCase()} counters: ${++done}/${defs.length + mine.length}…`);
+      }
+    };
+    await Promise.all([worker(), worker(), worker()]);
+    const mj = await api(`squad-meta?${q}&side=defense&battleType=character`);
+    const meta = mj && Array.isArray(mj.rows) ? mj.rows.filter(r => Array.isArray(r.units) && r.battles >= 100).map(r => [r.battles | 0, Math.round(r.holdPct * 10) / 1000, Math.round((r.avgBanners || 0) * 100) / 100, r.units]) : [];
+    try {
+      window.opener.postMessage({ type: 'gac-scout-plus:hotutils', v: 1, id: req.id, league, season: season.season, fmt, ctr, mine: mineCtr, meta, failed }, 'https://swgoh.gg');
+    } catch (e) { return say('Lost the link to the swgoh.gg tab before the data could be sent back. Press "Add HotUtils data" there again.', true); }
+    say(`Done: ${Object.keys(ctr).length + Object.keys(mineCtr).length} squads${failed ? ` (${failed} didn't load)` : ''} plus the ${league[0] + league.slice(1).toLowerCase()} defence meta, sent back to swgoh.gg. This tab will close; if it doesn't, switch back to the swgoh.gg tab.`);
+    setTimeout(() => { try { window.close(); } catch (e) {} }, 2500);
   }
   const SKEY = 'gacScoutPlus:settings', RKEY = 'gacScoutPlus:rounds', GKEY = 'gacScoutPlus:global';
   const DAY = 864e5, G_TTL = 3 * DAY;
@@ -196,7 +242,7 @@
       };
     });
     const d = j.data || {};
-    return { ally, name: d.name || ally, gp: d.galactic_power || 0, cgp: d.character_galactic_power || 0, sgp: d.ship_galactic_power || 0, guild: d.guild_name || '', units };
+    return { ally, name: d.name || ally, gp: d.galactic_power || 0, cgp: d.character_galactic_power || 0, sgp: d.ship_galactic_power || 0, guild: d.guild_name || '', league: d.league_name || '', units };
   }
   const lv = u => (u ? (u.ship ? u.stars + '★' : u.relic != null ? 'R' + u.relic : u.stars < 7 ? u.stars + '★ G' + u.gear : 'G' + u.gear) : '—');
 
@@ -312,6 +358,44 @@
     if (Object.keys(map).length) { gstore.sets = { t: Date.now(), map }; gsave(); }
     return map;
   }
+
+  // ---------- swgoh.gg squad meta page (defence hold %, all leagues) ----------
+  async function loadMetaSG(fmt) {
+    const ck = 'meta|' + fmt, c = gstore.leads[ck];
+    if (c && Date.now() - c.t < DAY) return c.rows;
+    const rows = [], seenKeys = new Set();
+    let sp = seasonParam[fmt] || '';
+    for (let page = 1; page <= 6; page++) {
+      const doc = await getDoc(`/gac/squads/?sort=percent&cutoff=0.1${sp}&page=${page}`);
+      if (!doc || !doc.querySelector('main')) break;
+      if (page === 1 && !sp) {
+        const sm = doc.querySelector('main').textContent.replace(/\s+/g, ' ').match(/Season:\s*\d+\s*-\s*(\dv\d)/);
+        if (sm && sm[1] !== fmt) {
+          const a = [...doc.querySelectorAll('a[href*="season_id="]')].find(x => new RegExp(`-\\s*${fmt}`).test(x.textContent));
+          if (a) { sp = '&season_id=' + (a.getAttribute('href').match(/season_id=([^&]+)/) || [])[1]; page = 0; continue; }
+        }
+      }
+      let added = 0;
+      const done = new Set();
+      doc.querySelectorAll('main [data-unit-def-tooltip-app]').forEach(t => {
+        let row = t.parentElement;
+        while (row && !/\bSeen\b/.test(row.textContent)) row = row.parentElement;
+        if (!row || done.has(row)) return;
+        done.add(row);
+        const m = row.textContent.replace(/\s+/g, ' ').match(/Seen ([\d.,]+)(K?) Hold % (\d+)% Banners ([\d.]+)/);
+        const u = [...row.querySelectorAll('[data-unit-def-tooltip-app]')].map(e => e.getAttribute('data-unit-def-tooltip-app'));
+        if (!m || !u.length) return;
+        const key = sqKey(u);
+        if (seenKeys.has(key)) return;
+        seenKeys.add(key); added++;
+        rows.push([Math.round(parseFloat(m[1].replace(/,/g, '')) * (m[2] ? 1000 : 1)), +m[3] / 100, +m[4], u]);
+      });
+      if (!added) break;
+    }
+    if (rows.length) { gstore.leads[ck] = { t: Date.now(), rows }; }
+    return rows;
+  }
+  const metaMap = rows => { const o = {}; (rows || []).forEach(([n, h, b, u]) => (o[sqKey(u)] = { n, h, b, u })); return o; };
 
   // ---------- swgoh.gg GAC counters page ----------
   const seasonParam = {}; // fmt -> '' (default page) or '&season_id=...'
@@ -480,7 +564,10 @@
     const want = sqKey(defSquad);
     const exact = gRows.filter(r => r[4][0] === defLead && sqKey(r[4]) === want);
     const exN = exact.reduce((a, r) => a + r[0], 0);
-    const rows = defSquad.length > 1 && exN >= 20 ? exact : gRows.filter(r => r[4][0] === defLead);
+    // HotUtils counters are always for this exact defence squad, in your league, with expired datacrons left out
+    const hu = S.HU && S.HU.ctr[want], huN = hu ? hu.reduce((a, r) => a + r[0], 0) : 0;
+    const src = huN >= 20 ? 'hu' : 'gg';
+    const rows = src === 'hu' ? hu.map(r => [r[0], r[1], r[2], r[3], defSquad]) : defSquad.length > 1 && exN >= 20 ? exact : gRows.filter(r => r[4][0] === defLead);
     const g = {};
     rows.forEach(([n, w, avg, att]) => {
       const o = (g[att[0]] = g[att[0]] || { n: 0, w: 0, ban: 0, banW: 0, squads: {}, rows: [] });
@@ -517,7 +604,7 @@
         myLv, delta, est: clamp(base + 0.04 * delta, 0.02, 0.98),
         conf: total >= 20 ? 'high' : total >= 6 ? 'med' : 'low', total,
         avgBan: h.banN ? h.ban / h.banN : gg.banW ? gg.ban / gg.banW : null,
-        exact: rows === exact,
+        exact: src === 'hu' || rows === exact, src,
       };
     });
     return out.sort((x, y) => y.est - x.est || y.total - x.total);
@@ -526,10 +613,12 @@
   // my defence candidates, scored against the attack teams they use
   function defenceCandidates(S) {
     const { me, all, H, G, atts } = S;
+    const ownR5 = u => { const x = me.units[u]; return x && !x.ship && x.relic != null && x.relic >= 5; };
+    // history, by defence leader
     const C = {};
     all.forEach(b => {
       const L = b.def[0];
-      const o = (C[L] = C[L] || { lead: L, n: 0, held: 0, squads: {}, myN: 0, myHeld: 0, ships: !!SHIP[L] });
+      const o = (C[L] = C[L] || { lead: L, n: 0, held: 0, squads: {}, myN: 0, myHeld: 0 });
       o.n++; if (!b.win) o.held++;
       inc(o.squads, b.def.join(','));
       if (b.myDef) { o.myN++; if (!b.win) o.myHeld++; }
@@ -537,29 +626,44 @@
     const tot = Object.values(C).reduce((a, o) => [a[0] + o.held, a[1] + o.n], [0, 0]);
     const poolHold = tot[1] ? tot[0] / tot[1] : 0.25;
     const attN = atts.reduce((a, o) => a + o.n, 0) || 1;
-    return Object.values(C).map(o => {
-      const squad = top(o.squads, 10).map(([k]) => k.split(',')).find(s => s.every(u => me.units[u]));
-      if (!squad || o.ships) return null;
-      // swgoh.gg rows where this lead defended: hold = 1 - attacker win
-      const gRows = (G[o.lead] || []).filter(r => r[4][0] === o.lead);
+    // candidate squads: every meta defence you own at R5+, plus the squad you'd field for each leader in the histories
+    const meta = S.HU ? S.HU.meta : S.metaSG || {};
+    const cands = {};
+    Object.values(meta).forEach(m => { if (m.n >= 300 && m.u.every(ownR5)) cands[sqKey(m.u)] = m.u; });
+    Object.values(C).forEach(o => {
+      if (SHIP[o.lead]) return;
+      const sq = top(o.squads, 10).map(([k]) => k.split(',')).find(x => x.every(u => me.units[u]));
+      if (sq && !cands[sqKey(sq)]) cands[sqKey(sq)] = sq;
+    });
+    return Object.entries(cands).map(([key, squad]) => {
+      const L = squad[0], o = C[L] || { n: 0, held: 0, myN: 0, myHeld: 0 };
+      const mt = meta[key];
+      const mine = S.HU && S.HU.mine[key];
+      // per-attacker evidence: HotUtils counters for this exact squad if fetched, otherwise swgoh.gg rows for its leader
+      const gRows = mine ? mine.map(r => [r[0], r[1], r[2], r[3], squad]) : (G[L] || []).filter(r => r[4][0] === L);
       const gN = gRows.reduce((a, r) => a + r[0], 0), gW = gRows.reduce((a, r) => a + r[0] * r[1], 0);
       const gHold = gN ? 1 - gW / gN : null;
-      const K = gN ? Math.min(gN, 30) : 10;
-      const prior = (o.held + K * (gN ? (gN - gW + 10 * poolHold) / (gN + 10) : poolHold)) / (o.n + K);
+      // the starting point is the meta hold rate for this exact squad (up to 200 battles' weight); then leader-level data; then the pool
+      const base = mt ? mt.h : gN ? (gN - gW + 10 * poolHold) / (gN + 10) : poolHold;
+      const K = mt ? Math.min(mt.n, 200) : gN ? Math.min(gN, 30) : 10;
+      const prior = (o.held + K * base) / (o.n + K);
       const vs = atts.map(a => {
-        const h = (H[o.lead] || {})[a.lead], s = h ? h.n : 0, held = h ? h.n - h.w : 0;
+        const h = (H[L] || {})[a.lead], n = h ? h.n : 0, held = h ? h.n - h.w : 0;
         const ga = gRows.filter(r => r[3][0] === a.lead);
         const gaN = ga.reduce((x, r) => x + r[0], 0), gaW = ga.reduce((x, r) => x + r[0] * r[1], 0);
         const k = gaN ? Math.min(gaN, 30) : 2, p0 = gaN ? (gaN - gaW + 2 * prior) / (gaN + 2) : prior;
-        return { lead: a.lead, n: s, held, gN: gaN, gHold: gaN ? 1 - gaW / gaN : null, p: (held + k * p0) / (s + k), weight: a.n / attN };
+        return { lead: a.lead, n, held, gN: gaN, gHold: gaN ? 1 - gaW / gaN : null, p: (held + k * p0) / (n + k), weight: a.n / attN };
       });
-      const score = atts.length ? vs.reduce((x, v) => x + v.p * v.weight, 0) : prior;
-      const evidence = o.n + gN;
+      // half the score is how it holds in general (meta), half how it holds against this opponent's attack teams
+      const vsScore = atts.length ? vs.reduce((x, v) => x + v.p * v.weight, 0) : prior;
+      const score = mt ? 0.5 * prior + 0.5 * vsScore : vsScore;
+      const evidence = o.n + gN + (mt ? mt.n : 0);
       return {
-        ...o, squad, prior, gN, gHold, score, vs: vs.filter(v => v.n || v.gN).sort((a, b) => b.weight - a.weight),
+        lead: L, n: o.n, held: o.held, myN: o.myN, myHeld: o.myHeld, squad, prior, gN, gHold, score, meta: mt || null, metaSrc: S.HU && mt ? 'hu' : 'gg', exactVs: !!mine,
+        vs: vs.filter(v => v.n || v.gN).sort((a, b) => b.weight - a.weight),
         conf: evidence >= 20 ? 'high' : evidence >= 6 ? 'med' : 'low', hasGL: squad.some(u => me.units[u] && me.units[u].gl),
       };
-    }).filter(Boolean).sort((a, b) => b.score - a.score);
+    }).sort((a, b) => b.score - a.score);
   }
 
   // ---------- plans ----------
@@ -635,7 +739,7 @@
       const oppHist = await loadHistory(oppAlly, wantFmt);
       if (oppHist.failed) return status(blockedMsg(`${esc(opp.name)}'s GAC history`), true);
       const myHist = await loadHistory(myAlly, oppHist.fmt);
-      S = { me, opp, myHist, oppHist, G: {}, filter: 'own', rank: store.rank || 'odds', keepGL: store.keepGL !== false, autoFmt: !wantFmt };
+      S = { me, opp, myHist, oppHist, G: {}, HU: null, metaSG: {}, filter: 'own', rank: store.rank || 'odds', keepGL: store.keepGL !== false, autoFmt: !wantFmt };
       S.locked = new Set(((store.myDefence && store.myDefence.ids) || []).filter(u => me.units[u] && !me.units[u].ship));
       analyse(S);
       S.fleet = new Set((store.myFleet && Array.isArray(store.myFleet.ids) ? store.myFleet.ids : S.fleetDetected).filter(u => me.units[u] && me.units[u].ship));
@@ -646,6 +750,10 @@
       let n = 0;
       const got = await pool(leads, 3, async L => { const r = await globalFor(L, oppHist.fmt); status(`Reading swgoh.gg counters: ${++n}/${leads.length}…`); return r; });
       leads.forEach((L, i) => (S.G[L] = got[i] || []));
+      status('Reading swgoh.gg defence meta…');
+      S.metaSG = metaMap(await loadMetaSG(oppHist.fmt));
+      const hu = gstore.hu;
+      if (hu && hu.opp === oppAlly && hu.fmt === oppHist.fmt && Date.now() - hu.t < DAY) S.HU = hu.data;
       gsave();
       analyse(S);
       S.defCands = defenceCandidates(S);
@@ -660,6 +768,39 @@
       $('#go').disabled = false;
     }
   }
+
+  // ---------- HotUtils step (see hotutilsHelper) ----------
+  const LEAGUES = ['KYBER', 'AURODIUM', 'CHROMIUM', 'BRONZIUM', 'CARBONITE'];
+  const leagueName = () => { const l = String((S && S.me.league) || '').toUpperCase(); return LEAGUES.includes(l) ? l : 'KYBER'; };
+  const nice = l => l[0] + l.slice(1).toLowerCase();
+  let huWin = null, huId = '';
+  function askHotUtils() {
+    const defs = [...S.plan.map(p => p.d), ...S.unseen].filter(d => !d.ships).map(d => d.squad).slice(0, 40);
+    const mine = (S.defCands || []).filter(c => !c.squad.some(u => SHIP[u])).slice(0, 30).map(c => c.squad);
+    huId = Math.random().toString(36).slice(2, 10);
+    const req = { id: huId, fmt: S.oppHist.fmt, league: leagueName(), defs, mine };
+    const enc = btoa(unescape(encodeURIComponent(JSON.stringify(req)))).replace(/\+/g, '-').replace(/\//g, '_').replace(/=+$/, '');
+    huWin = window.open('https://players.hotutils.com/gac#gacscout=' + enc, '_blank');
+    if (!huWin) return status('Your browser blocked the HotUtils tab. Allow pop-ups for swgoh.gg, then press "Add HotUtils data" again.', true);
+    status(`A HotUtils tab has opened. <b>Click your GAC Scout+ bookmark in that tab</b>; it reads HotUtils' ${nice(req.league)} data for ${defs.length + mine.length} squads and sends it back here. If it says it only runs on swgoh.gg, reinstall the bookmark from the install page once.`);
+  }
+  window.addEventListener('message', e => {
+    if (e.origin !== 'https://players.hotutils.com' || !S) return;
+    const d = e.data;
+    if (!d || d.type !== 'gac-scout-plus:hotutils' || d.v !== 1 || d.id !== huId) return;
+    const ids = a => Array.isArray(a) && a.every(x => typeof x === 'string' && /^[A-Z0-9_]{2,40}$/.test(x));
+    const row = r => Array.isArray(r) && r.length === 4 && Number.isFinite(r[0]) && Number.isFinite(r[1]) && Number.isFinite(r[2]) && ids(r[3]);
+    const table = o => { const out = {}; if (o && typeof o === 'object') Object.entries(o).forEach(([k, v]) => { if (/^[A-Z0-9_,]{2,240}$/.test(k) && Array.isArray(v)) out[k] = v.filter(row); }); return out; };
+    const data = { league: LEAGUES.includes(d.league) ? d.league : 'KYBER', season: d.season | 0, ctr: table(d.ctr), mine: table(d.mine), meta: metaMap((Array.isArray(d.meta) ? d.meta : []).filter(row)) };
+    S.HU = data;
+    gstore.hu = { t: Date.now(), opp: S.opp.ally, fmt: S.oppHist.fmt, data };
+    gsave();
+    analyse(S);
+    S.defCands = defenceCandidates(S);
+    plan(S);
+    status(`Added HotUtils ${nice(data.league)} data (season ${data.season}, live datacrons only): ${Object.keys(data.ctr).length + Object.keys(data.mine).length} squads${d.failed ? `, ${d.failed | 0} didn't load` : ''}.`);
+    show('plan');
+  });
 
   // ---------- rendering ----------
   const TABS = [['plan', 'Battle plan'], ['defs', 'Their defences & counters'], ['atts', 'Their attacks'], ['rounds', 'Round by round'], ['time', 'When they attack'], ['roster', 'Roster compare'], ['about', 'How it works']];
@@ -686,7 +827,7 @@
     const tip = (d.a && d.a.length) ? ` title="${esc(d.a.join('\n'))}"` : '';
     return `<div class="sub"${tip}>Datacron: <span class="${big ? 'warn' : ''}">Lvl ${d.t}${big ? ' ⚠' : ''}</span> <span class="${tip ? 'dchint' : ''}">${esc(d.n)}</span>${d.f ? ' (focused)' : ''}${d.c.length ? ' → ' + esc(d.c.join(', ')) : ''} <small>(${when})</small>${setNote}</div>`;
   };
-  const recTxt = c => `${c.n ? `${c.w}/${c.n} in these histories` : 'not in these histories'}${c.myN ? ` · you ${c.myW}/${c.myN}` : ''}${c.gN ? ` · swgoh.gg ${pct(c.gRate)} of ${kNum(c.gN)}${c.gSquad ? '' : ` (all ${esc(nm(c.lead))} teams)`}` : ''}`;
+  const recTxt = c => `${c.n ? `${c.w}/${c.n} in these histories` : 'not in these histories'}${c.myN ? ` · you ${c.myW}/${c.myN}` : ''}${c.gN ? ` · ${c.src === 'hu' ? 'HotUtils ' + nice(S.HU.league) : 'swgoh.gg'} ${pct(c.gRate)} of ${kNum(c.gN)}${c.gSquad ? '' : ` (all ${esc(nm(c.lead))} teams)`}` : ''}`;
   const delayMs = r => { const t = S.byRound[r.h]; if (!t || !t.t.length) return null; return Date.parse(t.t[0]) - (r.epoch + DAY + (r.rn - 1) * 2 * DAY); };
   const hm = ms => { if (ms == null || isNaN(ms)) return '—'; const m = Math.max(0, Math.round(ms / 6e4)); return '+' + String(Math.floor(m / 60)).padStart(2, '0') + ':' + String(m % 60).padStart(2, '0'); };
   const when = iso => new Date(iso).toLocaleString(undefined, { weekday: 'short', day: 'numeric', month: 'short', hour: '2-digit', minute: '2-digit' });
@@ -697,7 +838,8 @@
     const head = `<div class="vs"><div><b>${esc(S.me.name)}</b><small>${gpTxt(S.me.gp)} GP</small></div><div class="v">vs</div><div><b>${esc(S.opp.name)}</b><small>${gpTxt(S.opp.gp)} GP${S.opp.guild ? ' · ' + esc(S.opp.guild) : ''}</small></div></div>
       <p class="sub">${S.oppHist.battles.length} battles from ${S.oppHist.rounds.length} of their ${S.oppHist.fmt} rounds (seasons ${(S.oppHist.seasons || []).join(', ') || '–'}), plus ${S.myBattles} of your own attacks, blended with swgoh.gg's GAC counters page. <a href="#" data-t="about">How it works</a></p>
       ${S.autoFmt ? `<p class="sub">Format: ${S.oppHist.fmt}, from their latest finished event. swgoh.gg only lists an event once it's over, so in the first week of a new season pick the format yourself at the top.</p>` : ''}
-      ${S.note ? `<p class="warn">${S.note}</p>` : ''}`;
+      ${S.note ? `<p class="warn">${S.note}</p>` : ''}
+      <p class="sub">${S.HU ? `<b class="me">Using HotUtils ${nice(S.HU.league)} data</b> (season ${S.HU.season}, live datacrons only) for counters and defence. ` : `Optional: <button class="chip" data-act="hotutils">Add HotUtils ${nice(leagueName())} data</button> for counters and holds from your own league, with expired datacrons left out. `}</p>`;
     const body = { plan: viewPlan, defs: viewDefs, atts: viewAtts, rounds: viewRounds, time: viewTime, roster: viewRoster, about: viewAbout }[tab]();
     $('#out').innerHTML = head + body;
     wire(tab);
@@ -721,6 +863,7 @@
     out.querySelectorAll('[data-unfleet]').forEach(b => (b.onclick = () => { S.fleet.delete(b.dataset.unfleet); fleetEdited(); persistAndReplan(tab); }));
     const fleetReset = () => { delete store.myFleet; S.fleet = new Set(S.fleetDetected); };
     out.querySelectorAll('[data-act="fleetreset"]').forEach(b => (b.onclick = () => { fleetReset(); persistAndReplan(tab); }));
+    out.querySelectorAll('[data-act="hotutils"]').forEach(b => (b.onclick = askHotUtils));
     out.querySelectorAll('[data-act="clear"]').forEach(b => (b.onclick = () => { S.locked.clear(); fleetReset(); persistAndReplan(tab); }));
     const gl = $('#keepgl'); if (gl) gl.onchange = () => { S.keepGL = gl.checked; persistAndReplan(tab); };
     const sh = $('#ships'); if (sh) sh.onchange = () => { store.showShips = sh.checked; save(); show(tab); };
@@ -820,11 +963,12 @@
 
   function viewDefPlan() {
     const users = S.atts.slice(0, 3).map(a => esc(nm(a.lead))).join(', ');
-    return `<h2>Suggested defence</h2><p class="sub">Squads you own that hold best against the attack teams ${esc(S.opp.name)} uses${users ? ` (mostly ${users})` : ''}, weighted by how often they use each one, kept clear of your attack plan and each other. Tap "I've set this" once it's placed.</p>
+    const src = S.HU ? `HotUtils ${nice(S.HU.league)}` : 'swgoh.gg';
+    return `<h2>Suggested defence</h2><p class="sub">Squads you own, ranked half on how often they hold in the current meta (${src} hold %) and half on how they do against the attack teams ${esc(S.opp.name)} uses${users ? ` (mostly ${users})` : ''}. Kept clear of your attack plan and each other. Tap "I've set this" once it's placed.</p>
       <div class="filters"><label class="tog"><input type="checkbox" id="keepgl" ${S.keepGL ? 'checked' : ''}> Keep Galactic Legends for attack</label></div>
       ${S.defPlan.length ? `<table class="stack"><tr><th>Your defence</th><th>Holds (est.)</th><th>Evidence</th><th></th></tr>${S.defPlan.map(c => `<tr>
-      <td>${squadH(c.squad, 'me')}</td><td>${bar(c.score)}${confH({ conf: c.conf, total: c.n + c.gN })}</td>
-      <td class="sub">Held ${c.held}/${c.n} in these histories${c.myN ? ` · on your defence ${c.myHeld}/${c.myN}` : ''}${c.gN ? ` · swgoh.gg holds ${pct(c.gHold)} of ${kNum(c.gN)}` : ''}${c.vs.slice(0, 3).map(v => `<br>vs ${esc(nm(v.lead))}: ${v.n ? `held ${v.held}/${v.n}` : ''}${v.n && v.gN ? ' · ' : ''}${v.gN ? `swgoh.gg ${pct(v.gHold)} of ${kNum(v.gN)}` : ''}`).join('')}</td>
+      <td>${squadH(c.squad, 'me')}</td><td>${bar(c.score)}${confH({ conf: c.conf, total: c.n + c.gN + (c.meta ? c.meta.n : 0) })}</td>
+      <td class="sub">${c.meta ? `<b>Meta: holds ${pct(c.meta.h)} of ${kNum(c.meta.n)}</b> (${c.metaSrc === 'hu' ? src : 'swgoh.gg'})<br>` : ''}${c.n ? `Held ${c.held}/${c.n} in these histories` : 'Not in these histories'}${c.myN ? ` · on your defence ${c.myHeld}/${c.myN}` : ''}${c.vs.slice(0, 3).map(v => `<br>vs ${esc(nm(v.lead))}: ${v.n ? `held ${v.held}/${v.n}` : ''}${v.n && v.gN ? ' · ' : ''}${v.gN ? `${c.exactVs ? src : 'swgoh.gg, any ' + esc(nm(c.lead)) + ' team,'} ${pct(v.gHold)} of ${kNum(v.gN)}` : ''}`).join('')}</td>
       <td><button class="chip" data-lock="${esc(c.squad.join(','))}">I've set this</button></td></tr>`).join('')}</table>`
         : '<p class="sub">No recorded defence squads you own are free. Remove some units from your defence list, or untick "Keep Galactic Legends for attack".</p>'}`;
   }
@@ -832,7 +976,7 @@
   function counterTable(list) {
     return `<table class="ct stack"><tr><th>Counter</th><th>Record</th><th>Est. for you</th><th>Avg banners</th></tr>${list.map(c => `<tr class="${c.own ? '' : 'dim'}">
       <td>${squadH(c.squad, 'me')}${c.missing.length ? `<div class="sub warn">Missing: ${c.missing.map(nm).map(esc).join(', ')}</div>` : ''}${c.squad.some(u => S.locked.has(u) || S.fleet.has(u)) ? `<div class="sub warn">Uses ${c.squad.filter(u => S.locked.has(u) || S.fleet.has(u)).map(nm).map(esc).join(', ')} from your defence</div>` : ''}</td>
-      <td>${c.n ? `${c.w}/${c.n}` : '–'}${c.myN ? `<div class="sub">you ${c.myW}/${c.myN}</div>` : ''}${c.gN ? `<div class="gstat">swgoh.gg ${pct(c.gRate)} of ${kNum(c.gN)}${c.gSquad ? '' : ' (all teams with this leader)'}</div>` : ''}</td>
+      <td>${c.n ? `${c.w}/${c.n}` : '–'}${c.myN ? `<div class="sub">you ${c.myW}/${c.myN}</div>` : ''}${c.gN ? `<div class="gstat">${c.src === 'hu' ? 'HotUtils ' + nice(S.HU.league) : 'swgoh.gg'} ${pct(c.gRate)} of ${kNum(c.gN)}${c.gSquad ? '' : ' (all teams with this leader)'}</div>` : ''}</td>
       <td>${bar(c.est)}${confH(c)}</td><td>${banTxt(c)}</td></tr>`).join('')}</table>`;
   }
 
@@ -939,7 +1083,8 @@
       <li><b>Data label</b> counts both sources: solid = 20+ battles, some = 6 to 19, thin = 5 or fewer.</li>
       <li><b>Battle plan</b> covers up to 18 of their defences (those set in at least 10% of the rounds in their two most recent seasons, or at all in the latest one). It tries every combination of your top 4 owned counters for the 9 most likely, then fills any gaps with the best counter whose units are all still free. It never reuses a unit, and leaves out everything in Your defence, fleets included. <b>Most banners</b> ranks by win chance × average banners per win.</li>
       <li><b>Your defence</b> is one list saved in this browser. Your fleet defence starts as the fleets you set in your latest season; remove ships or add a capital ship if you've changed it.</li>
-      <li><b>Suggested defence</b> scores each squad you own by how often it held against each attack team your opponent uses, weighted by how often they use it. Hold rates blend the two histories with swgoh.gg's numbers for your squad's leader, so a squad with 4 holds from 5 battles can't outrank one with 38 from 81. Galactic Legends are left out unless you untick the switch.</li>
+      <li><b>Suggested defence</b> looks at every meta defence squad you own at R5+ (from swgoh.gg's squad meta page, or HotUtils once added), plus the squads in the two histories. Each is scored half on its meta hold %, and half on how it holds against the attack teams your opponent uses, weighted by how often they use them. Galactic Legends are left out unless you untick the switch.</li>
+      <li><b>Add HotUtils data</b> (optional) opens HotUtils' GAC counters site in a new tab. Click the bookmark there and it reads, for your league and with expired datacrons left out, the counters for each of their defences and for your candidate defences, plus the defence meta, then sends them back here. HotUtils numbers replace swgoh.gg's wherever they cover a squad with 20+ battles. HotUtils' division filter needs a HotUtils login, so it uses your whole league.</li>
       <li><b>Their usual squad</b> for each leader is the line-up they set most, with the latest season counted 4 times and the one before twice, so a team they changed recently shows the new version.</li>
       <li><b>Zones</b> (Front top, Front bottom, Back, Fleet) are where each of their defences was placed most often, counted once per round.</li>
       <li><b>Round by round</b> lists each of their rounds: result and score, first attack time, delay from attacks opening, the attacks their defence held against, and their own failed attacks.</li>
