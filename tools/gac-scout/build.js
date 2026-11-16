@@ -12,14 +12,14 @@ const version = (fs.readFileSync(src, 'utf8').match(/const VERSION = '([^']+)'/)
 fs.writeFileSync(path.join(root, 'js', 'gac-scout-plus.js'), min + '\n');
 
 const URL_ = 'https://seanvintin-wwws.github.io/tb_empire/js/gac-scout-plus.js';
-const loaderSrc = `(()=>{if(!/(^|\\.)swgoh\\.gg$|^players\\.hotutils\\.com$/.test(location.hostname)){alert('GAC Scout+ runs on swgoh.gg. Open swgoh.gg in this tab, then click the bookmark again.');return}var s=document.createElement('script');s.src='${URL_}?v='+Date.now();s.onerror=function(){alert('GAC Scout+ could not load from ${URL_.split('/')[2]}. Check your connection or ad blocker, or use the full-code bookmark from the install page.')};document.body.appendChild(s)})()`;
+const loaderSrc = `(()=>{if(!/(^|\\.)swgoh\\.gg$/.test(location.hostname)){alert('GAC Scout+ runs on swgoh.gg. Open swgoh.gg in this tab, then click the bookmark again.');return}var s=document.createElement('script');s.src='${URL_}?v='+Date.now();s.onerror=function(){alert('GAC Scout+ could not load from ${URL_.split('/')[2]}. Check your connection or ad blocker, or use the full-code bookmark from the install page.')};document.body.appendChild(s)})()`;
 // Both bookmarks are fully percent-encoded, so no browser has anything left to rewrite when it saves them.
 // The full version carries the whole tool gzipped and base64-encoded (about 25,000 characters, well under
 // Firefox's 65,536-character bookmark limit) and unpacks it with the browser's built-in DecompressionStream.
 // `void` stops the bookmark returning a value, which would otherwise replace the page.
 const loader = 'javascript:' + encodeURIComponent(loaderSrc);
 const b64 = require('zlib').gzipSync(Buffer.from(min, 'utf8'), { level: 9 }).toString('base64');
-const fullSrc = `void(async()=>{try{if(!/(^|\\.)swgoh\\.gg$|^players\\.hotutils\\.com$/.test(location.hostname)){alert("GAC Scout+ runs on swgoh.gg. Open swgoh.gg in this tab, then click the bookmark again.");return}var b=Uint8Array.from(atob("${b64}"),function(c){return c.charCodeAt(0)}),t=await new Response(new Blob([b]).stream().pipeThrough(new DecompressionStream("gzip"))).text();(0,eval)(t)}catch(e){alert("GAC Scout+ could not start ("+e.message+"). Update your browser, or use the main GAC Scout+ bookmark.")}})()`;
+const fullSrc = `void(async()=>{try{if(!/(^|\\.)swgoh\\.gg$/.test(location.hostname)){alert("GAC Scout+ runs on swgoh.gg. Open swgoh.gg in this tab, then click the bookmark again.");return}var b=Uint8Array.from(atob("${b64}"),function(c){return c.charCodeAt(0)}),t=await new Response(new Blob([b]).stream().pipeThrough(new DecompressionStream("gzip"))).text();(0,eval)(t)}catch(e){alert("GAC Scout+ could not start ("+e.message+"). Update your browser, or use the main GAC Scout+ bookmark.")}})()`;
 const full = 'javascript:' + encodeURIComponent(fullSrc);
 if (full.length > 60000) throw new Error('full bookmark is ' + full.length + ' characters: too long for Firefox');
 if (require('zlib').gunzipSync(Buffer.from(b64, 'base64')).toString('utf8') !== min) throw new Error('packed script does not unpack to the original');
@@ -60,7 +60,7 @@ details{margin-top:14px}summary{cursor:pointer;color:#8cc8ff}
 <div class="f"><b>Your defence</b><p>Add what you've placed and the plan stops using it. Picking a leader adds your usual team. Saved for rounds 2 and 3.</p></div>
 <div class="f"><b>Defence planner</b><p>Squads you own that hold best against the attack teams your opponent uses. Keeps GLs for attack unless you say otherwise.</p></div>
 <div class="f"><b>Zones and banners</b><p>Where they usually put each team (Front top, Front bottom, Back, Fleet), and counters ranked by expected banners.</p></div>
-<div class="f"><b>HotUtils data</b><p>One extra click pulls counters and defence holds for your own league from HotUtils, with expired datacrons left out.</p></div>
+<div class="f"><b>HotUtils meta</b><p>Optional: paste HotUtils' defence hold % for your own league (live datacrons only) and the defence planner uses it.</p></div>
 <div class="f"><b>Datacrons</b><p>The datacron they last ran on each defence and attack team: level, set and who it boosts. Lvl 12+ gets a warning.</p></div>
 <div class="f"><b>Round by round</b><p>Each of their rounds: score, first attack time and delay, what held on their defence and what they dropped.</p></div>
 <div class="f"><b>Their attacks</b><p>What they win with and which defences stopped them.</p></div>
@@ -88,7 +88,7 @@ details{margin-top:14px}summary{cursor:pointer;color:#8cc8ff}
 <li>Click the <b>GAC Scout+</b> bookmark. On Android Chrome, type <code>GAC Scout+</code> in the address bar and tap the bookmark.</li>
 <li>The first time, enter <b>your own</b> ally code too. It's remembered in your browser, and you can change it in the header.</li>
 <li>Press <b>Scout</b>. The first run takes about 30 to 60 seconds. Later runs are much faster because finished rounds and swgoh.gg counters pages are cached.</li>
-<li><b>Optional, for better numbers:</b> press <b>Add HotUtils data</b>. A HotUtils tab opens; click the same GAC Scout+ bookmark in that tab. It reads counters and defence holds for your league from HotUtils and sends them back to the swgoh.gg tab. If your browser blocks the new tab, allow pop-ups for swgoh.gg.</li>
+<li><b>Optional:</b> under the summary, open the HotUtils link, copy that page (Ctrl+A, Ctrl+C) and paste it into the box. The suggested defence then uses hold rates from your own league. It's remembered for 3 days.</li>
 <li><b>Format</b> is Auto (their latest finished event). In the first week of a new season, set it to 3v3 or 5v5 yourself, because swgoh.gg only lists an event once it's over.</li>
 <li>Add the units you've put on defence under <b>Your defence</b> so the battle plan doesn't use them. Your fleet defence is filled in from your latest season; fix it there if you've changed it. Press <b>Clear all</b> when a new GAC event starts.</li>
 </ol>

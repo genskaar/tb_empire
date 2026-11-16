@@ -13,56 +13,11 @@
 */
 (async () => {
   const VERSION = '2.4';
-  if (location.hostname === 'players.hotutils.com') return hotutilsHelper();
   if (!/(^|\.)swgoh\.gg$/.test(location.hostname)) {
     alert('GAC Scout+ runs on swgoh.gg. Open https://swgoh.gg in this tab, then click the bookmark again.');
     return;
   }
 
-  // Step 2 of "Add HotUtils data": this runs in the HotUtils tab that GAC Scout+ opened. It reads the list of squads
-  // to look up from the address bar, asks HotUtils' own public GAC data for them (your league, live datacrons only),
-  // and hands the numbers back to the swgoh.gg tab that opened it. Nothing is sent anywhere else.
-  async function hotutilsHelper() {
-    const box = document.createElement('div');
-    box.style.cssText = 'position:fixed;z-index:2147483647;top:16px;right:16px;max-width:380px;padding:14px 16px;border-radius:10px;background:#111829;color:#dde3f0;border:1px solid #1f6feb;font:14px/1.45 system-ui,sans-serif;box-shadow:0 6px 24px #0008';
-    document.body.appendChild(box);
-    const say = (msg, bad) => { box.innerHTML = '<b style="color:#8cc8ff">GAC Scout+</b><br>'; const t = document.createElement('span'); t.textContent = msg; if (bad) t.style.color = '#ff9e9e'; box.appendChild(t); };
-    const m = location.hash.match(/gacscout=([A-Za-z0-9_-]+)/);
-    if (!m) return say('Open this from GAC Scout+ on swgoh.gg: scout your opponent there, then press "Add HotUtils data". It opens this page with the squads to look up.', true);
-    if (!window.opener) return say('This tab has lost its link to the swgoh.gg tab. Go back to swgoh.gg, press "Add HotUtils data" again, and click the bookmark in the new HotUtils tab.', true);
-    let req;
-    try { req = JSON.parse(decodeURIComponent(escape(atob(m[1].replace(/-/g, '+').replace(/_/g, '/'))))); } catch (e) { return say("Couldn't read the request from swgoh.gg. Press \"Add HotUtils data\" again.", true); }
-    const okIds = a => Array.isArray(a) && a.length && a.length <= 5 && a.every(x => /^[A-Z0-9_]{2,40}$/.test(x));
-    const fmt = req.fmt === '5v5' ? '5v5' : '3v3';
-    const league = /^[A-Z]{3,12}$/.test(req.league || '') ? req.league : 'KYBER';
-    const defs = (req.defs || []).filter(okIds).slice(0, 40), mine = (req.mine || []).filter(okIds).slice(0, 30);
-    const api = async path => { for (let i = 0; i < 3; i++) { try { const r = await fetch('/api/gac/' + path); if (r.ok) return await r.json(); if (r.status === 400 || r.status === 404) return null; } catch (e) {} await new Promise(r => setTimeout(r, 1200 * (i + 1))); } return null; };
-    say('Finding the latest ' + fmt + ' season…');
-    const ss = await api('seasons');
-    const season = ss && (ss.seasons || []).filter(x => x.mode === fmt).sort((a, b) => b.season - a.season)[0];
-    if (!season) return say("HotUtils didn't return its season list. Reload this page and click the bookmark again.", true);
-    const q = `mode=${fmt}&season=${season.season}&league=${league}&division=ALL&hideExpired=1`;
-    const ctr = {}, mineCtr = {};
-    const jobs = [...defs.map(d => ['d', d]), ...mine.map(d => ['m', d])];
-    let done = 0, failed = 0;
-    const pack = j => (j && Array.isArray(j.rows) ? j.rows.filter(r => Array.isArray(r.units)).map(r => [r.battles | 0, Math.round(r.winPct * 10) / 1000, Math.round((r.avgBanners || 0) * 100) / 100, r.units]) : null);
-    const worker = async () => {
-      while (jobs.length) {
-        const [kind, d] = jobs.shift();
-        const rows = pack(await api(`counters?${q}&sort=seen&defense=${d.join(',')}`));
-        if (!rows) failed++; else (kind === 'd' ? ctr : mineCtr)[[...d].sort().join(',')] = rows;
-        say(`Reading HotUtils ${league[0] + league.slice(1).toLowerCase()} counters: ${++done}/${defs.length + mine.length}…`);
-      }
-    };
-    await Promise.all([worker(), worker(), worker()]);
-    const mj = await api(`squad-meta?${q}&side=defense&battleType=character`);
-    const meta = mj && Array.isArray(mj.rows) ? mj.rows.filter(r => Array.isArray(r.units) && r.battles >= 100).map(r => [r.battles | 0, Math.round(r.holdPct * 10) / 1000, Math.round((r.avgBanners || 0) * 100) / 100, r.units]) : [];
-    try {
-      window.opener.postMessage({ type: 'gac-scout-plus:hotutils', v: 1, id: req.id, league, season: season.season, fmt, ctr, mine: mineCtr, meta, failed }, 'https://swgoh.gg');
-    } catch (e) { return say('Lost the link to the swgoh.gg tab before the data could be sent back. Press "Add HotUtils data" there again.', true); }
-    say(`Done: ${Object.keys(ctr).length + Object.keys(mineCtr).length} squads${failed ? ` (${failed} didn't load)` : ''} plus the ${league[0] + league.slice(1).toLowerCase()} defence meta, sent back to swgoh.gg. This tab will close; if it doesn't, switch back to the swgoh.gg tab.`);
-    setTimeout(() => { try { window.close(); } catch (e) {} }, 2500);
-  }
   const SKEY = 'gacScoutPlus:settings', RKEY = 'gacScoutPlus:rounds', GKEY = 'gacScoutPlus:global';
   const DAY = 864e5, G_TTL = 3 * DAY;
 
@@ -756,7 +711,7 @@
       status('Reading swgoh.gg defence meta…');
       S.metaSG = metaMap(await loadMetaSG(oppHist.fmt));
       const hu = gstore.hu;
-      if (hu && hu.opp === oppAlly && hu.fmt === oppHist.fmt && Date.now() - hu.t < DAY) S.HU = hu.data;
+      if (hu && hu.fmt === oppHist.fmt && String(me.league || '').toUpperCase() === hu.league && Date.now() - hu.t < 3 * DAY) S.HU = hu.data;
       gsave();
       analyse(S);
       S.defCands = defenceCandidates(S);
@@ -772,38 +727,30 @@
     }
   }
 
-  // ---------- HotUtils step (see hotutilsHelper) ----------
+  // ---------- HotUtils league meta (optional, pasted) ----------
+  // HotUtils' pages don't let bookmarks run on them and don't let other sites read their data, so this step is manual:
+  // open HotUtils' public defence-meta feed for your league, copy it all, paste it here. It's cached for 3 days.
   const LEAGUES = ['KYBER', 'AURODIUM', 'CHROMIUM', 'BRONZIUM', 'CARBONITE'];
   const leagueName = () => { const l = String((S && S.me.league) || '').toUpperCase(); return LEAGUES.includes(l) ? l : 'KYBER'; };
   const nice = l => l[0] + l.slice(1).toLowerCase();
-  let huWin = null, huId = '';
-  function askHotUtils() {
-    const defs = [...S.plan.map(p => p.d), ...S.unseen].filter(d => !d.ships).map(d => d.squad).slice(0, 40);
-    const mine = (S.defCands || []).filter(c => !c.squad.some(u => SHIP[u])).slice(0, 30).map(c => c.squad);
-    huId = Math.random().toString(36).slice(2, 10);
-    const req = { id: huId, fmt: S.oppHist.fmt, league: leagueName(), defs, mine };
-    const enc = btoa(unescape(encodeURIComponent(JSON.stringify(req)))).replace(/\+/g, '-').replace(/\//g, '_').replace(/=+$/, '');
-    huWin = window.open('https://players.hotutils.com/gac#gacscout=' + enc, '_blank');
-    if (!huWin) return status('Your browser blocked the HotUtils tab. Allow pop-ups for swgoh.gg, then press "Add HotUtils data" again.', true);
-    status(`A HotUtils tab has opened. <b>Click your GAC Scout+ bookmark in that tab</b>; it reads HotUtils' ${nice(req.league)} data for ${defs.length + mine.length} squads and sends it back here. If it says it only runs on swgoh.gg, reinstall the bookmark from the install page once.`);
-  }
-  window.addEventListener('message', e => {
-    if (e.origin !== 'https://players.hotutils.com' || !S) return;
-    const d = e.data;
-    if (!d || d.type !== 'gac-scout-plus:hotutils' || d.v !== 1 || d.id !== huId) return;
-    const ids = a => Array.isArray(a) && a.every(x => typeof x === 'string' && /^[A-Z0-9_]{2,40}$/.test(x));
-    const row = r => Array.isArray(r) && r.length === 4 && Number.isFinite(r[0]) && Number.isFinite(r[1]) && Number.isFinite(r[2]) && ids(r[3]);
-    const table = o => { const out = {}; if (o && typeof o === 'object') Object.entries(o).forEach(([k, v]) => { if (/^[A-Z0-9_,]{2,240}$/.test(k) && Array.isArray(v)) out[k] = v.filter(row); }); return out; };
-    const data = { league: LEAGUES.includes(d.league) ? d.league : 'KYBER', season: d.season | 0, ctr: table(d.ctr), mine: table(d.mine), meta: metaMap((Array.isArray(d.meta) ? d.meta : []).filter(row)) };
+  const huUrl = () => `https://players.hotutils.com/api/gac/squad-meta?mode=${S.oppHist.fmt}&side=defense&battleType=character&league=${leagueName()}&division=ALL&hideExpired=1`;
+  function takeHotUtils(text) {
+    let j;
+    try { j = JSON.parse(text); } catch (e) { return status("That isn't HotUtils' data. Open the link, press Ctrl+A then Ctrl+C on that page, and paste everything here.", true); }
+    const ids = a => Array.isArray(a) && a.length && a.every(x => typeof x === 'string' && /^[A-Z0-9_]{2,40}$/.test(x));
+    const rows = (j && Array.isArray(j.rows) ? j.rows : []).filter(r => r && ids(r.units) && Number.isFinite(r.battles) && Number.isFinite(r.holdPct));
+    if (!rows.length) return status("That paste has no defence squads in it. Make sure you copied the whole HotUtils page.", true);
+    if (j.mode && j.mode !== S.oppHist.fmt) return status(`That's HotUtils' ${esc(j.mode)} data, but this scout is ${S.oppHist.fmt}. Use the link above, which asks for ${S.oppHist.fmt}.`, true);
+    const league = LEAGUES.includes(j.league) ? j.league : leagueName();
+    const data = { league, season: j.season | 0, ctr: {}, mine: {}, meta: metaMap(rows.filter(r => r.battles >= 100).map(r => [r.battles | 0, r.holdPct / 100, +(r.avgBanners || 0), r.units])) };
     S.HU = data;
-    gstore.hu = { t: Date.now(), opp: S.opp.ally, fmt: S.oppHist.fmt, data };
+    gstore.hu = { t: Date.now(), fmt: S.oppHist.fmt, league, data };
     gsave();
-    analyse(S);
     S.defCands = defenceCandidates(S);
     plan(S);
-    status(`Added HotUtils ${nice(data.league)} data (season ${data.season}, live datacrons only): ${Object.keys(data.ctr).length + Object.keys(data.mine).length} squads${d.failed ? `, ${d.failed | 0} didn't load` : ''}.`);
+    status(`Added HotUtils ${nice(league)} defence meta (season ${data.season}, live datacrons only): ${Object.keys(data.meta).length} squads.`);
     show('plan');
-  });
+  }
 
   // ---------- rendering ----------
   const TABS = [['plan', 'Battle plan'], ['defs', 'Their defences & counters'], ['atts', 'Their attacks'], ['rounds', 'Round by round'], ['time', 'When they attack'], ['roster', 'Roster compare'], ['about', 'How it works']];
@@ -842,7 +789,10 @@
       <p class="sub">${S.oppHist.battles.length} battles from ${S.oppHist.rounds.length} of their ${S.oppHist.fmt} rounds (seasons ${(S.oppHist.seasons || []).join(', ') || '–'}), plus ${S.myBattles} of your own attacks, blended with swgoh.gg's GAC counters page. <a href="#" data-t="about">How it works</a></p>
       ${S.autoFmt ? `<p class="sub">Format: ${S.oppHist.fmt}, from their latest finished event. swgoh.gg only lists an event once it's over, so in the first week of a new season pick the format yourself at the top.</p>` : ''}
       ${S.note ? `<p class="warn">${S.note}</p>` : ''}
-      <p class="sub">${S.HU ? `<b class="me">Using HotUtils ${nice(S.HU.league)} data</b> (season ${S.HU.season}, live datacrons only) for counters and defence. ` : `Optional: <button class="chip" data-act="hotutils">Add HotUtils ${nice(leagueName())} data</button> for counters and holds from your own league, with expired datacrons left out. `}</p>`;
+      ${S.HU ? `<p class="sub"><b class="me">Suggested defence uses HotUtils ${nice(S.HU.league)} hold %</b> (season ${S.HU.season}, live datacrons only). <a href="#" data-act="hureset">Go back to swgoh.gg's</a></p>`
+        : `<details class="sub"><summary>Optional: use HotUtils' ${nice(leagueName())} defence meta (your league, live datacrons only)</summary>
+        <p>1. <a class="lnk" href="${esc(huUrl())}" target="_blank" rel="noopener">Open HotUtils' ${nice(leagueName())} ${S.oppHist.fmt} defence data</a> (a page of raw text).<br>2. On that page press <b>Ctrl+A</b> then <b>Ctrl+C</b> (on a Mac, Cmd).<br>3. Paste it here: <input id="hupaste" placeholder="Paste here" autocomplete="off"></p>
+        <p>It's remembered for 3 days, so you only do this once per event.</p></details>`}`;
     const body = { plan: viewPlan, defs: viewDefs, atts: viewAtts, rounds: viewRounds, time: viewTime, roster: viewRoster, about: viewAbout }[tab]();
     $('#out').innerHTML = head + body;
     wire(tab);
@@ -866,7 +816,8 @@
     out.querySelectorAll('[data-unfleet]').forEach(b => (b.onclick = () => { S.fleet.delete(b.dataset.unfleet); fleetEdited(); persistAndReplan(tab); }));
     const fleetReset = () => { delete store.myFleet; S.fleet = new Set(S.fleetDetected); };
     out.querySelectorAll('[data-act="fleetreset"]').forEach(b => (b.onclick = () => { fleetReset(); persistAndReplan(tab); }));
-    out.querySelectorAll('[data-act="hotutils"]').forEach(b => (b.onclick = askHotUtils));
+    const hp = $('#hupaste'); if (hp) hp.onpaste = e => { const t = (e.clipboardData || window.clipboardData).getData('text'); e.preventDefault(); takeHotUtils(t); };
+    out.querySelectorAll('[data-act="hureset"]').forEach(b => (b.onclick = e => { e.preventDefault(); S.HU = null; delete gstore.hu; gsave(); S.defCands = defenceCandidates(S); plan(S); show(tab); }));
     out.querySelectorAll('[data-act="clear"]').forEach(b => (b.onclick = () => { S.locked.clear(); fleetReset(); persistAndReplan(tab); }));
     const gl = $('#keepgl'); if (gl) gl.onchange = () => { S.keepGL = gl.checked; persistAndReplan(tab); };
     const sh = $('#ships'); if (sh) sh.onchange = () => { store.showShips = sh.checked; save(); show(tab); };
@@ -1087,7 +1038,7 @@
       <li><b>Battle plan</b> covers up to 18 of their defences (those set in at least 10% of the rounds in their two most recent seasons, or at all in the latest one). It tries every combination of your top 4 owned counters for the 9 most likely, then fills any gaps with the best counter whose units are all still free. It never reuses a unit, and leaves out everything in Your defence, fleets included. <b>Most banners</b> ranks by win chance × average banners per win.</li>
       <li><b>Your defence</b> is one list saved in this browser. Your fleet defence starts as the fleets you set in your latest season; remove ships or add a capital ship if you've changed it.</li>
       <li><b>Suggested defence</b> looks at every meta defence squad you own at R5+ (from swgoh.gg's squad meta page, or HotUtils once added), plus the squads in the two histories. Each is scored half on its meta hold %, and half on how it holds against the attack teams your opponent uses, weighted by how often they use them. Galactic Legends are left out unless you untick the switch.</li>
-      <li><b>Add HotUtils data</b> (optional) opens HotUtils' GAC counters site in a new tab. Click the bookmark there and it reads, for your league and with expired datacrons left out, the counters for each of their defences and for your candidate defences, plus the defence meta, then sends them back here. HotUtils numbers replace swgoh.gg's wherever they cover a squad with 20+ battles. HotUtils' division filter needs a HotUtils login, so it uses your whole league.</li>
+      <li><b>HotUtils defence meta</b> (optional): HotUtils publishes defence hold % for each league, with expired datacrons left out. Their site doesn't let bookmarks or other websites read it, so you open their data page, copy it and paste it into the box under the summary. It then replaces swgoh.gg's (all-league) hold % in the Suggested defence, and is remembered for 3 days. It covers your whole league, because HotUtils' division filter needs a login. Counters still come from swgoh.gg and the two histories.</li>
       <li><b>Their usual squad</b> for each leader is the line-up they set most, with the latest season counted 4 times and the one before twice, so a team they changed recently shows the new version.</li>
       <li><b>Zones</b> (Front top, Front bottom, Back, Fleet) are where each of their defences was placed most often, counted once per round.</li>
       <li><b>Round by round</b> lists each of their rounds: result and score, first attack time, delay from attacks opening, the attacks their defence held against, and their own failed attacks.</li>
