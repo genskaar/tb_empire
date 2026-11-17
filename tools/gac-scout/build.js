@@ -60,7 +60,7 @@ details{margin-top:14px}summary{cursor:pointer;color:#8cc8ff}
 <div class="f"><b>Your defence</b><p>Add what you've placed and the plan stops using it. Picking a leader adds your usual team. Saved for rounds 2 and 3.</p></div>
 <div class="f"><b>Defence planner</b><p>Squads you own that hold best against the attack teams your opponent uses. Keeps GLs for attack unless you say otherwise.</p></div>
 <div class="f"><b>Zones and banners</b><p>Where they usually put each team (Front top, Front bottom, Back, Fleet), and counters ranked by expected banners.</p></div>
-<div class="f"><b>HotUtils meta</b><p>Optional: paste HotUtils' defence hold % for your own league (live datacrons only) and the defence planner uses it.</p></div>
+<div class="f"><b>HotUtils meta</b><p>Optional: paste HotUtils' defence hold % for your own league (live datacrons only). It sits beside swgoh.gg Insight's division figure in the defence planner, and fills in where Insight is thin.</p></div>
 <div class="f"><b>Datacrons</b><p>Your datacrons and theirs are in the odds: each counter and defence is rated from battles with the datacron strength each side can actually bring, and the plan never uses one datacron twice.</p></div>
 <div class="f"><b>Round by round</b><p>Each of their rounds: score, first attack time and delay, what held on their defence and what they dropped.</p></div>
 <div class="f"><b>Their attacks</b><p>What they win with and which defences stopped them.</p></div>
@@ -88,7 +88,7 @@ details{margin-top:14px}summary{cursor:pointer;color:#8cc8ff}
 <li>Click the <b>GAC Scout+</b> bookmark. On Android Chrome, type <code>GAC Scout+</code> in the address bar and tap the bookmark.</li>
 <li>The first time, enter <b>your own</b> ally code too. It's remembered in your browser, and you can change it in the header.</li>
 <li>Press <b>Scout</b>. The first run takes about 30 to 60 seconds. Later runs are much faster because finished rounds and swgoh.gg counters pages are cached.</li>
-<li><b>Optional:</b> under the summary, open the HotUtils link, copy that page (Ctrl+A, Ctrl+C) and paste it into the box. The suggested defence then uses hold rates from your own league. It's remembered for 3 days.</li>
+<li><b>Optional:</b> under the summary, open the HotUtils link, copy that page (Ctrl+A, Ctrl+C) and paste it into the box. The suggested defence then shows your league's hold rates beside swgoh.gg's, and uses them where swgoh.gg has too few battles. It's remembered for 3 days.</li>
 <li><b>Format</b> is Auto (their latest finished event). In the first week of a new season, set it to 3v3 or 5v5 yourself, because swgoh.gg only lists an event once it's over.</li>
 <li>Add the units you've put on defence under <b>Your defence</b> so the battle plan doesn't use them. Your fleet defence is filled in from your latest season; fix it there if you've changed it. Press <b>Clear all</b> when a new GAC event starts.</li>
 </ol>
