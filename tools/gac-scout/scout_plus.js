@@ -963,22 +963,24 @@
         const jobs = Object.values(theirs).map(d => { const om = gacOmis(d.squad, fmt); return { kind: 'ctr', sq: d.squad, band: S.oppDcDef[d.lead] ? S.oppDcDef[d.lead].band : 0, keys: ['none', 'low', 'high'], oq: OQ(om), om }; });
         // your defence options: with the best datacron you have free for them, and without one in case it's needed elsewhere;
         // with the GAC omicrons you actually have, and minus battles where the defender had one you're missing
-        // skip squads the Suggested defence can't use anyway: ships, anything already on your defence, and GL teams while they're kept for attack
-        defenceCandidates(S).filter(c => !c.squad.some(u => SHIP[u] || S.locked.has(u)) && !(S.keepGL && c.hasGL)).slice(0, 24).forEach(c => {
+        const candJobs = c => {
+          const out = [];
           const x = bestDc(me.dcs, c.squad, S.myDcRes);
           const have = gacOmis(c.squad, fmt, me), lack = gacOmis(c.squad, fmt).filter(o => !have.includes(o) && !have.some(h => h.key === o.key));
           const add = (band, which) => {
-            jobs.push({ kind: 'cand', sq: c.squad, band, keys: ['none', 'has'], which, oq: OQ(have), have, lack });
-            if (lack.length) jobs.push({ kind: 'cand', sq: c.squad, band, keys: ['none', 'has'], which: which + 'Lack', oq: OQ([...have, ...lack]) });
+            out.push({ kind: 'cand', sq: c.squad, band, keys: ['none', 'has'], which, oq: OQ(have), have, lack });
+            if (lack.length) out.push({ kind: 'cand', sq: c.squad, band, keys: ['none', 'has'], which: which + 'Lack', oq: OQ([...have, ...lack]) });
           };
           add(x ? x.band : 0, 'dc');
           if (x) add(0, 'no');
-        });
-        let k = 0;
-        const got = await pool(jobs, 4, async j => { const v = await insightSquad(I, j.sq, j.band, j.keys, j.oq); status(`Reading swgoh.gg GAC Insight for ${nice(I.league)}${I.div ? ' Division ' + I.dn : ''}, split by datacron and omicron: ${++k}/${jobs.length}…`); return v; });
-        if (I.ok && got.some(Boolean)) {
-          S.INS = { league: I.league, dn: I.dn, ctr: {}, hold: {}, cand: {} };
-          jobs.forEach((j, i) => {
+          return out;
+        };
+        // skip squads the Suggested defence can't use anyway: ships, anything already on your defence, and GL teams while they're kept for attack
+        defenceCandidates(S).filter(c => !c.squad.some(u => SHIP[u] || S.locked.has(u)) && !(S.keepGL && c.hasGL)).slice(0, 24).forEach(c => jobs.push(...candJobs(c)));
+        let k = 0, total = jobs.length;
+        const runJobs = js => pool(js, 4, async j => { const v = await insightSquad(I, j.sq, j.band, j.keys, j.oq); status(`Reading swgoh.gg GAC Insight for ${nice(I.league)}${I.div ? ' Division ' + I.dn : ''}, split by datacron and omicron: ${++k}/${total}…`); return v; });
+        const takeJobs = (js, got) => {
+          js.forEach((j, i) => {
             const v = got[i]; if (!v) return;
             const key = sqKey(j.sq);
             if (j.kind === 'ctr') { v.om = j.om; S.INS.ctr[key] = v; S.INS.hold[key] = { n: v.n, h: v.h, scope: v.scope }; }
@@ -987,13 +989,30 @@
           // a defence missing an omicron: its battles minus the ones where the defender had the omicron you lack
           Object.values(S.INS.cand).forEach(c => {
             ['dc', 'no'].forEach(w => {
-              if (!c[w] || !c[w + 'Lack']) return;
+              if (!c[w] || !c[w + 'Lack'] || c.lackDone) return;
               const m = minusV(c[w], c[w + 'Lack']);
               if (m.minus && m.n >= 20) { c[w] = m; c.lackDone = true; }
             });
           });
+        };
+        const got = await runJobs(jobs);
+        if (I.ok && got.some(Boolean)) {
+          S.INS = { league: I.league, dn: I.dn, ctr: {}, hold: {}, cand: {} };
+          takeJobs(jobs, got);
           gsave();
           analyse(S);
+          // second pass: the attack plan takes units from the strongest squads, so the defences left free may not have been
+          // among the 24 checked above. Check any suggested defence Insight hasn't seen yet, then plan again.
+          for (let pass = 0; pass < 2 && I.ok; pass++) {
+            S.defCands = defenceCandidates(S);
+            plan(S);
+            const more = S.defPlan.filter(c => !S.INS.cand[sqKey(c.squad)]).flatMap(candJobs);
+            if (!more.length) break;
+            total += more.length;
+            takeJobs(more, await runJobs(more));
+            gsave();
+            analyse(S);
+          }
         } else if (!I.ok) S.insNote = `swgoh.gg's GAC Insight (battles for your own league and division) needs you to be signed in to swgoh.gg${I.code === 403 ? ' with access to Insights' : ''}. Without it, counters come from swgoh.gg's all-league counters pages, and datacrons can't be taken into account.`;
       }
       S.defCands = defenceCandidates(S);
