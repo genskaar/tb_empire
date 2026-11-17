@@ -815,7 +815,7 @@
         lead: L, n: o.n, held: o.held, myN: o.myN, myHeld: o.myHeld, squad, prior: A.prior, gN: A.gN, gHold: A.gHold, score: A.score,
         meta: A.mt || null, metaSrc: A.mt ? A.mt.src : 'gg', hu, exactVs: A.exactVs,
         vs: A.vs.filter(v => v.n || v.gN).sort((a, b) => b.weight - a.weight),
-        dc: myX, dBand: cd ? (cd.dc ? cd.dc.dBand : 0) : undefined, no: B ? { score: B.score, meta: B.mt, vs: B.vs.filter(v => v.n || v.gN).sort((a, b) => b.weight - a.weight) } : null,
+        dc: myX, dBand: cd ? (cd.dc ? cd.dc.dBand : cd.no ? 0 : null) : undefined, no: B ? { score: B.score, meta: B.mt, vs: B.vs.filter(v => v.n || v.gN).sort((a, b) => b.weight - a.weight) } : null,
         conf: evidence >= 20 ? 'high' : evidence >= 6 ? 'med' : 'low', hasGL: squad.some(u => me.units[u] && me.units[u].gl),
       };
     }).sort((a, b) => b.score - a.score);
@@ -981,8 +981,10 @@
         const runJobs = js => pool(js, 4, async j => { const v = await insightSquad(I, j.sq, j.band, j.keys, j.oq); status(`Reading swgoh.gg GAC Insight for ${nice(I.league)}${I.div ? ' Division ' + I.dn : ''}, split by datacron and omicron: ${++k}/${total}…`); return v; });
         const takeJobs = (js, got) => {
           js.forEach((j, i) => {
-            const v = got[i]; if (!v) return;
             const key = sqKey(j.sq);
+            // a checked squad with no Insight battles still gets an (empty) entry, so it isn't reported as unchecked
+            if (j.kind === 'cand') S.INS.cand[key] = S.INS.cand[key] || {};
+            const v = got[i]; if (!v) return;
             if (j.kind === 'ctr') { v.om = j.om; S.INS.ctr[key] = v; S.INS.hold[key] = { n: v.n, h: v.h, scope: v.scope }; }
             else { const c = (S.INS.cand[key] = S.INS.cand[key] || {}); c[j.which] = v; if (j.have) { c.have = j.have; c.lack = j.lack; } }
           });
