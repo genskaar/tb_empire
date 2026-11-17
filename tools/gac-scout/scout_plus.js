@@ -1233,7 +1233,8 @@
       if (!m && !c.hu) return '';
       if (!m) return `<b>Meta: holds ${pct(c.hu.h)} of ${kNum(c.hu.n)}</b> (${huLabel}, not in the score)<br>`;
       let h = `<b>Meta: holds ${pct(m.h)} of ${kNum(m.n)}</b> (${metaLabel(m)})`;
-      if (m.src === 'hu' && S.INS) h += ` <span class="warn">· ${insLabel('div')} had ${m.insThin ? `only ${m.insThin}` : 'no'} battles for this squad, so HotUtils is used</span>`;
+      // insThin: Insight's battle count when it was checked and found thin (0 = none); undefined when Insight never checked this squad
+      if (m.src === 'hu' && S.INS && m.insThin !== undefined) h += ` <span class="warn">· ${insLabel('div')} had ${m.insThin ? `only ${m.insThin}` : 'no'} battles for this squad, so HotUtils is used</span>`;
       else if (m.src === 'ins' && c.hu) h += ` · ${huLabel}: ${pct(c.hu.h)} of ${kNum(c.hu.n)}`;
       return h + '<br>';
     };
