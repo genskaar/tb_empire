@@ -1005,7 +1005,7 @@
           analyse(S);
           // second pass: the attack plan takes units from the strongest squads, so the defences left free may not have been
           // among the 24 checked above. Check any suggested defence Insight hasn't seen yet, then plan again.
-          for (let pass = 0; pass < 2 && I.ok; pass++) {
+          for (let pass = 0; pass < 4 && I.ok; pass++) {
             S.defCands = defenceCandidates(S);
             plan(S);
             const more = S.defPlan.filter(c => !S.INS.cand[sqKey(c.squad)]).flatMap(candJobs);
